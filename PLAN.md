@@ -4,6 +4,10 @@
 
 > **Pitch:** My friend is dyslexic. She wants the story, not the page. ExpLit takes a book, a look, and an open-source game, and rewrites that game into one that tells the book's story, so she can hear it and play it instead of read it. The game watches itself: Argon reviews how it was played, finds bugs and places she got stuck, and fixes them between sessions.
 
+![Storyworld at a glance: three inputs, three authorities, generate, adapt, play, and the repair loop](docs/overview.png)
+
+The glance version. Section 3 has the detailed figure; both come from `docs/overview.py` and `docs/architecture.py`.
+
 ---
 
 ## 1. User and promise

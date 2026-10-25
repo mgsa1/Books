@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1520" height="660" viewBox="0 0 1520 660">
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="#222222"/></marker>
+</defs>
+<rect width="1520" height="660" fill="#ffffff"/>
+<text x="30.0" y="52.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#5b5b5b" text-anchor="start">INPUTS</text>
+<text x="230.0" y="52.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#5b5b5b" text-anchor="start">UNDERSTAND  ·  gemini-4-argon</text>
+<text x="540.0" y="52.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#5b5b5b" text-anchor="start">GENERATE</text>
+<text x="870.0" y="52.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#5b5b5b" text-anchor="start">ADAPT  ·  managed agent</text>
+<text x="1200.0" y="52.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#5b5b5b" text-anchor="start">PLAY</text>
+<path d="M30,76 h141 l9,9 v51 h-150 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M171,76 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="37.0" y="91.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="bold" fill="#111111" text-anchor="start">Book</text>
+<text x="37.0" y="104.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.8" font-weight="normal" fill="#5b5b5b" text-anchor="start">EPUB, public domain</text>
+<path d="M30,171 h141 l9,9 v51 h-150 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M171,171 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="37.0" y="186.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="bold" fill="#111111" text-anchor="start">Look</text>
+<text x="37.0" y="199.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.8" font-weight="normal" fill="#5b5b5b" text-anchor="start">reference images or a</text>
+<text x="37.0" y="213.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.8" font-weight="normal" fill="#5b5b5b" text-anchor="start">brief</text>
+<path d="M30,266 h141 l9,9 v51 h-150 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M171,266 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="37.0" y="281.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="12" font-weight="bold" fill="#111111" text-anchor="start">Game</text>
+<text x="37.0" y="294.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.8" font-weight="normal" fill="#5b5b5b" text-anchor="start">libre open-source</text>
+<text x="37.0" y="308.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.8" font-weight="normal" fill="#5b5b5b" text-anchor="start">repository</text>
+<rect x="230" y="70" width="230" height="72" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="242.0" y="92.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#111111" text-anchor="start">Story  S</text>
+<text x="242.0" y="112.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">what happens: characters, beats,</text>
+<text x="242.0" y="127.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">lines, each citing its paragraph</text>
+<rect x="230" y="165" width="230" height="72" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="242.0" y="187.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#111111" text-anchor="start">Style bible</text>
+<text x="242.0" y="207.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">how it looks: palette, prompt</text>
+<text x="242.0" y="222.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">prefix, one rule per asset kind</text>
+<rect x="230" y="260" width="230" height="72" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="242.0" y="282.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#111111" text-anchor="start">Slots</text>
+<text x="242.0" y="302.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">what must exist, in which format:</text>
+<text x="242.0" y="317.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">every asset the code loads</text>
+<path d="M180,106.0 L230,106.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M180,201.0 L230,201.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M180,296.0 L230,296.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M460,106.0 L462.0,106.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M500.0,90.0 L538.0,106.0 L500.0,122.0 L462.0,106.0 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="500.0" y="109.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="middle">validate</text>
+<path d="M538.0,106.0 L540,106.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M460,201.0 L540,201.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M460,296.0 L462.0,296.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M500.0,280.0 L538.0,296.0 L500.0,312.0 L462.0,296.0 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="500.0" y="299.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="middle">ground</text>
+<path d="M538.0,296.0 L540,296.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="500.0" y="136.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#5b5b5b" text-anchor="middle" font-style="italic">against the book</text>
+<text x="500.0" y="326.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#5b5b5b" text-anchor="middle" font-style="italic">against the files</text>
+<rect x="540" y="70" width="250" height="262" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="552.0" y="92.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#111111" text-anchor="start">Cast and fill</text>
+<text x="552.0" y="112.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">The book decides what each slot depicts,</text>
+<text x="552.0" y="127.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">the look decides how it looks, the game</text>
+<text x="552.0" y="142.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">decides the format.</text>
+<text x="552.0" y="165.3" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">One image per slot and subject, fitted</text>
+<text x="552.0" y="180.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">to the slot's exact size and sheet grid.</text>
+<text x="552.0" y="196.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.4">gemini-nano-banana-2.1</tspan></text>
+<text x="552.0" y="218.6" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">One audio clip per line, beat and</text>
+<text x="552.0" y="234.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">narration.</text>
+<text x="552.0" y="249.6" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.4">gemini-3.8-flash-tts</tspan></text>
+<text x="552.0" y="272.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">→ assets + manifests, cached</text>
+<path d="M790,201.0 L870,201.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="870" y="70" width="250" height="262" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="882.0" y="92.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#111111" text-anchor="start">Rewrite the game</text>
+<text x="882.0" y="108.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" font-weight="normal" fill="#1f4e79" text-anchor="start">antigravity-preview-09-2026 · gemini-4-argon</text>
+<text x="882.0" y="128.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">The agent gets the whole repository, the</text>
+<text x="882.0" y="143.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">story, the slots, the style and a</text>
+<text x="882.0" y="158.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">20-point contract in a remote sandbox.</text>
+<text x="882.0" y="174.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">It keeps the engine and the controls,</text>
+<text x="882.0" y="189.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">rewires every asset slot to its</text>
+<text x="882.0" y="205.3" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">generated replacement, and rewrites the</text>
+<text x="882.0" y="220.7" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">story logic: one chapter per level,</text>
+<text x="882.0" y="236.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">every character says its lines and</text>
+<text x="882.0" y="251.6" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">nothing else, no timers, no fail states.</text>
+<text x="882.0" y="274.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">Never draws, resizes or invents art.</text>
+<path d="M105.0,326 L105.0,348 L910,348 L910,332" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="113.0" y="343.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">repository</text>
+<path d="M1120,201.0 L1122.0,201.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1160.0,185.0 L1198.0,201.0 L1160.0,217.0 L1122.0,201.0 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1160.0" y="204.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="middle">builds?</text>
+<path d="M1198.0,201.0 L1200,201.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="1200" y="70" width="270" height="262" fill="#f2f2f2" stroke="#111111" stroke-width="1.8"/>
+<text x="1212.0" y="92.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#111111" text-anchor="start">The game  G</text>
+<text x="1212.0" y="112.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">Static files, playable from any web server.</text>
+<text x="1212.0" y="134.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">Every line is spoken and shown as a</text>
+<text x="1212.0" y="149.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">subtitle. Progress by exploring, talking</text>
+<text x="1212.0" y="165.3" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">and collecting; nothing to read, nothing to</text>
+<text x="1212.0" y="180.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">lose.</text>
+<text x="1212.0" y="203.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">Exposes <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.4">window.playtest</tspan> for testing and</text>
+<text x="1212.0" y="218.6" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">records every session.</text>
+<text x="1212.0" y="241.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">No model call while the player plays.</text>
+<text x="584.0" y="398.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#5b5b5b" text-anchor="start">REPAIR LOOP  ·  the game watches itself: scripted playthroughs before release, real sessions after; same loop, at most three rounds</text>
+<rect x="540" y="420" width="200" height="106" fill="#ffffff" stroke="#111111" stroke-width="1.4"/>
+<text x="552.0" y="442.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#111111" text-anchor="start">Observe</text>
+<text x="552.0" y="462.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">Playwright drives the test API,</text>
+<text x="552.0" y="477.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">or the player uploads a session</text>
+<text x="552.0" y="492.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">→ screenshots, event log, score</text>
+<text x="552.0" y="508.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">s(G)</text>
+<rect x="770" y="420" width="210" height="106" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.8"/>
+<text x="782.0" y="442.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#111111" text-anchor="start">Critique</text>
+<text x="782.0" y="458.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.5" font-weight="normal" fill="#1f4e79" text-anchor="start">gemini-4-argon</text>
+<text x="782.0" y="478.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">defects with evidence, each with</text>
+<text x="782.0" y="493.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">a small search / replace fix; no</text>
+<text x="782.0" y="508.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">evidence, no defect</text>
+<rect x="1010" y="420" width="140" height="106" fill="#ffffff" stroke="#111111" stroke-width="1.4"/>
+<text x="1022.0" y="442.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#111111" text-anchor="start">Patch</text>
+<text x="1022.0" y="462.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">in a staging copy;</text>
+<text x="1022.0" y="477.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">must still build</text>
+<rect x="1180" y="420" width="140" height="106" fill="#ffffff" stroke="#111111" stroke-width="1.4"/>
+<text x="1192.0" y="442.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14.5" font-weight="bold" fill="#111111" text-anchor="start">Replay</text>
+<text x="1192.0" y="462.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">same playthrough →</text>
+<text x="1192.0" y="477.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.2" font-weight="normal" fill="#111111" text-anchor="start">s(G′)</text>
+<path d="M1412,443.0 L1474,473.0 L1412,503.0 L1350,473.0 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1412.0" y="470.6" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="middle">s(G′) ≥ s(G)</text>
+<text x="1412.0" y="482.3" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="middle">∧ no new error</text>
+<path d="M740,473.0 L770,473.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M980,473.0 L1010,473.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1150,473.0 L1180,473.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1320,473.0 L1350,473.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1250,332 L1250,376 L562,376 L562,420" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="570.0" y="371.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">play the current build</text>
+<path d="M1412,443.0 L1412,332" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="1404.0" y="372.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#5b5b5b" text-anchor="end" font-style="italic">yes: keep the patch</text>
+<text x="1478.0" y="477.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">no:</text>
+<text x="1478.0" y="489.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">revert</text>
+<path d="M1412,503.0 L1412,558 L640.0,558 L640.0,526" fill="none" stroke="#222222" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<rect x="950.5" y="546.0" width="51.0" height="12" fill="#ffffff"/>
+<text x="976.0" y="554.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9" font-weight="normal" fill="#5b5b5b" text-anchor="middle" font-style="italic">next round</text>
+<rect x="30" y="414" width="460" height="112" fill="#ffffff" stroke="#5b5b5b" stroke-width="0.9"/>
+<text x="40.0" y="432.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#111111" text-anchor="start">Legend</text>
+<rect x="42" y="442" width="30" height="15" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.5"/>
+<text x="80.0" y="453.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#111111" text-anchor="start">generative model call</text>
+<rect x="280" y="442" width="30" height="15" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="318.0" y="453.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#111111" text-anchor="start">deterministic code</text>
+<path d="M42,468 h22 l8,8 v7 h-30 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<text x="80.0" y="479.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#111111" text-anchor="start">input or output on disk</text>
+<path d="M295,468 L310,476 L295,484 L280,476 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="295.0" y="479.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#111111" text-anchor="middle"></text>
+<text x="318.0" y="479.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#111111" text-anchor="start">deterministic gate</text>
+<path d="M42,501 L72,501" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="80.0" y="505.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#111111" text-anchor="start">data flow</text>
+<path d="M280,501 L310,501" fill="none" stroke="#222222" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<text x="318.0" y="505.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="normal" fill="#111111" text-anchor="start">next round of the loop</text>
+<text x="30.0" y="600.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.8" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">Every model output passes a deterministic check before the next step uses it. Argon reads the whole book and the whole game repository in one context, so one pass rewrites the game faithfully; the loop fixes what the pass got wrong, with evidence. All of this runs</text>
+<text x="30.0" y="614.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.8" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">offline: the player's game never calls a model.</text>
+</svg>
