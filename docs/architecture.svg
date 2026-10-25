@@ -1,0 +1,372 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1980" height="985" viewBox="0 0 1980 985">
+<defs>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M0,0 L10,5 L0,10 z" fill="#222222"/></marker>
+</defs>
+<rect width="1980" height="985" fill="#ffffff"/>
+<text x="30.0" y="26.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#111111" text-anchor="start">(a) Authoring pipeline</text>
+<text x="30.0" y="41.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#5b5b5b" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">pipeline/run.py</tspan> · one command · a step is skipped when its output exists</text>
+<path d="M30,56 h141 l9,9 v39 h-150 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M171,56 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="37.0" y="71.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">book.epub</text>
+<text x="37.0" y="84.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">public domain or</text>
+<text x="37.0" y="96.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">rights-cleared</text>
+<path d="M422,56 h176 l9,9 v39 h-185 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M598,56 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="429.0" y="71.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">games/&lt;g&gt;/</text>
+<text x="429.0" y="84.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">libre starting game: open code and</text>
+<text x="429.0" y="96.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">open art</text>
+<path d="M621,56 h176 l9,9 v39 h-185 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M797,56 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="628.0" y="71.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">refs/*.png | brief</text>
+<text x="628.0" y="84.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">1..n reference images and / or a text</text>
+<text x="628.0" y="96.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">brief</text>
+<path d="M820,56 h176 l9,9 v39 h-185 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M996,56 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="827.0" y="71.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">selection</text>
+<text x="827.0" y="84.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">chapters to build, e.g. <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">c01 c02</tspan></text>
+<rect x="30" y="146" width="150" height="200" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="38.0" y="162.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">1  Ingest</text>
+<text x="38.0" y="177.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">zip → XHTML spine →</text>
+<text x="38.0" y="190.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">headings and paragraphs;</text>
+<text x="38.0" y="203.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">stable ids <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">c01.p0042</tspan>;</text>
+<text x="38.0" y="216.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">sha256</tspan> of the input</text>
+<text x="38.0" y="235.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">standard library only</text>
+<rect x="202" y="146" width="190" height="200" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.5"/>
+<text x="210.0" y="162.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">2  Story</text>
+<text x="210.0" y="175.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.3" font-weight="normal" fill="#1f4e79" text-anchor="start">gemini-4-argon</text>
+<text x="210.0" y="187.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.0" font-weight="normal" fill="#1f4e79" text-anchor="start">thinking high · schema</text>
+<text x="210.0" y="202.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">whole book in one context → ground</text>
+<text x="210.0" y="215.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">truth S: characters, chapters with</text>
+<text x="210.0" y="228.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">beats, items, lines; every element</text>
+<text x="210.0" y="241.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">cites its source paragraphs (d1)</text>
+<rect x="414" y="120" width="798" height="234" fill="#fafafa" stroke="#111111" stroke-width="1.2"/>
+<text x="422.0" y="136.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">3  Look and assets</text>
+<text x="970.0" y="131.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">format fixed by the game code (3a), subject by the book (3c),</text>
+<text x="970.0" y="142.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">appearance by the look (3b); 3d fills inside those constraints</text>
+<rect x="422" y="146" width="185" height="200" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.5"/>
+<text x="430.0" y="162.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">3a  Slots</text>
+<text x="430.0" y="175.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.3" font-weight="normal" fill="#1f4e79" text-anchor="start">gemini-4-argon</text>
+<text x="430.0" y="187.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.0" font-weight="normal" fill="#1f4e79" text-anchor="start">thinking high · schema</text>
+<text x="430.0" y="202.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">whole repository in context →</text>
+<text x="430.0" y="215.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">every slot the loader reads: role,</text>
+<text x="430.0" y="228.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">kind, required, count, where</text>
+<text x="430.0" y="241.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">{files, code}, format (frame grid,</text>
+<text x="430.0" y="254.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">animations, facings, tile size,</text>
+<text x="430.0" y="267.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">colour value)</text>
+<text x="430.0" y="286.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">cached beside the clone by repo</text>
+<text x="430.0" y="299.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">hash</text>
+<rect x="621" y="146" width="185" height="200" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.5"/>
+<text x="629.0" y="162.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">3b  Bible</text>
+<text x="629.0" y="175.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.3" font-weight="normal" fill="#1f4e79" text-anchor="start">gemini-4-argon</text>
+<text x="629.0" y="187.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.0" font-weight="normal" fill="#1f4e79" text-anchor="start">thinking medium · schema</text>
+<text x="629.0" y="202.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">references + brief + slot kinds +</text>
+<text x="629.0" y="215.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">engine notes → palette, prompt</text>
+<text x="629.0" y="228.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">prefix, avoid list, one drawing</text>
+<text x="629.0" y="241.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">rule per kind, UI colours</text>
+<text x="629.0" y="260.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">keyed by <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">sha1(brief, refs,</tspan></text>
+<text x="629.0" y="273.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">kinds)</text>
+<rect x="820" y="146" width="185" height="200" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.5"/>
+<text x="828.0" y="162.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">3c  Cast</text>
+<text x="828.0" y="175.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.3" font-weight="normal" fill="#1f4e79" text-anchor="start">gemini-4-argon</text>
+<text x="828.0" y="187.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.0" font-weight="normal" fill="#1f4e79" text-anchor="start">thinking medium · schema</text>
+<text x="828.0" y="202.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">subjects of the selection × slots</text>
+<text x="828.0" y="215.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">→ one assignment per (slot,</text>
+<text x="828.0" y="228.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">subject): protagonist → player,</text>
+<text x="828.0" y="241.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">every character → portrait, every</text>
+<text x="828.0" y="254.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">chapter → backdrop, items →</text>
+<text x="828.0" y="267.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">pickups, colour slots → palette</text>
+<text x="828.0" y="280.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">values</text>
+<rect x="1019" y="146" width="185" height="200" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.5"/>
+<text x="1027.0" y="162.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">3d  Fill</text>
+<text x="1027.0" y="175.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.3" font-weight="normal" fill="#1f4e79" text-anchor="start">gemini-nano-banana-2.1</text>
+<text x="1027.0" y="187.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.0" font-weight="normal" fill="#1f4e79" text-anchor="start">1K · jpeg → png</text>
+<text x="1027.0" y="202.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">per assignment: image fitted to w</text>
+<text x="1027.0" y="215.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">× h, white keyed to alpha; sheet =</text>
+<text x="1027.0" y="228.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">one pose per facing, composed</text>
+<text x="1027.0" y="241.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">static on the frame grid, plus</text>
+<text x="1027.0" y="254.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">scaled copies; tilesets kept</text>
+<text x="1027.0" y="267.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">upstream; 4 workers; cached by</text>
+<text x="1027.0" y="280.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">prompt</text>
+<rect x="1234" y="146" width="190" height="200" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.5"/>
+<text x="1242.0" y="162.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">4  Voice</text>
+<text x="1242.0" y="175.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.3" font-weight="normal" fill="#1f4e79" text-anchor="start">gemini-3.8-flash-tts</text>
+<text x="1242.0" y="187.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.0" font-weight="normal" fill="#1f4e79" text-anchor="start">speech_config · style</text>
+<text x="1242.0" y="202.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">one clip per utterance: summaries,</text>
+<text x="1242.0" y="215.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">goals, beats, item meanings</text>
+<text x="1242.0" y="228.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">(narrator); lines plain + original</text>
+<text x="1242.0" y="241.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">(one pool voice per character,</text>
+<text x="1242.0" y="254.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">delivery from its voice sentence)</text>
+<text x="1242.0" y="273.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">cached by <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">sha1(voice|text)</tspan></text>
+<rect x="1446" y="146" width="270" height="200" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1454.0" y="162.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">5  Adapt</text>
+<text x="1454.0" y="175.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.3" font-weight="normal" fill="#1f4e79" text-anchor="start">antigravity-preview-09-2026</text>
+<text x="1454.0" y="187.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.0" font-weight="normal" fill="#1f4e79" text-anchor="start">managed agent · model gemini-4-argon</text>
+<rect x="1454" y="196" width="254" height="104" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.5" stroke-dasharray="6,4"/>
+<text x="1461.0" y="210.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10" font-weight="bold" fill="#1f4e79" text-anchor="start">remote sandbox  /workspace</text>
+<text x="1461.0" y="223.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start">in: repository text files (&lt; 400 kB, vendor dirs</text>
+<text x="1461.0" y="235.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start">skipped), <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">story</tspan>, <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">slots</tspan>, <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">style</tspan>, <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">selection</tspan>,</text>
+<text x="1461.0" y="247.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start">both manifests, list of upstream binaries,</text>
+<text x="1461.0" y="259.3" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">CONTRACT.md</tspan> (20 points). No asset bytes.</text>
+<text x="1461.0" y="271.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start">out: game rewired and rewritten in place,</text>
+<text x="1461.0" y="283.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">CHECKS.md</tspan>; environment tarball downloaded</text>
+<text x="1454.0" y="315.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#5b5b5b" text-anchor="start">install: copy → <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">builds/</tspan>, overlay <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">assets/</tspan>, keep the</text>
+<text x="1454.0" y="327.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#5b5b5b" text-anchor="start">previous build · fallback: one direct call, structured</text>
+<text x="1454.0" y="339.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#5b5b5b" text-anchor="start">output <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">{files[], checks}</tspan></text>
+<rect x="1792" y="146" width="150" height="200" fill="#f2f2f2" stroke="#111111" stroke-width="1.6"/>
+<text x="1800.0" y="163.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">G   builds/&lt;book&gt;/</text>
+<text x="1800.0" y="180.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">game/</tspan> static files, exposes</text>
+<text x="1800.0" y="192.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">window.playtest</tspan>, records</text>
+<text x="1800.0" y="204.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start">every session</text>
+<text x="1800.0" y="216.3" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">assets/</tspan> + manifests</text>
+<text x="1800.0" y="228.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">story.json</tspan> <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">slots.json</tspan></text>
+<text x="1800.0" y="240.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">style.json</tspan> <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">cast.json</tspan></text>
+<text x="1800.0" y="252.6" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">CHECKS.md</tspan> <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">adapt.log.json</tspan></text>
+<text x="1800.0" y="264.7" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">verification/round_n/</tspan></text>
+<text x="1800.0" y="276.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start">critique, patch, before /</text>
+<text x="1800.0" y="288.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start">after, <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">report.json</tspan></text>
+<text x="1800.0" y="306.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.1" font-weight="normal" fill="#111111" text-anchor="start">no model call at play time</text>
+<path d="M180,246.0 L202,246.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M392,246.0 L422,246.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M607,246.0 L621,246.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M806,246.0 L820,246.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1005,246.0 L1019,246.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1204,246.0 L1234,246.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1424,246.0 L1446,246.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1716,246.0 L1720.0,246.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1754.0,232.0 L1788.0,246.0 L1754.0,260.0 L1720.0,246.0 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1754.0" y="249.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#111111" text-anchor="middle">npm build</text>
+<path d="M1788.0,246.0 L1792,246.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="1754.0" y="274.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.6" font-weight="normal" fill="#5b5b5b" text-anchor="middle" font-style="italic">fails ⇒ reject</text>
+<path d="M105.0,104 L105.0,146" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M554.5,104 L554.5,146" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M753.5,104 L753.5,146" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M952.5,104 L952.5,146" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M554.5,56 L554.5,44 L1506,44 L1506,146" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="1512.0" y="48.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">repository</text>
+<circle cx="952.5" cy="114" r="2.8" fill="#222222"/>
+<path d="M952.5,114 L1476,114 L1476,146" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1329.0,114 L1329.0,146" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="1482.0" y="118.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">selection</text>
+<path d="M105.0,346 L105.0,386" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M30,386 h141 l9,9 v57 h-150 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M171,386 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="37.0" y="401.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">book.json</text>
+<text x="37.0" y="414.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">+ <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">book.txt</tspan>, one <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">[id]</tspan></text>
+<text x="37.0" y="426.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">marker per paragraph</text>
+<path d="M297.0,346 L297.0,350" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M297.0,350 L333.0,364 L297.0,378 L261.0,364 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="297.0" y="367.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#111111" text-anchor="middle">validate</text>
+<path d="M297.0,378 L297.0,386" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="337.0" y="367.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.6" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">fail ⇒ exit 1</text>
+<path d="M202,386 h181 l9,9 v57 h-190 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M383,386 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="209.0" y="401.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">story.json</text>
+<text x="209.0" y="414.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">+ <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">story.log.json</tspan>: interaction id,</text>
+<text x="209.0" y="426.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">usage, problems</text>
+<path d="M514.5,346 L514.5,350" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M514.5,350 L550.5,364 L514.5,378 L478.5,364 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="514.5" y="367.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#111111" text-anchor="middle">ground</text>
+<path d="M514.5,378 L514.5,386" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="554.5" y="367.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.6" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">claims vs real files (d2)</text>
+<path d="M422,386 h176 l9,9 v57 h-185 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M598,386 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="429.0" y="401.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">slots.json</text>
+<text x="429.0" y="414.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">grounded slots + <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">rejected[]</tspan>; two</text>
+<text x="429.0" y="426.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">synthetic slots: dialogue portrait,</text>
+<text x="429.0" y="438.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">chapter backdrop</text>
+<path d="M713.5,346 L713.5,350" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M713.5,350 L749.5,364 L713.5,378 L677.5,364 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="713.5" y="367.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#111111" text-anchor="middle">blocklist</text>
+<path d="M713.5,378 L713.5,386" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="753.5" y="367.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.6" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">franchise or artist ⇒ refuse</text>
+<path d="M621,386 h176 l9,9 v57 h-185 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M797,386 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="628.0" y="401.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">style.json</text>
+<text x="628.0" y="414.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">palette · prefix · rules per kind ·</text>
+<text x="628.0" y="426.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">ui</tspan> colours</text>
+<path d="M912.5,346 L912.5,386" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="918.5" y="367.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.6" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">unknown ids dropped</text>
+<path d="M820,386 h176 l9,9 v57 h-185 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M996,386 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="827.0" y="401.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">cast.json</text>
+<text x="827.0" y="414.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">assignments ⟨slot, subject, value,</text>
+<text x="827.0" y="426.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">why⟩; keyed by selection</text>
+<path d="M1111.5,346 L1111.5,350" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1111.5,350 L1147.5,364 L1111.5,378 L1075.5,364 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1111.5" y="367.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#111111" text-anchor="middle">fit format</text>
+<path d="M1111.5,378 L1111.5,386" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="1151.5" y="367.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.6" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">required failure ⇒ flat palette shape, listed missing</text>
+<path d="M1019,386 h176 l9,9 v57 h-185 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M1195,386 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="1026.0" y="401.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">manifest.json</text>
+<text x="1026.0" y="414.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">fills[slot][subject] ·</text>
+<text x="1026.0" y="426.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">replaces[upstream] · parameters ·</text>
+<text x="1026.0" y="438.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">kept_upstream · unfilled · missing</text>
+<path d="M1329.0,346 L1329.0,386" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1234,386 h181 l9,9 v57 h-190 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M1415,386 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="1241.0" y="401.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">audio_manifest.json</text>
+<text x="1241.0" y="414.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">assets/audio/&lt;hash&gt;.wav</tspan> per</text>
+<text x="1241.0" y="426.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">utterance; failures recorded</text>
+<path d="M1581.0,346 L1581.0,386" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1446,386 h261 l9,9 v57 h-270 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M1707,386 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="1453.0" y="401.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">CHECKS.md</text>
+<text x="1453.0" y="414.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">one line per contract point, written by the agent;</text>
+<text x="1453.0" y="426.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.5">adapt.log.json</tspan>: interaction and environment ids,</text>
+<text x="1453.0" y="438.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">status, seconds</text>
+<text x="30.0" y="508.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#111111" text-anchor="start">(c) Repair loop  —  <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="13.0">verify.py: repair_loop</tspan>, shared by (6) and (7)</text>
+<text x="1464.0" y="508.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#111111" text-anchor="start">(b) Observation</text>
+<rect x="1724" y="522" width="226" height="236" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1732.0" y="538.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">6  Scripted playthrough</text>
+<text x="1732.0" y="553.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.4" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">playtest.py</tspan>: serve G over local HTTP;</text>
+<text x="1732.0" y="565.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.4" font-weight="normal" fill="#111111" text-anchor="start">headless Chromium via Playwright; wait for</text>
+<text x="1732.0" y="578.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.4" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">window.playtest</tspan>; for each character of the</text>
+<text x="1732.0" y="590.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.4" font-weight="normal" fill="#111111" text-anchor="start">selection: <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">goto</tspan>, <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">talk</tspan>, require <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">state()</tspan></text>
+<text x="1732.0" y="603.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.4" font-weight="normal" fill="#111111" text-anchor="start">to change; for each item: <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">goto</tspan>, <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">collect</tspan>,</text>
+<text x="1732.0" y="615.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.4" font-weight="normal" fill="#111111" text-anchor="start">require it in <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">state()</tspan>; screenshot after</text>
+<text x="1732.0" y="628.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.4" font-weight="normal" fill="#111111" text-anchor="start">every step; console and page errors; 90 s</text>
+<text x="1732.0" y="640.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.4" font-weight="normal" fill="#111111" text-anchor="start">budget</text>
+<text x="1732.0" y="653.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.4" font-weight="normal" fill="#111111" text-anchor="start">→ E with s(G)</text>
+<rect x="1464" y="522" width="240" height="92" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1472.0" y="538.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">7  Human play</text>
+<text x="1472.0" y="553.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">the player opens <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.6">game/</tspan> from any static server;</text>
+<text x="1472.0" y="565.2" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">recorder on by default → <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.6">localStorage</tspan>:</text>
+<text x="1472.0" y="577.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">position every 1 s, every action, every line</text>
+<text x="1472.0" y="589.7" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">played, console errors, canvas shot every 5 s;</text>
+<text x="1472.0" y="601.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">“Download session” link</text>
+<path d="M1504,632 h151 l9,9 v31 h-160 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<path d="M1655,632 v9 h9" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="1511.0" y="647.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.3" font-weight="bold" fill="#111111" text-anchor="start">session.json</text>
+<text x="1511.0" y="660.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.100000000000001" font-weight="normal" fill="#5b5b5b" text-anchor="start">uploaded by the player, offline</text>
+<rect x="1464" y="688" width="240" height="70" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1472.0" y="703.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#111111" text-anchor="start">watch.py · unpack_session</text>
+<text x="1472.0" y="717.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.0" font-weight="normal" fill="#111111" text-anchor="start">data-URL shots → <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.4">shots/</tspan>, events →</text>
+<text x="1472.0" y="729.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.0" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.4">events.jsonl</tspan>, errors → <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.4">result.json</tspan>; review</text>
+<text x="1472.0" y="740.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.0" font-weight="normal" fill="#111111" text-anchor="start">focus: where it broke, where the player got stuck</text>
+<text x="1472.0" y="752.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.0" font-weight="normal" fill="#111111" text-anchor="start">(&gt; 60 s), where the player was confused</text>
+<path d="M1584.0,614 L1584.0,632" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1584.0,672 L1584.0,688" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1887.0,346 L1887.0,522" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="1881.0" y="376.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#5b5b5b" text-anchor="end" font-style="italic">G served as static files</text>
+<circle cx="1887.0" cy="488" r="2.8" fill="#222222"/>
+<path d="M1887.0,488 L1624.0,488 L1624.0,522" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="30" y="522" width="1374" height="54" fill="#f2f2f2" stroke="#111111" stroke-width="1.4"/>
+<text x="38.0" y="540.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">E   evidence directory</text>
+<text x="38.0" y="555.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.4" font-weight="normal" fill="#5b5b5b" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">shots/NNN_label.png</tspan>   <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">events.jsonl</tspan>   <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">result.json</tspan> {score, errors, steps}</text>
+<text x="38.0" y="568.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.4" font-weight="normal" fill="#5b5b5b" text-anchor="start">round 0: <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">verification/round_0/before/</tspan> (6) or <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">verification/session_&lt;ts&gt;/</tspan> (7);  round n: <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.7">round_n/after/</tspan></text>
+<path d="M1837.0,758 L1837.0,778 L1434,778 L1434,549.0 L1404,549.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M1464,723 L1434,723" fill="none" stroke="#222222" stroke-width="1.3"/>
+<circle cx="1434" cy="723" r="2.8" fill="#222222"/>
+<text x="1428.0" y="541.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#5b5b5b" text-anchor="end" font-style="italic">evidence in</text>
+<rect x="30" y="620" width="300" height="110" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.5"/>
+<text x="38.0" y="636.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">Critique</text>
+<text x="38.0" y="649.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.3" font-weight="normal" fill="#1f4e79" text-anchor="start">gemini-4-argon</text>
+<text x="38.0" y="661.0" font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.0" font-weight="normal" fill="#1f4e79" text-anchor="start">thinking medium · schema</text>
+<text x="38.0" y="676.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">in: E (≤ 24 screenshots, numbered event log, result), S,</text>
+<text x="38.0" y="689.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">slots</tspan>, <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">style</tspan>, manifest, <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">CONTRACT.md</tspan>, game source</text>
+<text x="38.0" y="702.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">without protected files</text>
+<text x="38.0" y="715.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">out: ≤ 8 defects by severity, each with evidence and</text>
+<text x="38.0" y="728.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">search / replace fixes (d4)</text>
+<rect x="396" y="620" width="205" height="110" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="404.0" y="636.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">Patch in staging</text>
+<text x="404.0" y="651.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">copy of G without <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">node_modules</tspan> and</text>
+<text x="404.0" y="664.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">sessions; <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">apply_fixes</tspan>: each search</text>
+<text x="404.0" y="677.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">unique, protected files refused;</text>
+<text x="404.0" y="690.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">node_modules</tspan> symlinked</text>
+<path d="M651,653.0 L691,675.0 L651,697.0 L611,675.0 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="651.0" y="678.3" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.5" font-weight="normal" fill="#111111" text-anchor="middle">builds?</text>
+<rect x="717" y="620" width="196" height="110" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="725.0" y="636.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11.5" font-weight="bold" fill="#111111" text-anchor="start">Replay</text>
+<text x="725.0" y="651.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">same scripted playthrough on the</text>
+<text x="725.0" y="664.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">staging copy → E′ with s(G′) and</text>
+<text x="725.0" y="677.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start">err(G′); saved under</text>
+<text x="725.0" y="690.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.8" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="9.1">round_n/after/</tspan></text>
+<path d="M983,645.0 L1043,675.0 L983,705.0 L923,675.0 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="983.0" y="672.7" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="middle">s(G′) ≥ s(G)</text>
+<text x="983.0" y="683.7" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="middle">∧ no new error</text>
+<path d="M150,576 L150,620" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="155.0" y="597.8" width="56.6" height="12.2" fill="#ffffff"/>
+<text x="158.0" y="606.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">round n ≤ N</text>
+<path d="M330,675.0 L396,675.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<rect x="323.4" y="657.4" width="79.1" height="11.6" fill="#ffffff"/>
+<text x="363.0" y="665.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.6" font-weight="normal" fill="#5b5b5b" text-anchor="middle" font-style="italic">first defect with</text>
+<rect x="325.6" y="683.4" width="74.8" height="11.6" fill="#ffffff"/>
+<text x="363.0" y="691.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.6" font-weight="normal" fill="#5b5b5b" text-anchor="middle" font-style="italic">evidence ∧ fixes</text>
+<path d="M601,675.0 L611,675.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M691,675.0 L717,675.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M913,675.0 L923,675.0" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<path d="M651,697.0 L651,740" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="651.0" y="754.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.0" font-weight="normal" fill="#5b5b5b" text-anchor="middle" font-style="italic">no: reject, stop</text>
+<path d="M983,705.0 L983,740" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="983.0" y="754.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.0" font-weight="normal" fill="#5b5b5b" text-anchor="middle" font-style="italic">no: discard staging, stop</text>
+<path d="M983,645.0 L983,596 L1324,596 L1324,576" fill="none" stroke="#222222" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<rect x="739.8" y="582.8" width="176.2" height="12.2" fill="#ffffff"/>
+<text x="913.0" y="591.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#5b5b5b" text-anchor="end" font-style="italic">yes: E ← E′, s(G) ← s(G′), next round</text>
+<path d="M1043,675.0 L1083,675.0 L1083,472 L1776,472 L1776,316 L1792,316" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="1091.0" y="468.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">yes: copy the changed files into G; <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.2">report.json</tspan> records every round, score before / after, kept or reverted</text>
+<rect x="1103" y="612" width="309" height="150" fill="#ffffff" stroke="#5b5b5b" stroke-width="0.9"/>
+<text x="1111.0" y="626.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="10.5" font-weight="bold" fill="#111111" text-anchor="start">Legend</text>
+<rect x="1113" y="632" width="30" height="15" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.5"/>
+<text x="1151.0" y="643.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">generative model call</text>
+<rect x="1261.5" y="632" width="30" height="15" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1299.5" y="643.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">deterministic code</text>
+<path d="M1113,658 h22 l8,8 v7 h-30 z" fill="#f2f2f2" stroke="#111111" stroke-width="1.2"/>
+<text x="1151.0" y="669.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">artifact on disk</text>
+<path d="M1276.5,658 L1291.5,666 L1276.5,674 L1261.5,666 z" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1276.5" y="669.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#111111" text-anchor="middle"></text>
+<text x="1299.5" y="669.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">deterministic gate</text>
+<rect x="1113" y="684" width="30" height="15" fill="#e8eef6" stroke="#1f4e79" stroke-width="1.5" stroke-dasharray="5,3"/>
+<text x="1151.0" y="695.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">managed-agent sandbox</text>
+<path d="M1261.5,691 L1291.5,691" fill="none" stroke="#222222" stroke-width="1.3" marker-end="url(#arr)"/>
+<text x="1299.5" y="695.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">data flow</text>
+<path d="M1113,717 L1143,717" fill="none" stroke="#222222" stroke-width="1.3" stroke-dasharray="5,4" marker-end="url(#arr)"/>
+<text x="1151.0" y="721.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.2" font-weight="normal" fill="#111111" text-anchor="start">next round of the loop</text>
+<text x="1113.0" y="744.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">Every model call is followed by a deterministic gate; every step</text>
+<text x="1113.0" y="755.7" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="8.8" font-weight="normal" fill="#5b5b5b" text-anchor="start" font-style="italic">is cached and resumable; no model runs while the player plays.</text>
+<text x="30.0" y="768.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#111111" text-anchor="start">(d) Definitions</text>
+<rect x="30.0" y="782" width="465.0" height="179" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="38.0" y="798.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111111" text-anchor="start">d1  Ground truth S  (<tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.2">story.json</tspan>, stage 2)</text>
+<text x="38.0" y="815.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">characters: id, name, look, voice, [first, last] chapter</text>
+<text x="38.0" y="827.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">chapters: summary, goal, beats {plain, original, source_ids}</text>
+<text x="38.0" y="840.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">items: chapter, meaning, source_ids</text>
+<text x="38.0" y="853.3" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">lines: character, chapter, plain, original, source_ids</text>
+<text x="38.0" y="871.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">Invariants checked by <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">validate</tspan>, not by the model:</text>
+<text x="38.0" y="884.6" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">∀ source_id: exists in the book ∧ lies in the element's chapter</text>
+<text x="38.0" y="897.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">∀ chapter: |beats| ≥ 3; ∀ line: chapter within its speaker's range</text>
+<text x="38.0" y="910.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">∀ plain: |words| ≤ 14; ids unique; chapter order = book order</text>
+<text x="38.0" y="922.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">The adapted game shows these texts and nothing else in a character's voice.</text>
+<rect x="515.0" y="782" width="465.0" height="179" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="523.0" y="798.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111111" text-anchor="start">d2  Slot model  (<tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.2">slots.json</tspan>, stage 3a)</text>
+<text x="523.0" y="815.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">slot = ⟨id, role, kind, required, count, where {files, code}, format⟩</text>
+<text x="523.0" y="827.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">role ∈ {player, npc, enemy, pickup, terrain, decoration, backdrop, portrait, ui, sound,</text>
+<text x="523.0" y="840.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">music, font, parameter}; kind ∈ {sheet, tileset, image, model, material, colour, audio, font,</text>
+<text x="523.0" y="853.3" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">text}</text>
+<text x="523.0" y="871.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">grounded iff every named file exists ∧ claimed size ∈ measured sizes ∧ sheet divisible by its</text>
+<text x="523.0" y="884.6" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">frame ∧ animation rows and frames fit ∧ metadata file and code refs exist ∧ a colour value is</text>
+<text x="523.0" y="897.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">found in code; else rejected</text>
+<text x="523.0" y="915.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">A fill is ⟨slot, subject⟩ → path, size, prompt; <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">replaces[upstream] = path</tspan>. The adapter</text>
+<text x="523.0" y="928.6" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">rewires slots to fills, never draws, resizes or recolours (contract §12).</text>
+<rect x="1000.0" y="782" width="465.0" height="179" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1008.0" y="798.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111111" text-anchor="start">d3  Test interface  (<tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.2">window.playtest</tspan>, contract §17)</text>
+<text x="1008.0" y="815.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">characters()</tspan> <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">items()</tspan> → ids and positions</text>
+<text x="1008.0" y="827.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">goto(id)</tspan> teleport next to a character or item</text>
+<text x="1008.0" y="840.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">talk()</tspan> <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">collect()</tspan> interact with what is in front</text>
+<text x="1008.0" y="853.3" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">state()</tspan> chapter, beats seen, items collected, lines heard</text>
+<text x="1008.0" y="866.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">screenshot()</tspan> canvas as data URL</text>
+<text x="1008.0" y="884.6" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">Playthrough score s(G) = number of passed steps: API present · each character of the</text>
+<text x="1008.0" y="897.4" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">selection present · each item present · talk changes <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">state()</tspan> · collect records the item ·</text>
+<text x="1008.0" y="910.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">no console error</text>
+<text x="1008.0" y="922.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">Evidence E = ⟨<tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">shots/*.png</tspan>, <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">events.jsonl</tspan>, <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">result.json</tspan>⟩; err(G) = console and page errors</text>
+<rect x="1485.0" y="782" width="465.0" height="179" fill="#ffffff" stroke="#111111" stroke-width="1.3"/>
+<text x="1493.0" y="798.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="11" font-weight="bold" fill="#111111" text-anchor="start">d4  Patch acceptance  (<tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="10.2">verify.py</tspan>)</text>
+<text x="1493.0" y="815.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">defect d = ⟨kind, severity, evidence, observed, expected, fixes⟩, kind ∈ {crash, unreachable,</text>
+<text x="1493.0" y="827.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">stuck, story, accessibility, visual, rights}</text>
+<text x="1493.0" y="840.5" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">evidence = ∅ ⇒ d is discarded: no screenshot, log line or story id, no defect</text>
+<text x="1493.0" y="859.0" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">patch p = [⟨path, search, replace⟩] is applicable iff every <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">search</tspan> occurs exactly once in</text>
+<text x="1493.0" y="871.8" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start"><tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">path</tspan> and <tspan font-family="Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="8.9">path</tspan> ∉ {story, selection, manifests, LICENSE, NOTICE}</text>
+<text x="1493.0" y="890.3" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">Keep p iff G′ = G ⊕ p builds ∧ s(G′) ≥ s(G) ∧ err(G′) ⊆ err(G)</text>
+<text x="1493.0" y="903.1" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">One defect per round; at most 3 rounds (6) or 2 rounds (7); every before / after pair is</text>
+<text x="1493.0" y="915.9" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="9.6" font-weight="normal" fill="#111111" text-anchor="start">kept.</text>
+</svg>
