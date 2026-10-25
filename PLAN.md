@@ -44,28 +44,78 @@ Examples: Veilspire rewritten for *Les Misérables*. A top-down creature-and-tow
 
 ## 3. Pipeline
 
-```text
-book + style + game repo
-   |
-[1] ingest        EPUB -> book.txt with chapter and paragraph ids
-   |
-[2] story         Argon reads the whole book  -> story.json
-   |
-[3] style         Argon reads the references  -> style.json
-   |              Nano Banana generates characters, backdrops, tiles, items
-   |
-[4] voice         TTS for every line in story.json -> assets/audio/
-   |
-[5] adapt         Argon reads the whole game repo + story + style + assets
-   |              -> rewrites the game into this book's game
-   |
-[6] verify loop   play -> screenshot -> Argon critique -> patch -> replay
-   |
-build + report
-   |
-[7] watch         she plays; the game records -> Argon reviews offline
-                  -> bugs, stuck points, confusing moments -> same patch path
+```mermaid
+%%{init: {"theme": "base", "flowchart": {"wrappingWidth": 300, "nodeSpacing": 40, "rankSpacing": 50}, "themeVariables": {"fontSize": "15px", "clusterBkg": "#fafafa", "clusterBorder": "#9ca3af", "lineColor": "#374151", "edgeLabelBackground": "#ffffff"}}}%%
+flowchart TB
+    subgraph IN["Inputs"]
+        direction LR
+        BOOK["📖 Book<br/>EPUB"]
+        STYLE["🎨 Style<br/>1 to 3 reference images"]
+        REPO["🕹️ Game<br/>open-source repo"]
+        BOOK ~~~ STYLE ~~~ REPO
+    end
+
+    subgraph READ["Understand · gemini-4-argon · whole book in one context"]
+        direction LR
+        INGEST["1 · Ingest<br/>EPUB → book.txt<br/>chapter + paragraph ids"]
+        STORY["2 · Story → story.json<br/>characters · beats · lines<br/>every one cites its paragraph"]
+        STYLEJ["3 · Style → style.json<br/>palette · prompt prefix<br/>sprite rules of the game"]
+        INGEST --> STORY ~~~ STYLEJ
+    end
+
+    subgraph GEN["Generate original assets"]
+        direction LR
+        IMG["3 · Images · gemini-nano-banana-2.1<br/>character sheets · backdrops · tiles · items"]
+        TTS["4 · Voice · gemini-3.8-flash-tts<br/>one voice per character · one clip per line"]
+        IMG ~~~ TTS
+    end
+
+    ADAPT["5 · Adapt · Antigravity Managed Agent running gemini-4-argon<br/>whole game repo + story.json + style.json + asset manifests + contract<br/>→ rewrites the game in its sandbox, builds it, returns the repo"]
+
+    subgraph VERIFY["6 · Verify loop · up to 3 rounds"]
+        direction LR
+        PLAY["Playwright playtest<br/>drives window.playtest"]
+        EVID["Evidence<br/>screenshots · console · state log"]
+        CRIT["Argon critique<br/>against story.json + accessibility rules<br/>no evidence, no defect"]
+        PATCH["Patch in staging<br/>replay → accept or revert"]
+        PLAY --> EVID --> CRIT --> PATCH
+        PATCH -. next round .-> PLAY
+    end
+
+    BUILD["📦 builds/‹book›_‹game›/<br/>game · story.json · assets · verification · report<br/>static files · no AI calls at play time"]
+
+    subgraph WATCH["7 · Watch · offline, between sessions"]
+        direction LR
+        PLAYER["🧑 She plays<br/>session recorder on by default"]
+        REC["sessions/‹timestamp›/<br/>positions · actions · lines · errors · screenshots"]
+        REVIEW["Argon review<br/>where it broke · where she got stuck · where she was confused"]
+        PLAYER --> REC --> REVIEW
+    end
+
+    IN --> READ
+    READ --> GEN
+    GEN --> ADAPT
+    READ -- "story.json · style.json" --> ADAPT
+    ADAPT --> VERIFY
+    VERIFY --> BUILD
+    BUILD --> WATCH
+    WATCH -- "same patch path" --> VERIFY
+
+    classDef input fill:#fff7e6,stroke:#b7791f,color:#1a1a1a
+    classDef argon fill:#e8f0fe,stroke:#1a56db,color:#1a1a1a
+    classDef gen fill:#f0fdf4,stroke:#15803d,color:#1a1a1a
+    classDef agent fill:#ede9fe,stroke:#6d28d9,color:#1a1a1a
+    classDef loop fill:#fef2f2,stroke:#b91c1c,color:#1a1a1a
+    classDef out fill:#f3f4f6,stroke:#374151,color:#1a1a1a
+    class BOOK,STYLE,REPO input
+    class INGEST,STORY,STYLEJ,CRIT,REVIEW argon
+    class IMG,TTS gen
+    class ADAPT agent
+    class PLAY,EVID,PATCH,PLAYER,REC loop
+    class BUILD out
 ```
+
+Read it top to bottom. Blue boxes are Argon reading or judging; purple is the Managed Agent rewriting the game; green is asset generation; red is the two loops. Argon reads the whole book once and the whole game repository once, which is what lets one pass rewrite a game faithfully. Everything below the build runs offline. The verify loop and the watch step share one patch path: evidence in, small diff out, replay, accept or revert.
 
 **[1] Ingest.** EPUB is a zip of XHTML: unzip with the standard library, strip tags, split chapters by spine order, number paragraphs as `c01.p0042`. Alice in Wonderland from `ressources/` is the demo book. PDF comes later.
 
@@ -147,24 +197,25 @@ README.md
 PLAN.md
 pipeline/
   config.py        model ids, paths
-  ingest.py        epub -> book.txt
-  story.py         book -> story.json
-  style.py         references -> style.json, then images
-  voice.py         lines -> audio files
-  adapt.py         game repo + story + style + assets -> rewritten game (Managed Agent)
-  verify.py        playwright playthrough + Argon critique + patch loop
-  watch.py         real session recording -> Argon review -> same patch loop
+  ingest.py        epub -> book.json + book.txt
+  story.py         book -> story.json (Argon, whole book)
+  style.py         brief or reference images -> style.json, then images (Nano Banana)
+  voice.py         every line -> wav (TTS), cached by hash
+  adapt.py         game repo + story + style + assets -> rewritten game (Managed Agent; --fallback = direct Argon)
+  playtest.py      serve a game, drive window.playtest with Playwright, record evidence
+  verify.py        playthrough -> Argon critique -> search/replace patch -> replay, keep or revert
+  watch.py         real session log -> same critique and patch loop
   run.py           one command, all steps, resumable
-schema/
-  story.schema.json
-  style.schema.json
-  critique.schema.json
-prompts/
-  adapt_contract.md
-games/             upstream clones, untouched, with their licenses
-builds/<book>_<game>/
-  game/            the rewritten game, records to game/sessions/
-  story.json  style.json  assets/  verification/  report.md
+  smoke.py         four API smoke tests
+schema/            story, style, critique JSON schemas
+prompts/           story.md, adapt_contract.md, critique.md
+tests/             fixture_game/ + test_backend.py (no model calls)
+games/             upstream clones, untouched, with their licenses (gitignored)
+builds/<book>/
+  book.json  story.json  style.json  selection.json
+  assets/          characters/ backdrops/ items/ audio/ + manifests
+  game/            the rewritten game, records sessions to localStorage
+  verification/    round_N/{critique,patch}.json, before/after shots, report.json
 ressources/        input books and style references
 poc/               pre-event prototype, not hackathon work
 ```
