@@ -83,7 +83,7 @@ def better_or_equal(before, after):
 
 
 def repair_loop(client, build: Path, game: Path, rounds: int, fix: bool, first_evidence: Path | None = None,
-                extra_context: str = ""):
+                extra_context: str = "", reuse: bool = False):
     """Generic loop used by verify (scripted playthrough) and watch (real session)."""
     story = json.loads((build / "story.json").read_text())
     sel = json.loads((build / "selection.json").read_text())["chapters"]
@@ -97,9 +97,13 @@ def repair_loop(client, build: Path, game: Path, rounds: int, fix: bool, first_e
     base = json.loads((evidence / "result.json").read_text()) if (evidence / "result.json").exists() else {"score": 0, "errors": []}
     for n in range(1, rounds + 1):
         rdir = vdir / f"round_{n}"
-        print(f"round {n}: critique...")
-        crit = critique(client, build, game, evidence, extra_context)
-        (rdir).mkdir(parents=True, exist_ok=True)
+        rdir.mkdir(parents=True, exist_ok=True)
+        if reuse and (rdir / "critique.json").exists():
+            print(f"round {n}: reusing critique")
+            crit = json.loads((rdir / "critique.json").read_text())
+        else:
+            print(f"round {n}: critique...")
+            crit = critique(client, build, game, evidence, extra_context)
         (rdir / "critique.json").write_text(json.dumps(crit, indent=1))
         defects = [d for d in crit["defects"] if d["evidence"]]
         print(f"  {len(crit['defects'])} defects, {len(defects)} with evidence")
@@ -109,37 +113,42 @@ def repair_loop(client, build: Path, game: Path, rounds: int, fix: bool, first_e
         report["rounds"].append(entry)
         if not fix or not defects:
             break
-        target = next((d for d in defects if d["fixes"]), None)
-        if not target:
+        candidates = [d for d in defects if d["fixes"]][:3]
+        if not candidates:
             print("  no defect has an applicable fix; stopping")
             break
-        staging = rdir / "staging"
-        shutil.rmtree(staging, ignore_errors=True)
-        shutil.copytree(game, staging, ignore=shutil.ignore_patterns("node_modules", "sessions"))
-        try:
-            changed = apply_fixes(staging, target)
-            if (staging / "package.json").exists():
-                if (game / "node_modules").exists() and not (staging / "node_modules").exists():
-                    (staging / "node_modules").symlink_to(game / "node_modules")
-                if not npm_build(staging):
-                    raise ValueError("patched game does not build")
-        except ValueError as e:
-            print(f"  fix rejected: {e}")
-            entry["applied"] = {"defect": target["id"], "rejected": str(e)}
-            break
-        after_dir = rdir / "after"
-        after = playthrough(serve_dir(staging), after_dir, story, sel)
-        ok = better_or_equal(base, after)
-        entry["applied"] = {"defect": target["id"], "files": changed, "score_before": base["score"],
-                            "score_after": after["score"], "new_errors": [e for e in after["errors"] if e not in base["errors"]]}
-        entry["kept"] = ok
-        print(f"  {target['id']} -> {changed}: score {base['score']} -> {after['score']} {'KEPT' if ok else 'REVERTED'}")
-        (rdir / "patch.json").write_text(json.dumps(target, indent=1))
-        if ok:
-            for rel in changed:
-                shutil.copy(staging / rel, game / rel)
-            base, evidence = after, after_dir
-        else:
+        entry["attempts"], kept_any = [], False
+        for i, target in enumerate(candidates, 1):
+            staging = rdir / f"staging_{i}"
+            shutil.rmtree(staging, ignore_errors=True)
+            shutil.copytree(game, staging, symlinks=True, ignore_dangling_symlinks=True,
+                            ignore=shutil.ignore_patterns("node_modules", "sessions"))
+            attempt = {"defect": target["id"]}
+            entry["attempts"].append(attempt)
+            try:
+                changed = apply_fixes(staging, target)
+                if (staging / "package.json").exists():
+                    if (game / "node_modules").exists() and not (staging / "node_modules").exists():
+                        (staging / "node_modules").symlink_to(game / "node_modules")
+                    if npm_build(staging) is False:
+                        raise ValueError("patched game does not build")
+            except ValueError as e:
+                print(f"  {target['id']}: fix rejected: {e}")
+                attempt["rejected"] = str(e)
+                continue
+            after_dir = rdir / f"after_{i}"
+            after = playthrough(serve_dir(staging), after_dir, story, sel)
+            ok = better_or_equal(base, after)
+            attempt.update(files=changed, score_before=base["score"], score_after=after["score"],
+                           new_errors=[e for e in after["errors"] if e not in base["errors"]], kept=ok)
+            print(f"  {target['id']} -> {changed}: score {base['score']} -> {after['score']} {'KEPT' if ok else 'REVERTED'}")
+            (rdir / f"patch_{i}.json").write_text(json.dumps(target, indent=1))
+            if ok:
+                for rel in changed:
+                    shutil.copy(staging / rel, game / rel)
+                base, evidence, kept_any = after, after_dir, True
+        entry["kept"] = kept_any
+        if not kept_any:
             break
     report["final_score"] = base.get("score")
     (vdir / "report.json").write_text(json.dumps(report, indent=1))
@@ -151,7 +160,8 @@ if __name__ == "__main__":
     ap.add_argument("build")
     ap.add_argument("--rounds", type=int, default=3)
     ap.add_argument("--no-fix", action="store_true")
+    ap.add_argument("--reuse-critique", action="store_true", help="reuse round_N/critique.json when present")
     a = ap.parse_args()
     b = Path(a.build)
-    rep = repair_loop(genai.Client(), b, b / "game", a.rounds, not a.no_fix)
+    rep = repair_loop(genai.Client(), b, b / "game", a.rounds, not a.no_fix, reuse=a.reuse_critique)
     print(json.dumps(rep, indent=1))

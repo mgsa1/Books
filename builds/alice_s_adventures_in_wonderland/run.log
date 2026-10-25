@@ -259,3 +259,216 @@ build: /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland
 $ /Users/mgsa/Code/Argon4 Hackathon/pipeline/style.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture. --refs /Users/mgsa/Code/Argon4 Hackathon/ressources/style
 style: Storybook Wash & Ink | key 0b2f8be1b9a7 | palette ['#F6F0E0', '#8DA387', '#57838C', '#C88285', '#D9A74A', '#233142', '#D8CFB8'] | rules for ['audio', 'font', 'image', 'material', 'sheet', 'text', 'tileset']
 casting story into slots...
+cast: 108 assignments
+  player_armor_cloth/alice ok 160x288
+  enemy_rat/white_rabbit ok 288x480
+  npc_villagegirl/sister ok 48x24
+  pickup_item_goldensword/golden_key ok 96x16
+  pickup_item_goldenarmor/pocket_watch ok 96x16
+  pickup_item_flask/drink_me_bottle ok 96x16
+  dialogue_portrait/alice ok 512x512
+  dialogue_portrait/sister ok 512x512
+  dialogue_portrait/white_rabbit ok 512x512
+  chapter_backdrop/c01 ok 1280x720
+10 fills in 29s; parameters 1, kept upstream 36, missing []
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/adapt.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland /Users/mgsa/Code/Argon4 Hackathon/games/browserquest
+packing 182 text files (2560k chars) into the sandbox, 31 vendored, 337 binaries listed
+sandbox source: repository https://github.com/ericthefree/BrowserQuest
+agent v1_Chc5MzdlYXItYUJJcWwxTWtQM3RLYWlRYxIXOTM3ZWFyLWFCSXFsMU1rUDN0S2FpUWM env 0f949a1c0f1986ab700deb8e69cca963
+  in_progress 30s
+  in_progress 51s
+  in_progress 72s
+  in_progress 92s
+  in_progress 113s
+  in_progress 133s
+  in_progress 154s
+  in_progress 174s
+  in_progress 195s
+  in_progress 216s
+  in_progress 236s
+  in_progress 257s
+  in_progress 277s
+  in_progress 298s
+  in_progress 319s
+  in_progress 340s
+  in_progress 360s
+  in_progress 381s
+  in_progress 401s
+  in_progress 421s
+  in_progress 442s
+  in_progress 462s
+  in_progress 483s
+  in_progress 504s
+  in_progress 524s
+  in_progress 544s
+  in_progress 565s
+  in_progress 585s
+  in_progress 606s
+  in_progress 626s
+  in_progress 647s
+  in_progress 667s
+  in_progress 688s
+  in_progress 709s
+  in_progress 729s
+  in_progress 750s
+  in_progress 770s
+  in_progress 791s
+  in_progress 811s
+  in_progress 832s
+  in_progress 852s
+  in_progress 873s
+  in_progress 893s
+  in_progress 914s
+  in_progress 935s
+  in_progress 955s
+  in_progress 976s
+  in_progress 997s
+  in_progress 1017s
+  in_progress 1038s
+  in_progress 1058s
+  in_progress 1079s
+  in_progress 1100s
+  in_progress 1121s
+  in_progress 1141s
+  in_progress 1162s
+  in_progress 1182s
+  in_progress 1203s
+  in_progress 1224s
+  in_progress 1244s
+  in_progress 1265s
+  in_progress 1285s
+  in_progress 1306s
+  in_progress 1326s
+  in_progress 1347s
+  in_progress 1367s
+  in_progress 1388s
+  in_progress 1408s
+  in_progress 1429s
+  in_progress 1449s
+  in_progress 1470s
+  in_progress 1490s
+  in_progress 1511s
+  in_progress 1531s
+  in_progress 1552s
+  in_progress 1573s
+  in_progress 1594s
+  in_progress 1615s
+  in_progress 1636s
+  in_progress 1656s
+  in_progress 1677s
+  in_progress 1698s
+  in_progress 1718s
+  in_progress 1739s
+  in_progress 1759s
+  in_progress 1780s
+  in_progress 1801s
+  in_progress 1821s
+  in_progress 1842s
+  in_progress 1863s
+  in_progress 1884s
+  in_progress 1905s
+  in_progress 1925s
+  in_progress 1946s
+  in_progress 1966s
+  in_progress 1987s
+  in_progress 2008s
+  in_progress 2029s
+  in_progress 2051s
+  in_progress 2072s
+  in_progress 2093s
+  in_progress 2113s
+  in_progress 2134s
+  in_progress 2155s
+  in_progress 2175s
+  in_progress 2196s
+  in_progress 2216s
+  in_progress 2237s
+  in_progress 2257s
+  in_progress 2278s
+  in_progress 2298s
+  in_progress 2319s
+  completed 2349s
+Traceback (most recent call last):
+  File "/Users/mgsa/Code/Argon4 Hackathon/pipeline/adapt.py", line 246, in <module>
+    return install(build, ws)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mgsa/Code/Argon4 Hackathon/pipeline/adapt.py", line 200, in run_agent
+    try:
+       ^^
+  File "/Users/mgsa/Code/Argon4 Hackathon/pipeline/adapt.py", line 143, in install
+    shutil.copytree(src, dst, symlinks=True, ignore_dangling_symlinks=True, ignore=shutil.ignore_patterns("node_modules", ".git"))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/shutil.py", line 600, in copytree
+    return _copytree(entries=entries, src=src, dst=dst, symlinks=symlinks,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/shutil.py", line 554, in _copytree
+    raise Error(errors)
+shutil.Error: [('/Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland/verification/adapt/environment/workspace/game/client/assets', '/Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland/game/client/assets', "[Errno 2] No such file or directory: '/Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland/verification/adapt/environment/workspace/game/client/assets'")]
+Traceback (most recent call last):
+  File "/Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py", line 75, in <module>
+    main()
+  File "/Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py", line 67, in main
+    sh(P / "adapt.py", build, game_dir, *(["--fallback"] if a.fallback else []))
+  File "/Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py", line 26, in sh
+    subprocess.run([sys.executable, *[str(a) for a in args]], check=True, cwd=C.ROOT, env=env)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py", line 573, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/Users/mgsa/Code/Argon4 Hackathon/.venv/bin/python', '/Users/mgsa/Code/Argon4 Hackathon/pipeline/adapt.py', '/Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland', '/Users/mgsa/Code/Argon4 Hackathon/games/browserquest']' returned non-zero exit status 1.
+
+=== 15:53:23 $ /Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py /Users/mgsa/Code/Argon4 Hackathon/ressources/alice_in_wonderland.epub --game browserquest --chapters c01 --brief x --only verify
+build: /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland  chapters ['c01']
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/verify.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland
+baseline playthrough...
+  score 10/14, errors 2
+round 1: critique...
+  7 defects, 7 with evidence
+   [3] crash console_404_backdrop_and_config: Two 404 console errors occur at startup because index.html requests non-existent `assets/b
+   [3] story playtest_collect_state_mismatch: All three `collect:*` playtest steps fail because `collectStoryItem` records the item ID i
+   [2] story sister_speaks_alice_lines: Talking to Alice's Sister in Chapter I makes her speak Alice's line ("I wonder how many mi
+   [2] story chapter_goal_narration_and_transition_missing: When Chapter I's goal is met, the game shows a custom description modal instead of playing
+   [2] visual chapter_backdrop_not_shown_fullscreen_at_start: When Chapter I starts, `enterChapter("c01", false)` suppresses the `chapter_backdrop` illu
+  fix rejected: patched game does not build
+{
+ "rounds": [
+  {
+   "round": 1,
+   "defects": 7,
+   "applied": {
+    "defect": "console_404_backdrop_and_config",
+    "rejected": "patched game does not build"
+   },
+   "kept": false
+  }
+ ],
+ "started": "2026-10-25 15:53:23",
+ "final_score": 10
+}
+
+done. play:  cd /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland/game && python -m http.server 8000
+watch a session:  uv run pipeline/watch.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland <session.json>
+baseline playthrough...
+  score 10/14, errors 2
+round 1: reusing critique
+  7 defects, 7 with evidence
+   [3] crash console_404_backdrop_and_config: Two 404 console errors occur at startup because index.html requests non-existent `assets/b
+   [3] story playtest_collect_state_mismatch: All three `collect:*` playtest steps fail because `collectStoryItem` records the item ID i
+   [2] story sister_speaks_alice_lines: Talking to Alice's Sister in Chapter I makes her speak Alice's line ("I wonder how many mi
+   [2] story chapter_goal_narration_and_transition_missing: When Chapter I's goal is met, the game shows a custom description modal instead of playing
+   [2] visual chapter_backdrop_not_shown_fullscreen_at_start: When Chapter I starts, `enterChapter("c01", false)` suppresses the `chapter_backdrop` illu
+  console_404_backdrop_and_config -> ['index.html', 'client/index.html', 'client/js/config.js']: score 10 -> 11 KEPT
+  playtest_collect_state_mismatch -> ['client/js/game.js']: score 11 -> 11 KEPT
+  sister_speaks_alice_lines -> ['client/js/game.js']: score 11 -> 10 REVERTED
+round 2: critique...
+baseline playthrough...
+  score 14/14, errors 0
+round 1: critique...
+  5 defects, 5 with evidence
+   [2] story sister_speaks_alice_lines: Talking to Alice's Sister in Chapter I displays 'Alice's Sister' as the speaker badge and 
+   [2] story chapter_end_goal_narration_missing: When Chapter I's goal is met, the completion banner shows custom text ('You unlocked the t
+   [2] visual chapter_backdrop_not_fullscreen_on_start: When Chapter I starts and the narrator reads the chapter summary, `enterChapter('c01', fal
+   [1] visual chapter_list_text_concatenated_and_unstyled: In the Select Chapter modal (`001_start.png`), chapter titles and lock statuses run togeth
+   [1] visual missing_terrain_tiles_outside_zone_box: Houses and terrain on the left and right edges of the viewport are partially cut off by da
+  sister_speaks_alice_lines -> ['client/js/game.js']: score 14 -> 14 KEPT
+  chapter_end_goal_narration_missing -> ['client/js/game.js', 'client/index.html', 'index.html']: score 14 -> 14 KEPT
+  chapter_backdrop_not_fullscreen_on_start -> ['client/js/game.js', 'client/css/main.css']: score 14 -> 14 KEPT
+round 2: critique...

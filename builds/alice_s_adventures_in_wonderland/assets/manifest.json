@@ -1,0 +1,280 @@
+{
+ "style_key": "0b2f8be1b9a7",
+ "fills": {
+  "pickup_item_goldensword": {
+   "golden_key": {
+    "subject_type": "item",
+    "prompt": "Hand-painted watercolour storybook illustration on warm cream paper with loose deep ink-blue outlines and soft pigment pooling at the edges, coloured in gentle washes of sage green, dusty teal, faded rose, and mustard gold for a calm, dreamlike mood. Characters, enemies, and weapon overlays are drawn on a crisp transparent background anchored consistently to the 16x16 base tile grid so horizontal runtime flipping and armor-plus-weapon compositing align seamlessly; each figure features a large readable silhouette, a simple expressive face, a bold deep ink-blue outer contour, and a single dominant signature wash colour so every entity is friendly and distinguishable at a glance. Object: Tiny Golden Key. It unlocks the tiny door leading to the lovely garden. No interface elements, no icons, no bars, no frames, no text. Avoid: photorealism, harsh black outlines, neon colours, scary or gruesome details, dense visual noise, embedded text, decorative borders, photographic textures, 3D rendering.",
+    "paths": [
+     "assets/pickup/pickup_item_goldensword_golden_key.png",
+     "assets/pickup/pickup_item_goldensword_golden_key@2x.png",
+     "assets/pickup/pickup_item_goldensword_golden_key@3x.png"
+    ],
+    "path": "assets/pickup/pickup_item_goldensword_golden_key.png",
+    "width": 96,
+    "height": 16,
+    "facings": [
+     "right"
+    ],
+    "degraded": "static frames"
+   }
+  },
+  "npc_villagegirl": {
+   "sister": {
+    "subject_type": "character",
+    "prompt": "Hand-painted watercolour storybook illustration on warm cream paper with loose deep ink-blue outlines and soft pigment pooling at the edges, coloured in gentle washes of sage green, dusty teal, faded rose, and mustard gold for a calm, dreamlike mood. Characters, enemies, and weapon overlays are drawn on a crisp transparent background anchored consistently to the 16x16 base tile grid so horizontal runtime flipping and armor-plus-weapon compositing align seamlessly; each figure features a large readable silhouette, a simple expressive face, a bold deep ink-blue outer contour, and a single dominant signature wash colour so every entity is friendly and distinguishable at a glance. Character: Alice's Sister. A gentle older girl sitting on the riverbank with a book that has no pictures. No interface elements, no icons, no bars, no frames, no text. Avoid: photorealism, harsh black outlines, neon colours, scary or gruesome details, dense visual noise, embedded text, decorative borders, photographic textures, 3D rendering.",
+    "paths": [
+     "assets/npc/npc_villagegirl_sister.png",
+     "assets/npc/npc_villagegirl_sister@2x.png",
+     "assets/npc/npc_villagegirl_sister@3x.png"
+    ],
+    "path": "assets/npc/npc_villagegirl_sister.png",
+    "width": 48,
+    "height": 24,
+    "facings": [
+     "down"
+    ],
+    "degraded": "static frames"
+   }
+  },
+  "pickup_item_flask": {
+   "drink_me_bottle": {
+    "subject_type": "item",
+    "prompt": "Hand-painted watercolour storybook illustration on warm cream paper with loose deep ink-blue outlines and soft pigment pooling at the edges, coloured in gentle washes of sage green, dusty teal, faded rose, and mustard gold for a calm, dreamlike mood. Characters, enemies, and weapon overlays are drawn on a crisp transparent background anchored consistently to the 16x16 base tile grid so horizontal runtime flipping and armor-plus-weapon compositing align seamlessly; each figure features a large readable silhouette, a simple expressive face, a bold deep ink-blue outer contour, and a single dominant signature wash colour so every entity is friendly and distinguishable at a glance. Object: Drink-Me Bottle. Drinking from this bottle shrinks Alice to ten inches high. No interface elements, no icons, no bars, no frames, no text. Avoid: photorealism, harsh black outlines, neon colours, scary or gruesome details, dense visual noise, embedded text, decorative borders, photographic textures, 3D rendering.",
+    "paths": [
+     "assets/pickup/pickup_item_flask_drink_me_bottle.png",
+     "assets/pickup/pickup_item_flask_drink_me_bottle@2x.png",
+     "assets/pickup/pickup_item_flask_drink_me_bottle@3x.png"
+    ],
+    "path": "assets/pickup/pickup_item_flask_drink_me_bottle.png",
+    "width": 96,
+    "height": 16,
+    "facings": [
+     "right"
+    ],
+    "degraded": "static frames"
+   }
+  },
+  "pickup_item_goldenarmor": {
+   "pocket_watch": {
+    "subject_type": "item",
+    "prompt": "Hand-painted watercolour storybook illustration on warm cream paper with loose deep ink-blue outlines and soft pigment pooling at the edges, coloured in gentle washes of sage green, dusty teal, faded rose, and mustard gold for a calm, dreamlike mood. Characters, enemies, and weapon overlays are drawn on a crisp transparent background anchored consistently to the 16x16 base tile grid so horizontal runtime flipping and armor-plus-weapon compositing align seamlessly; each figure features a large readable silhouette, a simple expressive face, a bold deep ink-blue outer contour, and a single dominant signature wash colour so every entity is friendly and distinguishable at a glance. Object: Pocket-Watch. The White Rabbit checks this watch because he is running late. No interface elements, no icons, no bars, no frames, no text. Avoid: photorealism, harsh black outlines, neon colours, scary or gruesome details, dense visual noise, embedded text, decorative borders, photographic textures, 3D rendering.",
+    "paths": [
+     "assets/pickup/pickup_item_goldenarmor_pocket_watch.png",
+     "assets/pickup/pickup_item_goldenarmor_pocket_watch@2x.png",
+     "assets/pickup/pickup_item_goldenarmor_pocket_watch@3x.png"
+    ],
+    "path": "assets/pickup/pickup_item_goldenarmor_pocket_watch.png",
+    "width": 96,
+    "height": 16,
+    "facings": [
+     "right"
+    ],
+    "degraded": "static frames"
+   }
+  },
+  "player_armor_cloth": {
+   "alice": {
+    "subject_type": "character",
+    "prompt": "Hand-painted watercolour storybook illustration on warm cream paper with loose deep ink-blue outlines and soft pigment pooling at the edges, coloured in gentle washes of sage green, dusty teal, faded rose, and mustard gold for a calm, dreamlike mood. Characters, enemies, and weapon overlays are drawn on a crisp transparent background anchored consistently to the 16x16 base tile grid so horizontal runtime flipping and armor-plus-weapon compositing align seamlessly; each figure features a large readable silhouette, a simple expressive face, a bold deep ink-blue outer contour, and a single dominant signature wash colour so every entity is friendly and distinguishable at a glance. Character: Alice. A young girl with bright eager eyes and straight hair that wanders into her eyes. No interface elements, no icons, no bars, no frames, no text. Avoid: photorealism, harsh black outlines, neon colours, scary or gruesome details, dense visual noise, embedded text, decorative borders, photographic textures, 3D rendering.",
+    "paths": [
+     "assets/player/player_armor_cloth_alice.png",
+     "assets/player/player_armor_cloth_alice@2x.png",
+     "assets/player/player_armor_cloth_alice@3x.png"
+    ],
+    "path": "assets/player/player_armor_cloth_alice.png",
+    "width": 160,
+    "height": 288,
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "degraded": "static frames"
+   }
+  },
+  "dialogue_portrait": {
+   "alice": {
+    "subject_type": "character",
+    "prompt": "Hand-painted watercolour storybook illustration on warm cream paper with loose deep ink-blue outlines and soft pigment pooling at the edges, coloured in gentle washes of sage green, dusty teal, faded rose, and mustard gold for a calm, dreamlike mood. Framed with open cream paper breathing room and a clear ground line; UI chrome, bars, and achievement badges use clean hand-inked contours filled with flat or softly pooled washes, completely free of text, borders, or busy surface clutter. Character: Alice. A young girl with bright eager eyes and straight hair that wanders into her eyes. No interface elements, no icons, no bars, no frames, no text. Avoid: photorealism, harsh black outlines, neon colours, scary or gruesome details, dense visual noise, embedded text, decorative borders, photographic textures, 3D rendering.",
+    "paths": [],
+    "path": "assets/portrait/dialogue_portrait_alice.png",
+    "width": 512,
+    "height": 512
+   },
+   "sister": {
+    "subject_type": "character",
+    "prompt": "Hand-painted watercolour storybook illustration on warm cream paper with loose deep ink-blue outlines and soft pigment pooling at the edges, coloured in gentle washes of sage green, dusty teal, faded rose, and mustard gold for a calm, dreamlike mood. Framed with open cream paper breathing room and a clear ground line; UI chrome, bars, and achievement badges use clean hand-inked contours filled with flat or softly pooled washes, completely free of text, borders, or busy surface clutter. Character: Alice's Sister. A gentle older girl sitting on the riverbank with a book that has no pictures. No interface elements, no icons, no bars, no frames, no text. Avoid: photorealism, harsh black outlines, neon colours, scary or gruesome details, dense visual noise, embedded text, decorative borders, photographic textures, 3D rendering.",
+    "paths": [],
+    "path": "assets/portrait/dialogue_portrait_sister.png",
+    "width": 512,
+    "height": 512
+   },
+   "white_rabbit": {
+    "subject_type": "character",
+    "prompt": "Hand-painted watercolour storybook illustration on warm cream paper with loose deep ink-blue outlines and soft pigment pooling at the edges, coloured in gentle washes of sage green, dusty teal, faded rose, and mustard gold for a calm, dreamlike mood. Framed with open cream paper breathing room and a clear ground line; UI chrome, bars, and achievement badges use clean hand-inked contours filled with flat or softly pooled washes, completely free of text, borders, or busy surface clutter. Character: The White Rabbit. A white rabbit with pink eyes, dressed in a waistcoat and carrying a pocket-watch. No interface elements, no icons, no bars, no frames, no text. Avoid: photorealism, harsh black outlines, neon colours, scary or gruesome details, dense visual noise, embedded text, decorative borders, photographic textures, 3D rendering.",
+    "paths": [],
+    "path": "assets/portrait/dialogue_portrait_white_rabbit.png",
+    "width": 512,
+    "height": 512
+   }
+  },
+  "chapter_backdrop": {
+   "c01": {
+    "subject_type": "chapter",
+    "prompt": "Hand-painted watercolour storybook illustration on warm cream paper with loose deep ink-blue outlines and soft pigment pooling at the edges, coloured in gentle washes of sage green, dusty teal, faded rose, and mustard gold for a calm, dreamlike mood. Framed with open cream paper breathing room and a clear ground line; UI chrome, bars, and achievement badges use clean hand-inked contours filled with flat or softly pooled washes, completely free of text, borders, or busy surface clutter. Scene: Alice follows a White Rabbit down a deep hole into a locked hall and changes size. No interface elements, no icons, no bars, no frames, no text. Avoid: photorealism, harsh black outlines, neon colours, scary or gruesome details, dense visual noise, embedded text, decorative borders, photographic textures, 3D rendering.",
+    "paths": [],
+    "path": "assets/backdrop/chapter_backdrop_c01.jpg",
+    "width": 1280,
+    "height": 720
+   }
+  },
+  "enemy_rat": {
+   "white_rabbit": {
+    "subject_type": "character",
+    "prompt": "Hand-painted watercolour storybook illustration on warm cream paper with loose deep ink-blue outlines and soft pigment pooling at the edges, coloured in gentle washes of sage green, dusty teal, faded rose, and mustard gold for a calm, dreamlike mood. Characters, enemies, and weapon overlays are drawn on a crisp transparent background anchored consistently to the 16x16 base tile grid so horizontal runtime flipping and armor-plus-weapon compositing align seamlessly; each figure features a large readable silhouette, a simple expressive face, a bold deep ink-blue outer contour, and a single dominant signature wash colour so every entity is friendly and distinguishable at a glance. Character: The White Rabbit. A white rabbit with pink eyes, dressed in a waistcoat and carrying a pocket-watch. No interface elements, no icons, no bars, no frames, no text. Avoid: photorealism, harsh black outlines, neon colours, scary or gruesome details, dense visual noise, embedded text, decorative borders, photographic textures, 3D rendering.",
+    "paths": [
+     "assets/enemy/enemy_rat_white_rabbit.png",
+     "assets/enemy/enemy_rat_white_rabbit@2x.png",
+     "assets/enemy/enemy_rat_white_rabbit@3x.png"
+    ],
+    "path": "assets/enemy/enemy_rat_white_rabbit.png",
+    "width": 288,
+    "height": 480,
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "degraded": "static frames"
+   }
+  }
+ },
+ "replaces": {
+  "client/img/1/item-goldensword.png": "assets/pickup/pickup_item_goldensword_golden_key.png",
+  "client/img/2/item-goldensword.png": "assets/pickup/pickup_item_goldensword_golden_key@2x.png",
+  "client/img/3/item-goldensword.png": "assets/pickup/pickup_item_goldensword_golden_key@3x.png",
+  "client/img/1/villagegirl.png": "assets/npc/npc_villagegirl_sister.png",
+  "client/img/2/villagegirl.png": "assets/npc/npc_villagegirl_sister@2x.png",
+  "client/img/3/villagegirl.png": "assets/npc/npc_villagegirl_sister@3x.png",
+  "client/img/1/item-flask.png": "assets/pickup/pickup_item_flask_drink_me_bottle.png",
+  "client/img/1/item-goldenarmor.png": "assets/pickup/pickup_item_goldenarmor_pocket_watch.png",
+  "client/img/2/item-flask.png": "assets/pickup/pickup_item_flask_drink_me_bottle@2x.png",
+  "client/img/2/item-goldenarmor.png": "assets/pickup/pickup_item_goldenarmor_pocket_watch@2x.png",
+  "client/img/3/item-flask.png": "assets/pickup/pickup_item_flask_drink_me_bottle@3x.png",
+  "client/img/3/item-goldenarmor.png": "assets/pickup/pickup_item_goldenarmor_pocket_watch@3x.png",
+  "client/img/1/clotharmor.png": "assets/player/player_armor_cloth_alice.png",
+  "client/img/2/clotharmor.png": "assets/player/player_armor_cloth_alice@2x.png",
+  "client/img/3/clotharmor.png": "assets/player/player_armor_cloth_alice@3x.png",
+  "client/img/1/rat.png": "assets/enemy/enemy_rat_white_rabbit.png",
+  "client/img/2/rat.png": "assets/enemy/enemy_rat_white_rabbit@2x.png",
+  "client/img/3/rat.png": "assets/enemy/enemy_rat_white_rabbit@3x.png"
+ },
+ "parameters": {
+  "material_sprite_effects": "#C88285"
+ },
+ "kept_upstream": [
+  "effect_death",
+  "effect_shadow16",
+  "effect_sparks",
+  "font_advocut",
+  "font_graphicpixel",
+  "sound_achievement",
+  "sound_chat",
+  "sound_chest",
+  "sound_death",
+  "sound_firefox",
+  "sound_heal",
+  "sound_hit1",
+  "sound_hit2",
+  "sound_hurt",
+  "sound_kill1",
+  "sound_kill2",
+  "sound_loot",
+  "sound_noloot",
+  "sound_npc",
+  "sound_npc_end",
+  "sound_npctalk_unused",
+  "sound_revive",
+  "sound_teleport",
+  "terrain_tilesheet",
+  "text_game_titles_and_ui",
+  "ui_achievements_sheet",
+  "ui_barsheet",
+  "ui_bubble_tail",
+  "ui_cursor_hand",
+  "ui_cursor_loot",
+  "ui_cursor_sword",
+  "ui_cursor_talk",
+  "ui_favicon",
+  "ui_spinner",
+  "ui_spritesheet",
+  "ui_target_cell"
+ ],
+ "remove": [
+  "backdrop_wood",
+  "enemy_bat",
+  "enemy_boss",
+  "enemy_crab",
+  "enemy_deathknight",
+  "enemy_eye",
+  "enemy_goblin",
+  "enemy_ogre",
+  "enemy_skeleton",
+  "enemy_skeleton2",
+  "enemy_snake",
+  "enemy_spectre",
+  "enemy_wizard",
+  "npc_agent",
+  "npc_beachnpc",
+  "npc_coder",
+  "npc_desertnpc",
+  "npc_forestnpc",
+  "npc_guard",
+  "npc_king",
+  "npc_lavanpc",
+  "npc_nyan",
+  "npc_octocat",
+  "npc_priest",
+  "npc_rick",
+  "npc_scientist",
+  "npc_sorcerer",
+  "npc_villager",
+  "pickup_chest",
+  "pickup_item_axe",
+  "pickup_item_bluesword",
+  "pickup_item_burger",
+  "pickup_item_cake",
+  "pickup_item_clotharmor",
+  "pickup_item_firepotion",
+  "pickup_item_leatherarmor",
+  "pickup_item_mailarmor",
+  "pickup_item_morningstar",
+  "pickup_item_platearmor",
+  "pickup_item_redarmor",
+  "pickup_item_redsword",
+  "pickup_item_sword1",
+  "pickup_item_sword2",
+  "player_armor_firefox",
+  "player_armor_golden",
+  "player_armor_leather",
+  "player_armor_mail",
+  "player_armor_plate",
+  "player_armor_red",
+  "player_weapon_axe",
+  "player_weapon_bluesword",
+  "player_weapon_goldensword",
+  "player_weapon_morningstar",
+  "player_weapon_redsword",
+  "player_weapon_sword1",
+  "player_weapon_sword2"
+ ],
+ "unfilled": [
+  "music_zones",
+  "text_achievements",
+  "text_item_loot_messages",
+  "text_mob_kill_notifications",
+  "text_npc_dialogue"
+ ],
+ "missing": []
+}

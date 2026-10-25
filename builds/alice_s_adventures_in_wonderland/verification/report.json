@@ -1,0 +1,15 @@
+{
+ "rounds": [
+  {
+   "round": 1,
+   "defects": 7,
+   "applied": {
+    "defect": "console_404_backdrop_and_config",
+    "rejected": "patched game does not build"
+   },
+   "kept": false
+  }
+ ],
+ "started": "2026-10-25 15:53:23",
+ "final_score": 10
+}

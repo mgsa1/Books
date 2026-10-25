@@ -44,6 +44,36 @@ def build_status(b: Path):
     return info
 
 
+def library():
+    """Playable games: finished builds plus sandbox previews from pipeline/peek.py."""
+    out = []
+    for b in sorted(C.BUILDS.iterdir()):
+        if not b.is_dir():
+            continue
+        preview = b.name.startswith("_preview_")
+        if b.name.startswith("_") and not preview:
+            continue
+        index = C.playable_dir(b) / "index.html"
+        if not index.exists():
+            continue
+        src = C.BUILDS / b.name[len("_preview_"):] if preview else b  # previews borrow the parent build's book and art
+        info = build_status(src) if src.exists() else {"slug": b.name, "title": b.name}
+        a = src / "assets"
+        covers = sorted(a.glob("backdrop/chapter_backdrop_*.jpg")) + sorted(a.glob("backdrop/*.jpg")) + sorted(a.glob("backdrop/*.png"))
+        titles = {c["id"]: c["title"] for c in info.get("chapters", [])}
+        out.append({
+            "slug": b.name, "preview": preview, "title": info.get("title", b.name), "author": info.get("author", ""),
+            "chapters": [{"id": c, "title": titles.get(c, c)} for c in info.get("selection", [])],
+            "cover": f"/evidence/{src.name}/{covers[0].relative_to(src)}" if covers else None,
+            "portraits": [f"/evidence/{src.name}/{q.relative_to(src)}" for q in sorted(a.glob("portrait/*.png"))[:6]],
+            "score": (info.get("report") or {}).get("final_score"),
+            "running": info.get("running", False),
+            "built": time.strftime("%d %b %H:%M", time.localtime(index.stat().st_mtime)),
+        })
+    out.sort(key=lambda e: (e["preview"], e["title"]))
+    return out
+
+
 def start_job(slug, args):
     b = C.BUILDS / slug
     b.mkdir(parents=True, exist_ok=True)
@@ -83,7 +113,8 @@ class H(SimpleHTTPRequestHandler):
             games = sorted(p.name for p in C.GAMES.iterdir() if p.is_dir()) if C.GAMES.exists() else []
             refs = sorted(p.name for p in (C.RESSOURCES / "style").glob("*") if p.suffix.lower() in (".png", ".jpg", ".jpeg"))
             builds = [build_status(b) for b in sorted(C.BUILDS.iterdir()) if b.is_dir() and not b.name.startswith("_")]
-            return self.send_json({"books": books, "games": games, "refs": refs, "builds": builds, "has_key": bool(os.environ.get("GEMINI_API_KEY"))})
+            return self.send_json({"books": books, "games": games, "refs": refs, "builds": builds, "library": library(),
+                                   "has_key": bool(os.environ.get("GEMINI_API_KEY"))})
         if u.path == "/api/log":
             p = C.BUILDS / q["build"][0] / "run.log"
             text = p.read_text(errors="ignore") if p.exists() else ""

@@ -16,3 +16,8 @@ builds/_sessions/
 builds/_preview_*/
 builds/_smoke/
 hackathon rules/
+
+# Heavy build output: rewritten game copies and verification staging (GBs). Reports stay.
+builds/*/game/
+builds/*/verification/*
+!builds/*/verification/report.json

@@ -40,9 +40,48 @@ code{font:14px/1.4 ui-monospace,Menlo,monospace;background:var(--butter);padding
 .status .dot{width:12px;height:12px;border-radius:50%;background:var(--ok);border:2px solid var(--ink)}
 .status.bad .dot{background:var(--clay)}
 
+/* ---------- Tabs ---------- */
+.tabs{position:relative;z-index:1;display:flex;gap:12px;max-width:1280px;margin:14px auto 0;padding:0 32px}
+.tab{height:46px;padding:0 22px;border-radius:999px;border:3px solid var(--ink);background:var(--white);color:var(--ink);
+  font:700 18px/1 var(--display);display:inline-flex;align-items:center;gap:10px;cursor:pointer;box-shadow:3px 3px 0 var(--ink);transition:translate .12s,box-shadow .12s}
+.tab:hover{translate:-1px -1px;box-shadow:4px 4px 0 var(--ink)}
+.tab[aria-selected=true]{background:var(--butter);translate:0 2px;box-shadow:1px 1px 0 var(--ink)}
+.tab .badge{min-width:24px;height:24px;padding:0 7px;border-radius:999px;background:var(--clay);color:var(--white);border:2px solid var(--ink);font-size:14px;display:grid;place-items:center}
+.tab .badge:empty{display:none}
+@media(max-width:960px){.tabs{padding:0 16px}}
+
+/* ---------- Play tab ---------- */
+main.play{display:flex;flex-direction:column;gap:28px}
+main[hidden]{display:none!important}
+.player{display:none}
+.player.on{display:block}
+.player .bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;padding-right:110px}
+.player .bar h2{flex:1 1 200px}
+.player iframe{display:block;width:100%;aspect-ratio:16/9;border:var(--bw) solid var(--ink);border-radius:20px;background:#000}
+.player .hint{margin-top:10px}
+.games{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:28px 24px;padding:8px 0 4px}
+.game{position:relative;background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);overflow:hidden;box-shadow:8px 8px 0 var(--shade,var(--sky));
+  display:flex;flex-direction:column;transition:translate .15s,box-shadow .15s}
+.game:hover{translate:-3px -3px;box-shadow:11px 11px 0 var(--shade,var(--sky))}
+.game .cover{position:relative;aspect-ratio:16/9;background:var(--lilac);border-bottom:var(--bw) solid var(--ink);display:grid;place-items:center;overflow:hidden}
+.game .cover img{width:100%;height:100%;object-fit:cover;display:block}
+.game .cover .nocover{font:700 30px var(--hand);color:var(--ink);opacity:.6}
+.game .ribbon{position:absolute;top:12px;left:12px;padding:3px 12px;border-radius:999px;border:3px solid var(--ink);background:var(--butter);font:700 18px/1.2 var(--hand);transform:rotate(-4deg)}
+.game .body{padding:16px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.game .title{font:700 22px/1.2 var(--display)}
+.game .meta{color:var(--muted);font-size:14px}
+.game .chaps{display:flex;flex-wrap:wrap;gap:6px}
+.game .cast{display:flex;margin:4px 0}
+.game .cast img{width:40px;height:40px;border-radius:50%;border:3px solid var(--ink);background:var(--paper);object-fit:cover;margin-right:-10px;box-shadow:2px 2px 0 var(--ink)}
+.game .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+.empty-games{text-align:center;padding:40px 20px 24px}
+.empty-games .big{font:700 34px/1.2 var(--hand);margin-bottom:16px}
+.empty-games img{height:150px;margin-bottom:8px}
+
 /* ---------- Layout ---------- */
-main{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:24px 32px 80px;display:grid;grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:28px}
-@media(max-width:960px){main{grid-template-columns:minmax(0,1fr);padding:20px 16px 64px;gap:24px}.appbar{padding:20px 16px 4px}.wordmark{font-size:44px}}
+main{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:24px 32px 80px}
+main.make{display:grid;grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:28px}
+@media(max-width:960px){main{padding:20px 16px 64px}main.make{grid-template-columns:minmax(0,1fr);padding:20px 16px 64px;gap:24px}.appbar{padding:20px 16px 4px}.wordmark{font-size:44px}}
 .col{display:flex;flex-direction:column;gap:28px;min-width:0}
 .card{position:relative;background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:22px 26px 26px;box-shadow:8px 8px 0 var(--shade,var(--sky))}
 .card-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-right:110px}
@@ -180,10 +219,36 @@ pre#log{margin:0;background:var(--ink);color:var(--paper);padding:18px;border-ra
   <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z M4 19V5 M8 7h7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M3 16l5-5 4 4 3-3 6 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="16" cy="9" r="1.8" fill="currentColor"/></symbol>
   <symbol id="i-log" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M7 9l3 3-3 3M12 15h5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-open" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></symbol>
 </svg>
 
-<main>
+<nav class="tabs" role="tablist">
+  <button class="tab" role="tab" id="tab-make" aria-selected="true" aria-controls="make" onclick="showTab('make')">Make</button>
+  <button class="tab" role="tab" id="tab-play" aria-selected="false" aria-controls="play" onclick="showTab('play')">Play <span class="badge" id="playcount"></span></button>
+</nav>
+
+<main class="play" id="play" hidden>
+  <section class="card player" id="player" style="--shade:var(--butter)">
+    <div class="mascot" style="--blob:var(--butter);--tilt:5deg;--d:0s"><div class="pic"><img src="img/scarecrow.png" alt=""></div><span class="say">Off we go!</span></div>
+    <div class="bar">
+      <h2 id="playertitle">Playing</h2>
+      <button class="secondary" onclick="fullscreenGame()"><svg class="ico"><use href="#i-full"/></svg>Fullscreen</button>
+      <a class="btn secondary" id="playernew" href="#" target="_blank"><svg class="ico"><use href="#i-open"/></svg>New tab</a>
+      <button class="text" onclick="closeGame()"><svg class="ico"><use href="#i-x"/></svg>Close</button>
+    </div>
+    <iframe id="gameframe" title="Game" allow="autoplay; fullscreen"></iframe>
+    <p class="hint">Click inside the game to give it the keyboard. The game's own “Download session” link saves a file you can review on the Make tab.</p>
+  </section>
+
+  <section class="card" style="--shade:var(--mint)">
+    <div class="card-head"><h2>Your games</h2></div>
+    <div id="games"></div>
+  </section>
+</main>
+
+<main class="make" id="make">
 <div class="col">
   <section class="card" style="--shade:var(--rose)">
     <div class="mascot" style="--blob:var(--rose);--tilt:-7deg;--d:0s"><div class="pic"><img src="img/white_rabbit.png" alt=""></div><span class="say">I'm late!</span></div>
@@ -258,7 +323,7 @@ pre#log{margin:0;background:var(--ink);color:var(--paper);padding:18px;border-ra
 
   <section class="card" style="--shade:var(--lilac)">
     <div class="mascot cover" style="--blob:var(--sky);--tilt:4deg;--d:.25s"><div class="pic"><img src="img/whale.jpg" alt=""></div><span class="say">Call me…</span></div>
-    <div class="card-head"><h2>Log</h2><span class="right" id="logname"></span></div>
+    <div class="card-head"><h2>Log</h2><span class="right" id="logname"></span><label class="inline" style="font-size:14px;margin-left:8px;font-weight:400"><input type="checkbox" id="logall" onchange="if(current)showLog(current)"> all runs</label><button class="text" id="copylog" title="Copy the log" onclick="copyLog()"><span class="icon">content_copy</span>Copy</button></div>
     <pre id="log">Pick a build.</pre>
   </section>
 
@@ -333,12 +398,66 @@ function renderBuilds() {
         ${b.story ? `<div class="stats">${b.story.characters} characters · ${b.story.beats} beats · ${b.story.lines} lines · ${b.story.items} items</div>` : ''}
         ${b.report ? `<div class="stats">Verify: ${b.report.rounds.length} rounds · final score ${b.report.final_score} · patches kept ${b.report.rounds.filter(r => r.kept).length}</div>` : ''}
         <div class="actions">
-          ${b.steps.adapt ? `<a class="btn primary" style="height:44px;font-size:16px" href="/play/${b.slug}/" target="_blank">${ICO('play')}Play</a>` : ''}
+          ${b.steps.adapt ? `<button class="primary" style="height:44px;font-size:16px" onclick="playGame('${b.slug}')">${ICO('play')}Play</button>` : ''}
           <button class="secondary" onclick="showLog('${b.slug}')">${ICO('log')}Log</button>
           ${b.report ? `<button class="secondary" onclick="showEvidence('${b.slug}')">${ICO('eye')}Evidence</button>` : ''}
         </div>
       </div>
     </div>`).join('');
+}
+const SHADES = ['var(--sky)', 'var(--rose)', 'var(--mint)', 'var(--lilac)', 'var(--butter)'];
+function showTab(name) {
+  for (const t of ['make', 'play']) {
+    document.getElementById(t).hidden = t !== name;
+    document.getElementById('tab-' + t).setAttribute('aria-selected', t === name);
+  }
+  if (location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
+}
+function renderLibrary() {
+  const lib = state.library || [];
+  $('#playcount').textContent = lib.length || '';
+  const el = $('#games');
+  if (!lib.length) {
+    el.innerHTML = `<div class="empty-games"><img src="img/scarecrow.png" alt=""><div class="big">No games yet. Shall we make one?</div>
+      <button class="primary" onclick="showTab('make')">${ICO('play')}Go to Make</button></div>`;
+    return;
+  }
+  el.innerHTML = '<div class="games">' + lib.map((g, i) => `
+    <article class="game" style="--shade:${SHADES[i % SHADES.length]}">
+      <div class="cover">${g.cover ? `<img src="${g.cover}" alt="">` : '<span class="nocover">No cover yet</span>'}
+        ${g.preview ? '<span class="ribbon">Sandbox preview</span>' : ''}
+        ${g.running ? '<span class="ribbon" style="left:auto;right:12px;transform:rotate(4deg)">Still building</span>' : ''}
+      </div>
+      <div class="body">
+        <div class="title">${esc(g.title)}</div>
+        <div class="meta">${esc(g.author || '')}${g.author ? ' · ' : ''}built ${g.built}${g.score != null ? ` · score ${g.score}` : ''}</div>
+        <div class="chaps">${g.chapters.map(c => `<span class="chip sm"><b style="color:var(--clay)">${esc(c.id)}</b>${esc(c.title.replace(/^CHAPTER [IVXLC]+\.?\s*/i, ''))}</span>`).join('')}</div>
+        ${g.portraits.length ? `<div class="cast">${g.portraits.map(p => `<img src="${p}" alt="" loading="lazy">`).join('')}</div>` : ''}
+        <div class="actions">
+          <button class="primary" onclick="playGame('${g.slug}')">${ICO('play')}Play</button>
+          <a class="btn secondary" href="/play/${g.slug}/" target="_blank">${ICO('open')}New tab</a>
+        </div>
+      </div>
+    </article>`).join('') + '</div>';
+}
+function playGame(slug) {
+  const g = (state.library || []).find(x => x.slug === slug);
+  showTab('play');
+  $('#playertitle').textContent = g ? g.title + (g.preview ? ' (sandbox preview)' : '') : slug;
+  $('#playernew').href = `/play/${slug}/`;
+  const f = $('#gameframe');
+  if (f.dataset.slug !== slug) { f.src = `/play/${slug}/`; f.dataset.slug = slug; }
+  $('#player').classList.add('on');
+  $('#player').scrollIntoView({behavior: 'smooth', block: 'start'});
+  setTimeout(() => f.focus(), 300);
+}
+function closeGame() {
+  const f = $('#gameframe'); f.src = 'about:blank'; delete f.dataset.slug;
+  $('#player').classList.remove('on');
+}
+function fullscreenGame() {
+  const f = $('#gameframe');
+  (f.requestFullscreen || f.webkitRequestFullscreen).call(f);
 }
 function renderKey(ok) {
   const el = $('#keywarn');
@@ -353,12 +472,19 @@ async function refresh() {
   $('#game').innerHTML = state.games.map(g => `<option ${g === keepG ? 'selected' : ''}>${esc(g)}</option>`).join('') || '<option>(clone a game into games/)</option>';
   $('#refs').textContent = state.refs.length ? 'Uploaded: ' + state.refs.join(', ') : 'None uploaded. The brief alone is used.';
   renderKey(state.has_key);
-  renderChapters(); renderBuilds();
+  renderChapters(); renderBuilds(); renderLibrary();
   if (current) await showLog(current, true);
+}
+async function copyLog() {
+  const t = document.getElementById('log').textContent, b = document.getElementById('copylog');
+  try { await navigator.clipboard.writeText(t); } catch (e) {
+    const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove();
+  }
+  b.lastChild.textContent = 'Copied'; setTimeout(() => b.lastChild.textContent = 'Copy', 1200);
 }
 async function showLog(slug, quiet) {
   current = slug;
-  const d = await api(`/api/log?build=${slug}`);
+  const d = await api(`/api/log?build=${slug}${document.getElementById('logall').checked ? '&all=1' : ''}`);
   $('#logname').textContent = slug + (d.running ? ' · running' : '');
   const pre = $('#log'); const atBottom = pre.scrollTop + pre.clientHeight >= pre.scrollHeight - 30;
   pre.textContent = d.log || '(empty)';
@@ -412,6 +538,8 @@ $('#watch').onclick = async () => {
   const f = $('#sessfile').files[0]; if (!f || !current) { alert('Pick a build (click its Log) and a session file.'); return; }
   await upload('session', f); await api('/api/watch', {build: current, session: f.name}); refresh();
 };
+showTab(location.hash === '#play' ? 'play' : 'make');
+window.addEventListener('hashchange', () => showTab(location.hash === '#play' ? 'play' : 'make'));
 refresh(); setInterval(refresh, 3000);
 </script>
 </body>

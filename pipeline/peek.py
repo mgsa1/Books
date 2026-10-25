@@ -46,7 +46,7 @@ def snapshot(build: Path, out_game: Path):
     if not (ws / "game").exists():
         print("sandbox has no workspace/game yet"); return None
     shutil.rmtree(out_game, ignore_errors=True)
-    shutil.copytree(ws / "game", out_game, ignore=shutil.ignore_patterns("node_modules", ".git"))
+    shutil.copytree(ws / "game", out_game, symlinks=True, ignore_dangling_symlinks=True, ignore=shutil.ignore_patterns("node_modules", ".git"))
     if (build / "assets").exists():
         shutil.copytree(build / "assets", out_game / "assets", dirs_exist_ok=True)
     checks = ws / "CHECKS.md"

@@ -1,0 +1,765 @@
+{
+ "assignments": [
+  {
+   "slot_id": "player_armor_cloth",
+   "subject_type": "character",
+   "subject_id": "alice",
+   "value": "",
+   "why": "protagonist in starter dress"
+  },
+  {
+   "slot_id": "player_armor_leather",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_armor_mail",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_armor_plate",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_armor_red",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_armor_golden",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_armor_firefox",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_weapon_sword1",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_weapon_sword2",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_weapon_axe",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_weapon_morningstar",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_weapon_bluesword",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_weapon_redsword",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "player_weapon_goldensword",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "one player sprite set only; variant removed"
+  },
+  {
+   "slot_id": "enemy_rat",
+   "subject_type": "character",
+   "subject_id": "white_rabbit",
+   "value": "",
+   "why": "small mammal animal slot"
+  },
+  {
+   "slot_id": "enemy_skeleton",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "enemy_skeleton2",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "enemy_spectre",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "enemy_deathknight",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "enemy_goblin",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "enemy_ogre",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "enemy_crab",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "enemy_snake",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "enemy_eye",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "enemy_bat",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "enemy_wizard",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "enemy_boss",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused enemy slot"
+  },
+  {
+   "slot_id": "npc_guard",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_king",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_villagegirl",
+   "subject_type": "character",
+   "subject_id": "sister",
+   "value": "",
+   "why": "resembles girl in dress"
+  },
+  {
+   "slot_id": "npc_villager",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_coder",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_agent",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_rick",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_scientist",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_nyan",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_priest",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_sorcerer",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_octocat",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_beachnpc",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_forestnpc",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_desertnpc",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "npc_lavanpc",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused npc slot"
+  },
+  {
+   "slot_id": "pickup_item_sword1",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_sword2",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_axe",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_morningstar",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_bluesword",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_redsword",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_goldensword",
+   "subject_type": "item",
+   "subject_id": "golden_key",
+   "value": "",
+   "why": "golden tool pickup"
+  },
+  {
+   "slot_id": "pickup_item_clotharmor",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_leatherarmor",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_mailarmor",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_platearmor",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_redarmor",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_goldenarmor",
+   "subject_type": "item",
+   "subject_id": "pocket_watch",
+   "value": "",
+   "why": "golden accessory pickup"
+  },
+  {
+   "slot_id": "pickup_item_flask",
+   "subject_type": "item",
+   "subject_id": "drink_me_bottle",
+   "value": "",
+   "why": "potion bottle pickup"
+  },
+  {
+   "slot_id": "pickup_item_burger",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_firepotion",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_item_cake",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "pickup_chest",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "unused pickup slot"
+  },
+  {
+   "slot_id": "effect_death",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "effects get none"
+  },
+  {
+   "slot_id": "effect_sparks",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "effects get none"
+  },
+  {
+   "slot_id": "effect_shadow16",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "effects get none"
+  },
+  {
+   "slot_id": "ui_cursor_hand",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "ui cursor gets none"
+  },
+  {
+   "slot_id": "ui_cursor_sword",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "ui cursor gets none"
+  },
+  {
+   "slot_id": "ui_cursor_loot",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "ui cursor gets none"
+  },
+  {
+   "slot_id": "ui_cursor_talk",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "ui cursor gets none"
+  },
+  {
+   "slot_id": "ui_target_cell",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "ui indicator gets none"
+  },
+  {
+   "slot_id": "terrain_tilesheet",
+   "subject_type": "chapter",
+   "subject_id": "c01",
+   "value": "",
+   "why": "riverbank and rabbit-hole hall terrain"
+  },
+  {
+   "slot_id": "ui_spritesheet",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "ui sheet gets none"
+  },
+  {
+   "slot_id": "ui_barsheet",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "ui sheet gets none"
+  },
+  {
+   "slot_id": "ui_achievements_sheet",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "ui sheet gets none"
+  },
+  {
+   "slot_id": "backdrop_wood",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "keep upstream page background"
+  },
+  {
+   "slot_id": "ui_spinner",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "ui spinner gets none"
+  },
+  {
+   "slot_id": "ui_bubble_tail",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "ui image gets none"
+  },
+  {
+   "slot_id": "ui_favicon",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "favicon gets none"
+  },
+  {
+   "slot_id": "sound_loot",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_hit1",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_hit2",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_hurt",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_heal",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_chat",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_revive",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_death",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_firefox",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_achievement",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_kill1",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_kill2",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_noloot",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_teleport",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_chest",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_npc",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_npc_end",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "sound_npctalk_unused",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "music_zones",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "audio gets none"
+  },
+  {
+   "slot_id": "font_graphicpixel",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "font gets none"
+  },
+  {
+   "slot_id": "font_advocut",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "font gets none"
+  },
+  {
+   "slot_id": "material_sprite_effects",
+   "subject_type": "ui",
+   "subject_id": "",
+   "value": "#C88285",
+   "why": "rose tint for sprite shader"
+  },
+  {
+   "slot_id": "text_game_titles_and_ui",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "text gets none"
+  },
+  {
+   "slot_id": "text_npc_dialogue",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "text gets none"
+  },
+  {
+   "slot_id": "text_item_loot_messages",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "text gets none"
+  },
+  {
+   "slot_id": "text_mob_kill_notifications",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "text gets none"
+  },
+  {
+   "slot_id": "text_achievements",
+   "subject_type": "none",
+   "subject_id": "",
+   "value": "",
+   "why": "text gets none"
+  },
+  {
+   "slot_id": "dialogue_portrait",
+   "subject_type": "character",
+   "subject_id": "alice",
+   "value": "",
+   "why": "Alice dialogue portrait"
+  },
+  {
+   "slot_id": "dialogue_portrait",
+   "subject_type": "character",
+   "subject_id": "sister",
+   "value": "",
+   "why": "Sister dialogue portrait"
+  },
+  {
+   "slot_id": "dialogue_portrait",
+   "subject_type": "character",
+   "subject_id": "white_rabbit",
+   "value": "",
+   "why": "White Rabbit dialogue portrait"
+  },
+  {
+   "slot_id": "chapter_backdrop",
+   "subject_type": "chapter",
+   "subject_id": "c01",
+   "value": "",
+   "why": "Chapter I opening illustration"
+  }
+ ],
+ "interaction_id": "v1_ChdwbjdlYXJxLUlhcXkxTWtQMHVqYWlBOBIXcG43ZWFycS1JYXF5MU1rUDB1amFpQTg",
+ "selection": [
+  "c01"
+ ],
+ "filled": true
+}

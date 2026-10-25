@@ -102,7 +102,14 @@ def playthrough(game_dir: Path, evidence: Path, story: dict, selection: list, pe
                 page.evaluate(f"() => {api}.collect()")
                 time.sleep(per_step_wait)
                 st = page.evaluate(f"() => {api}.state()") or {}
-                collected = iid in (st.get("items_collected") or st.get("items") or [])
+                got = []
+                for k in ("items_collected", "itemsCollected", "collected", "inventory", "items"):
+                    v = st.get(k)
+                    if isinstance(v, list):
+                        got += [x.get("id", x) if isinstance(x, dict) else x for x in v]
+                    elif isinstance(v, dict):
+                        got += [k2 for k2, v2 in v.items() if v2]
+                collected = iid in got
                 shot(page, f"collect_{iid}")
                 step(f"collect:{iid}", collected, json.dumps(st)[:200])
             st = page.evaluate(f"() => {api}.state()") or {}

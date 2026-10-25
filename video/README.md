@@ -2,7 +2,7 @@
 
 A Remotion project that accompanies the pitch. About 95 seconds, 1920x1080, 30 fps.
 
-Scenes, in order: the friend (a wall of text, then Alice's own line about books
+Scenes, in order: my sister (a wall of text, then Alice's own line about books
 without pictures or conversations), the ExpLit title, the pipeline (book + look +
 game → Argon → new game), the accessibility rules, the self-watching loop, why
 Gemini 4 Argon (the context window filling up), outro.

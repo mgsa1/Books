@@ -38,12 +38,12 @@ export const script = {
   friend: {
     seconds: 11,
     narration: [
-      'My best friend is dyslexic.',
+      'My sister is dyslexic.',
       'A page is a wall. A story is not.',
       'What is the use of a book without pictures or conversations?',
     ],
-    label: '01 / The friend',
-    on: ['My best friend is dyslexic.', 'A page is a wall.', 'A story is not.'],
+    label: '01 / My sister',
+    on: ['My sister is dyslexic.', 'A page is a wall.', 'A story is not.'],
     // Public domain. Alice's Adventures in Wonderland, chapter 1. Repeated to fill the frame.
     wall:
       'Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do: once or twice she had peeped into the book her sister was reading, but it had no pictures or conversations in it, "and what is the use of a book," thought Alice "without pictures or conversations?" So she was considering in her own mind (as well as she could, for the hot day made her feel very sleepy and stupid), whether the pleasure of making a daisy-chain would be worth the trouble of getting up and picking the daisies, when suddenly a White Rabbit with pink eyes ran close by her. There was nothing so very remarkable in that; nor did Alice think it so very much out of the way to hear the Rabbit say to itself, "Oh dear! Oh dear! I shall be late!" (when she thought it over afterwards, it occurred to her that she ought to have wondered at this, but at the time it all seemed quite natural); but when the Rabbit actually took a watch out of its waistcoat-pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge. ',
@@ -86,7 +86,7 @@ export const script = {
       'Nobody spoils the ending. And every scene cites the paragraph it comes from.',
     ],
     label: '03 / The rules',
-    heading: 'Built for my friend',
+    heading: 'Built for my sister',
     checklist: [
       'Every line is spoken aloud',
       'Subtitle, 12 words max',
@@ -102,7 +102,7 @@ export const script = {
     narration: [
       'And the game watches itself.',
       'It records how it was played. Argon reviews the session.',
-      'It finds where it broke and where my friend got stuck.',
+      'It finds where it broke and where my sister got stuck.',
       'The fix is in before the next launch.',
     ],
     label: '03 / The loop',
@@ -174,18 +174,18 @@ export const script = {
   architecture: {
     seconds: 15,
     narration: [
-      'Argon reads the whole book and the whole game at once.',
-      'The game\'s own code says which assets to make, and how.',
-      'A Managed Agent rewires the game in a sandbox. Nothing redrawn.',
-      'Then the game plays itself and keeps only fixes that pass.',
+      'One context holds the whole book and the whole game repository.',
+      'Asset slots come from the loader code, verified against real files.',
+      'A Managed Agent rewires slots in a sandbox. It never draws.',
+      'A patch ships only if the replay scores at least as high.',
     ],
     label: 'Under the hood',
-    heading: 'Four decisions',
+    heading: 'Four design decisions',
     steps: [
-      {title: 'Read it all', sub: 'the whole book and the whole game repository, in one context', note: 'no chunks, no drift'},
-      {title: 'Fill the slots', sub: 'the code sets the format, the book the subject, the look the style', note: 'checked against real files'},
-      {title: 'Rewire, not redraw', sub: 'a Managed Agent rewrites the game in a sandbox', note: 'engine and controls stay'},
-      {title: 'Watch and fix', sub: 'plays itself, patches with evidence, keeps what passes', note: 'no AI while she plays'},
+      {title: 'Whole-context reads', sub: 'the full EPUB and every game source file in a single Argon call', note: 'no chunking, no RAG'},
+      {title: 'Slots from code', sub: 'Argon lists every asset the loader reads, with exact size and frame grid', note: 'each claim checked on disk'},
+      {title: 'Rewire, never draw', sub: 'Managed Agent edits the repo in a sandbox under a 20-point contract', note: 'build fails ⇒ rejected'},
+      {title: 'Replay-gated patches', sub: 'each fix cites a screenshot or log line, then must pass a Playwright replay', note: 'regression ⇒ reverted'},
     ],
   },
 

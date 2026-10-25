@@ -121,7 +121,7 @@ def npm_build(game: Path):
     import subprocess
     pkg = game / "package.json"
     if not pkg.exists() or "build" not in json.loads(pkg.read_text()).get("scripts", {}):
-        return False
+        return None  # nothing to build: static game
     for cmd in (["npm", "ci", "--no-audit", "--no-fund", "--silent"], ["npm", "run", "build", "--silent"]):
         r = subprocess.run(cmd, cwd=game, capture_output=True, text=True, timeout=600)
         if r.returncode != 0:
@@ -140,7 +140,7 @@ def install(build: Path, workspace: Path):
     dst = build / "game"
     if dst.exists():
         shutil.move(str(dst), str(build / f"game.prev.{int(time.time())}"))
-    shutil.copytree(src, dst, ignore=shutil.ignore_patterns("node_modules", ".git"))
+    shutil.copytree(src, dst, symlinks=True, ignore_dangling_symlinks=True, ignore=shutil.ignore_patterns("node_modules", ".git"))
     assets = build / "assets"
     if assets.exists():
         shutil.copytree(assets, dst / "assets", dirs_exist_ok=True)
@@ -166,7 +166,7 @@ def run_agent(client, build, game_dir, max_tokens):
         try:
             r = client.interactions.create(
                 agent=C.AGENT,
-                agent_config={**C.AGENT_CONFIG, "max_total_tokens": max_tokens},
+                agent_config={**C.AGENT_CONFIG, **({"max_total_tokens": max_tokens} if max_tokens else {})},
                 environment={"type": "remote", "sources": workspace_sources(build, game_dir, texts, binaries, vendored, url)},
                 input=task_text(build, game_dir),
                 background=True,
@@ -181,10 +181,21 @@ def run_agent(client, build, game_dir, max_tokens):
     import signal
     signal.signal(signal.SIGTERM, lambda *_: (_ for _ in ()).throw(KeyboardInterrupt()))
     try:
-        while r.status in ("queued", "in_progress"):
-            time.sleep(20)
-            r = client.interactions.get(r.id)
-            print(f"  {r.status} {time.time()-t0:.0f}s", flush=True)
+        while True:
+            while r.status in ("queued", "in_progress"):
+                time.sleep(20)
+                r = client.interactions.get(r.id)
+                print(f"  {r.status} {time.time()-t0:.0f}s", flush=True)
+            if r.status != "incomplete":
+                break
+            # budget or turn limit reached: continue the same conversation in the same sandbox
+            print(f"  incomplete after {time.time()-t0:.0f}s; continuing {r.id[:16]}…", flush=True)
+            r = client.interactions.create(
+                agent=C.AGENT, agent_config=C.AGENT_CONFIG,
+                previous_interaction_id=r.id, environment=r.environment_id,
+                input="Continue where you stopped. Finish every point of /workspace/CONTRACT.md and write /workspace/CHECKS.md.",
+                background=True,
+            )
     except KeyboardInterrupt:  # Stop button or Ctrl-C: do not leave the agent running server-side
         try:
             client.interactions.cancel(r.id)
@@ -240,7 +251,7 @@ if __name__ == "__main__":
     ap.add_argument("build")
     ap.add_argument("game_dir")
     ap.add_argument("--fallback", action="store_true", help="direct Argon call instead of the Managed Agent")
-    ap.add_argument("--max-tokens", type=int, default=2_000_000)
+    ap.add_argument("--max-tokens", type=int, default=None, help="optional best-effort token cap; none by default")
     a = ap.parse_args()
     client = genai.Client()
     dst = (run_fallback if a.fallback else run_agent)(client, Path(a.build), Path(a.game_dir), *([] if a.fallback else [a.max_tokens]))
