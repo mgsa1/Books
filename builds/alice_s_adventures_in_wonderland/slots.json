@@ -1,0 +1,6557 @@
+{
+ "game": "browserquest",
+ "engine_notes": "BrowserQuest is a 2D HTML5 Canvas and WebSocket/offline-capable action-RPG that loads all visual assets at three integer pixel scales (1x in client/img/1/, 2x in client/img/2/, and 3x in client/img/3/) relative to a base 16x16 pixel tile grid. Sprite sheet metadata lives in individual JSON files under client/sprites/*.json (bundled via RequireJS text! in client/js/sprites.js), specifying base 1x frame width, height, offset_x/offset_y anchor relative to the 16x16 tile top-left, and named animation rows; left-facing animations are generated at runtime by horizontally flipping the *_right rows across the 16px tile width. The player character is rendered by compositing the currently equipped armor sprite sheet (starting with clotharmor) underneath the equipped weapon sprite sheet (starting with sword1) using matching animation row and frame indices, while hurt flashes (red/pink RGB tint) and hover silhouettes (1px yellow-white outline) are generated procedurally on offscreen canvases in client/js/sprite.js. Terrain is drawn from client/img/{1,2,3}/tilesheet.png using map definitions in client/maps/world_client.json (and client/maps/world_client.js for the web worker), which specify ground/high layers, animated tile sequences, collision/plateau grids, door teleports, and music areas. World entity placement (player spawn checkpoints, static NPCs, static mobs, roaming mob areas, static chests, and chest reward areas) is loaded by the server (server/maps/world_server.json) or offline client (client/maps/world_server.json). NPC dialogue is defined as sequential string arrays per NPC kind in NpcTalk inside client/js/npc.js, while quests are implemented as 20 achievements in client/js/game.js triggered by map zones, kill counters, damage taken, NPC talks, and item looting. UI chrome, HUD bars, achievement badges, fonts (GraphicPixel and AdvoCut), and colours are styled via client/css/main.css and client/css/achievements.css using multi-resolution sprite atlases (spritesheet.png, barsheet.png, achievements.png) alongside canvas text/cell colours in client/js/renderer.js and client/js/infomanager.js.",
+ "slots": [
+  {
+   "id": "player_armor_cloth",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Adventurer wearing simple starter cloth tunic and trousers",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/clotharmor.png",
+     "client/img/2/clotharmor.png",
+     "client/img/3/clotharmor.png",
+     "client/sprites/clotharmor.json"
+    ],
+    "code": [
+     "client/js/player.js:21",
+     "client/js/game.js:61",
+     "client/js/sprites.js:9",
+     "client/js/renderer.js:353"
+    ]
+   },
+   "format": {
+    "notes": "Starter player body/armor sheet. Provided at 1x (160x288), 2x (320x576), and 3x (480x864). Left-facing animations reuse *_right rows flipped horizontally.",
+    "anchor": "offset_x: -8, offset_y: -12 (at 1x, relative to 16x16 tile top-left)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down",
+     "left (flipped right Technical/Runtime Only, not in sheet layout) "
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 288,
+    "metadata_file": "client/sprites/clotharmor.json",
+    "transparent": true,
+    "width": 160,
+    "measured": {
+     "client/img/1/clotharmor.png": [
+      160,
+      288
+     ],
+     "client/img/2/clotharmor.png": [
+      320,
+      576
+     ],
+     "client/img/3/clotharmor.png": [
+      480,
+      864
+     ]
+    },
+    "sheet_width": 160,
+    "sheet_height": 288
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_armor_leather",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Adventurer wearing rank-2 brown leather armor and headband",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/leatherarmor.png",
+     "client/img/2/leatherarmor.png",
+     "client/img/3/leatherarmor.png",
+     "client/sprites/leatherarmor.json"
+    ],
+    "code": [
+     "client/js/game.js:61",
+     "client/js/sprites.js:42",
+     "shared/js/gametypes.js:159"
+    ]
+   },
+   "format": {
+    "notes": "Rank 2 player body/armor sheet. Provided at 1x (160x288), 2x (320x576), and 3x (480x864). Left-facing animations reuse *_right rows flipped horizontally.",
+    "anchor": "offset_x: -8, offset_y: -12 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 288,
+    "metadata_file": "client/sprites/leatherarmor.json",
+    "transparent": true,
+    "width": 160,
+    "measured": {
+     "client/img/1/leatherarmor.png": [
+      160,
+      288
+     ],
+     "client/img/2/leatherarmor.png": [
+      320,
+      576
+     ],
+     "client/img/3/leatherarmor.png": [
+      480,
+      864
+     ]
+    },
+    "sheet_width": 160,
+    "sheet_height": 288
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_armor_mail",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Adventurer wearing rank-3 chainmail armor and helmet",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/mailarmor.png",
+     "client/img/2/mailarmor.png",
+     "client/img/3/mailarmor.png",
+     "client/sprites/mailarmor.json"
+    ],
+    "code": [
+     "client/js/game.js:61",
+     "client/js/sprites.js:44",
+     "shared/js/gametypes.js:160"
+    ]
+   },
+   "format": {
+    "notes": "Rank 3 player body/armor sheet. Provided at 1x (160x288), 2x (320x576), and 3x (480x864). Left-facing animations reuse *_right rows flipped horizontally.",
+    "anchor": "offset_x: -8, offset_y: -12 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 288,
+    "metadata_file": "client/sprites/mailarmor.json",
+    "transparent": true,
+    "width": 160,
+    "measured": {
+     "client/img/1/mailarmor.png": [
+      160,
+      288
+     ],
+     "client/img/2/mailarmor.png": [
+      320,
+      576
+     ],
+     "client/img/3/mailarmor.png": [
+      480,
+      864
+     ]
+    },
+    "sheet_width": 160,
+    "sheet_height": 288
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_armor_plate",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Adventurer wearing rank-4 full steel plate armor",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/platearmor.png",
+     "client/img/2/platearmor.png",
+     "client/img/3/platearmor.png",
+     "client/sprites/platearmor.json"
+    ],
+    "code": [
+     "client/js/game.js:62",
+     "client/js/sprites.js:49",
+     "shared/js/gametypes.js:161"
+    ]
+   },
+   "format": {
+    "notes": "Rank 4 player body/armor sheet. Provided at 1x (160x288), 2x (320x576), and 3x (480x864). Left-facing animations reuse *_right rows flipped horizontally.",
+    "anchor": "offset_x: -8, offset_y: -12 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 288,
+    "metadata_file": "client/sprites/platearmor.json",
+    "transparent": true,
+    "width": 160,
+    "measured": {
+     "client/img/1/platearmor.png": [
+      160,
+      288
+     ],
+     "client/img/2/platearmor.png": [
+      320,
+      576
+     ],
+     "client/img/3/platearmor.png": [
+      480,
+      864
+     ]
+    },
+    "sheet_width": 160,
+    "sheet_height": 288
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_armor_red",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Adventurer wearing rank-5 crimson ruby armor",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/redarmor.png",
+     "client/img/2/redarmor.png",
+     "client/img/3/redarmor.png",
+     "client/sprites/redarmor.json"
+    ],
+    "code": [
+     "client/js/game.js:62",
+     "client/js/sprites.js:52",
+     "shared/js/gametypes.js:162"
+    ]
+   },
+   "format": {
+    "notes": "Rank 5 player body/armor sheet. Provided at 1x (160x288), 2x (320x576), and 3x (480x864). Left-facing animations reuse *_right rows flipped horizontally.",
+    "anchor": "offset_x: -8, offset_y: -12 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 288,
+    "metadata_file": "client/sprites/redarmor.json",
+    "transparent": true,
+    "width": 160,
+    "measured": {
+     "client/img/1/redarmor.png": [
+      160,
+      288
+     ],
+     "client/img/2/redarmor.png": [
+      320,
+      576
+     ],
+     "client/img/3/redarmor.png": [
+      480,
+      864
+     ]
+    },
+    "sheet_width": 160,
+    "sheet_height": 288
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_armor_golden",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Adventurer wearing rank-6 horned golden paladin armor",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/goldenarmor.png",
+     "client/img/2/goldenarmor.png",
+     "client/img/3/goldenarmor.png",
+     "client/sprites/goldenarmor.json"
+    ],
+    "code": [
+     "client/js/game.js:62",
+     "client/js/sprites.js:19",
+     "shared/js/gametypes.js:163"
+    ]
+   },
+   "format": {
+    "notes": "Rank 6 (top tier) player body/armor sheet. Provided at 1x (160x288), 2x (320x576), and 3x (480x864). Left-facing animations reuse *_right rows flipped horizontally.",
+    "anchor": "offset_x: -8, offset_y: -12 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 288,
+    "metadata_file": "client/sprites/goldenarmor.json",
+    "transparent": true,
+    "width": 160,
+    "measured": {
+     "client/img/1/goldenarmor.png": [
+      160,
+      288
+     ],
+     "client/img/2/goldenarmor.png": [
+      320,
+      576
+     ],
+     "client/img/3/goldenarmor.png": [
+      480,
+      864
+     ]
+    },
+    "sheet_width": 160,
+    "sheet_height": 288
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_armor_firefox",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Fiery fox-costumed warrior during temporary invincibility buff",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/firefox.png",
+     "client/img/2/firefox.png",
+     "client/img/3/firefox.png",
+     "client/sprites/firefox.json"
+    ],
+    "code": [
+     "client/js/game.js:62,672",
+     "client/js/sprites.js:16",
+     "shared/js/gametypes.js:122"
+    ]
+   },
+   "format": {
+    "notes": "Temporary invincibility player transformation sheet triggered for 15s when looting firepotion. Note that idle_right has 5 frames and walk_up has 8 frames (total 1x image width 256x288, 2x 512x576, 3x 768x864).",
+    "anchor": "offset_x: -8, offset_y: -12 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 5
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 8
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 288,
+    "metadata_file": "client/sprites/firefox.json",
+    "transparent": true,
+    "width": 256,
+    "measured": {
+     "client/img/1/firefox.png": [
+      256,
+      288
+     ],
+     "client/img/2/firefox.png": [
+      512,
+      576
+     ],
+     "client/img/3/firefox.png": [
+      768,
+      864
+     ]
+    },
+    "sheet_width": 256,
+    "sheet_height": 288
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_weapon_sword1",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Starter short sword overlay swung by the player",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/sword1.png",
+     "client/img/2/sword1.png",
+     "client/img/3/sword1.png",
+     "client/sprites/sword1.json"
+    ],
+    "code": [
+     "client/js/player.js:22",
+     "client/js/game.js:62",
+     "client/js/renderer.js:369-384",
+     "client/js/sprites.js:64"
+    ]
+   },
+   "format": {
+    "notes": "Rank 1 starter weapon overlay composited over the player armor sprite using matching animation row and frame index. Provided at 1x (160x288), 2x (320x576), and 3x (480x864).",
+    "anchor": "offset_x: -8, offset_y: -12 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 288,
+    "metadata_file": "client/sprites/sword1.json",
+    "transparent": true,
+    "width": 160,
+    "measured": {
+     "client/img/1/sword1.png": [
+      160,
+      288
+     ],
+     "client/img/2/sword1.png": [
+      320,
+      576
+     ],
+     "client/img/3/sword1.png": [
+      480,
+      864
+     ]
+    },
+    "sheet_width": 160,
+    "sheet_height": 288
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_weapon_sword2",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Rank-2 steel broadsword overlay swung by the player",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/sword2.png",
+     "client/img/2/sword2.png",
+     "client/img/3/sword2.png",
+     "client/sprites/sword2.json"
+    ],
+    "code": [
+     "client/js/game.js:63",
+     "client/js/renderer.js:369-384",
+     "client/js/sprites.js:65",
+     "shared/js/gametypes.js:149"
+    ]
+   },
+   "format": {
+    "notes": "Rank 2 weapon overlay composited over the player sprite. Provided at 1x (240x432), 2x (480x864), and 3x (720x1296).",
+    "anchor": "offset_x: -16, offset_y: -20 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 48,
+    "frame_width": 48,
+    "height": 432,
+    "metadata_file": "client/sprites/sword2.json",
+    "transparent": true,
+    "width": 240,
+    "measured": {
+     "client/img/1/sword2.png": [
+      240,
+      432
+     ],
+     "client/img/2/sword2.png": [
+      480,
+      864
+     ],
+     "client/img/3/sword2.png": [
+      720,
+      1296
+     ]
+    },
+    "sheet_width": 240,
+    "sheet_height": 432
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_weapon_axe",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Rank-3 battle axe overlay swung by the player",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/axe.png",
+     "client/img/2/axe.png",
+     "client/img/3/axe.png",
+     "client/sprites/axe.json"
+    ],
+    "code": [
+     "client/js/game.js:62",
+     "client/js/renderer.js:369-384",
+     "client/js/sprites.js:3",
+     "shared/js/gametypes.js:150"
+    ]
+   },
+   "format": {
+    "notes": "Rank 3 weapon overlay composited over the player sprite. Provided at 1x (240x432), 2x (480x864), and 3x (720x1296).",
+    "anchor": "offset_x: -16, offset_y: -20 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 48,
+    "frame_width": 48,
+    "height": 432,
+    "metadata_file": "client/sprites/axe.json",
+    "transparent": true,
+    "width": 240,
+    "measured": {
+     "client/img/1/axe.png": [
+      240,
+      432
+     ],
+     "client/img/2/axe.png": [
+      480,
+      864
+     ],
+     "client/img/3/axe.png": [
+      720,
+      1296
+     ]
+    },
+    "sheet_width": 240,
+    "sheet_height": 432
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_weapon_morningstar",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Rank-4 spiked morning star flail overlay swung by the player",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/morningstar.png",
+     "client/img/2/morningstar.png",
+     "client/img/3/morningstar.png",
+     "client/sprites/morningstar.json"
+    ],
+    "code": [
+     "client/js/game.js:64",
+     "client/js/renderer.js:369-384",
+     "client/js/sprites.js:45",
+     "shared/js/gametypes.js:151"
+    ]
+   },
+   "format": {
+    "notes": "Rank 4 weapon overlay composited over the player sprite. Provided at 1x (190x342), 2x (380x684), and 3x (570x1026).",
+    "anchor": "offset_x: -11, offset_y: -15 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 38,
+    "frame_width": 38,
+    "height": 342,
+    "metadata_file": "client/sprites/morningstar.json",
+    "transparent": true,
+    "width": 190,
+    "measured": {
+     "client/img/1/morningstar.png": [
+      190,
+      342
+     ],
+     "client/img/2/morningstar.png": [
+      380,
+      684
+     ],
+     "client/img/3/morningstar.png": [
+      570,
+      1026
+     ]
+    },
+    "sheet_width": 190,
+    "sheet_height": 342
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_weapon_bluesword",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Rank-5 glowing blue magic sword overlay swung by the player",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/bluesword.png",
+     "client/img/2/bluesword.png",
+     "client/img/3/bluesword.png",
+     "client/sprites/bluesword.json"
+    ],
+    "code": [
+     "client/js/game.js:63",
+     "client/js/renderer.js:369-384",
+     "client/js/sprites.js:6",
+     "shared/js/gametypes.js:152"
+    ]
+   },
+   "format": {
+    "notes": "Rank 5 weapon overlay composited over the player sprite. Provided at 1x (240x432), 2x (480x864), and 3x (720x1296).",
+    "anchor": "offset_x: -16, offset_y: -20 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 48,
+    "frame_width": 48,
+    "height": 432,
+    "metadata_file": "client/sprites/bluesword.json",
+    "transparent": true,
+    "width": 240,
+    "measured": {
+     "client/img/1/bluesword.png": [
+      240,
+      432
+     ],
+     "client/img/2/bluesword.png": [
+      480,
+      864
+     ],
+     "client/img/3/bluesword.png": [
+      720,
+      1296
+     ]
+    },
+    "sheet_width": 240,
+    "sheet_height": 432
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_weapon_redsword",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Rank-6 blazing red flame sword overlay swung by the player",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/redsword.png",
+     "client/img/2/redsword.png",
+     "client/img/3/redsword.png",
+     "client/sprites/redsword.json"
+    ],
+    "code": [
+     "client/js/game.js:63",
+     "client/js/renderer.js:369-384",
+     "client/js/sprites.js:53",
+     "shared/js/gametypes.js:153"
+    ]
+   },
+   "format": {
+    "notes": "Rank 6 weapon overlay composited over the player sprite. Provided at 1x (240x432), 2x (480x864), and 3x (720x1296).",
+    "anchor": "offset_x: -16, offset_y: -20 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 48,
+    "frame_width": 48,
+    "height": 432,
+    "metadata_file": "client/sprites/redsword.json",
+    "transparent": true,
+    "width": 240,
+    "measured": {
+     "client/img/1/redsword.png": [
+      240,
+      432
+     ],
+     "client/img/2/redsword.png": [
+      480,
+      864
+     ],
+     "client/img/3/redsword.png": [
+      720,
+      1296
+     ]
+    },
+    "sheet_width": 240,
+    "sheet_height": 432
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "player_weapon_goldensword",
+   "role": "player",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Rank-7 ultimate golden greatsword overlay swung by the player",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/goldensword.png",
+     "client/img/2/goldensword.png",
+     "client/img/3/goldensword.png",
+     "client/sprites/goldensword.json"
+    ],
+    "code": [
+     "client/js/game.js:63",
+     "client/js/renderer.js:369-384",
+     "client/js/sprites.js:20",
+     "shared/js/gametypes.js:154"
+    ]
+   },
+   "format": {
+    "notes": "Rank 7 (top tier) weapon overlay composited over the player sprite. Provided at 1x (240x432), 2x (480x864), and 3x (720x1296).",
+    "anchor": "offset_x: -16, offset_y: -20 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 48,
+    "frame_width": 48,
+    "height": 432,
+    "metadata_file": "client/sprites/goldensword.json",
+    "transparent": true,
+    "width": 240,
+    "measured": {
+     "client/img/1/goldensword.png": [
+      240,
+      432
+     ],
+     "client/img/2/goldensword.png": [
+      480,
+      864
+     ],
+     "client/img/3/goldensword.png": [
+      720,
+      1296
+     ]
+    },
+    "sheet_width": 240,
+    "sheet_height": 432
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_rat",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Small non-aggressive sewer/village rat enemy",
+   "count": 31,
+   "where": {
+    "files": [
+     "client/img/1/rat.png",
+     "client/img/2/rat.png",
+     "client/img/3/rat.png",
+     "client/sprites/rat.json"
+    ],
+    "code": [
+     "client/js/mobs.js:4-12",
+     "client/js/entityfactory.js:24-26",
+     "client/js/game.js:833",
+     "server/js/properties.js:4-14"
+    ]
+   },
+   "format": {
+    "notes": "Unlike other mobs which switch to death.png on death, Rat plays its own row-0 'death' animation (game.js:833). Provided at 1x (288x480), 2x (576x960), and 3x (864x1440).",
+    "anchor": "offset_x: -16, offset_y: -16 (default in sprite.js:18-19)",
+    "animations": [
+     {
+      "name": "death",
+      "row": 0,
+      "frames": 4
+     },
+     {
+      "name": "atk_right",
+      "row": 1,
+      "frames": 6
+     },
+     {
+      "name": "walk_right",
+      "row": 2,
+      "frames": 3
+     },
+     {
+      "name": "idle_right",
+      "row": 3,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "walk_up",
+      "row": 5,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 6,
+      "frames": 4
+     },
+     {
+      "name": "atk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "walk_down",
+      "row": 8,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 9,
+      "frames": 4
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 48,
+    "frame_width": 48,
+    "height": 480,
+    "metadata_file": "client/sprites/rat.json",
+    "transparent": true,
+    "width": 288,
+    "measured": {
+     "client/img/1/rat.png": [
+      288,
+      480
+     ],
+     "client/img/2/rat.png": [
+      576,
+      960
+     ],
+     "client/img/3/rat.png": [
+      864,
+      1440
+     ]
+    },
+    "sheet_width": 288,
+    "sheet_height": 480
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_skeleton",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Undead skeleton warrior armed with sword and shield",
+   "count": 33,
+   "where": {
+    "files": [
+     "client/img/1/skeleton.png",
+     "client/img/2/skeleton.png",
+     "client/img/3/skeleton.png",
+     "client/sprites/skeleton.json"
+    ],
+    "code": [
+     "client/js/mobs.js:14-23",
+     "client/js/entityfactory.js:28-30",
+     "server/js/properties.js:16-27"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (192x432), 2x (384x864), and 3x (576x1296).",
+    "anchor": "offset_x: -16, offset_y: -20 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 3
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 3
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 3
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 3
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 3
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 48,
+    "frame_width": 48,
+    "height": 432,
+    "metadata_file": "client/sprites/skeleton.json",
+    "transparent": true,
+    "width": 192,
+    "measured": {
+     "client/img/1/skeleton.png": [
+      192,
+      432
+     ],
+     "client/img/2/skeleton.png": [
+      384,
+      864
+     ],
+     "client/img/3/skeleton.png": [
+      576,
+      1296
+     ]
+    },
+    "sheet_width": 192,
+    "sheet_height": 432
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_skeleton2",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Greater skeleton warrior in horned helmet with blue-hilted sword",
+   "count": 15,
+   "where": {
+    "files": [
+     "client/img/1/skeleton2.png",
+     "client/img/2/skeleton2.png",
+     "client/img/3/skeleton2.png",
+     "client/sprites/skeleton2.json"
+    ],
+    "code": [
+     "client/js/mobs.js:25-35",
+     "client/js/entityfactory.js:32-34",
+     "server/js/properties.js:88-99"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (192x432), 2x (384x864), and 3x (576x1296).",
+    "anchor": "offset_x: -16, offset_y: -20 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 3
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 3
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 3
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 3
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 48,
+    "frame_width": 48,
+    "height": 432,
+    "metadata_file": "client/sprites/skeleton2.json",
+    "transparent": true,
+    "width": 192,
+    "measured": {
+     "client/img/1/skeleton2.png": [
+      192,
+      432
+     ],
+     "client/img/2/skeleton2.png": [
+      384,
+      864
+     ],
+     "client/img/3/skeleton2.png": [
+      576,
+      1296
+     ]
+    },
+    "sheet_width": 192,
+    "sheet_height": 432
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_spectre",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Floating hooded dark wraith/spectre",
+   "count": 18,
+   "where": {
+    "files": [
+     "client/img/1/spectre.png",
+     "client/img/2/spectre.png",
+     "client/img/3/spectre.png",
+     "client/sprites/spectre.json"
+    ],
+    "code": [
+     "client/js/mobs.js:37-47",
+     "client/js/entityfactory.js:36-38",
+     "server/js/properties.js:53-64"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (272x306), 2x (544x612), and 3x (816x918).",
+    "anchor": "offset_x: -9, offset_y: -13 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 8
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 6
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 8
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 8
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 6
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 34,
+    "frame_width": 34,
+    "height": 306,
+    "metadata_file": "client/sprites/spectre.json",
+    "transparent": true,
+    "width": 272,
+    "measured": {
+     "client/img/1/spectre.png": [
+      272,
+      306
+     ],
+     "client/img/2/spectre.png": [
+      544,
+      612
+     ],
+     "client/img/3/spectre.png": [
+      816,
+      918
+     ]
+    },
+    "sheet_width": 272,
+    "sheet_height": 306
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_deathknight",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Heavily armored dark death knight with glowing eyes and sword",
+   "count": 4,
+   "where": {
+    "files": [
+     "client/img/1/deathknight.png",
+     "client/img/2/deathknight.png",
+     "client/img/3/deathknight.png",
+     "client/sprites/deathknight.json"
+    ],
+    "code": [
+     "client/js/mobs.js:49-67",
+     "client/js/entityfactory.js:40-42",
+     "server/js/properties.js:66-74"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (210x378), 2x (420x756), and 3x (630x1134).",
+    "anchor": "offset_x: -13, offset_y: -17 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 42,
+    "frame_width": 42,
+    "height": 378,
+    "metadata_file": "client/sprites/deathknight.json",
+    "transparent": true,
+    "width": 210,
+    "measured": {
+     "client/img/1/deathknight.png": [
+      210,
+      378
+     ],
+     "client/img/2/deathknight.png": [
+      420,
+      756
+     ],
+     "client/img/3/deathknight.png": [
+      630,
+      1134
+     ]
+    },
+    "sheet_width": 210,
+    "sheet_height": 378
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_goblin",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Small green forest goblin armed with a dagger",
+   "count": 38,
+   "where": {
+    "files": [
+     "client/img/1/goblin.png",
+     "client/img/2/goblin.png",
+     "client/img/3/goblin.png",
+     "client/sprites/goblin.json"
+    ],
+    "code": [
+     "client/js/mobs.js:69-77",
+     "client/js/entityfactory.js:44-46",
+     "server/js/properties.js:29-39"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (104x234), 2x (208x468), and 3x (312x702).",
+    "anchor": "offset_x: -5, offset_y: -9 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 3
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 3
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 3
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 3
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 26,
+    "frame_width": 26,
+    "height": 234,
+    "metadata_file": "client/sprites/goblin.json",
+    "transparent": true,
+    "width": 104,
+    "measured": {
+     "client/img/1/goblin.png": [
+      104,
+      234
+     ],
+     "client/img/2/goblin.png": [
+      208,
+      468
+     ],
+     "client/img/3/goblin.png": [
+      312,
+      702
+     ]
+    },
+    "sheet_width": 104,
+    "sheet_height": 234
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_ogre",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Large green-skinned ogre brute wielding a club",
+   "count": 23,
+   "where": {
+    "files": [
+     "client/img/1/ogre.png",
+     "client/img/2/ogre.png",
+     "client/img/3/ogre.png",
+     "client/sprites/ogre.json"
+    ],
+    "code": [
+     "client/js/mobs.js:79-86",
+     "client/js/entityfactory.js:48-50",
+     "server/js/properties.js:41-51"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (288x432), 2x (576x864), and 3x (864x1296).",
+    "anchor": "offset_x: -16, offset_y: -24 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 3
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 6
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 2
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 3
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 5
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 2
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 3
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 6
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 48,
+    "frame_width": 48,
+    "height": 432,
+    "metadata_file": "client/sprites/ogre.json",
+    "transparent": true,
+    "width": 288,
+    "measured": {
+     "client/img/1/ogre.png": [
+      288,
+      432
+     ],
+     "client/img/2/ogre.png": [
+      576,
+      864
+     ],
+     "client/img/3/ogre.png": [
+      864,
+      1296
+     ]
+    },
+    "sheet_width": 288,
+    "sheet_height": 432
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_crab",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Giant red beach crab with snapping pincers",
+   "count": 13,
+   "where": {
+    "files": [
+     "client/img/1/crab.png",
+     "client/img/2/crab.png",
+     "client/img/3/crab.png",
+     "client/sprites/crab.json"
+    ],
+    "code": [
+     "client/js/mobs.js:88-95",
+     "client/js/entityfactory.js:52-54",
+     "server/js/properties.js:76-86"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (256x320), 2x (512x640), and 3x (768x960).",
+    "anchor": "offset_x: -8, offset_y: -8 (at 1x)",
+    "animations": [
+     {
+      "name": "death",
+      "row": 0,
+      "frames": 8
+     },
+     {
+      "name": "atk_right",
+      "row": 1,
+      "frames": 7
+     },
+     {
+      "name": "walk_right",
+      "row": 2,
+      "frames": 6
+     },
+     {
+      "name": "idle_right",
+      "row": 3,
+      "frames": 4
+     },
+     {
+      "name": "atk_up",
+      "row": 4,
+      "frames": 8
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 4
+     },
+     {
+      "name": "walk_up",
+      "row": 6,
+      "frames": 6
+     },
+     {
+      "name": "atk_down",
+      "row": 7,
+      "frames": 8
+     },
+     {
+      "name": "walk_down",
+      "row": 8,
+      "frames": 6
+     },
+     {
+      "name": "idle_down",
+      "row": 9,
+      "frames": 7
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 320,
+    "metadata_file": "client/sprites/crab.json",
+    "transparent": true,
+    "width": 256,
+    "measured": {
+     "client/img/1/crab.png": [
+      256,
+      320
+     ],
+     "client/img/2/crab.png": [
+      512,
+      640
+     ],
+     "client/img/3/crab.png": [
+      768,
+      960
+     ]
+    },
+    "sheet_width": 256,
+    "sheet_height": 320
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_snake",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Coiled desert viper/cobra snake",
+   "count": 18,
+   "where": {
+    "files": [
+     "client/img/1/snake.png",
+     "client/img/2/snake.png",
+     "client/img/3/snake.png",
+     "client/sprites/snake.json"
+    ],
+    "code": [
+     "client/js/mobs.js:97-106",
+     "client/js/entityfactory.js:56-58",
+     "server/js/properties.js:88-98"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (168x252), 2x (336x504), and 3x (504x756).",
+    "anchor": "offset_x: -6, offset_y: -10 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 4
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 4
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 6
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 28,
+    "frame_width": 28,
+    "height": 252,
+    "metadata_file": "client/sprites/snake.json",
+    "transparent": true,
+    "width": 168,
+    "measured": {
+     "client/img/1/snake.png": [
+      168,
+      252
+     ],
+     "client/img/2/snake.png": [
+      336,
+      504
+     ],
+     "client/img/3/snake.png": [
+      504,
+      756
+     ]
+    },
+    "sheet_width": 168,
+    "sheet_height": 252
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_eye",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Floatingwinged purple evil eye monster",
+   "count": 16,
+   "where": {
+    "files": [
+     "client/img/1/eye.png",
+     "client/img/2/eye.png",
+     "client/img/3/eye.png",
+     "client/sprites/eye.json"
+    ],
+    "code": [
+     "client/js/mobs.js:108-115",
+     "client/js/entityfactory.js:60-62",
+     "server/js/properties.js:112-122"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (560x432), 2x (1120x864), and 3x (1680x1296).",
+    "anchor": "offset_x: -12, offset_y: -18 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 6
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 14
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 4
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 14
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 8
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 14
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 48,
+    "frame_width": 40,
+    "height": 432,
+    "metadata_file": "client/sprites/eye.json",
+    "transparent": true,
+    "width": 560,
+    "measured": {
+     "client/img/1/eye.png": [
+      560,
+      432
+     ],
+     "client/img/2/eye.png": [
+      1120,
+      864
+     ],
+     "client/img/3/eye.png": [
+      1680,
+      1296
+     ]
+    },
+    "sheet_width": 560,
+    "sheet_height": 432
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_bat",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Flying cave bat enemy",
+   "count": 26,
+   "where": {
+    "files": [
+     "client/img/1/bat.png",
+     "client/img/2/bat.png",
+     "client/img/3/bat.png",
+     "client/sprites/bat.json"
+    ],
+    "code": [
+     "client/js/mobs.js:117-126",
+     "client/js/entityfactory.js:64-66",
+     "server/js/properties.js:124-133"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (160x432), 2x (320x864), and 3x (480x1296).",
+    "anchor": "offset_x: -8, offset_y: -24 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 5
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 5
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 5
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 5
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 5
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 5
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 5
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 5
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 48,
+    "frame_width": 32,
+    "height": 432,
+    "metadata_file": "client/sprites/bat.json",
+    "transparent": true,
+    "width": 160,
+    "measured": {
+     "client/img/1/bat.png": [
+      160,
+      432
+     ],
+     "client/img/2/bat.png": [
+      320,
+      864
+     ],
+     "client/img/3/bat.png": [
+      480,
+      1296
+     ]
+    },
+    "sheet_width": 160,
+    "sheet_height": 432
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_wizard",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Hostile dark-robed wizard enemy",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/wizard.png",
+     "client/img/2/wizard.png",
+     "client/img/3/wizard.png",
+     "client/sprites/wizard.json"
+    ],
+    "code": [
+     "client/js/mobs.js:128-135",
+     "client/js/entityfactory.js:68-70",
+     "server/js/properties.js:135-144"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (156x260), 2x (312x520), and 3x (468x780).",
+    "anchor": "offset_x: -5, offset_y: -9 (at 1x)",
+    "animations": [
+     {
+      "name": "death",
+      "row": 0,
+      "frames": 3
+     },
+     {
+      "name": "atk_right",
+      "row": 1,
+      "frames": 4
+     },
+     {
+      "name": "atk_up",
+      "row": 2,
+      "frames": 4
+     },
+     {
+      "name": "atk_down",
+      "row": 3,
+      "frames": 4
+     },
+     {
+      "name": "walk_right",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "walk_up",
+      "row": 5,
+      "frames": 4
+     },
+     {
+      "name": "walk_down",
+      "row": 6,
+      "frames": 4
+     },
+     {
+      "name": "idle_right",
+      "row": 7,
+      "frames": 6
+     },
+     {
+      "name": "idle_up",
+      "row": 8,
+      "frames": 6
+     },
+     {
+      "name": "idle_down",
+      "row": 9,
+      "frames": 6
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 26,
+    "frame_width": 26,
+    "height": 260,
+    "metadata_file": "client/sprites/wizard.json",
+    "transparent": true,
+    "width": 156,
+    "measured": {
+     "client/img/1/wizard.png": [
+      156,
+      260
+     ],
+     "client/img/2/wizard.png": [
+      312,
+      520
+     ],
+     "client/img/3/wizard.png": [
+      468,
+      780
+     ]
+    },
+    "sheet_width": 156,
+    "sheet_height": 260
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "enemy_boss",
+   "role": "enemy",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Giant crowned Skeleton King final boss with cape and greatsword",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/boss.png",
+     "client/img/2/boss.png",
+     "client/img/3/boss.png",
+     "client/sprites/boss.json"
+    ],
+    "code": [
+     "client/js/mobs.js:137-155",
+     "client/js/entityfactory.js:72-74",
+     "server/js/properties.js:146-153"
+    ]
+   },
+   "format": {
+    "notes": "Final boss sprite sheet. Provided at 1x (384x720), 2x (768x1440), and 3x (1152x2160).",
+    "anchor": "offset_x: -24, offset_y: -36 (at 1x)",
+    "animations": [
+     {
+      "name": "atk_right",
+      "row": 0,
+      "frames": 6
+     },
+     {
+      "name": "walk_right",
+      "row": 1,
+      "frames": 3
+     },
+     {
+      "name": "idle_right",
+      "row": 2,
+      "frames": 4
+     },
+     {
+      "name": "atk_up",
+      "row": 3,
+      "frames": 5
+     },
+     {
+      "name": "walk_up",
+      "row": 4,
+      "frames": 4
+     },
+     {
+      "name": "idle_up",
+      "row": 5,
+      "frames": 4
+     },
+     {
+      "name": "atk_down",
+      "row": 6,
+      "frames": 6
+     },
+     {
+      "name": "walk_down",
+      "row": 7,
+      "frames": 4
+     },
+     {
+      "name": "idle_down",
+      "row": 8,
+      "frames": 4
+     },
+     {
+      "name": "Group 5",
+      "row": 9,
+      "frames": 3
+     }
+    ],
+    "facings": [
+     "right",
+     "up",
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 72,
+    "frame_width": 64,
+    "height": 720,
+    "metadata_file": "client/sprites/boss.json",
+    "transparent": true,
+    "width": 384,
+    "measured": {
+     "client/img/1/boss.png": [
+      384,
+      720
+     ],
+     "client/img/2/boss.png": [
+      768,
+      1440
+     ],
+     "client/img/3/boss.png": [
+      1152,
+      2160
+     ]
+    },
+    "sheet_width": 384,
+    "sheet_height": 720
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_guard",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Village guard in helmet holding a spear",
+   "count": 10,
+   "where": {
+    "files": [
+     "client/img/1/guard.png",
+     "client/img/2/guard.png",
+     "client/img/3/guard.png",
+     "client/sprites/guard.json"
+    ],
+    "code": [
+     "client/js/npcs.js:5-9",
+     "client/js/npc.js:4-9",
+     "client/js/entityfactory.js:141-143"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (50x24), 2x (100x48), and 3x (150x72).",
+    "anchor": "offset_x: -5, offset_y: -8 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 25,
+    "height": 24,
+    "metadata_file": "client/sprites/guard.json",
+    "transparent": true,
+    "width": 50,
+    "measured": {
+     "client/img/1/guard.png": [
+      50,
+      24
+     ],
+     "client/img/2/guard.png": [
+      100,
+      48
+     ],
+     "client/img/3/guard.png": [
+      150,
+      72
+     ]
+    },
+    "sheet_width": 50,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_king",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Bearded king wearing a golden crown and royal robe",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/king.png",
+     "client/img/2/king.png",
+     "client/img/3/king.png",
+     "client/sprites/king.json"
+    ],
+    "code": [
+     "client/js/npcs.js:11-15",
+     "client/js/npc.js:11-23",
+     "client/js/entityfactory.js:145-147"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (64x32), 2x (128x64), and 3x (192x96).",
+    "anchor": "offset_x: -8, offset_y: -12 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 32,
+    "metadata_file": "client/sprites/king.json",
+    "transparent": true,
+    "width": 64,
+    "measured": {
+     "client/img/1/king.png": [
+      64,
+      32
+     ],
+     "client/img/2/king.png": [
+      128,
+      64
+     ],
+     "client/img/3/king.png": [
+      192,
+      96
+     ]
+    },
+    "sheet_width": 64,
+    "sheet_height": 32
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_villagegirl",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Blonde village girl NPC in dress",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/villagegirl.png",
+     "client/img/2/villagegirl.png",
+     "client/img/3/villagegirl.png",
+     "client/sprites/villagegirl.json"
+    ],
+    "code": [
+     "client/js/npcs.js:29-33",
+     "client/js/npc.js:25-32",
+     "client/js/entityfactory.js:149-151"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (48x24), 2x (96x48), and 3x (144x72).",
+    "anchor": "offset_x: -4, offset_y: -8 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/villagegirl.json",
+    "transparent": true,
+    "width": 48,
+    "measured": {
+     "client/img/1/villagegirl.png": [
+      48,
+      24
+     ],
+     "client/img/2/villagegirl.png": [
+      96,
+      48
+     ],
+     "client/img/3/villagegirl.png": [
+      144,
+      72
+     ]
+    },
+    "sheet_width": 48,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_villager",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Male villager NPC in tunic",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/villager.png",
+     "client/img/2/villager.png",
+     "client/img/3/villager.png",
+     "client/sprites/villager.json"
+    ],
+    "code": [
+     "client/js/npcs.js:35-39",
+     "client/js/npc.js:34-42",
+     "client/js/entityfactory.js:153-155"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (48x24), 2x (96x48), and 3x (144x72).",
+    "anchor": "offset_x: -4, offset_y: -8 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/villager.json",
+    "transparent": true,
+    "width": 48,
+    "measured": {
+     "client/img/1/villager.png": [
+      48,
+      24
+     ],
+     "client/img/2/villager.png": [
+      96,
+      48
+     ],
+     "client/img/3/villager.png": [
+      144,
+      72
+     ]
+    },
+    "sheet_width": 48,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_coder",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Developer/coder NPC wearing glasses and hoodie",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/coder.png",
+     "client/img/2/coder.png",
+     "client/img/3/coder.png",
+     "client/sprites/coder.json"
+    ],
+    "code": [
+     "client/js/npcs.js:41-45",
+     "client/js/npc.js:129-133",
+     "client/js/entityfactory.js:157-159"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (48x24), 2x (96x48), and 3x (144x72).",
+    "anchor": "offset_x: -4, offset_y: -7 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/coder.json",
+    "transparent": true,
+    "width": 48,
+    "measured": {
+     "client/img/1/coder.png": [
+      48,
+      24
+     ],
+     "client/img/2/coder.png": [
+      96,
+      48
+     ],
+     "client/img/3/coder.png": [
+      144,
+      72
+     ]
+    },
+    "sheet_width": 48,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_agent",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Matrix-style agent NPC in dark suit and sunglasses",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/agent.png",
+     "client/img/2/agent.png",
+     "client/img/3/agent.png",
+     "client/sprites/agent.json"
+    ],
+    "code": [
+     "client/js/npcs.js:17-21",
+     "client/js/npc.js:44-49",
+     "client/js/entityfactory.js:161-163"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (48x24), 2x (96x48), and 3x (144x72).",
+    "anchor": "offset_x: -4, offset_y: -8 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/agent.json",
+    "transparent": true,
+    "width": 48,
+    "measured": {
+     "client/img/1/agent.png": [
+      48,
+      24
+     ],
+     "client/img/2/agent.png": [
+      96,
+      48
+     ],
+     "client/img/3/agent.png": [
+      144,
+      72
+     ]
+    },
+    "sheet_width": 48,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_rick",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Dancing singer NPC in trenchcoat with microphone (Rick Astley homage)",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/rick.png",
+     "client/img/2/rick.png",
+     "client/img/3/rick.png",
+     "client/sprites/rick.json"
+    ],
+    "code": [
+     "client/js/npcs.js:23-27",
+     "client/js/npc.js:51-64",
+     "client/js/entityfactory.js:165-167"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (128x32), 2x (256x64), and 3x (384x96).",
+    "anchor": "offset_x: -8, offset_y: -12 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 4
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 32,
+    "metadata_file": "client/sprites/rick.json",
+    "transparent": true,
+    "width": 128,
+    "measured": {
+     "client/img/1/rick.png": [
+      128,
+      32
+     ],
+     "client/img/2/rick.png": [
+      256,
+      64
+     ],
+     "client/img/3/rick.png": [
+      384,
+      96
+     ]
+    },
+    "sheet_width": 128,
+    "sheet_height": 32
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_scientist",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Alchemist/scientist NPC in white lab coat and goggles",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/scientist.png",
+     "client/img/2/scientist.png",
+     "client/img/3/scientist.png",
+     "client/sprites/scientist.json"
+    ],
+    "code": [
+     "client/js/npcs.js:47-51",
+     "client/js/npc.js:66-74",
+     "client/js/entityfactory.js:169-171"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (48x24), 2x (96x48), and 3x (144x72).",
+    "anchor": "offset_x: -4, offset_y: -8 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/scientist.json",
+    "transparent": true,
+    "width": 48,
+    "measured": {
+     "client/img/1/scientist.png": [
+      48,
+      24
+     ],
+     "client/img/2/scientist.png": [
+      96,
+      48
+     ],
+     "client/img/3/scientist.png": [
+      144,
+      72
+     ]
+    },
+    "sheet_width": 48,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_nyan",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Rainbow-trailing pop-tart cat NPC (Nyan Cat homage)",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/nyan.png",
+     "client/img/2/nyan.png",
+     "client/img/3/nyan.png",
+     "client/sprites/nyan.json"
+    ],
+    "code": [
+     "client/js/npcs.js:53-58",
+     "client/js/npc.js:76-81",
+     "client/js/entityfactory.js:173-175"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (294x24), 2x (588x48), and 3x (882x72).",
+    "anchor": "offset_x: -22, offset_y: -6 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 49,
+    "height": 24,
+    "metadata_file": "client/sprites/nyan.json",
+    "transparent": true,
+    "width": 294,
+    "measured": {
+     "client/img/1/nyan.png": [
+      294,
+      24
+     ],
+     "client/img/2/nyan.png": [
+      588,
+      48
+     ],
+     "client/img/3/nyan.png": [
+      882,
+      72
+     ]
+    },
+    "sheet_width": 294,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_priest",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Wise robed priest/cleric NPC",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/priest.png",
+     "client/img/2/priest.png",
+     "client/img/3/priest.png",
+     "client/sprites/priest.json"
+    ],
+    "code": [
+     "client/js/npcs.js:67-71",
+     "client/js/npc.js:99-110",
+     "client/js/entityfactory.js:177-179"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (48x24), 2x (96x48), and 3x (144x72).",
+    "anchor": "offset_x: -4, offset_y: -8 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/priest.json",
+    "transparent": true,
+    "width": 48,
+    "measured": {
+     "client/img/1/priest.png": [
+      48,
+      24
+     ],
+     "client/img/2/priest.png": [
+      96,
+      48
+     ],
+     "client/img/3/priest.png": [
+      144,
+      72
+     ]
+    },
+    "sheet_width": 48,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_sorcerer",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Bearded sorcerer NPC with pointed hat and glowing staff",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/sorcerer.png",
+     "client/img/2/sorcerer.png",
+     "client/img/3/sorcerer.png",
+     "client/sprites/sorcerer.json"
+    ],
+    "code": [
+     "client/js/npcs.js:60-65",
+     "client/js/npc.js:112-124",
+     "client/js/entityfactory.js:181-183"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (156x26), 2x (312x52), and 3x (468x78).",
+    "anchor": "offset_x: -5, offset_y: -9 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 26,
+    "frame_width": 26,
+    "height": 26,
+    "metadata_file": "client/sprites/sorcerer.json",
+    "transparent": true,
+    "width": 156,
+    "measured": {
+     "client/img/1/sorcerer.png": [
+      156,
+      26
+     ],
+     "client/img/2/sorcerer.png": [
+      312,
+      52
+     ],
+     "client/img/3/sorcerer.png": [
+      468,
+      78
+     ]
+    },
+    "sheet_width": 156,
+    "sheet_height": 26
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_octocat",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Octopus-cat mascot NPC (GitHub Octocat homage)",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/octocat.png",
+     "client/img/2/octocat.png",
+     "client/img/3/octocat.png",
+     "client/sprites/octocat.json"
+    ],
+    "code": [
+     "client/js/npcs.js:97-101",
+     "client/js/npc.js:126-130",
+     "client/js/entityfactory.js:185-187"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (128x32), 2x (256x64), and 3x (384x96).",
+    "anchor": "offset_x: -8, offset_y: -12 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 4
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 32,
+    "frame_width": 32,
+    "height": 32,
+    "metadata_file": "client/sprites/octocat.json",
+    "transparent": true,
+    "width": 128,
+    "measured": {
+     "client/img/1/octocat.png": [
+      128,
+      32
+     ],
+     "client/img/2/octocat.png": [
+      256,
+      64
+     ],
+     "client/img/3/octocat.png": [
+      384,
+      96
+     ]
+    },
+    "sheet_width": 128,
+    "sheet_height": 32
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_beachnpc",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Beach vacationer NPC on the southern shore",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/beachnpc.png",
+     "client/img/2/beachnpc.png",
+     "client/img/3/beachnpc.png",
+     "client/sprites/beachnpc.json"
+    ],
+    "code": [
+     "client/js/npcs.js:73-77",
+     "client/js/npc.js:135-140",
+     "client/js/entityfactory.js:189-191"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (48x24), 2x (96x48), and 3x (144x72).",
+    "anchor": "offset_x: -4, offset_y: -8 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/beachnpc.json",
+    "transparent": true,
+    "width": 48,
+    "measured": {
+     "client/img/1/beachnpc.png": [
+      48,
+      24
+     ],
+     "client/img/2/beachnpc.png": [
+      96,
+      48
+     ],
+     "client/img/3/beachnpc.png": [
+      144,
+      72
+     ]
+    },
+    "sheet_width": 48,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_forestnpc",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Forest-dwelling ranger/elf NPC",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/forestnpc.png",
+     "client/img/2/forestnpc.png",
+     "client/img/3/forestnpc.png",
+     "client/sprites/forestnpc.json"
+    ],
+    "code": [
+     "client/js/npcs.js:79-83",
+     "client/js/npc.js:83-86",
+     "client/js/entityfactory.js:193-195"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (48x24), 2x (96x48), and 3x (144x72).",
+    "anchor": "offset_x: -4, offset_y: -8 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/forestnpc.json",
+    "transparent": true,
+    "width": 48,
+    "measured": {
+     "client/img/1/forestnpc.png": [
+      48,
+      24
+     ],
+     "client/img/2/forestnpc.png": [
+      96,
+      48
+     ],
+     "client/img/3/forestnpc.png": [
+      144,
+      72
+     ]
+    },
+    "sheet_width": 48,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_desertnpc",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Desert nomad/traveler NPC near the mountain pass",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/desertnpc.png",
+     "client/img/2/desertnpc.png",
+     "client/img/3/desertnpc.png",
+     "client/sprites/desertnpc.json"
+    ],
+    "code": [
+     "client/js/npcs.js:85-89",
+     "client/js/npc.js:142-148",
+     "client/js/entityfactory.js:197-199"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (48x24), 2x (96x48), and 3x (144x72).",
+    "anchor": "offset_x: -4, offset_y: -8 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/desertnpc.json",
+    "transparent": true,
+    "width": 48,
+    "measured": {
+     "client/img/1/desertnpc.png": [
+      48,
+      24
+     ],
+     "client/img/2/desertnpc.png": [
+      96,
+      48
+     ],
+     "client/img/3/desertnpc.png": [
+      144,
+      72
+     ]
+    },
+    "sheet_width": 48,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "npc_lavanpc",
+   "role": "npc",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Volcanic wasteland explorer NPC",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/lavanpc.png",
+     "client/img/2/lavanpc.png",
+     "client/img/3/lavanpc.png",
+     "client/sprites/lavanpc.json"
+    ],
+    "code": [
+     "client/js/npcs.js:91-95",
+     "client/js/npc.js:93-96",
+     "client/js/entityfactory.js:201-203"
+    ]
+   },
+   "format": {
+    "notes": "Provided at 1x (48x24), 2x (96x48), and 3x (144x72).",
+    "anchor": "offset_x: -4, offset_y: -8 (at 1x)",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 2
+     }
+    ],
+    "facings": [
+     "down"
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/lavanpc.json",
+    "transparent": true,
+    "width": 48,
+    "measured": {
+     "client/img/1/lavanpc.png": [
+      48,
+      24
+     ],
+     "client/img/2/lavanpc.png": [
+      96,
+      48
+     ],
+     "client/img/3/lavanpc.png": [
+      144,
+      72
+     ]
+    },
+    "sheet_width": 48,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_sword1",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Starter short sword icon/pickup",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/item-sword1.png",
+     "client/img/2/item-sword1.png",
+     "client/img/3/item-sword1.png",
+     "client/sprites/item-sword1.json"
+    ],
+    "code": [
+     "client/js/app.js:215-224",
+     "client/css/main.css:334,465,583,689",
+     "client/js/sprites.js:38"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Also used as the HUD #weapon icon in the bottom bar where CSS background-position (-32px at 1x, -64px at 2x, -96px at 3x) displays frame index 2.",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-sword1.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-sword1.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-sword1.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-sword1.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_sword2",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Steel sword ground pickup and HUD weapon icon",
+   "count": 7,
+   "where": {
+    "files": [
+     "client/img/1/item-sword2.png",
+     "client/img/2/item-sword2.png",
+     "client/img/3/item-sword2.png",
+     "client/sprites/item-sword2.json"
+    ],
+    "code": [
+     "client/js/items.js:5-10",
+     "client/js/app.js:215-224",
+     "client/js/game.js:63",
+     "client/js/sprites.js:39"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Used both as an animated ground pickup and as the HUD #weapon icon (frame index 2).",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-sword2.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-sword2.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-sword2.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-sword2.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_axe",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Battle axe ground pickup and HUD weapon icon",
+   "count": 5,
+   "where": {
+    "files": [
+     "client/img/1/item-axe.png",
+     "client/img/2/item-axe.png",
+     "client/img/3/item-axe.png",
+     "client/sprites/item-axe.json"
+    ],
+    "code": [
+     "client/js/items.js:12-17",
+     "client/js/app.js:215-224",
+     "client/js/game.js:63",
+     "client/js/sprites.js:24"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Used both as an animated ground pickup and as the HUD #weapon icon (frame index 2).",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-axe.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-axe.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-axe.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-axe.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_morningstar",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Spiked morning star ground pickup and HUD weapon icon",
+   "count": 5,
+   "where": {
+    "files": [
+     "client/img/1/item-morningstar.png",
+     "client/img/2/item-morningstar.png",
+     "client/img/3/item-morningstar.png",
+     "client/sprites/item-morningstar.json"
+    ],
+    "code": [
+     "client/js/items.js:40-45",
+     "client/js/app.js:215-224",
+     "client/js/game.js:64",
+     "client/js/sprites.js:34"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Used both as an animated ground pickup and as the HUD #weapon icon (frame index 2).",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-morningstar.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-morningstar.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-morningstar.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-morningstar.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_bluesword",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Magic blue sword ground pickup and HUD weapon icon",
+   "count": 5,
+   "where": {
+    "files": [
+     "client/img/1/item-bluesword.png",
+     "client/img/2/item-bluesword.png",
+     "client/img/3/item-bluesword.png",
+     "client/sprites/item-bluesword.json"
+    ],
+    "code": [
+     "client/js/items.js:26-31",
+     "client/js/app.js:215-224",
+     "client/js/game.js:63",
+     "client/js/sprites.js:25"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Used both as an animated ground pickup and as the HUD #weapon icon (frame index 2).",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-bluesword.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-bluesword.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-bluesword.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-bluesword.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_redsword",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Blazing red sword ground pickup and HUD weapon icon",
+   "count": 5,
+   "where": {
+    "files": [
+     "client/img/1/item-redsword.png",
+     "client/img/2/item-redsword.png",
+     "client/img/3/item-redsword.png",
+     "client/sprites/item-redsword.json"
+    ],
+    "code": [
+     "client/js/items.js:19-24",
+     "client/js/app.js:215-224",
+     "client/js/game.js:63",
+     "client/js/sprites.js:37"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Used both as an animated ground pickup and as the HUD #weapon icon (frame index 2).",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-redsword.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-redsword.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-redsword.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-redsword.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_goldensword",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Ultimate golden sword ground pickup and HUD weapon icon",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/item-goldensword.png",
+     "client/img/2/item-goldensword.png",
+     "client/img/3/item-goldensword.png",
+     "client/sprites/item-goldensword.json"
+    ],
+    "code": [
+     "client/js/items.js:33-38",
+     "client/js/app.js:215-224",
+     "client/js/game.js:63",
+     "client/js/sprites.js:31"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Dropped by the final boss and used as the HUD #weapon icon (frame index 2).",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-goldensword.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-goldensword.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-goldensword.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-goldensword.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_clotharmor",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Starter cloth armor HUD icon and item sheet",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/item-clotharmor.png",
+     "client/img/2/item-clotharmor.png",
+     "client/img/3/item-clotharmor.png",
+     "client/sprites/item-clotharmor.json"
+    ],
+    "code": [
+     "client/js/app.js:215-227",
+     "client/css/main.css:334,465,583,689"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Used as the starter HUD #armor icon in the bottom bar where CSS background-position (-32px at 1x, -64px at 2x, -96px at 3x) displays frame index 2.",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-clotharmor.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-clotharmor.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-clotharmor.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-clotharmor.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_leatherarmor",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Leather armor ground pickup and HUD armor icon",
+   "count": 5,
+   "where": {
+    "files": [
+     "client/img/1/item-leatherarmor.png",
+     "client/img/2/item-leatherarmor.png",
+     "client/img/3/item-leatherarmor.png",
+     "client/sprites/item-leatherarmor.json"
+    ],
+    "code": [
+     "client/js/items.js:47-52",
+     "client/js/app.js:215-227",
+     "client/js/game.js:63",
+     "client/js/sprites.js:32"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Used both as an animated ground pickup and as the HUD #armor icon (frame index 2).",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-leatherarmor.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-leatherarmor.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-leatherarmor.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-leatherarmor.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_mailarmor",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Chainmail armor ground pickup and HUD armor icon",
+   "count": 5,
+   "where": {
+    "files": [
+     "client/img/1/item-mailarmor.png",
+     "client/img/2/item-mailarmor.png",
+     "client/img/3/item-mailarmor.png",
+     "client/sprites/item-mailarmor.json"
+    ],
+    "code": [
+     "client/js/items.js:54-59",
+     "client/js/app.js:215-227",
+     "client/js/game.js:63",
+     "client/js/sprites.js:33"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Used both as an animated ground pickup and as the HUD #armor icon (frame index 2).",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-mailarmor.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-mailarmor.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-mailarmor.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-mailarmor.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_platearmor",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Steel plate armor ground pickup and HUD armor icon",
+   "count": 5,
+   "where": {
+    "files": [
+     "client/img/1/item-platearmor.png",
+     "client/img/2/item-platearmor.png",
+     "client/img/3/item-platearmor.png",
+     "client/sprites/item-platearmor.json"
+    ],
+    "code": [
+     "client/js/items.js:61-66",
+     "client/js/app.js:215-227",
+     "client/js/game.js:64",
+     "client/js/sprites.js:35"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Used both as an animated ground pickup and as the HUD #armor icon (frame index 2).",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-platearmor.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-platearmor.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-platearmor.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-platearmor.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_redarmor",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Crimson ruby armor ground pickup and HUD armor icon",
+   "count": 5,
+   "where": {
+    "files": [
+     "client/img/1/item-redarmor.png",
+     "client/img/2/item-redarmor.png",
+     "client/img/3/item-redarmor.png",
+     "client/sprites/item-redarmor.json"
+    ],
+    "code": [
+     "client/js/items.js:68-73",
+     "client/js/app.js:215-227",
+     "client/js/game.js:64",
+     "client/js/sprites.js:36"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Used both as an animated ground pickup and as the HUD #armor icon (frame index 2).",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-redarmor.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-redarmor.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-redarmor.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-redarmor.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_goldenarmor",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Golden armor ground pickup and HUD armor icon",
+   "count": 2,
+   "where": {
+    "files": [
+     "client/img/1/item-goldenarmor.png",
+     "client/img/2/item-goldenarmor.png",
+     "client/img/3/item-goldenarmor.png",
+     "client/sprites/item-goldenarmor.json"
+    ],
+    "code": [
+     "client/js/items.js:75-80",
+     "client/js/app.js:215-227",
+     "client/js/game.js:64",
+     "client/js/sprites.js:30"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Used both as an animated ground pickup and as the HUD #armor icon (frame index 2).",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-goldenarmor.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-goldenarmor.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-goldenarmor.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-goldenarmor.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_flask",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Red healing potion flask ground pickup",
+   "count": 15,
+   "where": {
+    "files": [
+     "client/img/1/item-flask.png",
+     "client/img/2/item-flask.png",
+     "client/img/3/item-flask.png",
+     "client/sprites/item-flask.json"
+    ],
+    "code": [
+     "client/js/items.js:82-87",
+     "client/js/game.js:64",
+     "client/js/sprites.js:29"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Restores 40 HP when looted.",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-flask.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-flask.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-flask.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-flask.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_burger",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Hamburger healing food pickup",
+   "count": 5,
+   "where": {
+    "files": [
+     "client/img/1/item-burger.png",
+     "client/img/2/item-burger.png",
+     "client/img/3/item-burger.png",
+     "client/sprites/item-burger.json"
+    ],
+    "code": [
+     "client/js/items.js:96-101",
+     "client/js/game.js:64",
+     "client/js/sprites.js:26"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Restores 100 HP when looted.",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-burger.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-burger.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-burger.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-burger.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_firepotion",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Orange invincibility potion bottle pickup",
+   "count": 5,
+   "where": {
+    "files": [
+     "client/img/1/item-firepotion.png",
+     "client/img/2/item-firepotion.png",
+     "client/img/3/item-firepotion.png",
+     "client/sprites/item-firepotion.json"
+    ],
+    "code": [
+     "client/js/items.js:103-112",
+     "client/js/game.js:64",
+     "client/js/sprites.js:28"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 item sheet (1x: 96x16, 2x: 192x32, 3x: 288x48). Triggers 15s Firefox invincibility transformation when looted.",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/item-firepotion.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/item-firepotion.png": [
+      96,
+      16
+     ],
+     "client/img/2/item-firepotion.png": [
+      192,
+      32
+     ],
+     "client/img/3/item-firepotion.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_item_cake",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Birthday/portal cake with candle pickup",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/item-cake.png",
+     "client/img/2/item-cake.png",
+     "client/img/3/item-cake.png",
+     "client/sprites/item-cake.json"
+    ],
+    "code": [
+     "client/js/items.js:89-94",
+     "client/js/game.js:64,149",
+     "client/js/sprites.js:27"
+    ]
+   },
+   "format": {
+    "notes": "3-frame 24x24 item sheet (1x: 72x24, 2x: 144x48, 3x: 216x72). Does not draw sparks overlay (renderer.js:355).",
+    "anchor": "offset_x: -4, offset_y: -6 (at 1x)",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 3
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/item-cake.json",
+    "transparent": true,
+    "width": 72,
+    "measured": {
+     "client/img/1/item-cake.png": [
+      72,
+      24
+     ],
+     "client/img/2/item-cake.png": [
+      144,
+      48
+     ],
+     "client/img/3/item-cake.png": [
+      216,
+      72
+     ]
+    },
+    "sheet_width": 72,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "pickup_chest",
+   "role": "pickup",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Locked wooden treasure chest",
+   "count": 21,
+   "where": {
+    "files": [
+     "client/img/1/chest.png",
+     "client/img/2/chest.png",
+     "client/img/3/chest.png",
+     "client/sprites/chest.json"
+    ],
+    "code": [
+     "client/js/chest.js:3-26",
+     "client/js/game.js:62,681-697",
+     "client/js/sprites.js:8"
+    ]
+   },
+   "format": {
+    "notes": "Single-frame 16x16 sheet (1x: 16x16, 2x: 32x32, 3x: 48x48). Switches to death.png puff animation when opened.",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 1
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/chest.json",
+    "transparent": true,
+    "width": 16,
+    "measured": {
+     "client/img/1/chest.png": [
+      16,
+      16
+     ],
+     "client/img/2/chest.png": [
+      32,
+      32
+     ],
+     "client/img/3/chest.png": [
+      48,
+      48
+     ]
+    },
+    "sheet_width": 16,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "effect_death",
+   "role": "decoration",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Smoke/skull poof effect played when an entity dies or a chest opens",
+   "count": 10,
+   "where": {
+    "files": [
+     "client/img/1/death.png",
+     "client/img/2/death.png",
+     "client/img/3/death.png",
+     "client/sprites/death.json"
+    ],
+    "code": [
+     "client/js/game.js:62,633,690,833",
+     "client/js/sprites.js:12"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 24x24 animation (1x: 144x24, 2x: 288x48, 3x: 432x72).",
+    "anchor": "offset_x: -4, offset_y: -4 (at 1x)",
+    "animations": [
+     {
+      "name": "death",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 24,
+    "frame_width": 24,
+    "height": 24,
+    "metadata_file": "client/sprites/death.json",
+    "transparent": true,
+    "width": 144,
+    "measured": {
+     "client/img/1/death.png": [
+      144,
+      24
+     ],
+     "client/img/2/death.png": [
+      288,
+      48
+     ],
+     "client/img/3/death.png": [
+      432,
+      72
+     ]
+    },
+    "sheet_width": 144,
+    "sheet_height": 24
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "effect_sparks",
+   "role": "decoration",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Twinkling magic sparkles drawn over lootable items on the ground",
+   "count": 20,
+   "where": {
+    "files": [
+     "client/img/1/sparks.png",
+     "client/img/2/sparks.png",
+     "client/img/3/sparks.png",
+     "client/sprites/sparks.json"
+    ],
+    "code": [
+     "client/js/game.js:58,133-134",
+     "client/js/renderer.js:355-366",
+     "client/js/sprites.js:61"
+    ]
+   },
+   "format": {
+    "notes": "6-frame 16x16 sparkle overlay (1x: 96x16, 2x: 192x32, 3x: 288x48) drawn over ground items.",
+    "anchor": "offset_x: 0, offset_y: 0",
+    "animations": [
+     {
+      "name": "idle",
+      "row": 0,
+      "frames": 6
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 16,
+    "metadata_file": "client/sprites/sparks.json",
+    "transparent": true,
+    "width": 96,
+    "measured": {
+     "client/img/1/sparks.png": [
+      96,
+      16
+     ],
+     "client/img/2/sparks.png": [
+      192,
+      32
+     ],
+     "client/img/3/sparks.png": [
+      288,
+      48
+     ]
+    },
+    "sheet_width": 96,
+    "sheet_height": 16
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "effect_shadow16",
+   "role": "decoration",
+   "kind": "image",
+   "required": true,
+   "subject_hint": "Small oval drop shadow drawn beneath characters and items",
+   "count": 50,
+   "where": {
+    "files": [
+     "client/img/1/shadow16.png",
+     "client/img/2/shadow16.png",
+     "client/img/3/shadow16.png",
+     "client/sprites/shadow16.json"
+    ],
+    "code": [
+     "client/js/game.js:58,116-119",
+     "client/js/renderer.js:346-350,582-586",
+     "client/js/sprites.js:56"
+    ]
+   },
+   "format": {
+    "notes": "16x16 drop shadow image (1x: 16x16, 2x: 32x32, 3x: 48x48) drawn at (0, entity.shadowOffsetY).",
+    "file_type": "png",
+    "height": 16,
+    "metadata_file": "client/sprites/shadow16.json",
+    "transparent": true,
+    "width": 16,
+    "measured": {
+     "client/img/1/shadow16.png": [
+      16,
+      16
+     ],
+     "client/img/2/shadow16.png": [
+      32,
+      32
+     ],
+     "client/img/3/shadow16.png": [
+      48,
+      48
+     ]
+    }
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "ui_cursor_hand",
+   "role": "ui",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Pointing gloved hand default mouse cursor",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/hand.png",
+     "client/img/2/hand.png",
+     "client/img/3/hand.png",
+     "client/sprites/hand.json"
+    ],
+    "code": [
+     "client/js/game.js:58,122,286",
+     "client/js/renderer.js:285-296",
+     "client/js/sprites.js:22"
+    ]
+   },
+   "format": {
+    "notes": "14x14 canvas cursor (1x: 14x14, 2x: 28x28, 3x: 42x42).",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 1
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 14,
+    "frame_width": 14,
+    "height": 14,
+    "metadata_file": "client/sprites/hand.json",
+    "transparent": true,
+    "width": 14,
+    "measured": {
+     "client/img/1/hand.png": [
+      14,
+      14
+     ],
+     "client/img/2/hand.png": [
+      28,
+      28
+     ],
+     "client/img/3/hand.png": [
+      42,
+      42
+     ]
+    },
+    "sheet_width": 14,
+    "sheet_height": 14
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "ui_cursor_sword",
+   "role": "ui",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Sword attack mouse cursor shown when hovering over an enemy",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/sword.png",
+     "client/img/2/sword.png",
+     "client/img/3/sword.png",
+     "client/sprites/sword.json"
+    ],
+    "code": [
+     "client/js/game.js:58,123,271",
+     "client/js/renderer.js:285-296",
+     "client/js/sprites.js:63"
+    ]
+   },
+   "format": {
+    "notes": "14x14 canvas cursor (1x: 14x14, 2x: 28x28, 3x: 42x42).",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 1
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 14,
+    "frame_width": 14,
+    "height": 14,
+    "metadata_file": "client/sprites/sword.json",
+    "transparent": true,
+    "width": 14,
+    "measured": {
+     "client/img/1/sword.png": [
+      14,
+      14
+     ],
+     "client/img/2/sword.png": [
+      28,
+      28
+     ],
+     "client/img/3/sword.png": [
+      42,
+      42
+     ]
+    },
+    "sheet_width": 14,
+    "sheet_height": 14
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "ui_cursor_loot",
+   "role": "ui",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Pouch/loot bag mouse cursor shown when hovering over an item or chest",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/loot.png",
+     "client/img/2/loot.png",
+     "client/img/3/loot.png",
+     "client/sprites/loot.json"
+    ],
+    "code": [
+     "client/js/game.js:58,124,281",
+     "client/js/renderer.js:285-296",
+     "client/js/sprites.js:43"
+    ]
+   },
+   "format": {
+    "notes": "14x14 canvas cursor (1x: 14x14, 2x: 28x28, 3x: 42x42).",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 1
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 14,
+    "frame_width": 14,
+    "height": 14,
+    "metadata_file": "client/sprites/loot.json",
+    "transparent": true,
+    "width": 14,
+    "measured": {
+     "client/img/1/loot.png": [
+      14,
+      14
+     ],
+     "client/img/2/loot.png": [
+      28,
+      28
+     ],
+     "client/img/3/loot.png": [
+      42,
+      42
+     ]
+    },
+    "sheet_width": 14,
+    "sheet_height": 14
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "ui_cursor_talk",
+   "role": "ui",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Speech bubble mouse cursor shown when hovering over an NPC",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/talk.png",
+     "client/img/2/talk.png",
+     "client/img/3/talk.png",
+     "client/sprites/talk.json"
+    ],
+    "code": [
+     "client/js/game.js:58,127,276",
+     "client/js/renderer.js:285-296",
+     "client/js/sprites.js:66"
+    ]
+   },
+   "format": {
+    "notes": "14x14 canvas cursor (1x: 14x14, 2x: 28x28, 3x: 42x42).",
+    "animations": [
+     {
+      "name": "idle_down",
+      "row": 0,
+      "frames": 1
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 14,
+    "frame_width": 14,
+    "height": 14,
+    "metadata_file": "client/sprites/talk.json",
+    "transparent": true,
+    "width": 14,
+    "measured": {
+     "client/img/1/talk.png": [
+      14,
+      14
+     ],
+     "client/img/2/talk.png": [
+      28,
+      28
+     ],
+     "client/img/3/talk.png": [
+      42,
+      42
+     ]
+    },
+    "sheet_width": 14,
+    "sheet_height": 14
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "ui_target_cell",
+   "role": "ui",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Animated green/red corner brackets highlighting the destination tile on desktop",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/target.png",
+     "client/img/2/target.png",
+     "client/img/3/target.png",
+     "client/sprites/target.json"
+    ],
+    "code": [
+     "client/js/game.js:58,125,130-131",
+     "client/js/renderer.js:249-280",
+     "client/js/sprites.js:67"
+    ]
+   },
+   "format": {
+    "notes": "4-frame x 2-row 16x16 sheet (1x: 64x32, 2x: 128x64, 3x: 192x96). Row 0 is animated on the selected movement tile.",
+    "animations": [
+     {
+      "name": "move",
+      "row": 0,
+      "frames": 4
+     },
+     {
+      "name": "atk",
+      "row": 1,
+      "frames": 4
+     }
+    ],
+    "file_type": "png",
+    "frame_height": 16,
+    "frame_width": 16,
+    "height": 32,
+    "metadata_file": "client/sprites/target.json",
+    "transparent": true,
+    "width": 64,
+    "measured": {
+     "client/img/1/target.png": [
+      64,
+      32
+     ],
+     "client/img/2/target.png": [
+      128,
+      64
+     ],
+     "client/img/3/target.png": [
+      192,
+      96
+     ]
+    },
+    "sheet_width": 64,
+    "sheet_height": 32
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "terrain_tilesheet",
+   "role": "terrain",
+   "kind": "tileset",
+   "required": true,
+   "subject_hint": "Complete overworld and dungeon tileset (grass, forest, beach, desert, cave, lava, castle, interiors, water, roofs)",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/tilesheet.png",
+     "client/img/2/tilesheet.png",
+     "client/img/3/tilesheet.png"
+    ],
+    "code": [
+     "client/js/map.js:55-75,126-148",
+     "client/js/renderer.js:306-318,495-545"
+    ]
+   },
+   "format": {
+    "notes": "Grid of 20x98 tiles (1,960 tiles total) at 16x16 base tile size. Provided at 1x (320x1568), 2x (640x3136), and 3x (960x4704). Indexed 1-based by client/maps/world_client.json (and client/maps/world_client.js), including multi-layer tile arrays, high tiles (drawn above entities), and horizontal animated tile strips.",
+    "file_type": "png",
+    "height": 1568,
+    "metadata_file": "client/maps/world_client.json",
+    "tile_size": 16,
+    "transparent": true,
+    "width": 320,
+    "measured": {
+     "client/img/1/tilesheet.png": [
+      320,
+      1568
+     ],
+     "client/img/2/tilesheet.png": [
+      640,
+      3136
+     ],
+     "client/img/3/tilesheet.png": [
+      960,
+      4704
+     ]
+    }
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "ui_spritesheet",
+   "role": "ui",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Main UI atlas: game logo, logo sparkles, parchment scroll, Play/Delete/Respawn buttons, character icon, instructions panel, ribbons, close button, and credits/about illustrations",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/spritesheet.png",
+     "client/img/2/spritesheet.png",
+     "client/img/3/spritesheet.png"
+    ],
+    "code": [
+     "client/css/main.css:99,101,191-214,250,257-321,349-374,381,387-452,480-493,499,505-570,598-602"
+    ]
+   },
+   "format": {
+    "notes": "CSS background-image UI atlas provided at 1x (422x753), 2x (844x1506), and 3x (1266x2259). Key 1x regions: #logo (0,0, 229x42), #logosparks (6 vertical frames of 229x42 from y=-42 to -294), .left-ornament (-354,0, 31x12), .right-ornament (-385,0, 31x12), #character (-354,-12 and -366,-12, 12x21), .play/.button states (x=-229, y=0/-51/-102/-153, 125x51), .parchment-left (0,-294, 38x182), .parchment-middle (-38,-294, 346x182), .parchment-right (-384,-294, 38x182), #respawn (0,-476 and -125,-476, 125x51), #instructions (0,-527, 417x172) and icons (-378..-406,-12), .close (-354..-386,-126, 16x16), .ribbon (-381..-399,-172..-185).",
+    "file_type": "png",
+    "height": 753,
+    "transparent": true,
+    "width": 422,
+    "measured": {
+     "client/img/1/spritesheet.png": [
+      422,
+      777
+     ],
+     "client/img/2/spritesheet.png": [
+      844,
+      1554
+     ],
+     "client/img/3/spritesheet.png": [
+      1266,
+      2331
+     ]
+    }
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "ui_barsheet",
+   "role": "ui",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "In-game bottom HUD bar, health bar frame, chat/achievement/help/mute buttons, chat input box, and population popup frame",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/barsheet.png",
+     "client/img/2/barsheet.png",
+     "client/img/3/barsheet.png"
+    ],
+    "code": [
+     "client/css/main.css:113,115,124,128,130,251,328-347,382,459-478,500,577-596"
+    ]
+   },
+   "format": {
+    "notes": "CSS background-image HUD atlas provided at 1x (480x80), 2x (960x160), and 3x (1440x240). Key 1x regions: #bar-container (0,0, 480x17), #healthbar (0,-17, 102x13), #chatbutton (-102/-116/-130,-17, 14x15), #achievementsbutton (-144/-158/-172/-288,-17, 14x15), #helpbutton (-186/-200/-214,-17, 14x15), #mutebutton (-228/-242/-256,-17, 14x15), #chatbox (0,-32, 394x16), #population (-240,-48, 131x32).",
+    "file_type": "png",
+    "height": 80,
+    "transparent": true,
+    "width": 480,
+    "measured": {
+     "client/img/1/barsheet.png": [
+      480,
+      80
+     ],
+     "client/img/2/barsheet.png": [
+      960,
+      160
+     ],
+     "client/img/3/barsheet.png": [
+      1440,
+      240
+     ]
+    }
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "ui_achievements_sheet",
+   "role": "ui",
+   "kind": "sheet",
+   "required": true,
+   "subject_hint": "Achievements modal background, 20 achievement coin badges, coin sparkles, pagination arrows, and unlock notification banner",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/achievements.png",
+     "client/img/2/achievements.png",
+     "client/img/3/achievements.png"
+    ],
+    "code": [
+     "client/css/achievements.css:8-307",
+     "client/css/main.css:137,232-239,252,383,501"
+    ]
+   },
+   "format": {
+    "notes": "CSS background-image achievements atlas provided at 1x (416x304), 2x (832x608), and 3x (1248x912). Key 1x regions: #achievements modal (0,0, 416x196), #achievements li slot (0,-196, 372x26), 20 .coin badges (24x26 each: achievements 1-17 at x=0..-384, y=-222; achievements 18-20 at x=-216..-264, y=-274), #achievement-notification banner (0,-248, 216x34), #coinsparks (6 frames of 24x26 at x=-216..-360, y=-248), #previous/#next buttons (34x22 at y=-282).",
+    "file_type": "png",
+    "height": 304,
+    "transparent": true,
+    "width": 416,
+    "measured": {
+     "client/img/1/achievements.png": [
+      416,
+      304
+     ],
+     "client/img/2/achievements.png": [
+      832,
+      608
+     ],
+     "client/img/3/achievements.png": [
+      1248,
+      912
+     ]
+    }
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "backdrop_wood",
+   "role": "backdrop",
+   "kind": "image",
+   "required": true,
+   "subject_hint": "Seamless repeating dark wood plank texture for page background",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/wood.png",
+     "client/img/2/wood.png",
+     "client/img/3/wood.png"
+    ],
+    "code": [
+     "client/css/main.css:255,256,385,386,503,504,613,614,725,726",
+     "client/css/ie.css:4"
+    ]
+   },
+   "format": {
+    "notes": "Seamless repeating tileable background (1x: 128x128, 2x: 256x256, 3x: 384x384).",
+    "file_type": "png",
+    "height": 128,
+    "transparent": false,
+    "width": 128,
+    "measured": {
+     "client/img/1/wood.png": [
+      128,
+      128
+     ],
+     "client/img/2/wood.png": [
+      256,
+      256
+     ],
+     "client/img/3/wood.png": [
+      384,
+      384
+     ]
+    }
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "ui_spinner",
+   "role": "ui",
+   "kind": "image",
+   "required": true,
+   "subject_hint": "Animated loading spinner shown inside the Play button while waiting for map load",
+   "count": 2,
+   "where": {
+    "files": [
+     "client/img/common/spinner.gif"
+    ],
+    "code": [
+     "client/index.html:66,85",
+     "client/css/main.css:107-109,269,400,518"
+    ]
+   },
+   "format": {
+    "notes": "Animated GIF scaled via CSS to 16x16 (1x), 24x24 (2x), or 32x32 (3x).",
+    "file_type": "gif",
+    "height": 32,
+    "transparent": true,
+    "width": 32
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "ui_bubble_tail",
+   "role": "ui",
+   "kind": "image",
+   "required": true,
+   "subject_hint": "Small dark speech-bubble pointer triangle at bottom of chat/NPC bubbles",
+   "count": 10,
+   "where": {
+    "files": [
+     "client/img/common/thingy.png"
+    ],
+    "code": [
+     "client/css/main.css:178",
+     "client/js/bubble.js:44",
+     "client/index.html:279"
+    ]
+   },
+   "format": {
+    "notes": "11x10 semi-transparent speech bubble pointer tail.",
+    "file_type": "png",
+    "height": 10,
+    "transparent": true,
+    "width": 11,
+    "measured": {
+     "client/img/common/thingy.png": [
+      11,
+      10
+     ]
+    }
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "ui_favicon",
+   "role": "ui",
+   "kind": "image",
+   "required": false,
+   "subject_hint": "Sword/shield pixel art browser tab favicon",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/common/favicon.png"
+    ],
+    "code": [
+     "client/index.html:19"
+    ]
+   },
+   "format": {
+    "notes": "16x16 PNG favicon.",
+    "file_type": "png",
+    "height": 16,
+    "transparent": true,
+    "width": 16,
+    "measured": {
+     "client/img/common/favicon.png": [
+      16,
+      16
+     ]
+    }
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_loot",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Pickup chime when looting a weapon, armor, or cake",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/loot.mp3",
+     "client/audio/sounds/loot.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:562"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format based on browser support with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_hit1",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Sword slash/impact sound effect variant 1",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/hit1.mp3",
+     "client/audio/sounds/hit1.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:1329"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_hit2",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Sword slash/impact sound effect variant 2",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/hit2.mp3",
+     "client/audio/sounds/hit2.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:1329"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_hurt",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Player taking damage grunt/impact sound",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/hurt.mp3",
+     "client/audio/sounds/hurt.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:995"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_heal",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Sparkling healing sound when consuming a flask or burger",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/heal.mp3",
+     "client/audio/sounds/heal.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:560"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_chat",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Soft pop sound when a chat bubble appears",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/chat.mp3",
+     "client/audio/sounds/chat.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:1058"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_revive",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Resurrection fanfare when clicking Respawn",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/revive.mp3",
+     "client/audio/sounds/revive.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/main.js:358"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_death",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Somber jingle played when the player dies",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/death.mp3",
+     "client/audio/sounds/death.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:654"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_firefox",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Power-up fanfare when drinking the firepotion",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/firefox.mp3",
+     "client/audio/sounds/firefox.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:556"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_achievement",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Triumphant chime when unlocking an achievement",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/achievement.mp3",
+     "client/audio/sounds/achievement.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:1563"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_kill1",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Enemy defeated sound effect variant 1",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/kill1.mp3",
+     "client/audio/sounds/kill1.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:854"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_kill2",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Enemy defeated sound effect variant 2",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/kill2.mp3",
+     "client/audio/sounds/kill2.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:854"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_noloot",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Error buzzer when attempting to pick up inferior/duplicate gear",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/noloot.mp3",
+     "client/audio/sounds/noloot.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:571"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_teleport",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Warp whoosh sound when stepping into a magic portal",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/teleport.mp3",
+     "client/audio/sounds/teleport.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:615"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_chest",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Wooden chest unlocking/opening sound",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/chest.mp3",
+     "client/audio/sounds/chest.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:625"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_npc",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Blip sound played when advancing NPC dialogue",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/npc.mp3",
+     "client/audio/sounds/npc.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:1165"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_npc_end",
+   "role": "sound",
+   "kind": "audio",
+   "required": true,
+   "subject_hint": "Closing blip sound when an NPC finishes speaking",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/npc-end.mp3",
+     "client/audio/sounds/npc-end.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15",
+     "client/js/game.js:1168"
+    ]
+   },
+   "format": {
+    "notes": "Loaded in MP3 or OGG format with 4 audio channels.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "sound_npctalk_unused",
+   "role": "sound",
+   "kind": "audio",
+   "required": false,
+   "subject_hint": "Alternate NPC talk sound file present in client/audio/sounds/",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/audio/sounds/npctalk.mp3",
+     "client/audio/sounds/npctalk.ogg"
+    ],
+    "code": [
+     "client/js/audio.js:15"
+    ]
+   },
+   "format": {
+    "notes": "Present in client/audio/sounds/ (used by the native iOS port in ios-native/BrowserQuestNative/AudioManager.swift:6).",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "music_zones",
+   "role": "music",
+   "kind": "audio",
+   "required": false,
+   "subject_hint": "7 looping background music tracks for village, beach, forest, cave, desert, lavaland, and boss areas",
+   "count": 7,
+   "where": {
+    "files": [],
+    "code": [
+     "client/js/audio.js:14,29-39,89-94",
+     "client/js/game.js:401-406"
+    ]
+   },
+   "format": {
+    "notes": "AudioManager requests client/audio/music/{village,beach,forest,cave,desert,lavaland,boss}.{mp3,ogg} and crossfades between them based on map.musicAreas in client/maps/world_client.json. Upstream repository omits the client/audio/music/ directory.",
+    "file_type": "mp3/ogg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "font_graphicpixel",
+   "role": "font",
+   "kind": "font",
+   "required": true,
+   "subject_hint": "Primary bitmap-style pixel font used across all UI and canvas text",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/fonts/graphicpixel-webfont.eot",
+     "client/fonts/graphicpixel-webfont.svg",
+     "client/fonts/graphicpixel-webfont.ttf",
+     "client/fonts/graphicpixel-webfont.woff"
+    ],
+    "code": [
+     "client/css/main.css:40-50,64",
+     "client/js/renderer.js:187-191"
+    ]
+   },
+   "format": {
+    "notes": "Loaded via @font-face as 'GraphicPixel' in main.css and used on the 2D canvas context for player names, damage numbers, and debug info.",
+    "file_type": "eot/woff/ttf/svg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "font_advocut",
+   "role": "font",
+   "kind": "font",
+   "required": false,
+   "subject_hint": "Secondary pixel font used on Windows browsers",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/fonts/advocut-webfont.eot",
+     "client/fonts/advocut-webfont.svg",
+     "client/fonts/advocut-webfont.ttf",
+     "client/fonts/advocut-webfont.woff"
+    ],
+    "code": [
+     "client/css/main.css:52-62,839-841"
+    ]
+   },
+   "format": {
+    "notes": "Loaded via @font-face as 'AdvoCut' in main.css and applied when body has class .windows.",
+    "file_type": "eot/woff/ttf/svg"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "material_sprite_effects",
+   "role": "parameter",
+   "kind": "material",
+   "required": true,
+   "subject_hint": "Procedural pixel-shader effects for hurt flash tint and hover silhouette outline",
+   "count": 2,
+   "where": {
+    "files": [],
+    "code": [
+     "client/js/sprite.js:44-151"
+    ]
+   },
+   "format": {
+    "notes": "In client/js/sprite.js, createHurtSprite() sets RGB=(255, 75, 75) on non-transparent pixels when a character takes damage; createSilhouette() draws a 1px outline with RGBA=(255, 255, 150, 150) on transparent pixels orthogonally adjacent to opaque pixels when hovering over a mob, NPC, chest, or cake.",
+    "current_value": "hurt RGB(255, 75, 75); silhouette RGBA(255, 255, 150, 150)",
+    "value_type": "rgba_pixel_transform"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "text_game_titles_and_ui",
+   "role": "ui",
+   "kind": "text",
+   "required": true,
+   "subject_hint": "Game title, subtitle, welcome notifications, and parchment UI headings",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/index.html"
+    ],
+    "code": [
+     "client/index.html:20,35,56,74,93,140,169,173,179",
+     "client/js/game.js:464,466"
+    ]
+   },
+   "format": {
+    "notes": "Visible title ('BrowserQuest'), subtitle ('A Massively Multiplayer Adventure'), welcome notifications ('Welcome to BrowserQuest!', 'Welcome back to BrowserQuest!'), and death screen prompt ('You are dead...').",
+    "current_value": "BrowserQuest \u2014 A Massively Multiplayer Adventure",
+    "value_type": "string"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "text_npc_dialogue",
+   "role": "npc",
+   "kind": "text",
+   "required": true,
+   "subject_hint": "All NPC dialogue scripts cycled in speech bubbles when talking to each of the 16 NPC types",
+   "count": 16,
+   "where": {
+    "files": [],
+    "code": [
+     "client/js/npc.js:3-160"
+    ]
+   },
+   "format": {
+    "notes": "NpcTalk dictionary in client/js/npc.js mapping each NPC kind string ('guard', 'king', 'villagegirl', 'villager', 'agent', 'rick', 'scientist', 'nyan', 'forestnpc', 'lavanpc', 'priest', 'sorcerer', 'octocat', 'coder', 'beachnpc', 'desertnpc') to an array of HTML/text lines.",
+    "current_value": "NpcTalk object with 16 NPC dialogue arrays",
+    "value_type": "string_array_map"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "text_item_loot_messages",
+   "role": "pickup",
+   "kind": "text",
+   "required": true,
+   "subject_hint": "HUD notification messages displayed when looting each weapon, armor, potion, or food item",
+   "count": 15,
+   "where": {
+    "files": [],
+    "code": [
+     "client/js/items.js:5-115",
+     "client/js/player.js:40-56"
+    ]
+   },
+   "format": {
+    "notes": "Each Item subclass in client/js/items.js defines this.lootMessage (e.g., 'You pick up a steel sword', 'You drink a health potion'), plus rank comparison messages in client/js/player.js ('You are wearing a better armor', 'You are wielding a better weapon', 'You already have this ...').",
+    "current_value": "15 item lootMessage strings in client/js/items.js",
+    "value_type": "string_map"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "text_mob_kill_notifications",
+   "role": "enemy",
+   "kind": "text",
+   "required": true,
+   "subject_hint": "HUD notification messages and enemy display names shown when defeating an enemy",
+   "count": 13,
+   "where": {
+    "files": [],
+    "code": [
+     "client/js/game.js:933-957"
+    ]
+   },
+   "format": {
+    "notes": "In client/js/game.js:onPlayerKillMob, maps mob kinds to display names ('greater skeleton' for skeleton2, 'evil eye' for eye, 'death knight' for deathknight, 'You killed the skeleton king' for boss, and 'You killed a/an <mobName>' for rat, skeleton, goblin, ogre, spectre, crab, snake, bat, wizard).",
+    "current_value": "You killed a/an <mobName> / You killed the skeleton king",
+    "value_type": "string_map"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "text_achievements",
+   "role": "ui",
+   "kind": "text",
+   "required": true,
+   "subject_hint": "Names and descriptions of all 20 quests/achievements",
+   "count": 20,
+   "where": {
+    "files": [],
+    "code": [
+     "client/js/game.js:152-279"
+    ]
+   },
+   "format": {
+    "notes": "this.achievements in client/js/game.js defines id (1-20), name, and desc for all 20 achievements shown in the achievements book and unlock banner.",
+    "current_value": "20 achievement {name, desc} objects in client/js/game.js",
+    "value_type": "object_map"
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "dialogue_portrait",
+   "role": "portrait",
+   "kind": "image",
+   "required": true,
+   "count": 99,
+   "synthetic": true,
+   "subject_hint": "portrait of the speaking character, shown beside the subtitle",
+   "where": {
+    "files": [],
+    "code": []
+   },
+   "format": {
+    "file_type": "png",
+    "width": 512,
+    "height": 512,
+    "transparent": true,
+    "aspect_ratio": "1:1",
+    "notes": "Added by the adapter: a square portrait shown next to the subtitle box while a character speaks."
+   },
+   "grounded": true,
+   "ground_reasons": []
+  },
+  {
+   "id": "chapter_backdrop",
+   "role": "backdrop",
+   "kind": "image",
+   "required": true,
+   "count": 99,
+   "synthetic": true,
+   "subject_hint": "full-screen illustration shown when a chapter starts",
+   "where": {
+    "files": [],
+    "code": []
+   },
+   "format": {
+    "file_type": "jpg",
+    "width": 1280,
+    "height": 720,
+    "transparent": false,
+    "aspect_ratio": "16:9",
+    "notes": "Added by the adapter: shown full screen with the narrator reading the chapter summary."
+   },
+   "grounded": true,
+   "ground_reasons": []
+  }
+ ],
+ "interaction_id": "v1_ChduWFBlYXBIWkVhZVVfdU1QbFBhZ2dRSRIXblhQZWFwSFpFYWVVX3VNUGxQYWdnUUk",
+ "seconds": 496,
+ "repo_hash": "b33a4a9cf8298346",
+ "rejected": [
+  {
+   "id": "ui_canvas_border",
+   "role": "ui",
+   "kind": "image",
+   "required": true,
+   "subject_hint": "9-slice stone/wood frame border around the game viewport",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/border.png",
+     "client/img/2/border.png",
+     "client/img/3/border.png"
+    ],
+    "code": [
+     "client/css/main.css:281,412,530,639"
+    ]
+   },
+   "format": {
+    "notes": "CSS border-image-source on #canvasborder with slice/width 5px at 1x (15x15), 10px at 2x (30x30), and 15px at 3x (45x45).",
+    "file_type": "png",
+    "height": 15,
+    "transparent": true,
+    "width": 15,
+    "measured": {
+     "client/img/1/border.png": [
+      490,
+      250
+     ],
+     "client/img/2/border.png": [
+      980,
+      500
+     ],
+     "client/img/3/border.png": [
+      1470,
+      750
+     ]
+    }
+   },
+   "grounded": false,
+   "ground_reasons": [
+    "claimed 15x15, files are [(490, 250), (980, 500), (1470, 750)]"
+   ]
+  },
+  {
+   "id": "backdrop_wood2",
+   "role": "backdrop",
+   "kind": "image",
+   "required": false,
+   "subject_hint": "Small wood knot/nail detail overlay on large desktop background",
+   "count": 2,
+   "where": {
+    "files": [
+     "client/img/1/wood2.png",
+     "client/img/2/wood2.png",
+     "client/img/3/wood2.png"
+    ],
+    "code": [
+     "client/css/main.css:255,256"
+    ]
+   },
+   "format": {
+    "notes": "Decorative wood detail placed at two positions on viewports >= 1501px wide (background-size: 15px auto).",
+    "file_type": "png",
+    "height": 15,
+    "transparent": true,
+    "width": 5,
+    "measured": {
+     "client/img/1/wood2.png": [
+      5,
+      17
+     ],
+     "client/img/2/wood2.png": [
+      10,
+      34
+     ],
+     "client/img/3/wood2.png": [
+      15,
+      51
+     ]
+    }
+   },
+   "grounded": false,
+   "ground_reasons": [
+    "claimed 5x15, files are [(5, 17), (10, 34), (15, 51)]"
+   ]
+  },
+  {
+   "id": "backdrop_wood3",
+   "role": "backdrop",
+   "kind": "image",
+   "required": false,
+   "subject_hint": "Wood plank seam/grain detail overlay on large desktop background",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/1/wood3.png",
+     "client/img/2/wood3.png",
+     "client/img/3/wood3.png"
+    ],
+    "code": [
+     "client/css/main.css:255,256"
+    ]
+   },
+   "format": {
+    "notes": "Decorative wood detail placed on viewports >= 1501px wide (background-size: 60px auto).",
+    "file_type": "png",
+    "height": 20,
+    "transparent": true,
+    "width": 20,
+    "measured": {
+     "client/img/1/wood3.png": [
+      20,
+      64
+     ],
+     "client/img/2/wood3.png": [
+      40,
+      128
+     ],
+     "client/img/3/wood3.png": [
+      60,
+      192
+     ]
+    }
+   },
+   "grounded": false,
+   "ground_reasons": [
+    "claimed 20x20, files are [(20, 64), (40, 128), (60, 192)]"
+   ]
+  },
+  {
+   "id": "ui_loading_banner",
+   "role": "ui",
+   "kind": "image",
+   "required": true,
+   "subject_hint": "Centered 'Loading...' pixel art banner on the canvas background",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/common/loading.png"
+    ],
+    "code": [
+     "client/css/main.css:73"
+    ]
+   },
+   "format": {
+    "notes": "Centered on #background canvas before tiles are drawn.",
+    "file_type": "png",
+    "height": 74,
+    "transparent": true,
+    "width": 158,
+    "measured": {
+     "client/img/common/loading.png": [
+      400,
+      100
+     ]
+    }
+   },
+   "grounded": false,
+   "ground_reasons": [
+    "claimed 158x74, files are [(400, 100)]"
+   ]
+  },
+  {
+   "id": "ui_loading_error_banner",
+   "role": "ui",
+   "kind": "image",
+   "required": true,
+   "subject_hint": "Centered error banner shown on the canvas when disconnected",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/common/loading-error.png"
+    ],
+    "code": [
+     "client/css/main.css:74"
+    ]
+   },
+   "format": {
+    "notes": "Centered on .error #background canvas when connection fails.",
+    "file_type": "png",
+    "height": 74,
+    "transparent": true,
+    "width": 158,
+    "measured": {
+     "client/img/common/loading-error.png": [
+      400,
+      100
+     ]
+    }
+   },
+   "grounded": false,
+   "ground_reasons": [
+    "claimed 158x74, files are [(400, 100)]"
+   ]
+  },
+  {
+   "id": "ui_promo_title",
+   "role": "ui",
+   "kind": "image",
+   "required": false,
+   "subject_hint": "Promotional title card image for social OpenGraph metadata",
+   "count": 1,
+   "where": {
+    "files": [
+     "client/img/common/promo-title.jpg"
+    ],
+    "code": [
+     "client/index.html:23"
+    ]
+   },
+   "format": {
+    "notes": "JPEG social preview card.",
+    "file_type": "jpg",
+    "height": 250,
+    "transparent": false,
+    "width": 250,
+    "measured": {
+     "client/img/common/promo-title.jpg": [
+      500,
+      250
+     ]
+    }
+   },
+   "grounded": false,
+   "ground_reasons": [
+    "claimed 250x250, files are [(500, 250)]"
+   ]
+  },
+  {
+   "id": "colour_target_cell",
+   "role": "ui",
+   "kind": "colour",
+   "required": true,
+   "subject_hint": "Tile hover and destination highlight colours on the map canvas",
+   "count": 1,
+   "where": {
+    "files": [],
+    "code": [
+     "client/js/game.js:36,263-268",
+     "client/js/renderer.js:211-260"
+    ]
+   },
+   "format": {
+    "notes": "Walkable hover cell is rgba(255, 255, 255, 0.5); colliding hover cell is rgba(255, 50, 50, 0.5); mobile selected destination cell is rgb(51, 255, 0).",
+    "current_value": "rgba(255, 255, 255, 0.5) / rgba(255, 50, 50, 0.5) / rgb(51, 255, 0)",
+    "value_type": "css_color"
+   },
+   "grounded": false,
+   "ground_reasons": [
+    "value rgba(255, 255, 255, 0.5) / rgba(255, 50, 50, 0.5) / rgb(51, 255, 0) not found in client/js/game.js"
+   ]
+  },
+  {
+   "id": "colour_canvas_backdrop",
+   "role": "backdrop",
+   "kind": "colour",
+   "required": true,
+   "subject_hint": "Canvas background fill colour for outdoor and indoor areas",
+   "count": 1,
+   "where": {
+    "files": [],
+    "code": [
+     "client/js/renderer.js:602"
+    ]
+   },
+   "format": {
+    "notes": "Fills the static background canvas before drawing reachable terrain tiles: #25221b in interiors (matching tile 4 dark border) and #000 outdoors.",
+    "current_value": "#25221b (interior) / #000 (outdoor)",
+    "value_type": "hex_color"
+   },
+   "grounded": false,
+   "ground_reasons": [
+    "value #25221b (interior) / #000 (outdoor) not found in client/js/renderer.js"
+   ]
+  },
+  {
+   "id": "colour_player_names",
+   "role": "ui",
+   "kind": "colour",
+   "required": true,
+   "subject_hint": "Canvas text fill and stroke colours for player names above characters",
+   "count": 1,
+   "where": {
+    "files": [],
+    "code": [
+     "client/js/renderer.js:193-209,482-493"
+    ]
+   },
+   "format": {
+    "notes": "Local player name is drawn in #fcda5c (gold); other players' names are drawn in white; all canvas text uses #373737 stroke.",
+    "current_value": "self: #fcda5c, other: white, stroke: #373737",
+    "value_type": "css_color"
+   },
+   "grounded": false,
+   "ground_reasons": [
+    "value self: #fcda5c, other: white, stroke: #373737 not found in client/js/renderer.js"
+   ]
+  },
+  {
+   "id": "colour_combat_damage_info",
+   "role": "ui",
+   "kind": "colour",
+   "required": true,
+   "subject_hint": "Floating combat number palette for damage received, damage inflicted, and HP healed",
+   "count": 3,
+   "where": {
+    "files": [],
+    "code": [
+     "client/js/infomanager.js:45-58"
+    ]
+   },
+   "format": {
+    "notes": "damageInfoColors dictionary in client/js/infomanager.js.",
+    "current_value": "received: fill rgb(255, 50, 50) / stroke rgb(255, 180, 180); inflicted: fill white / stroke #373737; healed: fill rgb(80, 255, 80) / stroke rgb(50, 120, 50)",
+    "value_type": "css_color_palette"
+   },
+   "grounded": false,
+   "ground_reasons": [
+    "value received: fill rgb(255, 50, 50) / stroke rgb(255, 180, 180); inflicted: fill white / stroke #373737; healed: fill rgb(80, 255, 80) / stroke rgb(50, 120, 50) not found in client/js/infomanager.js"
+   ]
+  },
+  {
+   "id": "colour_healthbar_fill",
+   "role": "ui",
+   "kind": "colour",
+   "required": true,
+   "subject_hint": "HUD health bar fill colour and hurt/invincible keyframe colours",
+   "count": 1,
+   "where": {
+    "files": [],
+    "code": [
+     "client/css/main.css:116-118,223-226,241-244"
+    ]
+   },
+   "format": {
+    "notes": "#hitpoints bar is #d83939 normally, flashes #ffa2a2 -> #e22525 when hurt, and pulses #fa6a00 -> #fabc00 when invincible.",
+    "current_value": "#d83939 (normal), #ffa2a2->#e22525 (hurt), #fa6a00->#fabc00 (invincible)",
+    "value_type": "hex_color"
+   },
+   "grounded": false,
+   "ground_reasons": [
+    "value #d83939 (normal), #ffa2a2->#e22525 (hurt), #fa6a00->#fabc00 (invincible) not found in client/css/main.css"
+   ]
+  }
+ ]
+}

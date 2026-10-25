@@ -1,0 +1,34 @@
+{
+ "name": "Storybook Wash & Ink",
+ "palette": [
+  "#F6F0E0",
+  "#8DA387",
+  "#57838C",
+  "#C88285",
+  "#D9A74A",
+  "#233142",
+  "#D8CFB8"
+ ],
+ "prompt_prefix": "Hand-painted watercolour storybook illustration on warm cream paper with loose deep ink-blue outlines and soft pigment pooling at the edges, coloured in gentle washes of sage green, dusty teal, faded rose, and mustard gold for a calm, dreamlike mood.",
+ "avoid": "photorealism, harsh black outlines, neon colours, scary or gruesome details, dense visual noise, embedded text, decorative borders, photographic textures, 3D rendering",
+ "rules": {
+  "audio": "Gentle, acoustic storybook instrumentation using warm wooden wind instruments, plucked strings, and soft foley; melodies are unhurried and whimsical, and combat or alert cues use light percussive taps and chimes rather than harsh or startling noises.",
+  "font": "Open, humanist sans-serif letterforms with generous spacing, tall x-heights, heavy bottom weighting, and distinct shapes for mirrored letters like b/d and p/q to ensure effortless dyslexia-friendly reading at 1x, 2x, and 3x canvas scales.",
+  "image": "Framed with open cream paper breathing room and a clear ground line; UI chrome, bars, and achievement badges use clean hand-inked contours filled with flat or softly pooled washes, completely free of text, borders, or busy surface clutter.",
+  "material": "Soft, matte cold-press cream paper surface with subtle watercolour pigment blooms at painted edges and dark ink-blue shaded recesses, avoiding specular highlights, metallic glare, or rough photographic grain.",
+  "sheet": "Characters, enemies, and weapon overlays are drawn on a crisp transparent background anchored consistently to the 16x16 base tile grid so horizontal runtime flipping and armor-plus-weapon compositing align seamlessly; each figure features a large readable silhouette, a simple expressive face, a bold deep ink-blue outer contour, and a single dominant signature wash colour so every entity is friendly and distinguishable at a glance.",
+  "text": "Short, direct sentences written in plain, concrete vocabulary with one clear action or idea per dialogue line, avoiding complex idioms, walls of text, or confusing homophones so sequential NPC speech arrays read effortlessly.",
+  "tileset": "16x16 base grid tiles painted with lighter, quieter washes and fewer internal details than characters so sprites always pop in the foreground; adjacent ground tiles blend seamlessly with soft pigment transitions, while walls, cliffs, and collision boundaries are marked by a clear, continuous deep ink-blue ground line."
+ },
+ "ui": {
+  "subtitle_background": "#F6F0E0",
+  "subtitle_text": "#233142",
+  "accent": "#D9A74A",
+  "chrome": "#D8CFB8"
+ },
+ "key": "0b2f8be1b9a7",
+ "refs": [],
+ "brief": "Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture.",
+ "interaction_id": "v1_ChdzSGJlYXRYQkI2dWE5TW9QZzQyR2dBNBIXc0hiZWF0WEJCNnVhOU1vUGc0MkdnQTQ",
+ "game": "browserquest"
+}

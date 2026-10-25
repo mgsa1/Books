@@ -1,0 +1,76 @@
+{
+  "type": "object",
+  "required": ["title", "characters", "chapters", "items", "lines"],
+  "properties": {
+    "title": {"type": "string"},
+    "characters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "look", "voice", "first_chapter", "last_chapter"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "look": {"type": "string"},
+          "voice": {"type": "string"},
+          "first_chapter": {"type": "string"},
+          "last_chapter": {"type": "string"}
+        }
+      }
+    },
+    "chapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "summary", "goal", "beats"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "summary": {"type": "string"},
+          "goal": {"type": "string"},
+          "beats": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "plain", "original", "source_ids"],
+              "properties": {
+                "id": {"type": "string"},
+                "plain": {"type": "string"},
+                "original": {"type": "string"},
+                "source_ids": {"type": "array", "items": {"type": "string"}}
+              }
+            }
+          }
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "chapter", "meaning", "source_ids"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "chapter": {"type": "string"},
+          "meaning": {"type": "string"},
+          "source_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["character", "chapter", "plain", "original", "source_ids"],
+        "properties": {
+          "character": {"type": "string"},
+          "chapter": {"type": "string"},
+          "plain": {"type": "string"},
+          "original": {"type": "string"},
+          "source_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

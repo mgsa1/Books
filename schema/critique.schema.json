@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "required": ["defects"],
+  "properties": {
+    "defects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "severity", "evidence", "observed", "expected", "fixes"],
+        "properties": {
+          "id": {"type": "string"},
+          "kind": {"type": "string", "enum": ["crash", "unreachable", "stuck", "story", "accessibility", "visual", "rights"]},
+          "severity": {"type": "integer", "minimum": 1, "maximum": 3},
+          "evidence": {"type": "array", "items": {"type": "string"}},
+          "observed": {"type": "string"},
+          "expected": {"type": "string"},
+          "fixes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["path", "search", "replace"],
+              "properties": {
+                "path": {"type": "string"},
+                "search": {"type": "string"},
+                "replace": {"type": "string"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

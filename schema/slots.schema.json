@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "required": ["game", "engine_notes", "slots"],
+  "properties": {
+    "game": {"type": "string"},
+    "engine_notes": {"type": "string"},
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "role", "kind", "required", "subject_hint", "count", "where", "format"],
+        "properties": {
+          "id": {"type": "string"},
+          "role": {"type": "string", "enum": ["player", "npc", "enemy", "pickup", "terrain", "decoration", "backdrop", "portrait", "ui", "sound", "music", "font", "parameter"]},
+          "kind": {"type": "string", "enum": ["sheet", "tileset", "image", "model", "material", "colour", "audio", "font", "text"]},
+          "required": {"type": "boolean"},
+          "subject_hint": {"type": "string"},
+          "count": {"type": "integer"},
+          "where": {
+            "type": "object",
+            "required": ["files", "code"],
+            "properties": {
+              "files": {"type": "array", "items": {"type": "string"}},
+              "code": {"type": "array", "items": {"type": "string"}}
+            }
+          },
+          "format": {
+            "type": "object",
+            "required": ["notes"],
+            "properties": {
+              "file_type": {"type": "string"},
+              "width": {"type": "integer"},
+              "height": {"type": "integer"},
+              "frame_width": {"type": "integer"},
+              "frame_height": {"type": "integer"},
+              "animations": {"type": "array", "items": {"type": "object", "required": ["name", "row", "frames"],
+                "properties": {"name": {"type": "string"}, "row": {"type": "integer"}, "frames": {"type": "integer"}}}},
+              "facings": {"type": "array", "items": {"type": "string"}},
+              "anchor": {"type": "string"},
+              "tile_size": {"type": "integer"},
+              "aspect_ratio": {"type": "string"},
+              "transparent": {"type": "boolean"},
+              "value_type": {"type": "string"},
+              "current_value": {"type": "string"},
+              "metadata_file": {"type": "string"},
+              "notes": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

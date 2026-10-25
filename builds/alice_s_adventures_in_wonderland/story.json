@@ -1,0 +1,2757 @@
+{
+ "title": "Alice's Adventures in Wonderland",
+ "characters": [
+  {
+   "id": "alice",
+   "name": "Alice",
+   "look": "A young girl with bright eager eyes and straight hair that wanders into her eyes.",
+   "voice": "Polite, curious, and earnest, shifting from timid to bold when she is annoyed.",
+   "first_chapter": "c01",
+   "last_chapter": "c12"
+  },
+  {
+   "id": "sister",
+   "name": "Alice's Sister",
+   "look": "A gentle older girl sitting on the riverbank with a book that has no pictures.",
+   "voice": "Warm, soothing, and affectionate.",
+   "first_chapter": "c01",
+   "last_chapter": "c12"
+  },
+  {
+   "id": "white_rabbit",
+   "name": "The White Rabbit",
+   "look": "A white rabbit with pink eyes, dressed in a waistcoat and carrying a pocket-watch.",
+   "voice": "Hurried, anxious, and shrill, muttering nervously to himself or calling out court orders.",
+   "first_chapter": "c01",
+   "last_chapter": "c12"
+  },
+  {
+   "id": "mouse",
+   "name": "The Mouse",
+   "look": "A small mouse with inquisitive little eyes and a long tail, often pale or bristling with anger.",
+   "voice": "Shrill, passionate, and easily offended, speaking with an important air when reciting history.",
+   "first_chapter": "c02",
+   "last_chapter": "c03"
+  },
+  {
+   "id": "lory",
+   "name": "The Lory",
+   "look": "A parrot-like bird with draggled wet feathers that shivers on the bank.",
+   "voice": "Sulky and proud, insisting it knows best because it is older.",
+   "first_chapter": "c02",
+   "last_chapter": "c03"
+  },
+  {
+   "id": "duck",
+   "name": "The Duck",
+   "look": "A wet duck with draggled feathers sitting in the ring of animals.",
+   "voice": "Practical and blunt, interrupting dry speeches to talk about frogs and worms.",
+   "first_chapter": "c02",
+   "last_chapter": "c03"
+  },
+  {
+   "id": "dodo",
+   "name": "The Dodo",
+   "look": "A solemn, heavy bird that stands up and presses one finger to its forehead while thinking.",
+   "voice": "Grave, formal, and fond of long words.",
+   "first_chapter": "c02",
+   "last_chapter": "c03"
+  },
+  {
+   "id": "eaglet",
+   "name": "The Eaglet",
+   "look": "A young eagle with wet feathers who bends its head down to hide a smile.",
+   "voice": "Teasing and direct, complaining about big words.",
+   "first_chapter": "c02",
+   "last_chapter": "c03"
+  },
+  {
+   "id": "pat",
+   "name": "Pat",
+   "look": "A gardener working outside the White Rabbit's house among the glass cucumber-frames.",
+   "voice": "Nervous and deferential, pronouncing 'arm' as 'arrum' and calling the Rabbit 'yer honour'.",
+   "first_chapter": "c04",
+   "last_chapter": "c04"
+  },
+  {
+   "id": "bill_the_lizard",
+   "name": "Bill the Lizard",
+   "look": "A poor little lizard who gets kicked up a chimney and later sits in the jury-box with a slate.",
+   "voice": "A feeble, flustered, squeaking voice.",
+   "first_chapter": "c04",
+   "last_chapter": "c12"
+  },
+  {
+   "id": "caterpillar",
+   "name": "The Caterpillar",
+   "look": "A large blue caterpillar, three inches high, sitting on a mushroom with folded arms and smoking a long hookah.",
+   "voice": "Languid, sleepy, and stern, speaking in very short, contemptuous remarks.",
+   "first_chapter": "c04",
+   "last_chapter": "c05"
+  },
+  {
+   "id": "pigeon",
+   "name": "The Pigeon",
+   "look": "A large pigeon nesting in a high tree, beating its wings violently.",
+   "voice": "A frantic, shrieking voice that drops into a sulky sob.",
+   "first_chapter": "c05",
+   "last_chapter": "c05"
+  },
+  {
+   "id": "fish_footman",
+   "name": "The Fish-Footman",
+   "look": "A footman in livery with a fish face and powdered curled hair, carrying a giant letter.",
+   "voice": "Solemn and formal as he delivers royal invitations.",
+   "first_chapter": "c06",
+   "last_chapter": "c06"
+  },
+  {
+   "id": "frog_footman",
+   "name": "The Frog-Footman",
+   "look": "A footman in livery with a round face, large frog eyes near the top of his head, and powdered curls.",
+   "voice": "Flat, unbothered, and argumentative, speaking while staring up at the sky.",
+   "first_chapter": "c06",
+   "last_chapter": "c06"
+  },
+  {
+   "id": "duchess",
+   "name": "The Duchess",
+   "look": "A very ugly short woman with an uncomfortably sharp chin.",
+   "voice": "Hoarse and loud in her kitchen, later turning overly affectionate and fond of preaching morals.",
+   "first_chapter": "c06",
+   "last_chapter": "c09"
+  },
+  {
+   "id": "cook",
+   "name": "The Cook",
+   "look": "A woman who leans over a fire stirring a cauldron of peppery soup and carries a pepper-box.",
+   "voice": "Blunt, defiant, and noisy, joining in howling choruses or refusing to answer.",
+   "first_chapter": "c06",
+   "last_chapter": "c11"
+  },
+  {
+   "id": "cheshire_cat",
+   "name": "The Cheshire Cat",
+   "look": "A large cat with long claws, many teeth, and a wide grin from ear to ear that can vanish in the air.",
+   "voice": "Calm, amused, and philosophical.",
+   "first_chapter": "c06",
+   "last_chapter": "c08"
+  },
+  {
+   "id": "march_hare",
+   "name": "The March Hare",
+   "look": "A mad hare sitting at a tea-table under a tree in front of a house thatched with fur.",
+   "voice": "Brisk, earnest, and argumentative, interrupting and yawning at the tea-table.",
+   "first_chapter": "c07",
+   "last_chapter": "c11"
+  },
+  {
+   "id": "hatter",
+   "name": "The Hatter",
+   "look": "A wide-eyed hatter wearing a hat for sale and carrying a teacup, bread-and-butter, and a pocket watch.",
+   "voice": "Curious, riddle-loving, and mournful about Time, turning trembling and nervous at court.",
+   "first_chapter": "c07",
+   "last_chapter": "c11"
+  },
+  {
+   "id": "dormouse",
+   "name": "The Dormouse",
+   "look": "A small, sleepy animal used as a cushion between the March Hare and the Hatter.",
+   "voice": "A hoarse, feeble, sleepy voice that talks in its sleep or turns sulky when interrupted.",
+   "first_chapter": "c07",
+   "last_chapter": "c11"
+  },
+  {
+   "id": "two",
+   "name": "Two",
+   "look": "A flat, oblong gardener shaped like a playing card with hands and feet at the corners, holding a paintbrush.",
+   "voice": "Low, humble, and nervous about the Queen finding out their mistake.",
+   "first_chapter": "c08",
+   "last_chapter": "c08"
+  },
+  {
+   "id": "five",
+   "name": "Five",
+   "look": "A flat, oblong card-shaped gardener splashing red paint on white roses.",
+   "voice": "Sulky and quick to blame others or call out warnings.",
+   "first_chapter": "c08",
+   "last_chapter": "c08"
+  },
+  {
+   "id": "seven",
+   "name": "Seven",
+   "look": "A flat, oblong card-shaped gardener who flings down his paintbrush in annoyance.",
+   "voice": "Defensive and sharp, arguing with the other gardeners.",
+   "first_chapter": "c08",
+   "last_chapter": "c08"
+  },
+  {
+   "id": "queen_of_hearts",
+   "name": "The Queen of Hearts",
+   "look": "A fierce royal playing-card woman who turns crimson with fury and wears spectacles in court.",
+   "voice": "A shrill, roaring voice of thunder, constantly screaming for heads to be cut off.",
+   "first_chapter": "c08",
+   "last_chapter": "c12"
+  },
+  {
+   "id": "king_of_hearts",
+   "name": "The King of Hearts",
+   "look": "A royal playing-card man who wears his crown over a great judge's wig and puts on spectacles.",
+   "voice": "Timid around the Queen, but grave, pompous, and fussy when acting as judge.",
+   "first_chapter": "c08",
+   "last_chapter": "c12"
+  },
+  {
+   "id": "knave_of_hearts",
+   "name": "The Knave of Hearts",
+   "look": "A cardboard playing-card man who carries the King's crown on a cushion and later stands in chains.",
+   "voice": "Sad and pleading as he defends himself in court.",
+   "first_chapter": "c08",
+   "last_chapter": "c12"
+  },
+  {
+   "id": "gryphon",
+   "name": "The Gryphon",
+   "look": "A winged creature with paws that sleeps in the sun, rubs its eyes, and dances on the shore.",
+   "voice": "Gruff, chuckling, and impatient, often exclaiming 'Hjckrrh' and ordering others to 'Come on'.",
+   "first_chapter": "c09",
+   "last_chapter": "c11"
+  },
+  {
+   "id": "mock_turtle",
+   "name": "The Mock Turtle",
+   "look": "A sad creature with large tearful eyes and flappers who sits on a rocky ledge by the sea.",
+   "voice": "A deep, hollow, sobbing voice that chokes with tears and sings melancholy songs.",
+   "first_chapter": "c09",
+   "last_chapter": "c10"
+  }
+ ],
+ "chapters": [
+  {
+   "id": "c01",
+   "title": "CHAPTER I. Down the Rabbit-Hole",
+   "summary": "Alice follows a White Rabbit down a deep hole into a locked hall and changes size.",
+   "goal": "Unlock the tiny door, drink from the bottle, and eat the cake.",
+   "beats": [
+    {
+     "id": "c01_b01",
+     "plain": "Alice sees a White Rabbit with a watch and follows it.",
+     "original": "when the Rabbit actually took a watch out of its waistcoat-pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.",
+     "source_ids": [
+      "c01.p0003"
+     ]
+    },
+    {
+     "id": "c01_b02",
+     "plain": "Alice falls slowly down a very deep well.",
+     "original": "The rabbit-hole went straight on like a tunnel for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well.",
+     "source_ids": [
+      "c01.p0005"
+     ]
+    },
+    {
+     "id": "c01_b03",
+     "plain": "She lands unhurt on sticks and leaves in a locked hall.",
+     "original": "Alice was not a bit hurt, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, hurrying down it.",
+     "source_ids": [
+      "c01.p0010",
+      "c01.p0011",
+      "c01.p0012"
+     ]
+    },
+    {
+     "id": "c01_b04",
+     "plain": "She finds a tiny golden key that opens a small door.",
+     "original": "However, on the second time round, she came upon a low curtain she had not noticed before, and behind it was a little door about fifteen inches high: she tried the little golden key in the lock, and to her great delight it fitted!",
+     "source_ids": [
+      "c01.p0013"
+     ]
+    },
+    {
+     "id": "c01_b05",
+     "plain": "She sees a lovely garden, but she is too big to enter.",
+     "original": "How she longed to get out of that dark hall, and wander about among those beds of bright flowers and those cool fountains, but she could not even get her head through the doorway",
+     "source_ids": [
+      "c01.p0014"
+     ]
+    },
+    {
+     "id": "c01_b06",
+     "plain": "Alice drinks from a bottle and shrinks to ten inches high.",
+     "original": "And so it was indeed: she was now only ten inches high, and her face brightened up at the thought that she was now the right size for going through the little door into that lovely garden.",
+     "source_ids": [
+      "c01.p0015",
+      "c01.p0017",
+      "c01.p0020"
+     ]
+    },
+    {
+     "id": "c01_b07",
+     "plain": "She cannot reach the key on the table, so she eats cake.",
+     "original": "Soon her eye fell on a little glass box that was lying under the table: she opened it, and found in it a very small cake, on which the words “EAT ME” were beautifully marked in currants.",
+     "source_ids": [
+      "c01.p0021",
+      "c01.p0023",
+      "c01.p0025"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c02",
+   "title": "CHAPTER II. The Pool of Tears",
+   "summary": "Alice grows giant, cries a pool of tears, shrinks with a fan, and meets a Mouse.",
+   "goal": "Drop the fan to stop shrinking and swim to shore with the Mouse.",
+   "beats": [
+    {
+     "id": "c02_b01",
+     "plain": "Alice grows more than nine feet tall and hits the roof.",
+     "original": "Just then her head struck against the roof of the hall: in fact she was now more than nine feet high, and she at once took up the little golden key and hurried off to the garden door.",
+     "source_ids": [
+      "c02.p0004"
+     ]
+    },
+    {
+     "id": "c02_b02",
+     "plain": "She cannot fit through the door and cries a big pool.",
+     "original": "But she went on all the same, shedding gallons of tears, until there was a large pool all round her, about four inches deep and reaching half down the hall.",
+     "source_ids": [
+      "c02.p0005",
+      "c02.p0006"
+     ]
+    },
+    {
+     "id": "c02_b03",
+     "plain": "The startled White Rabbit drops his fan and white kid gloves.",
+     "original": "The Rabbit started violently, dropped the white kid gloves and the fan, and skurried away into the darkness as hard as he could go.",
+     "source_ids": [
+      "c02.p0007"
+     ]
+    },
+    {
+     "id": "c02_b04",
+     "plain": "Alice fans herself and shrinks down to two feet high.",
+     "original": "She got up and went to the table to measure herself by it, and found that, as nearly as she could guess, she was now about two feet high, and was going on shrinking rapidly: she soon found out that the cause of this was the fan she was holding, and she dropped it hastily, just in time to avoid shrinking away altogether.",
+     "source_ids": [
+      "c02.p0008",
+      "c02.p0012"
+     ]
+    },
+    {
+     "id": "c02_b05",
+     "plain": "Alice slips into the pool of her own salty tears.",
+     "original": "However, she soon made out that she was in the pool of tears which she had wept when she was nine feet high.",
+     "source_ids": [
+      "c02.p0014"
+     ]
+    },
+    {
+     "id": "c02_b06",
+     "plain": "She meets a Mouse and scares it by talking about cats.",
+     "original": "“Not like cats!” cried the Mouse, in a shrill, passionate voice. “Would you like cats if you were me?”",
+     "source_ids": [
+      "c02.p0016",
+      "c02.p0018",
+      "c02.p0019"
+     ]
+    },
+    {
+     "id": "c02_b07",
+     "plain": "Alice, the Mouse, and other wet creatures swim to the shore.",
+     "original": "Alice led the way, and the whole party swam to the shore.",
+     "source_ids": [
+      "c02.p0024"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c03",
+   "title": "CHAPTER III. A Caucus-Race and a Long Tale",
+   "summary": "Alice and the wet animals run a Caucus-race to get dry and listen to the Mouse.",
+   "goal": "Run the Caucus-race to get dry and hand out comfits as prizes.",
+   "beats": [
+    {
+     "id": "c03_b01",
+     "plain": "The Mouse reads a dry history lesson to dry the wet party.",
+     "original": "“Ahem!” said the Mouse with an important air, “are you all ready? This is the driest thing I know.",
+     "source_ids": [
+      "c03.p0003",
+      "c03.p0004"
+     ]
+    },
+    {
+     "id": "c03_b02",
+     "plain": "The Dodo proposes a Caucus-race to get everyone dry.",
+     "original": "“What I was going to say,” said the Dodo in an offended tone, “was, that the best thing to get us dry would be a Caucus-race.”",
+     "source_ids": [
+      "c03.p0016"
+     ]
+    },
+    {
+     "id": "c03_b03",
+     "plain": "Everyone runs in a circle until they are quite dry.",
+     "original": "However, when they had been running half an hour or so, and were quite dry again, the Dodo suddenly called out “The race is over!”",
+     "source_ids": [
+      "c03.p0019"
+     ]
+    },
+    {
+     "id": "c03_b04",
+     "plain": "The Dodo says everybody won, so Alice gives comfits as prizes.",
+     "original": "At last the Dodo said, “Everybody has won, and all must have prizes.”",
+     "source_ids": [
+      "c03.p0020",
+      "c03.p0023"
+     ]
+    },
+    {
+     "id": "c03_b05",
+     "plain": "The Dodo gives Alice her own thimble as a prize.",
+     "original": "Then they all crowded round her once more, while the Dodo solemnly presented the thimble, saying “We beg your acceptance of this elegant thimble;” and, when it had finished this short speech, they all cheered.",
+     "source_ids": [
+      "c03.p0026",
+      "c03.p0028"
+     ]
+    },
+    {
+     "id": "c03_b06",
+     "plain": "The Mouse tells a sad tale, and Alice confuses tale with tail.",
+     "original": "“It is a long tail, certainly,” said Alice, looking down with wonder at the Mouse’s tail; “but why do you call it sad?”",
+     "source_ids": [
+      "c03.p0032",
+      "c03.p0033"
+     ]
+    },
+    {
+     "id": "c03_b07",
+     "plain": "The Mouse leaves in anger, and Alice scares the birds away.",
+     "original": "On various pretexts they all moved off, and Alice was soon left alone.",
+     "source_ids": [
+      "c03.p0038",
+      "c03.p0045",
+      "c03.p0046"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c04",
+   "title": "CHAPTER IV. The Rabbit Sends in a Little Bill",
+   "summary": "Alice grows trapped inside the White Rabbit's house, escapes, and meets a giant puppy.",
+   "goal": "Eat a pebble-cake to shrink, escape the house, and find the Caterpillar.",
+   "beats": [
+    {
+     "id": "c04_b01",
+     "plain": "The White Rabbit mistakes Alice for his maid and sends her home.",
+     "original": "Very soon the Rabbit noticed Alice, as she went hunting about, and called out to her in an angry tone, “Why, Mary Ann, what are you doing out here? Run home this moment, and fetch me a pair of gloves and a fan! Quick, now!”",
+     "source_ids": [
+      "c04.p0002"
+     ]
+    },
+    {
+     "id": "c04_b02",
+     "plain": "Inside the Rabbit's house, Alice drinks from a bottle and grows huge.",
+     "original": "It did so indeed, and much sooner than she had expected: before she had drunk half the bottle, she found her head pressing against the ceiling, and had to stoop to save her neck from being broken.",
+     "source_ids": [
+      "c04.p0005",
+      "c04.p0006"
+     ]
+    },
+    {
+     "id": "c04_b03",
+     "plain": "The Rabbit and Pat try to pull her arm from the window.",
+     "original": "“Sure, it’s an arm, yer honour!”",
+     "source_ids": [
+      "c04.p0018",
+      "c04.p0019",
+      "c04.p0022"
+     ]
+    },
+    {
+     "id": "c04_b04",
+     "plain": "Alice kicks Bill the Lizard right back up the chimney.",
+     "original": "She drew her foot as far down the chimney as she could, and waited till she heard a little animal (she couldn’t guess of what sort it was) scratching and scrambling about in the chimney close above her: then, saying to herself “This is Bill,” she gave one sharp kick, and waited to see what would happen next.",
+     "source_ids": [
+      "c04.p0026"
+     ]
+    },
+    {
+     "id": "c04_b05",
+     "plain": "Pebbles thrown through the window turn into little cakes.",
+     "original": "Alice noticed with some surprise that the pebbles were all turning into little cakes as they lay on the floor, and a bright idea came into her head.",
+     "source_ids": [
+      "c04.p0032",
+      "c04.p0033"
+     ]
+    },
+    {
+     "id": "c04_b06",
+     "plain": "Alice eats a cake, shrinks small, and runs into the wood.",
+     "original": "So she swallowed one of the cakes, and was delighted to find that she began shrinking directly. As soon as she was small enough to get through the door, she ran out of the house",
+     "source_ids": [
+      "c04.p0034"
+     ]
+    },
+    {
+     "id": "c04_b07",
+     "plain": "She escapes an enormous puppy and finds a Caterpillar on a mushroom.",
+     "original": "She stretched herself up on tiptoe, and peeped over the edge of the mushroom, and her eyes immediately met those of a large blue caterpillar, that was sitting on the top with its arms folded, quietly smoking a long hookah, and taking not the smallest notice of her or of anything else.",
+     "source_ids": [
+      "c04.p0037",
+      "c04.p0039",
+      "c04.p0042"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c05",
+   "title": "CHAPTER V. Advice from a Caterpillar",
+   "summary": "Alice talks to the Caterpillar, eats pieces of the mushroom, and argues with a Pigeon.",
+   "goal": "Eat from both sides of the mushroom to reach nine inches high.",
+   "beats": [
+    {
+     "id": "c05_b01",
+     "plain": "The Caterpillar asks Alice who she is, and she cannot explain.",
+     "original": "“I can’t explain myself, I’m afraid, sir,” said Alice, “because I’m not myself, you see.”",
+     "source_ids": [
+      "c05.p0002",
+      "c05.p0005"
+     ]
+    },
+    {
+     "id": "c05_b02",
+     "plain": "Alice recites 'Father William,' and the Caterpillar says it is all wrong.",
+     "original": "“It is wrong from beginning to end,” said the Caterpillar decidedly, and there was silence for some minutes.",
+     "source_ids": [
+      "c05.p0025",
+      "c05.p0027",
+      "c05.p0030"
+     ]
+    },
+    {
+     "id": "c05_b03",
+     "plain": "The Caterpillar says the mushroom sides make her taller or shorter.",
+     "original": "Then it got down off the mushroom, and crawled away in the grass, merely remarking as it went, “One side will make you grow taller, and the other side will make you grow shorter.”",
+     "source_ids": [
+      "c05.p0041",
+      "c05.p0043"
+     ]
+    },
+    {
+     "id": "c05_b04",
+     "plain": "Alice breaks off two bits of mushroom and eats them.",
+     "original": "However, at last she stretched her arms round it as far as they would go, and broke off a bit of the edge with each hand.",
+     "source_ids": [
+      "c05.p0044",
+      "c05.p0045",
+      "c05.p0046"
+     ]
+    },
+    {
+     "id": "c05_b05",
+     "plain": "Her neck grows very long, and a Pigeon calls her a serpent.",
+     "original": "“Serpent!” screamed the Pigeon.",
+     "source_ids": [
+      "c05.p0048",
+      "c05.p0050",
+      "c05.p0051"
+     ]
+    },
+    {
+     "id": "c05_b06",
+     "plain": "Alice eats the mushroom to become nine inches high near a house.",
+     "original": "So she began nibbling at the righthand bit again, and did not venture to go near the house till she had brought herself down to nine inches high.",
+     "source_ids": [
+      "c05.p0068",
+      "c05.p0069"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c06",
+   "title": "CHAPTER VI. Pig and Pepper",
+   "summary": "Alice visits the Duchess's peppery kitchen, rescues a baby that turns into a pig, and meets the Cheshire Cat.",
+   "goal": "Carry the baby outside and follow the Cheshire Cat's directions to the March Hare's house.",
+   "beats": [
+    {
+     "id": "c06_b01",
+     "plain": "The Fish-Footman delivers a royal croquet invitation to the Frog-Footman.",
+     "original": "The Fish-Footman began by producing from under his arm a great letter, nearly as large as himself, and this he handed over to the other, saying, in a solemn tone, “For the Duchess. An invitation from the Queen to play croquet.”",
+     "source_ids": [
+      "c06.p0001",
+      "c06.p0002"
+     ]
+    },
+    {
+     "id": "c06_b02",
+     "plain": "Alice enters a smoky kitchen where the cook throws pots and pans.",
+     "original": "While she was trying to fix on one, the cook took the cauldron of soup off the fire, and at once set to work throwing everything within her reach at the Duchess and the baby—the fire-irons came first; then followed a shower of saucepans, plates, and dishes.",
+     "source_ids": [
+      "c06.p0018",
+      "c06.p0019",
+      "c06.p0029"
+     ]
+    },
+    {
+     "id": "c06_b03",
+     "plain": "The Duchess flings the howling baby to Alice and leaves.",
+     "original": "“Here! you may nurse it a bit, if you like!” the Duchess said to Alice, flinging the baby at her as she spoke. “I must go and get ready to play croquet with the Queen,” and she hurried out of the room.",
+     "source_ids": [
+      "c06.p0043"
+     ]
+    },
+    {
+     "id": "c06_b04",
+     "plain": "Alice carries the baby outside, where it turns into a pig.",
+     "original": "This time there could be no mistake about it: it was neither more nor less than a pig, and she felt that it would be quite absurd for her to carry it further.",
+     "source_ids": [
+      "c06.p0045",
+      "c06.p0048",
+      "c06.p0049"
+     ]
+    },
+    {
+     "id": "c06_b05",
+     "plain": "The Cheshire Cat tells Alice that everyone here is mad.",
+     "original": "“Oh, you can’t help that,” said the Cat: “we’re all mad here. I’m mad. You’re mad.”",
+     "source_ids": [
+      "c06.p0058",
+      "c06.p0060"
+     ]
+    },
+    {
+     "id": "c06_b06",
+     "plain": "The Cat vanishes, leaving its grin behind, and Alice walks on.",
+     "original": "“All right,” said the Cat; and this time it vanished quite slowly, beginning with the end of the tail, and ending with the grin, which remained some time after the rest of it had gone.",
+     "source_ids": [
+      "c06.p0078",
+      "c06.p0080"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c07",
+   "title": "CHAPTER VII. A Mad Tea-Party",
+   "summary": "Alice joins a mad tea-party with the Hatter, the March Hare, and the Dormouse before finding the garden.",
+   "goal": "Leave the tea-party, go through the tree door, and unlock the garden.",
+   "beats": [
+    {
+     "id": "c07_b01",
+     "plain": "Alice sits down at the tea-table with the Hatter, Hare, and Dormouse.",
+     "original": "“There’s plenty of room!” said Alice indignantly, and she sat down in a large arm-chair at one end of the table.",
+     "source_ids": [
+      "c07.p0001",
+      "c07.p0002"
+     ]
+    },
+    {
+     "id": "c07_b02",
+     "plain": "The Hatter asks why a raven is like a writing-desk.",
+     "original": "The Hatter opened his eyes very wide on hearing this; but all he said was, “Why is a raven like a writing-desk?”",
+     "source_ids": [
+      "c07.p0011"
+     ]
+    },
+    {
+     "id": "c07_b03",
+     "plain": "The Hatter shows his watch, which only tells the day.",
+     "original": "“What a funny watch!” she remarked. “It tells the day of the month, and doesn’t tell what o’clock it is!”",
+     "source_ids": [
+      "c07.p0021",
+      "c07.p0023",
+      "c07.p0027"
+     ]
+    },
+    {
+     "id": "c07_b04",
+     "plain": "The Hatter says it is always six o'clock and always tea-time.",
+     "original": "“Yes, that’s it,” said the Hatter with a sigh: “it’s always tea-time, and we’ve no time to wash the things between whiles.”",
+     "source_ids": [
+      "c07.p0057",
+      "c07.p0059"
+     ]
+    },
+    {
+     "id": "c07_b05",
+     "plain": "The sleepy Dormouse tells a story about three sisters in a treacle-well.",
+     "original": "“Once upon a time there were three little sisters,” the Dormouse began in a great hurry; “and their names were Elsie, Lacie, and Tillie; and they lived at the bottom of a well—”",
+     "source_ids": [
+      "c07.p0070",
+      "c07.p0082"
+     ]
+    },
+    {
+     "id": "c07_b06",
+     "plain": "Fed up with their rudeness, Alice leaves the tea-party in disgust.",
+     "original": "This piece of rudeness was more than Alice could bear: she got up in great disgust, and walked off",
+     "source_ids": [
+      "c07.p0101",
+      "c07.p0102"
+     ]
+    },
+    {
+     "id": "c07_b07",
+     "plain": "She enters a door in a tree and unlocks the lovely garden.",
+     "original": "Then she went to work nibbling at the mushroom (she had kept a piece of it in her pocket) till she was about a foot high: then she walked down the little passage: and then—she found herself at last in the beautiful garden, among the bright flower-beds and the cool fountains.",
+     "source_ids": [
+      "c07.p0104",
+      "c07.p0105"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c08",
+   "title": "CHAPTER VIII. The Queen’s Croquet-Ground",
+   "summary": "Alice meets the King and Queen of Hearts in the garden and plays a wild game of croquet.",
+   "goal": "Hide the card gardeners, play croquet with a flamingo, and summon the Duchess.",
+   "beats": [
+    {
+     "id": "c08_b01",
+     "plain": "Three card gardeners paint white roses red to hide their mistake.",
+     "original": "A large rose-tree stood near the entrance of the garden: the roses growing on it were white, but there were three gardeners at it, busily painting them red.",
+     "source_ids": [
+      "c08.p0001",
+      "c08.p0010"
+     ]
+    },
+    {
+     "id": "c08_b02",
+     "plain": "The Queen of Hearts arrives and orders Alice's head cut off.",
+     "original": "The Queen turned crimson with fury, and, after glaring at her for a moment like a wild beast, screamed “Off with her head! Off—”",
+     "source_ids": [
+      "c08.p0011",
+      "c08.p0018"
+     ]
+    },
+    {
+     "id": "c08_b03",
+     "plain": "Alice hides the three gardeners inside a large flower-pot.",
+     "original": "“You shan’t be beheaded!” said Alice, and she put them into a large flower-pot that stood near.",
+     "source_ids": [
+      "c08.p0026",
+      "c08.p0027"
+     ]
+    },
+    {
+     "id": "c08_b04",
+     "plain": "Alice plays croquet using a live flamingo and a live hedgehog.",
+     "original": "Alice thought she had never seen such a curious croquet-ground in her life; it was all ridges and furrows; the balls were live hedgehogs, the mallets live flamingoes, and the soldiers had to double themselves up and to stand on their hands and feet, to make the arches.",
+     "source_ids": [
+      "c08.p0041",
+      "c08.p0042"
+     ]
+    },
+    {
+     "id": "c08_b05",
+     "plain": "The Cheshire Cat's head appears in the air and annoys the King.",
+     "original": "“Well, it must be removed,” said the King very decidedly, and he called the Queen, who was passing at the moment, “My dear! I wish you would have this cat removed!”",
+     "source_ids": [
+      "c08.p0045",
+      "c08.p0047",
+      "c08.p0058"
+     ]
+    },
+    {
+     "id": "c08_b06",
+     "plain": "They argue over beheading a bodiless head until the Cat fades away.",
+     "original": "The Cat’s head began fading away the moment he was gone, and, by the time he had come back with the Duchess, it had entirely disappeared",
+     "source_ids": [
+      "c08.p0064",
+      "c08.p0066",
+      "c08.p0071"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c09",
+   "title": "CHAPTER IX. The Mock Turtle’s Story",
+   "summary": "Alice walks with the Duchess, then goes with the Gryphon to hear the Mock Turtle's school story.",
+   "goal": "Follow the Gryphon to the shore and listen to the Mock Turtle's story.",
+   "beats": [
+    {
+     "id": "c09_b01",
+     "plain": "The Duchess walks with Alice and finds a moral in everything.",
+     "original": "“Tut, tut, child!” said the Duchess. “Everything’s got a moral, if only you can find it.”",
+     "source_ids": [
+      "c09.p0001",
+      "c09.p0006"
+     ]
+    },
+    {
+     "id": "c09_b02",
+     "plain": "The Queen scares the Duchess away and orders everyone executed.",
+     "original": "so that by the end of half an hour or so there were no arches left, and all the players, except the King, the Queen, and Alice, were in custody and under sentence of execution.",
+     "source_ids": [
+      "c09.p0032",
+      "c09.p0033",
+      "c09.p0036"
+     ]
+    },
+    {
+     "id": "c09_b03",
+     "plain": "The King secretly pardons all the players while the Queen leaves.",
+     "original": "As they walked off together, Alice heard the King say in a low voice, to the company generally, “You are all pardoned.”",
+     "source_ids": [
+      "c09.p0042"
+     ]
+    },
+    {
+     "id": "c09_b04",
+     "plain": "The Gryphon wakes up and leads Alice to the weeping Mock Turtle.",
+     "original": "They had not gone far before they saw the Mock Turtle in the distance, sitting sad and lonely on a little ledge of rock, and, as they came nearer, Alice could hear him sighing as if his heart would break.",
+     "source_ids": [
+      "c09.p0043",
+      "c09.p0046",
+      "c09.p0048"
+     ]
+    },
+    {
+     "id": "c09_b05",
+     "plain": "The Mock Turtle tells how he went to school in the sea.",
+     "original": "“When we were little,” the Mock Turtle went on at last, more calmly, though still sobbing a little now and then, “we went to school in the sea.",
+     "source_ids": [
+      "c09.p0053",
+      "c09.p0055"
+     ]
+    },
+    {
+     "id": "c09_b06",
+     "plain": "He explains his sea lessons, which grew shorter each day.",
+     "original": "“That’s the reason they’re called lessons,” the Gryphon remarked: “because they lessen from day to day.”",
+     "source_ids": [
+      "c09.p0073",
+      "c09.p0086",
+      "c09.p0088"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c10",
+   "title": "CHAPTER X. The Lobster Quadrille",
+   "summary": "The Mock Turtle and the Gryphon dance the Lobster Quadrille and sing for Alice until a trial begins.",
+   "goal": "Watch the Lobster Quadrille, recite a poem, and hurry to the trial.",
+   "beats": [
+    {
+     "id": "c10_b01",
+     "plain": "The Mock Turtle and Gryphon explain how to dance with lobsters.",
+     "original": "“Each with a lobster as a partner!” cried the Gryphon.",
+     "source_ids": [
+      "c10.p0002",
+      "c10.p0008",
+      "c10.p0012"
+     ]
+    },
+    {
+     "id": "c10_b02",
+     "plain": "They dance the Lobster Quadrille around Alice and sing about a whiting.",
+     "original": "So they began solemnly dancing round and round Alice, every now and then treading on her toes when they passed too close, and waving their forepaws to mark the time, while the Mock Turtle sang this, very slowly and sadly",
+     "source_ids": [
+      "c10.p0023",
+      "c10.p0024"
+     ]
+    },
+    {
+     "id": "c10_b03",
+     "plain": "The Gryphon explains that sea shoes are polished with whiting.",
+     "original": "“Boots and shoes under the sea,” the Gryphon went on in a deep voice, “are done with a whiting. Now you know.”",
+     "source_ids": [
+      "c10.p0035",
+      "c10.p0039"
+     ]
+    },
+    {
+     "id": "c10_b04",
+     "plain": "Alice tells her adventures and recites a mixed-up poem about a lobster.",
+     "original": "However, she got up, and began to repeat it, but her head was so full of the Lobster Quadrille, that she hardly knew what she was saying, and the words came very queer indeed",
+     "source_ids": [
+      "c10.p0051",
+      "c10.p0055",
+      "c10.p0056"
+     ]
+    },
+    {
+     "id": "c10_b05",
+     "plain": "The Mock Turtle sings a sad song about Beautiful Soup.",
+     "original": "“Beautiful Soup, so rich and green, Waiting in a hot tureen!",
+     "source_ids": [
+      "c10.p0071",
+      "c10.p0072"
+     ]
+    },
+    {
+     "id": "c10_b06",
+     "plain": "A cry announces the trial, and the Gryphon pulls Alice away.",
+     "original": "“Come on!” cried the Gryphon, and, taking Alice by the hand, it hurried off, without waiting for the end of the song.",
+     "source_ids": [
+      "c10.p0073",
+      "c10.p0074"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c11",
+   "title": "CHAPTER XI. Who Stole the Tarts?",
+   "summary": "At the trial of the Knave of Hearts for stealing tarts, Alice watches the witnesses and starts growing again.",
+   "goal": "Take Bill's squeaky pencil, watch the witnesses, and answer when called.",
+   "beats": [
+    {
+     "id": "c11_b01",
+     "plain": "The Knave of Hearts stands in chains before the King and Queen.",
+     "original": "the Knave was standing before them, in chains, with a soldier on each side to guard him",
+     "source_ids": [
+      "c11.p0001"
+     ]
+    },
+    {
+     "id": "c11_b02",
+     "plain": "Alice takes away Bill the Lizard's squeaking slate pencil.",
+     "original": "One of the jurors had a pencil that squeaked. This of course, Alice could not stand, and she went round the court and got behind him, and very soon found an opportunity of taking it away.",
+     "source_ids": [
+      "c11.p0009"
+     ]
+    },
+    {
+     "id": "c11_b03",
+     "plain": "The White Rabbit reads the scroll accusing the Knave of stealing tarts.",
+     "original": "“The Queen of Hearts, she made some tarts, All on a summer day: The Knave of Hearts, he stole those tarts, And took them quite away!”",
+     "source_ids": [
+      "c11.p0011",
+      "c11.p0012"
+     ]
+    },
+    {
+     "id": "c11_b04",
+     "plain": "The nervous Hatter gives confused evidence and bites his teacup.",
+     "original": "he kept shifting from one foot to the other, looking uneasily at the Queen, and in his confusion he bit a large piece out of his teacup instead of the bread-and-butter.",
+     "source_ids": [
+      "c11.p0016",
+      "c11.p0028"
+     ]
+    },
+    {
+     "id": "c11_b05",
+     "plain": "Alice begins to grow larger again right in the courtroom.",
+     "original": "Just at this moment Alice felt a very curious sensation, which puzzled her a good deal until she made out what it was: she was beginning to grow larger again",
+     "source_ids": [
+      "c11.p0029",
+      "c11.p0031"
+     ]
+    },
+    {
+     "id": "c11_b06",
+     "plain": "The Cook says tarts are made of pepper, and the court erupts.",
+     "original": "“Pepper, mostly,” said the cook.",
+     "source_ids": [
+      "c11.p0064",
+      "c11.p0069",
+      "c11.p0071",
+      "c11.p0072"
+     ]
+    },
+    {
+     "id": "c11_b07",
+     "plain": "The White Rabbit calls Alice as the next witness.",
+     "original": "Imagine her surprise, when the White Rabbit read out, at the top of his shrill little voice, the name “Alice!”",
+     "source_ids": [
+      "c11.p0074"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "c12",
+   "title": "CHAPTER XII. Alice’s Evidence",
+   "summary": "Alice grows to her full size, defies the King and Queen at the trial, and wakes from her dream.",
+   "goal": "Put the jurymen back, defy the Queen's sentence, and wake up on the bank.",
+   "beats": [
+    {
+     "id": "c12_b01",
+     "plain": "Giant Alice jumps up and tips over the jury-box by accident.",
+     "original": "“Here!” cried Alice, quite forgetting in the flurry of the moment how large she had grown in the last few minutes, and she jumped up in such a hurry that she tipped over the jury-box with the edge of her skirt, upsetting all the jurymen on to the heads of the crowd below",
+     "source_ids": [
+      "c12.p0001"
+     ]
+    },
+    {
+     "id": "c12_b02",
+     "plain": "She puts all the jurymen back, fixing Bill the Lizard right-side up.",
+     "original": "Alice looked at the jury-box, and saw that, in her haste, she had put the Lizard in head downwards, and the poor little thing was waving its tail about in a melancholy way, being quite unable to move. She soon got it out again, and put it right",
+     "source_ids": [
+      "c12.p0002",
+      "c12.p0004"
+     ]
+    },
+    {
+     "id": "c12_b03",
+     "plain": "The King invents Rule Forty-two to make tall Alice leave the court.",
+     "original": "At this moment the King, who had been for some time busily writing in his note-book, cackled out “Silence!” and read out from his book, “Rule Forty-two. All persons more than a mile high to leave the court.”",
+     "source_ids": [
+      "c12.p0014",
+      "c12.p0019"
+     ]
+    },
+    {
+     "id": "c12_b04",
+     "plain": "The White Rabbit reads a mysterious poem that the Knave denies writing.",
+     "original": "He unfolded the paper as he spoke, and added “It isn’t a letter, after all: it’s a set of verses.”",
+     "source_ids": [
+      "c12.p0028",
+      "c12.p0032",
+      "c12.p0040"
+     ]
+    },
+    {
+     "id": "c12_b05",
+     "plain": "The Queen demands the sentence first, and Alice calls them cards.",
+     "original": "“Who cares for you?” said Alice, (she had grown to her full size by this time). “You’re nothing but a pack of cards!”",
+     "source_ids": [
+      "c12.p0053",
+      "c12.p0054",
+      "c12.p0058"
+     ]
+    },
+    {
+     "id": "c12_b06",
+     "plain": "The cards fly at Alice, and she wakes up beside her sister.",
+     "original": "At this the whole pack rose up into the air, and came flying down upon her: she gave a little scream, half of fright and half of anger, and tried to beat them off, and found herself lying on the bank, with her head in the lap of her sister, who was gently brushing away some dead leaves that had fluttered down from the trees upon her face.",
+     "source_ids": [
+      "c12.p0059",
+      "c12.p0060"
+     ]
+    },
+    {
+     "id": "c12_b07",
+     "plain": "Alice tells her dream and runs to tea while her sister daydreams.",
+     "original": "So Alice got up and ran off, thinking while she ran, as well she might, what a wonderful dream it had been.",
+     "source_ids": [
+      "c12.p0061",
+      "c12.p0062"
+     ]
+    }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "pocket_watch",
+   "name": "Pocket-Watch",
+   "chapter": "c01",
+   "meaning": "The White Rabbit checks this watch because he is running late.",
+   "source_ids": [
+    "c01.p0003"
+   ]
+  },
+  {
+   "id": "golden_key",
+   "name": "Tiny Golden Key",
+   "chapter": "c01",
+   "meaning": "It unlocks the tiny door leading to the lovely garden.",
+   "source_ids": [
+    "c01.p0013"
+   ]
+  },
+  {
+   "id": "drink_me_bottle",
+   "name": "Drink-Me Bottle",
+   "chapter": "c01",
+   "meaning": "Drinking from this bottle shrinks Alice to ten inches high.",
+   "source_ids": [
+    "c01.p0015",
+    "c01.p0020"
+   ]
+  },
+  {
+   "id": "rabbits_fan",
+   "name": "The Rabbit's Fan",
+   "chapter": "c02",
+   "meaning": "Holding this fan makes Alice shrink rapidly.",
+   "source_ids": [
+    "c02.p0007",
+    "c02.p0012"
+   ]
+  },
+  {
+   "id": "white_kid_gloves",
+   "name": "White Kid Gloves",
+   "chapter": "c02",
+   "meaning": "The White Rabbit drops these tiny gloves in the hall.",
+   "source_ids": [
+    "c02.p0007",
+    "c02.p0012"
+   ]
+  },
+  {
+   "id": "box_of_comfits",
+   "name": "Box of Comfits",
+   "chapter": "c03",
+   "meaning": "Alice hands out these sweets as prizes after the Caucus-race.",
+   "source_ids": [
+    "c03.p0023"
+   ]
+  },
+  {
+   "id": "thimble",
+   "name": "Thimble",
+   "chapter": "c03",
+   "meaning": "The Dodo solemnly gives Alice her own thimble as a prize.",
+   "source_ids": [
+    "c03.p0026",
+    "c03.p0028"
+   ]
+  },
+  {
+   "id": "unlabelled_bottle",
+   "name": "Unlabelled Bottle",
+   "chapter": "c04",
+   "meaning": "Drinking from this bottle makes Alice grow until she fills the room.",
+   "source_ids": [
+    "c04.p0005",
+    "c04.p0006"
+   ]
+  },
+  {
+   "id": "pebble_cakes",
+   "name": "Pebble Cakes",
+   "chapter": "c04",
+   "meaning": "Pebbles turn into these cakes, which shrink Alice so she can escape.",
+   "source_ids": [
+    "c04.p0033",
+    "c04.p0034"
+   ]
+  },
+  {
+   "id": "little_stick",
+   "name": "Little Stick",
+   "chapter": "c04",
+   "meaning": "Alice holds out this stick to distract the enormous puppy.",
+   "source_ids": [
+    "c04.p0038"
+   ]
+  },
+  {
+   "id": "hookah",
+   "name": "The Caterpillar's Hookah",
+   "chapter": "c05",
+   "meaning": "The blue Caterpillar quietly smokes this long pipe on the mushroom.",
+   "source_ids": [
+    "c05.p0001",
+    "c05.p0040"
+   ]
+  },
+  {
+   "id": "mushroom_pieces",
+   "name": "Pieces of Mushroom",
+   "chapter": "c05",
+   "meaning": "One side makes Alice grow taller, and the other makes her shorter.",
+   "source_ids": [
+    "c05.p0041",
+    "c05.p0043",
+    "c05.p0044"
+   ]
+  },
+  {
+   "id": "queen_invitation",
+   "name": "The Queen's Invitation",
+   "chapter": "c06",
+   "meaning": "A giant letter inviting the Duchess to play croquet with the Queen.",
+   "source_ids": [
+    "c06.p0002"
+   ]
+  },
+  {
+   "id": "cauldron_of_soup",
+   "name": "Cauldron of Pepper Soup",
+   "chapter": "c06",
+   "meaning": "This soup has so much pepper that everyone in the kitchen sneezes.",
+   "source_ids": [
+    "c06.p0019",
+    "c06.p0020",
+    "c06.p0021"
+   ]
+  },
+  {
+   "id": "hatters_watch",
+   "name": "The Hatter's Watch",
+   "chapter": "c07",
+   "meaning": "A buttered watch that tells the day of the month.",
+   "source_ids": [
+    "c07.p0021",
+    "c07.p0023",
+    "c07.p0027"
+   ]
+  },
+  {
+   "id": "teapot",
+   "name": "The Teapot",
+   "chapter": "c07",
+   "meaning": "The Hatter and March Hare try to stuff the Dormouse inside it.",
+   "source_ids": [
+    "c07.p0102"
+   ]
+  },
+  {
+   "id": "white_rose_tree",
+   "name": "White Rose-Tree",
+   "chapter": "c08",
+   "meaning": "The gardeners paint its white roses red before the Queen sees them.",
+   "source_ids": [
+    "c08.p0001",
+    "c08.p0010"
+   ]
+  },
+  {
+   "id": "flamingo_mallet",
+   "name": "Live Flamingo",
+   "chapter": "c08",
+   "meaning": "Alice uses this live bird as a mallet in the croquet game.",
+   "source_ids": [
+    "c08.p0041",
+    "c08.p0042"
+   ]
+  },
+  {
+   "id": "hedgehog_ball",
+   "name": "Live Hedgehog",
+   "chapter": "c08",
+   "meaning": "The croquet players use these live hedgehogs as croquet balls.",
+   "source_ids": [
+    "c08.p0041",
+    "c08.p0042"
+   ]
+  },
+  {
+   "id": "rock_ledge",
+   "name": "Ledge of Rock",
+   "chapter": "c09",
+   "meaning": "The Mock Turtle sits weeping on this rock by the sea.",
+   "source_ids": [
+    "c09.p0048"
+   ]
+  },
+  {
+   "id": "sea_shingle",
+   "name": "The Sea-Shore Shingle",
+   "chapter": "c10",
+   "meaning": "The beach where the Mock Turtle and Gryphon dance the Lobster Quadrille.",
+   "source_ids": [
+    "c10.p0004",
+    "c10.p0023",
+    "c10.p0024"
+   ]
+  },
+  {
+   "id": "dish_of_tarts",
+   "name": "Dish of Tarts",
+   "chapter": "c11",
+   "meaning": "The stolen tarts sit on a table in the court.",
+   "source_ids": [
+    "c11.p0001"
+   ]
+  },
+  {
+   "id": "trumpet_and_scroll",
+   "name": "Trumpet and Parchment Scroll",
+   "chapter": "c11",
+   "meaning": "The White Rabbit uses these to announce witnesses and read the accusation.",
+   "source_ids": [
+    "c11.p0001",
+    "c11.p0011"
+   ]
+  },
+  {
+   "id": "squeaking_pencil",
+   "name": "Bill's Squeaking Pencil",
+   "chapter": "c11",
+   "meaning": "Alice takes this noisy pencil from Bill the Lizard.",
+   "source_ids": [
+    "c11.p0009"
+   ]
+  },
+  {
+   "id": "kings_notebook",
+   "name": "The King's Note-Book",
+   "chapter": "c12",
+   "meaning": "The King writes Rule Forty-two in this book to kick Alice out.",
+   "source_ids": [
+    "c12.p0014",
+    "c12.p0022"
+   ]
+  },
+  {
+   "id": "paper_of_verses",
+   "name": "Paper of Verses",
+   "chapter": "c12",
+   "meaning": "A poem without a signature used as evidence against the Knave.",
+   "source_ids": [
+    "c12.p0023",
+    "c12.p0028",
+    "c12.p0032"
+   ]
+  },
+  {
+   "id": "pack_of_cards",
+   "name": "Pack of Cards",
+   "chapter": "c12",
+   "meaning": "The whole court rises into the air as cards before Alice wakes.",
+   "source_ids": [
+    "c12.p0058",
+    "c12.p0059"
+   ]
+  }
+ ],
+ "lines": [
+  {
+   "character": "alice",
+   "chapter": "c01",
+   "plain": "What is the use of a book without pictures?",
+   "original": "“and what is the use of a book,” thought Alice “without pictures or conversations?”",
+   "source_ids": [
+    "c01.p0001"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c01",
+   "plain": "I wonder how many miles I have fallen now?",
+   "original": "“I wonder how many miles I’ve fallen by this time?”",
+   "source_ids": [
+    "c01.p0008"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c01",
+   "plain": "I must be shutting up like a telescope.",
+   "original": "“What a curious feeling!” said Alice; “I must be shutting up like a telescope.”",
+   "source_ids": [
+    "c01.p0019"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c01",
+   "plain": "I will eat this cake to get into the garden.",
+   "original": "“Well, I’ll eat it,” said Alice, “and if it makes me grow larger, I can reach the key; and if it makes me grow smaller, I can creep under the door; so either way I’ll get into the garden, and I don’t care which happens!”",
+   "source_ids": [
+    "c01.p0023"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c01",
+   "plain": "Oh dear! Oh dear! I shall be late!",
+   "original": "“Oh dear! Oh dear! I shall be late!”",
+   "source_ids": [
+    "c01.p0003"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c01",
+   "plain": "Oh my ears and whiskers, how late it is getting!",
+   "original": "“Oh my ears and whiskers, how late it’s getting!”",
+   "source_ids": [
+    "c01.p0011"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c02",
+   "plain": "I am opening out like the largest telescope that ever was!",
+   "original": "“now I’m opening out like the largest telescope that ever was! Good-bye, feet!”",
+   "source_ids": [
+    "c02.p0001"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c02",
+   "plain": "Who in the world am I? That is the great puzzle!",
+   "original": "Who in the world am I? Ah, that’s the great puzzle!”",
+   "source_ids": [
+    "c02.p0008"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c02",
+   "plain": "O Mouse, do you know the way out of this pool?",
+   "original": "“O Mouse, do you know the way out of this pool? I am very tired of swimming about here, O Mouse!”",
+   "source_ids": [
+    "c02.p0017"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c02",
+   "plain": "Oh, the Duchess! She will be angry if I keep her waiting!",
+   "original": "“Oh! the Duchess, the Duchess! Oh! won’t she be savage if I’ve kept her waiting!”",
+   "source_ids": [
+    "c02.p0007"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c02",
+   "plain": "I must hurry along with these gloves and this fan.",
+   "original": "",
+   "source_ids": [
+    "c02.p0007"
+   ]
+  },
+  {
+   "character": "mouse",
+   "chapter": "c02",
+   "plain": "Would you like cats if you were me?",
+   "original": "“Would you like cats if you were me?”",
+   "source_ids": [
+    "c02.p0019"
+   ]
+  },
+  {
+   "character": "mouse",
+   "chapter": "c02",
+   "plain": "Our family always hated cats: nasty, low, vulgar things!",
+   "original": "Our family always hated cats: nasty, low, vulgar things!",
+   "source_ids": [
+    "c02.p0021"
+   ]
+  },
+  {
+   "character": "mouse",
+   "chapter": "c02",
+   "plain": "Let us get to the shore, and I will tell my story.",
+   "original": "“Let us get to the shore, and then I’ll tell you my history, and you’ll understand why it is I hate cats and dogs.”",
+   "source_ids": [
+    "c02.p0023"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c03",
+   "plain": "I am as wet as ever, and this does not dry me.",
+   "original": "“As wet as ever,” said Alice in a melancholy tone: “it doesn’t seem to dry me at all.”",
+   "source_ids": [
+    "c03.p0013"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c03",
+   "plain": "What is a Caucus-race?",
+   "original": "“What is a Caucus-race?”",
+   "source_ids": [
+    "c03.p0017"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c03",
+   "plain": "It is a long tail, certainly, but why call it sad?",
+   "original": "“It is a long tail, certainly,” said Alice, looking down with wonder at the Mouse’s tail; “but why do you call it sad?”",
+   "source_ids": [
+    "c03.p0033"
+   ]
+  },
+  {
+   "character": "mouse",
+   "chapter": "c03",
+   "plain": "Sit down and listen, and I will make you dry enough!",
+   "original": "“Sit down, all of you, and listen to me! I’ll soon make you dry enough!”",
+   "source_ids": [
+    "c03.p0003"
+   ]
+  },
+  {
+   "character": "mouse",
+   "chapter": "c03",
+   "plain": "Mine is a long and a sad tale!",
+   "original": "“Mine is a long and a sad tale!”",
+   "source_ids": [
+    "c03.p0032"
+   ]
+  },
+  {
+   "character": "mouse",
+   "chapter": "c03",
+   "plain": "You insult me by talking such nonsense!",
+   "original": "“You insult me by talking such nonsense!”",
+   "source_ids": [
+    "c03.p0038"
+   ]
+  },
+  {
+   "character": "dodo",
+   "chapter": "c03",
+   "plain": "The best thing to get us dry is a Caucus-race.",
+   "original": "“What I was going to say,” said the Dodo in an offended tone, “was, that the best thing to get us dry would be a Caucus-race.”",
+   "source_ids": [
+    "c03.p0016"
+   ]
+  },
+  {
+   "character": "dodo",
+   "chapter": "c03",
+   "plain": "Everybody has won, and all must have prizes.",
+   "original": "“Everybody has won, and all must have prizes.”",
+   "source_ids": [
+    "c03.p0020"
+   ]
+  },
+  {
+   "character": "dodo",
+   "chapter": "c03",
+   "plain": "We beg you to accept this fine thimble.",
+   "original": "“We beg your acceptance of this elegant thimble;”",
+   "source_ids": [
+    "c03.p0028"
+   ]
+  },
+  {
+   "character": "lory",
+   "chapter": "c03",
+   "plain": "I am older than you, and must know better.",
+   "original": "“I am older than you, and must know better;”",
+   "source_ids": [
+    "c03.p0002"
+   ]
+  },
+  {
+   "character": "lory",
+   "chapter": "c03",
+   "plain": "And who is Dinah, if I may ask the question?",
+   "original": "“And who is Dinah, if I might venture to ask the question?”",
+   "source_ids": [
+    "c03.p0044"
+   ]
+  },
+  {
+   "character": "duck",
+   "chapter": "c03",
+   "plain": "Found what?",
+   "original": "“Found what?”",
+   "source_ids": [
+    "c03.p0009"
+   ]
+  },
+  {
+   "character": "duck",
+   "chapter": "c03",
+   "plain": "When I find a thing, it is a frog or a worm.",
+   "original": "“I know what ‘it’ means well enough, when I find a thing,” said the Duck: “it’s generally a frog or a worm.",
+   "source_ids": [
+    "c03.p0011"
+   ]
+  },
+  {
+   "character": "eaglet",
+   "chapter": "c03",
+   "plain": "Speak English! I do not know the meaning of those long words.",
+   "original": "“Speak English!” said the Eaglet. “I don’t know the meaning of half those long words, and, what’s more, I don’t believe you do either!”",
+   "source_ids": [
+    "c03.p0015"
+   ]
+  },
+  {
+   "character": "eaglet",
+   "chapter": "c03",
+   "plain": "I do not believe you know what they mean either!",
+   "original": "“I don’t know the meaning of half those long words, and, what’s more, I don’t believe you do either!”",
+   "source_ids": [
+    "c03.p0015"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c04",
+   "plain": "He took me for his housemaid!",
+   "original": "“He took me for his housemaid,”",
+   "source_ids": [
+    "c04.p0003"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c04",
+   "plain": "If you burn the house down, I will set Dinah at you!",
+   "original": "“If you do, I’ll set Dinah at you!”",
+   "source_ids": [
+    "c04.p0030"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c04",
+   "plain": "If I eat one of these cakes, it will make me smaller.",
+   "original": "“If I eat one of these cakes,” she thought, “it’s sure to make some change in my size; and as it can’t possibly make me larger, it must make me smaller, I suppose.”",
+   "source_ids": [
+    "c04.p0033"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c04",
+   "plain": "Mary Ann, run home and fetch me a pair of gloves!",
+   "original": "“Why, Mary Ann, what are you doing out here? Run home this moment, and fetch me a pair of gloves and a fan! Quick, now!”",
+   "source_ids": [
+    "c04.p0002"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c04",
+   "plain": "Now tell me, Pat, what is that in the window?",
+   "original": "“Now tell me, Pat, what’s that in the window?”",
+   "source_ids": [
+    "c04.p0018"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c04",
+   "plain": "We must burn the house down!",
+   "original": "“We must burn the house down!”",
+   "source_ids": [
+    "c04.p0030"
+   ]
+  },
+  {
+   "character": "pat",
+   "chapter": "c04",
+   "plain": "Sure then I am here, digging for apples, yer honour!",
+   "original": "“Sure then I’m here! Digging for apples, yer honour!”",
+   "source_ids": [
+    "c04.p0016"
+   ]
+  },
+  {
+   "character": "pat",
+   "chapter": "c04",
+   "plain": "Sure, it is an arm in the window, yer honour!",
+   "original": "“Sure, it’s an arm, yer honour!”",
+   "source_ids": [
+    "c04.p0019"
+   ]
+  },
+  {
+   "character": "bill_the_lizard",
+   "chapter": "c04",
+   "plain": "Something comes at me like a Jack-in-the-box!",
+   "original": "all I know is, something comes at me like a Jack-in-the-box, and up I goes like a sky-rocket!”",
+   "source_ids": [
+    "c04.p0028"
+   ]
+  },
+  {
+   "character": "bill_the_lizard",
+   "chapter": "c04",
+   "plain": "Up I go like a sky-rocket!",
+   "original": "and up I goes like a sky-rocket!”",
+   "source_ids": [
+    "c04.p0028"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c05",
+   "plain": "I cannot explain myself, sir, because I am not myself.",
+   "original": "“I can’t explain myself, I’m afraid, sir,” said Alice, “because I’m not myself, you see.”",
+   "source_ids": [
+    "c05.p0005"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c05",
+   "plain": "Three inches is such a wretched height to be.",
+   "original": "“three inches is such a wretched height to be.”",
+   "source_ids": [
+    "c05.p0037"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c05",
+   "plain": "I am not a serpent! Let me alone!",
+   "original": "“I’m not a serpent!” said Alice indignantly. “Let me alone!”",
+   "source_ids": [
+    "c05.p0052"
+   ]
+  },
+  {
+   "character": "caterpillar",
+   "chapter": "c05",
+   "plain": "Who are you?",
+   "original": "“Who are you?”",
+   "source_ids": [
+    "c05.p0002"
+   ]
+  },
+  {
+   "character": "caterpillar",
+   "chapter": "c05",
+   "plain": "Keep your temper.",
+   "original": "“Keep your temper,”",
+   "source_ids": [
+    "c05.p0018"
+   ]
+  },
+  {
+   "character": "caterpillar",
+   "chapter": "c05",
+   "plain": "One side makes you taller, and the other makes you shorter.",
+   "original": "“One side will make you grow taller, and the other side will make you grow shorter.”",
+   "source_ids": [
+    "c05.p0041"
+   ]
+  },
+  {
+   "character": "pigeon",
+   "chapter": "c05",
+   "plain": "Serpent!",
+   "original": "“Serpent!”",
+   "source_ids": [
+    "c05.p0051"
+   ]
+  },
+  {
+   "character": "pigeon",
+   "chapter": "c05",
+   "plain": "I have never seen a little girl with such a neck!",
+   "original": "“I’ve seen a good many little girls in my time, but never one with such a neck as that!",
+   "source_ids": [
+    "c05.p0063"
+   ]
+  },
+  {
+   "character": "pigeon",
+   "chapter": "c05",
+   "plain": "You are looking for eggs, I know that well enough!",
+   "original": "“You’re looking for eggs, I know that well enough; and what does it matter to me whether you’re a little girl or a serpent?”",
+   "source_ids": [
+    "c05.p0066"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c06",
+   "plain": "Please tell me why your cat grins like that?",
+   "original": "“why your cat grins like that?”",
+   "source_ids": [
+    "c06.p0022"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c06",
+   "plain": "Would you tell me which way I ought to go from here?",
+   "original": "“Would you tell me, please, which way I ought to go from here?”",
+   "source_ids": [
+    "c06.p0051"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c06",
+   "plain": "I have never seen a grin without a cat!",
+   "original": "“Well! I’ve often seen a cat without a grin,” thought Alice; “but a grin without a cat! It’s the most curious thing I ever saw in my life!”",
+   "source_ids": [
+    "c06.p0079"
+   ]
+  },
+  {
+   "character": "fish_footman",
+   "chapter": "c06",
+   "plain": "For the Duchess: an invitation from the Queen to play croquet.",
+   "original": "“For the Duchess. An invitation from the Queen to play croquet.”",
+   "source_ids": [
+    "c06.p0002"
+   ]
+  },
+  {
+   "character": "fish_footman",
+   "chapter": "c06",
+   "plain": "I bring this great letter from the Queen.",
+   "original": "",
+   "source_ids": [
+    "c06.p0002"
+   ]
+  },
+  {
+   "character": "frog_footman",
+   "chapter": "c06",
+   "plain": "From the Queen: an invitation for the Duchess to play croquet.",
+   "original": "“From the Queen. An invitation for the Duchess to play croquet.”",
+   "source_ids": [
+    "c06.p0002"
+   ]
+  },
+  {
+   "character": "frog_footman",
+   "chapter": "c06",
+   "plain": "There is no use in knocking because of the noise inside.",
+   "original": "“There’s no sort of use in knocking,” said the Footman, “and that for two reasons. First, because I’m on the same side of the door as you are; secondly, because they’re making such a noise inside, no one could possibly hear you.”",
+   "source_ids": [
+    "c06.p0006"
+   ]
+  },
+  {
+   "character": "frog_footman",
+   "chapter": "c06",
+   "plain": "I shall sit here, on and off, for days and days.",
+   "original": "“I shall sit here,” he said, “on and off, for days and days.”",
+   "source_ids": [
+    "c06.p0015"
+   ]
+  },
+  {
+   "character": "duchess",
+   "chapter": "c06",
+   "plain": "It is a Cheshire cat, and that is why it grins.",
+   "original": "“It’s a Cheshire cat,” said the Duchess, “and that’s why. Pig!”",
+   "source_ids": [
+    "c06.p0023"
+   ]
+  },
+  {
+   "character": "duchess",
+   "chapter": "c06",
+   "plain": "Talking of axes, chop off her head!",
+   "original": "“Talking of axes,” said the Duchess, “chop off her head!”",
+   "source_ids": [
+    "c06.p0033"
+   ]
+  },
+  {
+   "character": "duchess",
+   "chapter": "c06",
+   "plain": "Here, you may nurse the baby a bit, if you like!",
+   "original": "“Here! you may nurse it a bit, if you like!”",
+   "source_ids": [
+    "c06.p0043"
+   ]
+  },
+  {
+   "character": "cheshire_cat",
+   "chapter": "c06",
+   "plain": "We are all mad here. I am mad. You are mad.",
+   "original": "“we’re all mad here. I’m mad. You’re mad.”",
+   "source_ids": [
+    "c06.p0060"
+   ]
+  },
+  {
+   "character": "cheshire_cat",
+   "chapter": "c06",
+   "plain": "Do you play croquet with the Queen to-day?",
+   "original": "“Do you play croquet with the Queen to-day?”",
+   "source_ids": [
+    "c06.p0068"
+   ]
+  },
+  {
+   "character": "cheshire_cat",
+   "chapter": "c06",
+   "plain": "By-the-bye, what became of the baby?",
+   "original": "“By-the-bye, what became of the baby?”",
+   "source_ids": [
+    "c06.p0072"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c07",
+   "plain": "There is plenty of room at this table!",
+   "original": "“There’s plenty of room!”",
+   "source_ids": [
+    "c07.p0002"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c07",
+   "plain": "You should not waste time asking riddles that have no answers.",
+   "original": "“I think you might do something better with the time,” she said, “than waste it in asking riddles that have no answers.”",
+   "source_ids": [
+    "c07.p0038"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c07",
+   "plain": "This is the stupidest tea-party I was ever at in my life!",
+   "original": "“It’s the stupidest tea-party I ever was at in all my life!”",
+   "source_ids": [
+    "c07.p0103"
+   ]
+  },
+  {
+   "character": "march_hare",
+   "chapter": "c07",
+   "plain": "Have some wine!",
+   "original": "“Have some wine,”",
+   "source_ids": [
+    "c07.p0003"
+   ]
+  },
+  {
+   "character": "march_hare",
+   "chapter": "c07",
+   "plain": "It was not very civil to sit down without being invited.",
+   "original": "“It wasn’t very civil of you to sit down without being invited,”",
+   "source_ids": [
+    "c07.p0007"
+   ]
+  },
+  {
+   "character": "march_hare",
+   "chapter": "c07",
+   "plain": "It was the best butter, you know.",
+   "original": "“It was the best butter, you know.”",
+   "source_ids": [
+    "c07.p0026"
+   ]
+  },
+  {
+   "character": "hatter",
+   "chapter": "c07",
+   "plain": "Why is a raven like a writing-desk?",
+   "original": "“Why is a raven like a writing-desk?”",
+   "source_ids": [
+    "c07.p0011"
+   ]
+  },
+  {
+   "character": "hatter",
+   "chapter": "c07",
+   "plain": "It is always six o'clock now, and always tea-time.",
+   "original": "It’s always six o’clock now.”",
+   "source_ids": [
+    "c07.p0057"
+   ]
+  },
+  {
+   "character": "hatter",
+   "chapter": "c07",
+   "plain": "I want a clean cup, so let us move one place on.",
+   "original": "“I want a clean cup,” interrupted the Hatter: “let’s all move one place on.”",
+   "source_ids": [
+    "c07.p0088"
+   ]
+  },
+  {
+   "character": "dormouse",
+   "chapter": "c07",
+   "plain": "I was not asleep, and I heard every word you said.",
+   "original": "“I wasn’t asleep,” he said in a hoarse, feeble voice: “I heard every word you fellows were saying.”",
+   "source_ids": [
+    "c07.p0066"
+   ]
+  },
+  {
+   "character": "dormouse",
+   "chapter": "c07",
+   "plain": "Once upon a time three little sisters lived in a treacle-well.",
+   "original": "“Once upon a time there were three little sisters,” the Dormouse began in a great hurry; “and their names were Elsie, Lacie, and Tillie; and they lived at the bottom of a well—”",
+   "source_ids": [
+    "c07.p0070"
+   ]
+  },
+  {
+   "character": "dormouse",
+   "chapter": "c07",
+   "plain": "They drew everything that begins with an M, like mouse-traps.",
+   "original": "“and they drew all manner of things—everything that begins with an M—”",
+   "source_ids": [
+    "c07.p0095"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c08",
+   "plain": "They are only a pack of cards!",
+   "original": "“Why, they’re only a pack of cards, after all. I needn’t be afraid of them!”",
+   "source_ids": [
+    "c08.p0015"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c08",
+   "plain": "You shall not be beheaded!",
+   "original": "“You shan’t be beheaded!”",
+   "source_ids": [
+    "c08.p0027"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c08",
+   "plain": "The cat belongs to the Duchess, so you should ask her.",
+   "original": "“It belongs to the Duchess: you’d better ask her about it.”",
+   "source_ids": [
+    "c08.p0069"
+   ]
+  },
+  {
+   "character": "two",
+   "chapter": "c08",
+   "plain": "Look out now, Five! Do not splash paint over me like that!",
+   "original": "“Look out now, Five! Don’t go splashing paint over me like that!”",
+   "source_ids": [
+    "c08.p0001"
+   ]
+  },
+  {
+   "character": "two",
+   "chapter": "c08",
+   "plain": "We put a white rose-tree in by mistake instead of red.",
+   "original": "“Why the fact is, you see, Miss, this here ought to have been a red rose-tree, and we put a white one in by mistake; and if the Queen was to find it out, we should all have our heads cut off, you know.",
+   "source_ids": [
+    "c08.p0010"
+   ]
+  },
+  {
+   "character": "five",
+   "chapter": "c08",
+   "plain": "I could not help it; Seven jogged my elbow.",
+   "original": "“I couldn’t help it,” said Five, in a sulky tone; “Seven jogged my elbow.”",
+   "source_ids": [
+    "c08.p0002"
+   ]
+  },
+  {
+   "character": "five",
+   "chapter": "c08",
+   "plain": "The Queen! The Queen!",
+   "original": "“The Queen! The Queen!”",
+   "source_ids": [
+    "c08.p0010"
+   ]
+  },
+  {
+   "character": "seven",
+   "chapter": "c08",
+   "plain": "That is right, Five! Always lay the blame on others!",
+   "original": "“That’s right, Five! Always lay the blame on others!”",
+   "source_ids": [
+    "c08.p0003"
+   ]
+  },
+  {
+   "character": "seven",
+   "chapter": "c08",
+   "plain": "That is none of your business, Two!",
+   "original": "“That’s none of your business, Two!”",
+   "source_ids": [
+    "c08.p0006"
+   ]
+  },
+  {
+   "character": "queen_of_hearts",
+   "chapter": "c08",
+   "plain": "What is your name, child?",
+   "original": "“What’s your name, child?”",
+   "source_ids": [
+    "c08.p0014"
+   ]
+  },
+  {
+   "character": "queen_of_hearts",
+   "chapter": "c08",
+   "plain": "Off with her head!",
+   "original": "“Off with her head! Off—”",
+   "source_ids": [
+    "c08.p0018"
+   ]
+  },
+  {
+   "character": "queen_of_hearts",
+   "chapter": "c08",
+   "plain": "Can you play croquet?",
+   "original": "“Can you play croquet?”",
+   "source_ids": [
+    "c08.p0030"
+   ]
+  },
+  {
+   "character": "king_of_hearts",
+   "chapter": "c08",
+   "plain": "Consider, my dear: she is only a child!",
+   "original": "“Consider, my dear: she is only a child!”",
+   "source_ids": [
+    "c08.p0020"
+   ]
+  },
+  {
+   "character": "king_of_hearts",
+   "chapter": "c08",
+   "plain": "I do not like the look of this cat at all.",
+   "original": "“I don’t like the look of it at all,” said the King: “however, it may kiss my hand if it likes.”",
+   "source_ids": [
+    "c08.p0054"
+   ]
+  },
+  {
+   "character": "king_of_hearts",
+   "chapter": "c08",
+   "plain": "Anything that has a head can be beheaded!",
+   "original": "",
+   "source_ids": [
+    "c08.p0067"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c08",
+   "plain": "It is a very fine day!",
+   "original": "“It’s—it’s a very fine day!”",
+   "source_ids": [
+    "c08.p0034"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c08",
+   "plain": "Hush! The Duchess is under sentence of execution.",
+   "original": "“She’s under sentence of execution.”",
+   "source_ids": [
+    "c08.p0036"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c08",
+   "plain": "She boxed the Queen's ears!",
+   "original": "“She boxed the Queen’s ears—”",
+   "source_ids": [
+    "c08.p0040"
+   ]
+  },
+  {
+   "character": "cheshire_cat",
+   "chapter": "c08",
+   "plain": "How are you getting on?",
+   "original": "“How are you getting on?”",
+   "source_ids": [
+    "c08.p0046"
+   ]
+  },
+  {
+   "character": "cheshire_cat",
+   "chapter": "c08",
+   "plain": "How do you like the Queen?",
+   "original": "“How do you like the Queen?”",
+   "source_ids": [
+    "c08.p0049"
+   ]
+  },
+  {
+   "character": "cheshire_cat",
+   "chapter": "c08",
+   "plain": "I would rather not kiss your hand.",
+   "original": "“I’d rather not,”",
+   "source_ids": [
+    "c08.p0055"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c09",
+   "plain": "I do not even know what a Mock Turtle is.",
+   "original": "“I don’t even know what a Mock Turtle is.”",
+   "source_ids": [
+    "c09.p0038"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c09",
+   "plain": "Why did you call him Tortoise, if he was not one?",
+   "original": "“Why did you call him Tortoise, if he wasn’t one?”",
+   "source_ids": [
+    "c09.p0056"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c09",
+   "plain": "Then the eleventh day must have been a holiday?",
+   "original": "“Then the eleventh day must have been a holiday?”",
+   "source_ids": [
+    "c09.p0089"
+   ]
+  },
+  {
+   "character": "duchess",
+   "chapter": "c09",
+   "plain": "You cannot think how glad I am to see you again!",
+   "original": "“You can’t think how glad I am to see you again, you dear old thing!”",
+   "source_ids": [
+    "c09.p0001"
+   ]
+  },
+  {
+   "character": "duchess",
+   "chapter": "c09",
+   "plain": "Everything has got a moral, if only you can find it.",
+   "original": "“Everything’s got a moral, if only you can find it.”",
+   "source_ids": [
+    "c09.p0006"
+   ]
+  },
+  {
+   "character": "duchess",
+   "chapter": "c09",
+   "plain": "Flamingoes and mustard both bite.",
+   "original": "“flamingoes and mustard both bite.",
+   "source_ids": [
+    "c09.p0015"
+   ]
+  },
+  {
+   "character": "queen_of_hearts",
+   "chapter": "c09",
+   "plain": "Either you or your head must be off in no time!",
+   "original": "“either you or your head must be off, and that in about half no time! Take your choice!”",
+   "source_ids": [
+    "c09.p0032"
+   ]
+  },
+  {
+   "character": "queen_of_hearts",
+   "chapter": "c09",
+   "plain": "Have you seen the Mock Turtle yet?",
+   "original": "“Have you seen the Mock Turtle yet?”",
+   "source_ids": [
+    "c09.p0037"
+   ]
+  },
+  {
+   "character": "queen_of_hearts",
+   "chapter": "c09",
+   "plain": "Up, lazy thing, and take this young lady to the Mock Turtle!",
+   "original": "“Up, lazy thing!” said the Queen, “and take this young lady to see the Mock Turtle, and to hear his history.",
+   "source_ids": [
+    "c09.p0043"
+   ]
+  },
+  {
+   "character": "king_of_hearts",
+   "chapter": "c09",
+   "plain": "You are all pardoned.",
+   "original": "“You are all pardoned.”",
+   "source_ids": [
+    "c09.p0042"
+   ]
+  },
+  {
+   "character": "king_of_hearts",
+   "chapter": "c09",
+   "plain": "Nobody will be executed today.",
+   "original": "",
+   "source_ids": [
+    "c09.p0042"
+   ]
+  },
+  {
+   "character": "gryphon",
+   "chapter": "c09",
+   "plain": "It is all her fancy: they never execute nobody, you know.",
+   "original": "“It’s all her fancy, that: they never executes nobody, you know. Come on!”",
+   "source_ids": [
+    "c09.p0046"
+   ]
+  },
+  {
+   "character": "gryphon",
+   "chapter": "c09",
+   "plain": "He has got no sorrow, you know. Come on!",
+   "original": "“It’s all his fancy, that: he hasn’t got no sorrow, you know. Come on!”",
+   "source_ids": [
+    "c09.p0048"
+   ]
+  },
+  {
+   "character": "gryphon",
+   "chapter": "c09",
+   "plain": "They are called lessons because they lessen from day to day.",
+   "original": "“That’s the reason they’re called lessons,” the Gryphon remarked: “because they lessen from day to day.”",
+   "source_ids": [
+    "c09.p0088"
+   ]
+  },
+  {
+   "character": "mock_turtle",
+   "chapter": "c09",
+   "plain": "Once, I was a real Turtle.",
+   "original": "“Once,” said the Mock Turtle at last, with a deep sigh, “I was a real Turtle.”",
+   "source_ids": [
+    "c09.p0053"
+   ]
+  },
+  {
+   "character": "mock_turtle",
+   "chapter": "c09",
+   "plain": "We called him Tortoise because he taught us!",
+   "original": "“We called him Tortoise because he taught us,” said the Mock Turtle angrily: “really you are very dull!”",
+   "source_ids": [
+    "c09.p0057"
+   ]
+  },
+  {
+   "character": "mock_turtle",
+   "chapter": "c09",
+   "plain": "We learned Reeling and Writhing, and the branches of Arithmetic.",
+   "original": "“Reeling and Writhing, of course, to begin with,” the Mock Turtle replied; “and then the different branches of Arithmetic—Ambition, Distraction, Uglification, and Derision.”",
+   "source_ids": [
+    "c09.p0073"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c10",
+   "plain": "What sort of a dance is the Lobster Quadrille?",
+   "original": "“What sort of a dance is it?”",
+   "source_ids": [
+    "c10.p0003"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c10",
+   "plain": "I could tell you my adventures, beginning from this morning.",
+   "original": "“I could tell you my adventures—beginning from this morning,”",
+   "source_ids": [
+    "c10.p0048"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c10",
+   "plain": "What trial is it?",
+   "original": "“What trial is it?”",
+   "source_ids": [
+    "c10.p0075"
+   ]
+  },
+  {
+   "character": "mock_turtle",
+   "chapter": "c10",
+   "plain": "You have no idea what a delightful thing a Lobster Quadrille is!",
+   "original": "“—so you can have no idea what a delightful thing a Lobster Quadrille is!”",
+   "source_ids": [
+    "c10.p0002"
+   ]
+  },
+  {
+   "character": "mock_turtle",
+   "chapter": "c10",
+   "plain": "Will you walk a little faster, said a whiting to a snail.",
+   "original": "“Will you walk a little faster?” said a whiting to a snail.",
+   "source_ids": [
+    "c10.p0024"
+   ]
+  },
+  {
+   "character": "mock_turtle",
+   "chapter": "c10",
+   "plain": "No wise fish would go anywhere without a porpoise.",
+   "original": "“no wise fish would go anywhere without a porpoise.”",
+   "source_ids": [
+    "c10.p0043"
+   ]
+  },
+  {
+   "character": "mock_turtle",
+   "chapter": "c10",
+   "plain": "Soup of the evening, beautiful Soup!",
+   "original": "Soup of the evening, beautiful Soup!",
+   "source_ids": [
+    "c10.p0072"
+   ]
+  },
+  {
+   "character": "gryphon",
+   "chapter": "c10",
+   "plain": "Change lobsters, and throw the lobsters out to sea!",
+   "original": "“The lobsters!” shouted the Gryphon, with a bound into the air.",
+   "source_ids": [
+    "c10.p0010",
+    "c10.p0012"
+   ]
+  },
+  {
+   "character": "gryphon",
+   "chapter": "c10",
+   "plain": "Boots and shoes under the sea are done with a whiting.",
+   "original": "“Boots and shoes under the sea,” the Gryphon went on in a deep voice, “are done with a whiting. Now you know.”",
+   "source_ids": [
+    "c10.p0039"
+   ]
+  },
+  {
+   "character": "gryphon",
+   "chapter": "c10",
+   "plain": "Come on! The trial is beginning!",
+   "original": "“Come on!”",
+   "source_ids": [
+    "c10.p0073",
+    "c10.p0074"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c11",
+   "plain": "What are the jurors writing before the trial has begun?",
+   "original": "“What are they doing?” Alice whispered to the Gryphon. “They can’t have anything to put down yet, before the trial’s begun.”",
+   "source_ids": [
+    "c11.p0005"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c11",
+   "plain": "Stupid things!",
+   "original": "“Stupid things!”",
+   "source_ids": [
+    "c11.p0007"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c11",
+   "plain": "I cannot help squeezing you, because I am growing.",
+   "original": "“I can’t help it,” said Alice very meekly: “I’m growing.”",
+   "source_ids": [
+    "c11.p0031"
+   ]
+  },
+  {
+   "character": "gryphon",
+   "chapter": "c11",
+   "plain": "They are putting down their names so they do not forget them.",
+   "original": "“They’re putting down their names,” the Gryphon whispered in reply, “for fear they should forget them before the end of the trial.”",
+   "source_ids": [
+    "c11.p0006"
+   ]
+  },
+  {
+   "character": "gryphon",
+   "chapter": "c11",
+   "plain": "Look at the jurors writing on their slates.",
+   "original": "",
+   "source_ids": [
+    "c11.p0006"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c11",
+   "plain": "Silence in the court!",
+   "original": "“Silence in the court!”",
+   "source_ids": [
+    "c11.p0007"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c11",
+   "plain": "The Knave of Hearts stole those tarts and took them away!",
+   "original": "The Knave of Hearts, he stole those tarts, And took them quite away!”",
+   "source_ids": [
+    "c11.p0012"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c11",
+   "plain": "Alice!",
+   "original": "“Alice!”",
+   "source_ids": [
+    "c11.p0074"
+   ]
+  },
+  {
+   "character": "king_of_hearts",
+   "chapter": "c11",
+   "plain": "Herald, read the accusation!",
+   "original": "“Herald, read the accusation!”",
+   "source_ids": [
+    "c11.p0010"
+   ]
+  },
+  {
+   "character": "king_of_hearts",
+   "chapter": "c11",
+   "plain": "Give your evidence, and do not be nervous!",
+   "original": "“Give your evidence,” said the King; “and don’t be nervous, or I’ll have you executed on the spot.”",
+   "source_ids": [
+    "c11.p0027"
+   ]
+  },
+  {
+   "character": "king_of_hearts",
+   "chapter": "c11",
+   "plain": "What are tarts made of?",
+   "original": "“What are tarts made of?”",
+   "source_ids": [
+    "c11.p0068"
+   ]
+  },
+  {
+   "character": "queen_of_hearts",
+   "chapter": "c11",
+   "plain": "Bring me the list of the singers in the last concert!",
+   "original": "“Bring me the list of the singers in the last concert!”",
+   "source_ids": [
+    "c11.p0035"
+   ]
+  },
+  {
+   "character": "queen_of_hearts",
+   "chapter": "c11",
+   "plain": "Collar that Dormouse! Turn that Dormouse out of court!",
+   "original": "“Collar that Dormouse,” the Queen shrieked out. “Behead that Dormouse! Turn that Dormouse out of court!",
+   "source_ids": [
+    "c11.p0071"
+   ]
+  },
+  {
+   "character": "hatter",
+   "chapter": "c11",
+   "plain": "I had not quite finished my tea when I was sent for.",
+   "original": "“I beg pardon, your Majesty,” he began, “for bringing these in: but I hadn’t quite finished my tea when I was sent for.”",
+   "source_ids": [
+    "c11.p0016"
+   ]
+  },
+  {
+   "character": "hatter",
+   "chapter": "c11",
+   "plain": "This hat is not mine; I keep them to sell.",
+   "original": "“I keep them to sell,” the Hatter added as an explanation; “I’ve none of my own. I’m a hatter.”",
+   "source_ids": [
+    "c11.p0023",
+    "c11.p0025"
+   ]
+  },
+  {
+   "character": "hatter",
+   "chapter": "c11",
+   "plain": "I am a poor man, your Majesty.",
+   "original": "“I’m a poor man, your Majesty,”",
+   "source_ids": [
+    "c11.p0037"
+   ]
+  },
+  {
+   "character": "march_hare",
+   "chapter": "c11",
+   "plain": "Fifteenth of March!",
+   "original": "“Fifteenth,”",
+   "source_ids": [
+    "c11.p0019"
+   ]
+  },
+  {
+   "character": "march_hare",
+   "chapter": "c11",
+   "plain": "I didn't! I deny it!",
+   "original": "“I deny it!”",
+   "source_ids": [
+    "c11.p0042",
+    "c11.p0044"
+   ]
+  },
+  {
+   "character": "dormouse",
+   "chapter": "c11",
+   "plain": "I wish you would not squeeze so; I can hardly breathe.",
+   "original": "“I wish you wouldn’t squeeze so,” said the Dormouse, who was sitting next to her. “I can hardly breathe.”",
+   "source_ids": [
+    "c11.p0030"
+   ]
+  },
+  {
+   "character": "dormouse",
+   "chapter": "c11",
+   "plain": "You have no right to grow here.",
+   "original": "“You’ve no right to grow here,”",
+   "source_ids": [
+    "c11.p0032"
+   ]
+  },
+  {
+   "character": "dormouse",
+   "chapter": "c11",
+   "plain": "Treacle!",
+   "original": "“Treacle,”",
+   "source_ids": [
+    "c11.p0070"
+   ]
+  },
+  {
+   "character": "cook",
+   "chapter": "c11",
+   "plain": "Shan't!",
+   "original": "“Shan’t,”",
+   "source_ids": [
+    "c11.p0066"
+   ]
+  },
+  {
+   "character": "cook",
+   "chapter": "c11",
+   "plain": "Tarts are made of pepper, mostly.",
+   "original": "“Pepper, mostly,”",
+   "source_ids": [
+    "c11.p0069"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c12",
+   "plain": "I am not a mile high, and I shall not go!",
+   "original": "“Well, I shan’t go, at any rate,” said Alice: “besides, that’s not a regular rule: you invented it just now.”",
+   "source_ids": [
+    "c12.p0016",
+    "c12.p0019"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c12",
+   "plain": "Stuff and nonsense! The idea of having the sentence first!",
+   "original": "“Stuff and nonsense!” said Alice loudly. “The idea of having the sentence first!”",
+   "source_ids": [
+    "c12.p0054"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c12",
+   "plain": "Who cares for you? You are nothing but a pack of cards!",
+   "original": "“Who cares for you?” said Alice, (she had grown to her full size by this time). “You’re nothing but a pack of cards!”",
+   "source_ids": [
+    "c12.p0058"
+   ]
+  },
+  {
+   "character": "alice",
+   "chapter": "c12",
+   "plain": "Oh, I have had such a curious dream!",
+   "original": "“Oh, I’ve had such a curious dream!”",
+   "source_ids": [
+    "c12.p0061"
+   ]
+  },
+  {
+   "character": "king_of_hearts",
+   "chapter": "c12",
+   "plain": "The trial cannot go on until all the jurymen are back!",
+   "original": "“The trial cannot proceed,” said the King in a very grave voice, “until all the jurymen are back in their proper places—all,”",
+   "source_ids": [
+    "c12.p0003"
+   ]
+  },
+  {
+   "character": "king_of_hearts",
+   "chapter": "c12",
+   "plain": "Rule Forty-two: all persons more than a mile high must leave.",
+   "original": "“Rule Forty-two. All persons more than a mile high to leave the court.”",
+   "source_ids": [
+    "c12.p0014"
+   ]
+  },
+  {
+   "character": "king_of_hearts",
+   "chapter": "c12",
+   "plain": "Begin at the beginning, go on to the end, then stop.",
+   "original": "“Begin at the beginning,” the King said gravely, “and go on till you come to the end: then stop.”",
+   "source_ids": [
+    "c12.p0039"
+   ]
+  },
+  {
+   "character": "queen_of_hearts",
+   "chapter": "c12",
+   "plain": "No, no! Sentence first—verdict afterwards.",
+   "original": "“No, no!” said the Queen. “Sentence first—verdict afterwards.”",
+   "source_ids": [
+    "c12.p0053"
+   ]
+  },
+  {
+   "character": "queen_of_hearts",
+   "chapter": "c12",
+   "plain": "Off with her head!",
+   "original": "“Off with her head!”",
+   "source_ids": [
+    "c12.p0057"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c12",
+   "plain": "Unimportant, your Majesty means, of course.",
+   "original": "“Unimportant, your Majesty means, of course,”",
+   "source_ids": [
+    "c12.p0010"
+   ]
+  },
+  {
+   "character": "white_rabbit",
+   "chapter": "c12",
+   "plain": "It is not a letter, after all: it is a poem.",
+   "original": "“It isn’t a letter, after all: it’s a set of verses.”",
+   "source_ids": [
+    "c12.p0028"
+   ]
+  },
+  {
+   "character": "knave_of_hearts",
+   "chapter": "c12",
+   "plain": "I did not write it, and they cannot prove I did.",
+   "original": "“Please your Majesty,” said the Knave, “I didn’t write it, and they can’t prove I did: there’s no name signed at the end.”",
+   "source_ids": [
+    "c12.p0032"
+   ]
+  },
+  {
+   "character": "knave_of_hearts",
+   "chapter": "c12",
+   "plain": "Do I look like I can swim?",
+   "original": "“Do I look like it?”",
+   "source_ids": [
+    "c12.p0046"
+   ]
+  },
+  {
+   "character": "sister",
+   "chapter": "c12",
+   "plain": "Wake up, Alice dear! What a long sleep you have had!",
+   "original": "“Wake up, Alice dear!” said her sister; “Why, what a long sleep you’ve had!”",
+   "source_ids": [
+    "c12.p0060"
+   ]
+  },
+  {
+   "character": "sister",
+   "chapter": "c12",
+   "plain": "It was a curious dream, dear, but now run in to tea.",
+   "original": "“It was a curious dream, dear, certainly: but now run in to your tea; it’s getting late.”",
+   "source_ids": [
+    "c12.p0061"
+   ]
+  }
+ ]
+}

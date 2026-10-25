@@ -1,0 +1,261 @@
+
+=== 13:53:33 $ /Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py /Users/mgsa/Code/Argon4 Hackathon/ressources/alice_in_wonderland.epub --game super-mario-phaser --chapters c01 --only ingest
+build: /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland  chapters ['c01']
+
+done. play:  cd /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland/game && python -m http.server 8000
+watch a session:  uv run pipeline/watch.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland <session.json>
+
+=== 14:22:11 $ /Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py /Users/mgsa/Code/Argon4 Hackathon/ressources/alice_in_wonderland.epub --game browserquest --chapters c01 c02 --only ingest story style voice adapt verify
+build: /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland  chapters ['c01', 'c02']
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/style.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland --refs /Users/mgsa/Code/Argon4 Hackathon/ressources/style
+Traceback (most recent call last):
+  File "/Users/mgsa/Code/Argon4 Hackathon/pipeline/style.py", line 363, in <module>
+    run(Path(a.build), a.brief, Path(a.refs), a.dry_run, a.fill_tilesets, a.force_style)
+  File "/Users/mgsa/Code/Argon4 Hackathon/pipeline/style.py", line 333, in run
+    slots = json.loads((build / "slots.json").read_text())
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland/slots.json'
+Traceback (most recent call last):
+  File "/Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py", line 66, in <module>
+    main()
+  File "/Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py", line 54, in main
+    sh(P / "style.py", build, *(["--brief", a.brief] if a.brief else []), "--refs", a.refs)
+  File "/Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py", line 24, in sh
+    subprocess.run([sys.executable, *[str(a) for a in args]], check=True, cwd=C.ROOT)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py", line 573, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/Users/mgsa/Code/Argon4 Hackathon/.venv/bin/python', '/Users/mgsa/Code/Argon4 Hackathon/pipeline/style.py', '/Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland', '--refs', '/Users/mgsa/Code/Argon4 Hackathon/ressources/style']' returned non-zero exit status 1.
+
+=== 14:24:43 $ /Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py /Users/mgsa/Code/Argon4 Hackathon/ressources/alice_in_wonderland.epub --game browserquest --chapters c01 c02 --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture.
+ --only ingest story slots style voice adapt verify
+build: /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland  chapters ['c01', 'c02']
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/slots.py /Users/mgsa/Code/Argon4 Hackathon/games/browserquest --out /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland/slots.json
+reading 151 files (~207k tokens) with Argon...
+105 slots grounded {'sheet': 71, 'image': 6, 'tileset': 1, 'audio': 19, 'font': 2, 'material': 1, 'text': 5}, 11 rejected
+  rejected ui_canvas_border (image): claimed 15x15, files are [(490, 250), (980, 500), (1470, 750)]
+  rejected backdrop_wood2 (image): claimed 5x15, files are [(5, 17), (10, 34), (15, 51)]
+  rejected backdrop_wood3 (image): claimed 20x20, files are [(20, 64), (40, 128), (60, 192)]
+  rejected ui_loading_banner (image): claimed 158x74, files are [(400, 100)]
+  rejected ui_loading_error_banner (image): claimed 158x74, files are [(400, 100)]
+  rejected ui_promo_title (image): claimed 250x250, files are [(500, 250)]
+  rejected colour_target_cell (colour): value rgba(255, 255, 255, 0.5) / rgba(255, 50, 50, 0.5) / rgb(51, 255, 0) not found in client/js/game.js
+  rejected colour_canvas_backdrop (colour): value #25221b (interior) / #000 (outdoor) not found in client/js/renderer.js
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/style.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture.
+ --refs /Users/mgsa/Code/Argon4 Hackathon/ressources/style
+writing style bible...
+style: Storybook Wash & Ink | key 70efda7f1f6e | palette ['#F6F0E2', '#1C263B', '#8DA387', '#577C84', '#C88285', '#D9A74A', '#D8CFB8'] | rules for ['audio', 'font', 'image', 'material', 'sheet', 'text', 'tileset']
+casting story into slots...
+cast: 113 assignments
+  player_armor_cloth/alice ok 160x288
+  player_armor_leather/alice ok 160x288
+  player_armor_mail/alice ok 160x288
+  player_armor_plate/alice ok 160x288
+  player_armor_red/alice ok 160x288
+  player_armor_golden/alice ok 160x288
+  player_armor_firefox/alice ok 256x288
+  player_weapon_sword1/rabbits_fan ok 160x288
+
+=== 14:37:01 $ /Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py /Users/mgsa/Code/Argon4 Hackathon/ressources/alice_in_wonderland.epub --game browserquest --chapters c01 c02 --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture. --only ingest story slots style voice adapt verify
+build: /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland  chapters ['c01', 'c02']
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/adapt.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland /Users/mgsa/Code/Argon4 Hackathon/games/browserquest
+packing 151 text files (828k chars), 293 binaries listed
+agent v1_ChdrWGJlYXFXVUhiSFFfdU1QLWZpRy1RZxIXa1hiZWFxV1VIYkhRX3VNUC1maUctUWc env 6e3e2786b76e9bab17de8b6ed946e9a3
+
+=== 14:37:51 $ /Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py /Users/mgsa/Code/Argon4 Hackathon/ressources/alice_in_wonderland.epub --game browserquest --chapters c01 c02 --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture. --only ingest story slots style voice adapt verify
+build: /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland  chapters ['c01', 'c02']
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/style.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture. --refs /Users/mgsa/Code/Argon4 Hackathon/ressources/style
+writing style bible...
+style: Storybook Wash & Ink | key 0b2f8be1b9a7 | palette ['#F6F0E0', '#8DA387', '#57838C', '#C88285', '#D9A74A', '#233142', '#D8CFB8'] | rules for ['audio', 'font', 'image', 'material', 'sheet', 'text', 'tileset']
+casting story into slots...
+cast: 113 assignments
+  player_armor_cloth/alice FAILED image file is truncated
+  player_armor_leather/alice ok 160x288
+  player_armor_mail/alice ok 160x288
+  player_armor_plate/alice ok 160x288
+  player_armor_red/alice ok 160x288
+  player_armor_golden/alice ok 160x288
+  player_armor_firefox/alice ok 256x288
+  player_weapon_sword1/alice ok 160x288
+  player_weapon_sword2/alice ok 240x432
+  player_weapon_axe/alice ok 240x432
+  player_weapon_morningstar/alice ok 190x342
+  player_weapon_bluesword/alice ok 240x432
+  player_weapon_redsword/alice ok 240x432
+  player_weapon_goldensword/alice ok 240x432
+
+=== 14:40:07 $ /Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py /Users/mgsa/Code/Argon4 Hackathon/ressources/alice_in_wonderland.epub --game browserquest --chapters c01 c02 --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture. --only ingest story slots style voice adapt verify
+build: /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland  chapters ['c01', 'c02']
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/style.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture. --refs /Users/mgsa/Code/Argon4 Hackathon/ressources/style
+style: Storybook Wash & Ink | key 0b2f8be1b9a7 | palette ['#F6F0E0', '#8DA387', '#57838C', '#C88285', '#D9A74A', '#233142', '#D8CFB8'] | rules for ['audio', 'font', 'image', 'material', 'sheet', 'text', 'tileset']
+cast: 113 assignments
+  player_armor_cloth/alice ok 160x288
+  player_armor_leather/alice cached
+  player_armor_mail/alice cached
+  player_armor_plate/alice cached
+  player_armor_red/alice cached
+  player_armor_golden/alice cached
+  player_armor_firefox/alice cached
+  player_weapon_sword1/alice cached
+  player_weapon_sword2/alice cached
+  player_weapon_axe/alice cached
+  player_weapon_morningstar/alice cached
+  player_weapon_bluesword/alice cached
+  player_weapon_redsword/alice cached
+  player_weapon_goldensword/alice cached
+  enemy_rat/mouse ok 288x480
+  enemy_ogre/dodo ok 288x432
+  enemy_eye/lory ok 560x432
+  enemy_bat/eaglet ok 160x432
+  npc_villagegirl/sister ok 48x24
+  npc_nyan/white_rabbit ok 294x24
+  npc_octocat/duck ok 128x32
+  pickup_item_sword1/rabbits_fan ok 96x16
+  pickup_item_morningstar/pocket_watch ok 96x16
+  pickup_item_goldensword/golden_key ok 96x16
+  pickup_item_clotharmor/white_kid_gloves ok 96x16
+  pickup_item_flask/drink_me_bottle ok 96x16
+  backdrop_wood/c01 ok 128x128
+  backdrop_wood/c02 ok 128x128
+  dialogue_portrait/alice ok 512x512
+  dialogue_portrait/sister ok 512x512
+  dialogue_portrait/white_rabbit ok 512x512
+  dialogue_portrait/mouse ok 512x512
+  dialogue_portrait/lory ok 512x512
+  dialogue_portrait/duck ok 512x512
+  dialogue_portrait/dodo ok 512x512
+  dialogue_portrait/eaglet ok 512x512
+36 fills in 103s; parameters 1, kept upstream 71, missing []
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/voice.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland c01 c02
+  FAILED c01_b04.original (Charon): Error code: 400 - {'error': {'message': 'Request blocked for an unspecified poli | However, on the second time round, she came upon a low curta
+
+=== 14:44:01 $ /Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py /Users/mgsa/Code/Argon4 Hackathon/ressources/alice_in_wonderland.epub --game browserquest --chapters c01 c02 --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture. --only ingest story slots style voice adapt verify
+build: /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland  chapters ['c01', 'c02']
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/style.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture. --refs /Users/mgsa/Code/Argon4 Hackathon/ressources/style
+style: Storybook Wash & Ink | key 0b2f8be1b9a7 | palette ['#F6F0E0', '#8DA387', '#57838C', '#C88285', '#D9A74A', '#233142', '#D8CFB8'] | rules for ['audio', 'font', 'image', 'material', 'sheet', 'text', 'tileset']
+cast: 115 assignments
+  player_armor_cloth/alice ok 160x288
+  player_armor_leather/alice ok 160x288
+  player_armor_mail/alice ok 160x288
+  player_armor_plate/alice ok 160x288
+  player_armor_red/alice ok 160x288
+  player_armor_golden/alice ok 160x288
+  player_armor_firefox/alice ok 256x288
+  player_weapon_sword1/alice ok 160x288
+  player_weapon_sword2/alice ok 240x432
+  player_weapon_axe/alice ok 240x432
+  player_weapon_morningstar/alice ok 190x342
+  player_weapon_bluesword/alice ok 240x432
+  player_weapon_redsword/alice ok 240x432
+  player_weapon_goldensword/alice ok 240x432
+  enemy_rat/mouse ok 288x480
+  enemy_ogre/dodo ok 288x432
+  enemy_eye/lory ok 560x432
+  enemy_bat/eaglet ok 160x432
+  npc_villagegirl/sister ok 48x24
+  npc_nyan/white_rabbit ok 294x24
+  npc_octocat/duck ok 128x32
+  pickup_item_sword1/rabbits_fan ok 96x16
+  pickup_item_morningstar/pocket_watch ok 96x16
+  pickup_item_goldensword/golden_key ok 96x16
+  pickup_item_clotharmor/white_kid_gloves ok 96x16
+  pickup_item_flask/drink_me_bottle ok 96x16
+  backdrop_wood/c01 ok 128x128
+  backdrop_wood/c02 ok 128x128
+  dialogue_portrait/alice ok 512x512
+  dialogue_portrait/sister ok 512x512
+  dialogue_portrait/white_rabbit ok 512x512
+  dialogue_portrait/mouse ok 512x512
+  dialogue_portrait/lory ok 512x512
+  dialogue_portrait/duck ok 512x512
+  dialogue_portrait/dodo ok 512x512
+  dialogue_portrait/eaglet ok 512x512
+  chapter_backdrop/c01 ok 1280x720
+  chapter_backdrop/c02 ok 1280x720
+38 fills in 203s; parameters 1, kept upstream 36, missing []
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/voice.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland c01 c02
+  FAILED c01_b04.original (Charon): Error code: 400 - {'error': {'message': 'Request blocked for an unspecified poli | However, on the second time round, she came upon a low curta
+64 utterances for ['c01', 'c02'], 11 generated, 1 failed, 45s, 21.3 MB total
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/adapt.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland /Users/mgsa/Code/Argon4 Hackathon/games/browserquest
+packing 151 text files (828k chars), 293 binaries listed
+agent v1_ChZLM25lYXZGQjJmdjd4Zy1aXzR5UkJREhZLM25lYXZGQjJmdjd4Zy1aXzR5UkJR env 35457e7ab0acf757a205b72db9e4fea9
+  in_progress 39s
+  in_progress 59s
+  in_progress 80s
+  in_progress 101s
+  in_progress 121s
+  in_progress 142s
+  in_progress 163s
+  in_progress 183s
+  in_progress 204s
+  in_progress 224s
+  in_progress 245s
+  in_progress 265s
+  in_progress 286s
+  in_progress 307s
+  in_progress 327s
+  in_progress 348s
+  in_progress 368s
+  in_progress 389s
+  in_progress 410s
+  in_progress 430s
+  in_progress 451s
+  in_progress 471s
+  in_progress 492s
+  in_progress 513s
+  in_progress 533s
+  in_progress 554s
+  in_progress 574s
+  in_progress 595s
+  in_progress 616s
+  in_progress 636s
+  in_progress 657s
+  in_progress 677s
+  in_progress 698s
+  in_progress 718s
+  in_progress 739s
+  in_progress 760s
+  in_progress 781s
+  in_progress 801s
+  in_progress 822s
+  in_progress 842s
+  in_progress 863s
+  in_progress 883s
+  in_progress 904s
+  in_progress 925s
+  in_progress 945s
+  in_progress 966s
+  in_progress 986s
+  in_progress 1007s
+  in_progress 1028s
+  cancelled v1_ChZLM25lYXZGQjJmdjd4Zy1aXzR5UkJREhZLM25lYXZGQjJmdjd4Zy1aXzR5UkJR
+
+=== 15:07:12 $ /Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py /Users/mgsa/Code/Argon4 Hackathon/ressources/alice_in_wonderland.epub --game browserquest --chapters c01 c02 --brief x --only adapt verify
+build: /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland  chapters ['c01', 'c02']
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/adapt.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland /Users/mgsa/Code/Argon4 Hackathon/games/browserquest
+packing 182 text files (2560k chars) into the sandbox, 31 vendored, 337 binaries listed
+sandbox source: repository https://github.com/ericthefree/BrowserQuest
+agent v1_ChdsMzNlYXZ2Q0Y5SFBfdU1QZzVYQjJBRRIXbDMzZWF2dkNGOUhQX3VNUGc1WEIyQUU env 8877bb1e72fe0a833cb559738811478e
+  in_progress 29s
+  in_progress 50s
+  in_progress 70s
+  in_progress 91s
+  in_progress 112s
+  in_progress 132s
+  in_progress 153s
+  in_progress 174s
+  in_progress 194s
+  in_progress 215s
+  in_progress 235s
+  cancelled v1_ChdsMzNlYXZ2Q0Y5SFBfdU1QZzVYQjJBRRIXbDMzZWF2dkNGOUhQX3VNUGc1WEIyQUU
+
+=== 15:11:49 $ /Users/mgsa/Code/Argon4 Hackathon/pipeline/run.py /Users/mgsa/Code/Argon4 Hackathon/ressources/alice_in_wonderland.epub --game browserquest --chapters c01 --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture. --only style voice adapt verify
+build: /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland  chapters ['c01']
+$ /Users/mgsa/Code/Argon4 Hackathon/pipeline/style.py /Users/mgsa/Code/Argon4 Hackathon/builds/alice_s_adventures_in_wonderland --brief Soft watercolour storybook. Loose ink outlines over warm cream paper, pigment pooling at the edges. Palette: sage green, dusty teal, faded rose, mustard gold, deep ink blue for shadows. Gentle, a little dreamlike, never scary. Characters have large readable silhouettes, simple faces, and one signature colour each so they are told apart at a glance. Backgrounds stay quieter than characters: fewer details, lighter wash, a clear ground line. No text, no borders, no photo texture. --refs /Users/mgsa/Code/Argon4 Hackathon/ressources/style
+style: Storybook Wash & Ink | key 0b2f8be1b9a7 | palette ['#F6F0E0', '#8DA387', '#57838C', '#C88285', '#D9A74A', '#233142', '#D8CFB8'] | rules for ['audio', 'font', 'image', 'material', 'sheet', 'text', 'tileset']
+casting story into slots...

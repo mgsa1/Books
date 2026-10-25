@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ExpLit</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Caveat:wght@700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* ---------- Playful palette (from video/src/playful) ---------- */
+:root{
+  --paper:#FFF7E8;--ink:#1C1A17;--clay:#E2714A;--sky:#9FD3F2;--mint:#B8E3C2;--butter:#FFD66B;--rose:#F7B9C9;--lilac:#CDBDF2;
+  --white:#fff;--muted:#6E675C;--ok:#2E7D4F;--err:#B3261E;
+  --display:'Fredoka','Atkinson Hyperlegible',sans-serif;--hand:'Caveat',cursive;--body:'Atkinson Hyperlegible',Verdana,sans-serif;
+  --r:28px;--bw:4px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--body);letter-spacing:.01em;overflow-x:hidden}
+a{color:var(--clay);text-decoration:none}
+a:hover{text-decoration:underline}
+code{font:14px/1.4 ui-monospace,Menlo,monospace;background:var(--butter);padding:1px 7px;border-radius:8px;border:2px solid var(--ink)}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:8px}
+
+/* ---------- Confetti ---------- */
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.confetti i{position:absolute;display:block;opacity:.75;animation:bob 6s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(20deg)}}
+@media (prefers-reduced-motion:reduce){.confetti i,.mascot,.chip.run .icon{animation:none}}
+
+/* ---------- Header ---------- */
+.appbar{position:relative;z-index:1;display:flex;align-items:center;gap:20px;padding:28px 32px 8px;max-width:1280px;margin:0 auto}
+.wordmark{display:flex;font:700 56px/1 var(--display);margin:0;user-select:none}
+.wordmark span{display:inline-block;transform:rotate(var(--rot,0));text-shadow:5px 5px 0 var(--shadow,var(--sky))}
+.wordmark .c{color:var(--clay);--shadow:var(--butter)}
+.spacer{flex:1}
+.status{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:var(--white);border:3px solid var(--ink);
+  font:700 20px/1.1 var(--hand);transform:rotate(-2deg);box-shadow:3px 3px 0 var(--mint)}
+.status.bad{box-shadow:3px 3px 0 var(--rose);color:var(--err)}
+.status .dot{width:12px;height:12px;border-radius:50%;background:var(--ok);border:2px solid var(--ink)}
+.status.bad .dot{background:var(--clay)}
+
+/* ---------- Layout ---------- */
+main{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:24px 32px 80px;display:grid;grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:28px}
+@media(max-width:960px){main{grid-template-columns:minmax(0,1fr);padding:20px 16px 64px;gap:24px}.appbar{padding:20px 16px 4px}.wordmark{font-size:44px}}
+.col{display:flex;flex-direction:column;gap:28px;min-width:0}
+.card{position:relative;background:var(--white);border:var(--bw) solid var(--ink);border-radius:var(--r);padding:22px 26px 26px;box-shadow:8px 8px 0 var(--shade,var(--sky))}
+.card-head{display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-right:110px}
+.num{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:none;background:var(--clay);color:var(--white);
+  border:3px solid var(--ink);font:700 18px var(--display);box-shadow:2px 2px 0 var(--ink)}
+h2{font:700 26px/1.1 var(--display);margin:0;color:var(--ink)}
+.hint{color:var(--muted);font-size:14px;line-height:1.45;margin:8px 0 0}
+.muted{color:var(--muted)}
+label.field{display:block;font:700 22px/1.1 var(--hand);color:var(--ink);margin:18px 0 8px;transform:rotate(-1deg);transform-origin:left}
+.card-head+label.field{margin-top:0}
+
+/* ---------- Mascots ---------- */
+.mascot{position:absolute;top:-36px;right:-16px;width:124px;height:124px;pointer-events:none;transform:rotate(var(--tilt,-6deg));transform-origin:50% 100%;
+  animation:float 5s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -6px}}
+.mascot .pic{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:var(--blob,var(--rose));border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.mascot .pic img{display:block;width:100%;height:100%;object-fit:contain;padding:6%;mix-blend-mode:multiply}
+.mascot.cover .pic img{object-fit:cover;padding:0;mix-blend-mode:normal}
+.mascot .say{position:absolute;top:4px;right:92%;white-space:nowrap;padding:3px 12px;border-radius:16px;background:var(--white);border:3px solid var(--ink);
+  font:700 20px/1.2 var(--hand);transform:rotate(-3deg);opacity:0;animation:pop .4s ease-out forwards;animation-delay:calc(var(--d,0s) + .3s)}
+.mascot .say::after{content:"";position:absolute;top:50%;right:-9px;width:12px;height:12px;margin-top:-6px;background:var(--white);border-right:3px solid var(--ink);border-top:3px solid var(--ink);transform:rotate(45deg)}
+@keyframes pop{from{opacity:0;scale:.6}to{opacity:1;scale:1}}
+@media(max-width:600px){.mascot{width:92px;height:92px;top:-28px;right:-8px}.mascot .say{font-size:17px}.card-head{padding-right:80px}}
+
+/* ---------- Inputs ---------- */
+select,input[type=text],textarea{width:100%;font:inherit;color:var(--ink);background:var(--paper);border:3px solid var(--ink);border-radius:16px;padding:10px 14px;min-height:48px;transition:box-shadow .15s,translate .15s}
+select{appearance:none;-webkit-appearance:none;padding-right:44px;cursor:pointer;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%231C1A17' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat;background-position:right 12px center}
+textarea{min-height:96px;resize:vertical}
+select:hover,input[type=text]:hover,textarea:hover{box-shadow:3px 3px 0 var(--lilac)}
+select:focus,input[type=text]:focus,textarea:focus{outline:0;box-shadow:4px 4px 0 var(--sky);translate:-1px -1px}
+::placeholder{color:var(--muted);opacity:.9}
+input[type=file]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
+.file{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.file .name{color:var(--muted);font-size:14px;flex:1 1 100%;order:9;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---------- Buttons ---------- */
+.btn,button{font:600 16px/1 var(--display);letter-spacing:.01em;height:44px;padding:0 20px;border-radius:999px;border:3px solid var(--ink);cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;background:var(--butter);color:var(--ink);
+  box-shadow:3px 3px 0 var(--ink);transition:translate .12s,box-shadow .12s;user-select:none;text-decoration:none}
+.btn:hover,button:hover{translate:-2px -2px;box-shadow:5px 5px 0 var(--ink);text-decoration:none}
+.btn:active,button:active{translate:1px 1px;box-shadow:1px 1px 0 var(--ink)}
+button:disabled{opacity:.4;cursor:default;translate:0;box-shadow:3px 3px 0 var(--ink)}
+.primary{background:var(--clay);color:var(--white);font-size:18px;height:50px;padding:0 26px}
+.secondary,button.sec{background:var(--white)}
+.tonal{background:var(--mint)}
+.text{background:transparent;border-color:transparent;box-shadow:none;padding:0 12px;color:var(--ink);text-decoration:underline;text-decoration-color:var(--clay);text-decoration-thickness:3px;text-underline-offset:4px}
+.text:hover{translate:0;box-shadow:none;background:var(--butter);border-color:var(--ink);text-decoration:none}
+.text:active{translate:0;box-shadow:none}
+.ico{width:18px;height:18px;flex:none}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:18px}
+.row.end{justify-content:flex-end}
+
+/* ---------- Chips ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;font:600 15px/1 var(--display);
+  border:3px solid var(--ink);color:var(--ink);background:var(--white);cursor:pointer;user-select:none;transition:background .12s,translate .12s}
+.chip input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.chip .ico{display:none}
+.chip:hover{translate:0 -1px}
+.chip:has(input:checked){background:var(--mint)}
+.chip:has(input:checked) .ico{display:block}
+.chip.sm{height:28px;padding:0 10px;font-size:13px;border-width:2px;cursor:default;gap:5px}
+.chip.sm .ico{display:block;width:14px;height:14px}
+.chip.sm:hover{translate:0}
+.chip.done{background:var(--mint)}
+.chip.run{background:var(--butter)}
+.chip.run .ico{animation:spin 1.2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chip.err{background:var(--rose)}
+.chapters{display:flex;flex-wrap:wrap;gap:8px;max-height:220px;overflow:auto;padding:3px 3px 6px}
+.chapters .chip{font-family:var(--body);font-weight:400;max-width:100%}
+.chapters .chip b{font-family:var(--display);font-weight:600;color:var(--clay)}
+.chapters .chip span.t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---------- Toggle ---------- */
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:18px;padding-top:18px;border-top:3px dashed var(--lilac)}
+.toggle .lbl{font:600 17px/1.2 var(--display)}
+.toggle .sub{display:block;font:14px/1.4 var(--body);color:var(--muted);margin-top:2px}
+.switch{position:relative;width:60px;height:34px;flex:none}
+.switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer;z-index:1}
+.switch .track{position:absolute;inset:0;border-radius:17px;background:var(--white);border:3px solid var(--ink);transition:background .15s}
+.switch .thumb{position:absolute;top:6px;left:6px;width:22px;height:22px;border-radius:50%;background:var(--ink);transition:translate .15s,background .15s}
+.switch input:checked~.track{background:var(--clay)}
+.switch input:checked~.thumb{translate:26px 0;background:var(--white)}
+
+/* ---------- Builds ---------- */
+.build{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px 16px;padding:18px 0;border-top:3px dashed var(--lilac)}
+.build:first-child{border-top:0;padding-top:4px}
+.avatar{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--butter);border:3px solid var(--ink);
+  font:700 22px var(--display);text-transform:uppercase;box-shadow:2px 2px 0 var(--ink);transform:rotate(-6deg)}
+.build .title{font:700 22px/1.2 var(--display);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.build .meta{color:var(--muted);font-size:15px}
+.build .stats{color:var(--muted);font-size:14px;margin-top:8px}
+.build .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.steps{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.empty{color:var(--muted);display:flex;align-items:center;gap:10px;padding:8px 0;font:700 22px var(--hand)}
+
+/* ---------- Log ---------- */
+pre#log{margin:0;background:var(--ink);color:var(--paper);padding:18px;border-radius:20px;border:var(--bw) solid var(--ink);
+  font:13px/1.5 ui-monospace,Menlo,monospace;max-height:480px;min-height:170px;overflow:auto;white-space:pre-wrap;word-break:break-word;box-shadow:inset 4px 4px 0 rgba(255,255,255,.08)}
+.card-head .right{margin-left:auto;font:700 20px/1 var(--hand);color:var(--muted);transform:rotate(-2deg)}
+
+/* ---------- Evidence ---------- */
+.round{padding:14px 0;border-top:3px dashed var(--lilac)}
+.round .title{font:700 20px/1.3 var(--display);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.round .title .muted{font:15px var(--body)}
+.shots{display:flex;gap:10px;overflow-x:auto;padding:10px 0 4px}
+.shots img{height:120px;border-radius:14px;border:3px solid var(--ink);flex:none;background:#fff}
+.shots:empty{display:none}
+.kept,.reverted{font:700 20px var(--hand);padding:0 10px;border-radius:999px;border:2px solid var(--ink)}
+.kept{background:var(--mint)}.reverted{background:var(--rose)}
+</style>
+</head>
+<body>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<header class="appbar">
+  <h1 class="wordmark" aria-label="ExpLit">
+    <span class="c" style="--rot:-3deg">E</span><span class="c" style="--rot:3deg">x</span><span class="c" style="--rot:-2deg">p</span><span style="--rot:3deg">L</span><span style="--rot:-3deg">i</span><span style="--rot:2deg">t</span>
+  </h1>
+  <div class="spacer"></div>
+  <span class="status" id="keywarn"><span class="dot"></span><span>Checking key…</span></span>
+</header>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7.5" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+  <symbol id="i-spin" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 1-7 4" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 17V5M6 11l6-6 6 6M5 20h14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 5v14l11-7z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z M4 19V5 M8 7h7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M3 16l5-5 4 4 3-3 6 6" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="16" cy="9" r="1.8" fill="currentColor"/></symbol>
+  <symbol id="i-log" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><path d="M7 9l3 3-3 3M12 15h5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="currentColor"/></symbol>
+</svg>
+
+<main>
+<div class="col">
+  <section class="card" style="--shade:var(--rose)">
+    <div class="mascot" style="--blob:var(--rose);--tilt:-7deg;--d:0s"><div class="pic"><img src="img/white_rabbit.png" alt=""></div><span class="say">I'm late!</span></div>
+    <div class="card-head"><span class="num">1</span><h2>Book</h2></div>
+    <label class="field" for="book">Pick an EPUB</label>
+    <select id="book"></select>
+    <div class="file" style="margin-top:14px">
+      <label class="btn secondary" for="bookfile"><svg class="ico"><use href="#i-book"/></svg>Choose EPUB</label>
+      <input type="file" id="bookfile" accept=".epub">
+      <span class="name" id="bookfilename">No file chosen</span>
+      <button class="tonal" id="upbook"><svg class="ico"><use href="#i-up"/></svg>Upload</button>
+    </div>
+    <div id="chapwrap">
+      <label class="field">Chapters to build</label>
+      <div class="chapters" id="chapters"><span class="muted">Pick a book that has been ingested, or run ingest below.</span></div>
+    </div>
+  </section>
+
+  <section class="card" style="--shade:var(--lilac)">
+    <div class="mascot cover" style="--blob:var(--lilac);--tilt:8deg;--d:.15s"><div class="pic"><img src="img/cheshire_cat.png" alt=""></div><span class="say">We're all mad here.</span></div>
+    <div class="card-head"><span class="num">2</span><h2>Look</h2></div>
+    <label class="field" for="brief">Style brief</label>
+    <textarea id="brief" placeholder="Soft watercolour storybook, gentle ink lines, pastel greens and gold"></textarea>
+    <label class="field">Reference images</label>
+    <div class="file">
+      <label class="btn secondary" for="reffile"><svg class="ico"><use href="#i-image"/></svg>Choose images</label>
+      <input type="file" id="reffile" accept="image/*" multiple>
+      <span class="name" id="reffilename">No files chosen</span>
+      <button class="tonal" id="upref"><svg class="ico"><use href="#i-up"/></svg>Upload</button>
+    </div>
+    <p class="hint" id="refs"></p>
+  </section>
+
+  <section class="card" style="--shade:var(--mint)">
+    <div class="mascot" style="--blob:var(--mint);--tilt:-5deg;--d:.3s"><div class="pic"><img src="img/tin_woodman.png" alt=""></div><span class="say">Oil can.</span></div>
+    <div class="card-head"><span class="num">3</span><h2>Game</h2></div>
+    <label class="field" for="game">Starting game</label>
+    <select id="game"></select>
+    <p class="hint">Clone starting games into <code>games/</code>.</p>
+    <div class="toggle">
+      <div><span class="lbl">Direct Argon call</span><span class="sub">Rewrite with a direct Argon call instead of the Managed Agent</span></div>
+      <label class="switch"><input type="checkbox" id="fallback"><span class="track"></span><span class="thumb"></span></label>
+    </div>
+  </section>
+
+  <section class="card" style="--shade:var(--butter)">
+    <div class="mascot cover" style="--blob:var(--butter);--tilt:6deg;--d:.45s"><div class="pic"><img src="img/pooh.png" alt="" style="object-position:45% 62%"></div><span class="say">Honey?</span></div>
+    <div class="card-head"><span class="num">4</span><h2>Run</h2></div>
+    <label class="field">Pipeline steps</label>
+    <div class="chips" id="only">
+      <label class="chip"><input type="checkbox" value="ingest" checked><svg class="ico"><use href="#i-check"/></svg>ingest</label>
+      <label class="chip"><input type="checkbox" value="story" checked><svg class="ico"><use href="#i-check"/></svg>story</label>
+      <label class="chip"><input type="checkbox" value="style" checked><svg class="ico"><use href="#i-check"/></svg>style</label>
+      <label class="chip"><input type="checkbox" value="voice" checked><svg class="ico"><use href="#i-check"/></svg>voice</label>
+      <label class="chip"><input type="checkbox" value="adapt" checked><svg class="ico"><use href="#i-check"/></svg>adapt</label>
+      <label class="chip"><input type="checkbox" value="verify" checked><svg class="ico"><use href="#i-check"/></svg>verify</label>
+    </div>
+    <p class="hint">Steps whose output exists are skipped. Untick to run a subset.</p>
+    <div class="row end">
+      <button class="text" id="stop"><svg class="ico"><use href="#i-stop"/></svg>Stop</button>
+      <button class="primary" id="run"><svg class="ico"><use href="#i-play"/></svg>Build the game</button>
+    </div>
+  </section>
+</div>
+
+<div class="col">
+  <section class="card" style="--shade:var(--sky)">
+    <div class="mascot" style="--blob:var(--sky);--tilt:-4deg;--d:.1s"><div class="pic"><img src="img/alice.png" alt=""></div><span class="say">Curiouser!</span></div>
+    <div class="card-head"><h2>Builds</h2></div>
+    <div id="builds"><div class="empty">None yet.</div></div>
+  </section>
+
+  <section class="card" style="--shade:var(--lilac)">
+    <div class="mascot cover" style="--blob:var(--sky);--tilt:4deg;--d:.25s"><div class="pic"><img src="img/whale.jpg" alt=""></div><span class="say">Call me…</span></div>
+    <div class="card-head"><h2>Log</h2><span class="right" id="logname"></span></div>
+    <pre id="log">Pick a build.</pre>
+  </section>
+
+  <section class="card" style="--shade:var(--mint)">
+    <div class="mascot" style="--blob:var(--butter);--tilt:-6deg;--d:.4s"><div class="pic"><img src="img/cowardly_lion.png" alt=""></div><span class="say">Courage!</span></div>
+    <div class="card-head"><h2>Watch a real session</h2></div>
+    <p class="hint" style="margin:0 0 14px;padding-right:96px">Play the game, click its “Download session” link, then upload the file here. Argon reviews it and fixes what it can.</p>
+    <div class="file">
+      <label class="btn secondary" for="sessfile"><svg class="ico"><use href="#i-up"/></svg>Choose session</label>
+      <input type="file" id="sessfile" accept=".json">
+      <span class="name" id="sessfilename">No file chosen</span>
+      <button class="tonal" id="watch"><svg class="ico"><use href="#i-eye"/></svg>Review session</button>
+    </div>
+    <div id="evidence"></div>
+  </section>
+</div>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+let state = {builds: []}, current = null;
+const ICO = n => `<svg class="ico"><use href="#i-${n}"/></svg>`;
+
+// confetti, same recipe as the Playful composition: deterministic positions, six pastels
+(function confetti() {
+  const colors = ['#E2714A', '#9FD3F2', '#B8E3C2', '#FFD66B', '#F7B9C9', '#CDBDF2'];
+  let html = '';
+  for (let i = 0; i < 26; i++) {
+    const n = ((Math.sin(i * 7.31) * 10000) % 1 + 1) % 1, m = ((Math.cos(i * 3.17) * 10000) % 1 + 1) % 1;
+    const s = 10 + (i % 3) * 6;
+    html += `<i style="left:${(n * 100).toFixed(1)}%;top:${(m * 100).toFixed(1)}%;width:${s}px;height:${s}px;border-radius:${i % 2 ? '50%' : '3px'};background:${colors[i % 6]};animation-delay:${-(i * .37).toFixed(2)}s"></i>`;
+  }
+  $('#confetti').innerHTML = html;
+})();
+
+async function api(path, body, method) {
+  const r = await fetch(path, body ? {method: method || 'POST', body: body instanceof Blob ? body : JSON.stringify(body)} : {});
+  return r.json();
+}
+async function upload(kind, file) {
+  return api(`/api/upload?kind=${kind}&name=${encodeURIComponent(file.name)}`, file);
+}
+function slugOf(book) {
+  const b = state.builds.find(b => b.slug && book && b.title && book.toLowerCase().includes(b.slug.split('_')[0]));
+  return b ? b.slug : null;
+}
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c])); }
+function renderChapters() {
+  const slug = slugOf($('#book').value);
+  const b = state.builds.find(x => x.slug === slug);
+  const box = $('#chapters');
+  if (!b || !b.chapters) { box.innerHTML = '<span class="muted">Not ingested yet. The run will ingest it; default is the first two chapters.</span>'; return; }
+  const sel = new Set(b.selection || ['c01', 'c02']);
+  box.innerHTML = b.chapters.map(c => `<label class="chip"><input type="checkbox" value="${c.id}" ${sel.has(c.id) ? 'checked' : ''}>${ICO('check')}<b>${c.id}</b><span class="t">${esc(c.title.replace(/^CHAPTER [IVXLC]+\.?\s*/i, ''))}</span></label>`).join('');
+}
+function stepHtml(b) {
+  return Object.entries(b.steps).map(([k, v]) =>
+    `<span class="chip sm ${v ? 'done' : (b.running ? 'run' : '')}">${ICO(v ? 'check' : (b.running ? 'spin' : 'circle'))}${k}</span>`).join('');
+}
+function renderBuilds() {
+  const el = $('#builds');
+  if (!state.builds.length) { el.innerHTML = '<div class="empty">None yet.</div>'; return; }
+  el.innerHTML = state.builds.map(b => `
+    <div class="build">
+      <div class="avatar">${esc((b.title || '?').trim()[0] || '?')}</div>
+      <div>
+        <div class="title">${esc(b.title)}
+          ${b.running ? `<span class="chip sm run">${ICO('spin')}running</span>` : (b.exit != null && b.exit !== 0 ? `<span class="chip sm err">${ICO('x')}exit ${b.exit}</span>` : '')}
+        </div>
+        <div class="meta">${esc(b.author || '')}${b.author && (b.selection || []).length ? ' · ' : ''}${(b.selection || []).join(' ')}</div>
+        <div class="steps">${stepHtml(b)}</div>
+        ${b.story ? `<div class="stats">${b.story.characters} characters · ${b.story.beats} beats · ${b.story.lines} lines · ${b.story.items} items</div>` : ''}
+        ${b.report ? `<div class="stats">Verify: ${b.report.rounds.length} rounds · final score ${b.report.final_score} · patches kept ${b.report.rounds.filter(r => r.kept).length}</div>` : ''}
+        <div class="actions">
+          ${b.steps.adapt ? `<a class="btn primary" style="height:44px;font-size:16px" href="/play/${b.slug}/" target="_blank">${ICO('play')}Play</a>` : ''}
+          <button class="secondary" onclick="showLog('${b.slug}')">${ICO('log')}Log</button>
+          ${b.report ? `<button class="secondary" onclick="showEvidence('${b.slug}')">${ICO('eye')}Evidence</button>` : ''}
+        </div>
+      </div>
+    </div>`).join('');
+}
+function renderKey(ok) {
+  const el = $('#keywarn');
+  el.className = 'status ' + (ok ? 'ok' : 'bad');
+  el.innerHTML = `<span class="dot"></span><span>${ok ? 'Gemini key loaded' : 'GEMINI_API_KEY missing in .env'}</span>`;
+}
+async function refresh() {
+  state = await api('/api/state');
+  const keep = $('#book').value;
+  $('#book').innerHTML = state.books.map(b => `<option ${b === keep ? 'selected' : ''}>${esc(b)}</option>`).join('') || '<option>(upload an EPUB)</option>';
+  const keepG = $('#game').value;
+  $('#game').innerHTML = state.games.map(g => `<option ${g === keepG ? 'selected' : ''}>${esc(g)}</option>`).join('') || '<option>(clone a game into games/)</option>';
+  $('#refs').textContent = state.refs.length ? 'Uploaded: ' + state.refs.join(', ') : 'None uploaded. The brief alone is used.';
+  renderKey(state.has_key);
+  renderChapters(); renderBuilds();
+  if (current) await showLog(current, true);
+}
+async function showLog(slug, quiet) {
+  current = slug;
+  const d = await api(`/api/log?build=${slug}`);
+  $('#logname').textContent = slug + (d.running ? ' · running' : '');
+  const pre = $('#log'); const atBottom = pre.scrollTop + pre.clientHeight >= pre.scrollHeight - 30;
+  pre.textContent = d.log || '(empty)';
+  if (atBottom || !quiet) pre.scrollTop = pre.scrollHeight;
+}
+async function showEvidence(slug) {
+  const b = state.builds.find(x => x.slug === slug);
+  const rounds = (b.report && b.report.rounds) || [];
+  $('#evidence').innerHTML = rounds.map(r => `
+    <div class="round">
+      <div class="title">Round ${r.round} <span class="muted">· ${r.defects} defects with evidence</span>
+        ${r.applied ? `<span class="muted">· patched <code>${esc((r.applied.files || []).join(', '))}</code> · score ${r.applied.score_before} → ${r.applied.score_after}</span> <span class="${r.kept ? 'kept' : 'reverted'}">${r.kept ? 'Kept' : 'Reverted'}</span>` : ''}
+      </div>
+      <div class="hint"><a href="/evidence/${slug}/verification/round_${r.round}/critique.json" target="_blank">critique.json</a></div>
+      <div class="shots" id="shots-${r.round}"></div>
+    </div>`).join('') || '<div class="empty">No verification report yet.</div>';
+  for (const r of rounds) {
+    const box = document.getElementById('shots-' + r.round);
+    for (const w of ['before', 'after']) for (let i = 1; i <= 12; i++) {
+      const n = String(i).padStart(3, '0');
+      for (const lbl of ['start', 'end', 'no_playtest']) {
+        const src = `/evidence/${slug}/verification/round_${r.round === 1 ? 0 : r.round - 1}/${w}/shots/${n}_${lbl}.png`;
+        const img = new Image(); img.title = `${w} ${n}_${lbl}`; img.onload = () => box.appendChild(img); img.src = src;
+      }
+    }
+  }
+}
+function bindFileName(inputId, nameId, none) {
+  $('#' + inputId).addEventListener('change', e => {
+    const fs = [...e.target.files];
+    $('#' + nameId).textContent = fs.length ? (fs.length === 1 ? fs[0].name : `${fs.length} files`) : none;
+  });
+}
+bindFileName('bookfile', 'bookfilename', 'No file chosen');
+bindFileName('reffile', 'reffilename', 'No files chosen');
+bindFileName('sessfile', 'sessfilename', 'No file chosen');
+
+$('#book').onchange = renderChapters;
+$('#upbook').onclick = async () => { const f = $('#bookfile').files[0]; if (f) { await upload('book', f); await refresh(); $('#book').value = f.name; renderChapters(); } };
+$('#upref').onclick = async () => { for (const f of $('#reffile').files) await upload('style', f); refresh(); };
+$('#run').onclick = async () => {
+  const chapters = [...document.querySelectorAll('#chapters input:checked')].map(i => i.value);
+  const only = [...document.querySelectorAll('#only input:checked')].map(i => i.value);
+  const r = await api('/api/run', {book: $('#book').value, game: $('#game').value, chapters: chapters.length ? chapters : ['c01', 'c02'],
+    brief: $('#brief').value, fallback: $('#fallback').checked, only});
+  if (r.error) alert(r.error); else { current = r.build; }
+  refresh();
+};
+$('#stop').onclick = async () => { if (current) { await api('/api/stop', {build: current}); refresh(); } };
+$('#watch').onclick = async () => {
+  const f = $('#sessfile').files[0]; if (!f || !current) { alert('Pick a build (click its Log) and a session file.'); return; }
+  await upload('session', f); await api('/api/watch', {build: current, session: f.name}); refresh();
+};
+refresh(); setInterval(refresh, 3000);
+</script>
+</body>
+</html>

@@ -1,0 +1,391 @@
+{
+ "c01.summary": {
+  "path": "assets/audio/0c09173f13161ac2.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Alice follows a White Rabbit down a deep hole into a locked hall and changes size."
+ },
+ "c01.goal": {
+  "path": "assets/audio/33067e134d615232.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Unlock the tiny door, drink from the bottle, and eat the cake."
+ },
+ "c01_b01.plain": {
+  "path": "assets/audio/1e7cc59d3aea1f9b.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Alice sees a White Rabbit with a watch and follows it."
+ },
+ "c01_b01.original": {
+  "path": "assets/audio/250895ad761baf7f.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "when the Rabbit actually took a watch out of its waistcoat-pocket, and looked at it, and then hurried on, Alice started to her feet, for it flashed across her mind that she had never before seen a rabbit with either a waistcoat-pocket, or a watch to take out of it, and burning with curiosity, she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge."
+ },
+ "c01_b02.plain": {
+  "path": "assets/audio/73b01f8ad7c2e743.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Alice falls slowly down a very deep well."
+ },
+ "c01_b02.original": {
+  "path": "assets/audio/9e6c0e44757348ad.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "The rabbit-hole went straight on like a tunnel for some way, and then dipped suddenly down, so suddenly that Alice had not a moment to think about stopping herself before she found herself falling down a very deep well."
+ },
+ "c01_b03.plain": {
+  "path": "assets/audio/db5a2e814e7b04c5.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "She lands unhurt on sticks and leaves in a locked hall."
+ },
+ "c01_b03.original": {
+  "path": "assets/audio/b87f11acb6fb046e.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Alice was not a bit hurt, and she jumped up on to her feet in a moment: she looked up, but it was all dark overhead; before her was another long passage, and the White Rabbit was still in sight, hurrying down it."
+ },
+ "c01_b04.plain": {
+  "path": "assets/audio/796d7749dfb25143.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "She finds a tiny golden key that opens a small door."
+ },
+ "c01_b04.original": {
+  "path": null,
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "However, on the second time round, she came upon a low curtain she had not noticed before, and behind it was a little door about fifteen inches high: she tried the little golden key in the lock, and to her great delight it fitted!",
+  "error": "Error code: 400 - {'error': {'message': 'Request blocked for an unspecified policy reason. Please modify your input and retry.', 'code': 'content_blocked'}}"
+ },
+ "c01_b05.plain": {
+  "path": "assets/audio/80f05fa7c9705506.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "She sees a lovely garden, but she is too big to enter."
+ },
+ "c01_b05.original": {
+  "path": "assets/audio/5fbd5aa823f57033.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "How she longed to get out of that dark hall, and wander about among those beds of bright flowers and those cool fountains, but she could not even get her head through the doorway"
+ },
+ "c01_b06.plain": {
+  "path": "assets/audio/2cd15e40a92bdff5.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Alice drinks from a bottle and shrinks to ten inches high."
+ },
+ "c01_b06.original": {
+  "path": "assets/audio/da56432de0e4b1f6.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "And so it was indeed: she was now only ten inches high, and her face brightened up at the thought that she was now the right size for going through the little door into that lovely garden."
+ },
+ "c01_b07.plain": {
+  "path": "assets/audio/a28d50490fd5a8b7.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "She cannot reach the key on the table, so she eats cake."
+ },
+ "c01_b07.original": {
+  "path": "assets/audio/ae3c103efbe07781.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Soon her eye fell on a little glass box that was lying under the table: she opened it, and found in it a very small cake, on which the words “EAT ME” were beautifully marked in currants."
+ },
+ "item.pocket_watch.meaning": {
+  "path": "assets/audio/0b05771b6b83f137.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "The White Rabbit checks this watch because he is running late."
+ },
+ "item.golden_key.meaning": {
+  "path": "assets/audio/73787d3af304a228.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "It unlocks the tiny door leading to the lovely garden."
+ },
+ "item.drink_me_bottle.meaning": {
+  "path": "assets/audio/2f3346a305d627e9.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Drinking from this bottle shrinks Alice to ten inches high."
+ },
+ "line.alice.c01.1.plain": {
+  "path": "assets/audio/0d77ac416a852517.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "What is the use of a book without pictures?"
+ },
+ "line.alice.c01.1.original": {
+  "path": "assets/audio/f4957c3007ab5b02.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "“and what is the use of a book,” thought Alice “without pictures or conversations?”"
+ },
+ "line.alice.c01.2.plain": {
+  "path": "assets/audio/cc257444933483d8.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "I wonder how many miles I have fallen now?"
+ },
+ "line.alice.c01.2.original": {
+  "path": "assets/audio/ea30da6bdf5b3424.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "“I wonder how many miles I’ve fallen by this time?”"
+ },
+ "line.alice.c01.3.plain": {
+  "path": "assets/audio/d168ba403aca8c75.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "I must be shutting up like a telescope."
+ },
+ "line.alice.c01.3.original": {
+  "path": "assets/audio/b8d4ead49c93650c.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "“What a curious feeling!” said Alice; “I must be shutting up like a telescope.”"
+ },
+ "line.alice.c01.4.plain": {
+  "path": "assets/audio/bd8f2c0f7e7bb663.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "I will eat this cake to get into the garden."
+ },
+ "line.alice.c01.4.original": {
+  "path": "assets/audio/315b36d2dbd00a99.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "“Well, I’ll eat it,” said Alice, “and if it makes me grow larger, I can reach the key; and if it makes me grow smaller, I can creep under the door; so either way I’ll get into the garden, and I don’t care which happens!”"
+ },
+ "line.white_rabbit.c01.1.plain": {
+  "path": "assets/audio/513b6adff854a051.wav",
+  "voice": "Zephyr",
+  "speaker": "white_rabbit",
+  "text": "Oh dear! Oh dear! I shall be late!"
+ },
+ "line.white_rabbit.c01.1.original": {
+  "path": "assets/audio/5bbf2b73fce691c5.wav",
+  "voice": "Zephyr",
+  "speaker": "white_rabbit",
+  "text": "“Oh dear! Oh dear! I shall be late!”"
+ },
+ "line.white_rabbit.c01.2.plain": {
+  "path": "assets/audio/82331cdba6c9e073.wav",
+  "voice": "Zephyr",
+  "speaker": "white_rabbit",
+  "text": "Oh my ears and whiskers, how late it is getting!"
+ },
+ "line.white_rabbit.c01.2.original": {
+  "path": "assets/audio/e093d979ce5a2aa7.wav",
+  "voice": "Zephyr",
+  "speaker": "white_rabbit",
+  "text": "“Oh my ears and whiskers, how late it’s getting!”"
+ },
+ "_chapters": [
+  "c01",
+  "c02"
+ ],
+ "c02.summary": {
+  "path": "assets/audio/3f66748d82cfa2c9.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Alice grows giant, cries a pool of tears, shrinks with a fan, and meets a Mouse."
+ },
+ "c02.goal": {
+  "path": "assets/audio/cf1ef901c5965145.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Drop the fan to stop shrinking and swim to shore with the Mouse."
+ },
+ "c02_b01.plain": {
+  "path": "assets/audio/a4a53061ea4dbcea.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Alice grows more than nine feet tall and hits the roof."
+ },
+ "c02_b01.original": {
+  "path": "assets/audio/6abed5da106833fa.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Just then her head struck against the roof of the hall: in fact she was now more than nine feet high, and she at once took up the little golden key and hurried off to the garden door."
+ },
+ "c02_b02.plain": {
+  "path": "assets/audio/1809306b61413a8c.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "She cannot fit through the door and cries a big pool."
+ },
+ "c02_b02.original": {
+  "path": "assets/audio/5bff4e5963e5219b.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "But she went on all the same, shedding gallons of tears, until there was a large pool all round her, about four inches deep and reaching half down the hall."
+ },
+ "c02_b03.plain": {
+  "path": "assets/audio/4d027d95725bc0b0.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "The startled White Rabbit drops his fan and white kid gloves."
+ },
+ "c02_b03.original": {
+  "path": "assets/audio/a0942009ee85238b.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "The Rabbit started violently, dropped the white kid gloves and the fan, and skurried away into the darkness as hard as he could go."
+ },
+ "c02_b04.plain": {
+  "path": "assets/audio/e34899f885f8bde8.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Alice fans herself and shrinks down to two feet high."
+ },
+ "c02_b04.original": {
+  "path": "assets/audio/d3648a572a8feb7a.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "She got up and went to the table to measure herself by it, and found that, as nearly as she could guess, she was now about two feet high, and was going on shrinking rapidly: she soon found out that the cause of this was the fan she was holding, and she dropped it hastily, just in time to avoid shrinking away altogether."
+ },
+ "c02_b05.plain": {
+  "path": "assets/audio/60f360dc291e1f9f.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Alice slips into the pool of her own salty tears."
+ },
+ "c02_b05.original": {
+  "path": "assets/audio/09f00fa9295a866b.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "However, she soon made out that she was in the pool of tears which she had wept when she was nine feet high."
+ },
+ "c02_b06.plain": {
+  "path": "assets/audio/0d32132fb2696043.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "She meets a Mouse and scares it by talking about cats."
+ },
+ "c02_b06.original": {
+  "path": "assets/audio/657a9a26bba0fdca.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "“Not like cats!” cried the Mouse, in a shrill, passionate voice. “Would you like cats if you were me?”"
+ },
+ "c02_b07.plain": {
+  "path": "assets/audio/74b2bfa3d5ee9fdd.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Alice, the Mouse, and other wet creatures swim to the shore."
+ },
+ "c02_b07.original": {
+  "path": "assets/audio/63f76a2b414d0bb7.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Alice led the way, and the whole party swam to the shore."
+ },
+ "item.rabbits_fan.meaning": {
+  "path": "assets/audio/bdaecca9a03f3b58.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "Holding this fan makes Alice shrink rapidly."
+ },
+ "item.white_kid_gloves.meaning": {
+  "path": "assets/audio/a7cf9250b79a3e5f.wav",
+  "voice": "Charon",
+  "speaker": "narrator",
+  "text": "The White Rabbit drops these tiny gloves in the hall."
+ },
+ "line.alice.c02.1.plain": {
+  "path": "assets/audio/5cb1597da154c4fd.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "I am opening out like the largest telescope that ever was!"
+ },
+ "line.alice.c02.1.original": {
+  "path": "assets/audio/d50fc02963c2c050.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "“now I’m opening out like the largest telescope that ever was! Good-bye, feet!”"
+ },
+ "line.alice.c02.2.plain": {
+  "path": "assets/audio/c0b5b9cd2b59e908.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "Who in the world am I? That is the great puzzle!"
+ },
+ "line.alice.c02.2.original": {
+  "path": "assets/audio/eb7d15f35379ca5e.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "Who in the world am I? Ah, that’s the great puzzle!”"
+ },
+ "line.alice.c02.3.plain": {
+  "path": "assets/audio/4c9523a8754741da.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "O Mouse, do you know the way out of this pool?"
+ },
+ "line.alice.c02.3.original": {
+  "path": "assets/audio/77ca7e2efac81d0b.wav",
+  "voice": "Puck",
+  "speaker": "alice",
+  "text": "“O Mouse, do you know the way out of this pool? I am very tired of swimming about here, O Mouse!”"
+ },
+ "line.white_rabbit.c02.1.plain": {
+  "path": "assets/audio/4a4fcfc5deead516.wav",
+  "voice": "Zephyr",
+  "speaker": "white_rabbit",
+  "text": "Oh, the Duchess! She will be angry if I keep her waiting!"
+ },
+ "line.white_rabbit.c02.1.original": {
+  "path": "assets/audio/a3669c08f7a4c6d1.wav",
+  "voice": "Zephyr",
+  "speaker": "white_rabbit",
+  "text": "“Oh! the Duchess, the Duchess! Oh! won’t she be savage if I’ve kept her waiting!”"
+ },
+ "line.white_rabbit.c02.2.plain": {
+  "path": "assets/audio/4f59465b6dcc0b50.wav",
+  "voice": "Zephyr",
+  "speaker": "white_rabbit",
+  "text": "I must hurry along with these gloves and this fan."
+ },
+ "line.mouse.c02.1.plain": {
+  "path": "assets/audio/a701a1da1613901a.wav",
+  "voice": "Leda",
+  "speaker": "mouse",
+  "text": "Would you like cats if you were me?"
+ },
+ "line.mouse.c02.1.original": {
+  "path": "assets/audio/97be51f0cbb0b5e4.wav",
+  "voice": "Leda",
+  "speaker": "mouse",
+  "text": "“Would you like cats if you were me?”"
+ },
+ "line.mouse.c02.2.plain": {
+  "path": "assets/audio/2a1a5ed4696f863d.wav",
+  "voice": "Leda",
+  "speaker": "mouse",
+  "text": "Our family always hated cats: nasty, low, vulgar things!"
+ },
+ "line.mouse.c02.2.original": {
+  "path": "assets/audio/2a1a5ed4696f863d.wav",
+  "voice": "Leda",
+  "speaker": "mouse",
+  "text": "Our family always hated cats: nasty, low, vulgar things!"
+ },
+ "line.mouse.c02.3.plain": {
+  "path": "assets/audio/91fe8614ffab73f8.wav",
+  "voice": "Leda",
+  "speaker": "mouse",
+  "text": "Let us get to the shore, and I will tell my story."
+ },
+ "line.mouse.c02.3.original": {
+  "path": "assets/audio/d52d28f0b8cfa3b2.wav",
+  "voice": "Leda",
+  "speaker": "mouse",
+  "text": "“Let us get to the shore, and then I’ll tell you my history, and you’ll understand why it is I hate cats and dogs.”"
+ }
+}

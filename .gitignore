@@ -1,0 +1,18 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+builds/_smoke/environment*
+builds/*/game/node_modules/
+games/
+builds/*/assets/audio/
+builds/*/game.prev.*/
+builds/*/verification/*/environment*
+builds/_fixture/
+builds/_sessions/
+.gstack/
+builds/_preview_*/
+builds/_smoke/
+hackathon rules/

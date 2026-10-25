@@ -1,0 +1,33 @@
+<!doctype html><html><head><meta charset="utf-8"><title>fixture</title>
+<style>body{margin:0;background:#223}canvas{display:block}#sub{position:fixed;bottom:20px;left:10%;width:80%;background:#000;color:#fff;font:28px Verdana;padding:12px}</style>
+</head><body><canvas id="c" width="1280" height="720"></canvas><div id="sub"></div>
+<script>
+// Minimal game that satisfies the window.playtest contract, used to test the driver without AI.
+const world = {
+  chapter: "c01",
+  characters: {hero: {x: 100, y: 500}, friend: {x: 600, y: 500}},
+  items: {key: {x: 900, y: 520, got: false}},
+  player: {x: 50, y: 500}, heard: [], beats: [], collected: []
+};
+const lines = {friend: ["Hello there.", "Follow me."]};
+const sub = document.getElementById("sub");
+function say(t){ sub.textContent = t; world.heard.push(t); }
+function draw(){
+  const g = document.getElementById("c").getContext("2d");
+  g.fillStyle = "#223"; g.fillRect(0,0,1280,720); g.fillStyle = "#4a4"; g.fillRect(0,560,1280,160);
+  for (const [id,c] of Object.entries(world.characters)) { g.fillStyle = "#fc6"; g.fillRect(c.x-20,c.y-60,40,60); }
+  for (const [id,i] of Object.entries(world.items)) if (!i.got) { g.fillStyle = "#ff0"; g.fillRect(i.x-10,i.y-10,20,20); }
+  g.fillStyle = "#6af"; g.fillRect(world.player.x-20, world.player.y-60, 40, 60);
+}
+function near(a, b){ return Math.hypot(a.x-b.x, a.y-b.y) < 80; }
+window.playtest = {
+  characters: () => Object.entries(world.characters).map(([id,c]) => ({id, x:c.x, y:c.y})),
+  items: () => Object.entries(world.items).map(([id,i]) => ({id, x:i.x, y:i.y, collected:i.got})),
+  goto: (id) => { const t = world.characters[id] || world.items[id]; if (t) { world.player.x = t.x - 40; world.player.y = t.y; draw(); } },
+  talk: () => { for (const [id,c] of Object.entries(world.characters)) if (near(world.player, c) && lines[id]) { say(lines[id][world.heard.length % lines[id].length]); return true; } return false; },
+  collect: () => { for (const [id,i] of Object.entries(world.items)) if (!i.got && near(world.player, i)) { i.got = true; world.collected.push(id); say("A key."); draw(); return true; } return false; },
+  state: () => ({chapter: world.chapter, beats_seen: world.beats, items_collected: world.collected, lines_heard: world.heard}),
+  screenshot: () => document.getElementById("c").toDataURL("image/png"),
+};
+draw();
+</script></body></html>

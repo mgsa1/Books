@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Storyworld Walker</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+/* Layout: header strip, then a two-column grid (tile stage | journal/spec panel) that stacks on phones. */
+:root{
+  --bg:#e9ece4; --panel:#f7f8f3; --ink:#1f2328; --muted:#5e6670; --line:#cfd5c9;
+  --accent:#1f5f8b; --accent-ink:#ffffff; --gold:#b8860b; --ok:#2e7d4f; --err:#b3261e;
+  --display:'Pixelify Sans','Courier New',monospace;
+  --body:'Atkinson Hyperlegible',Verdana,'Trebuchet MS',sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121418; --panel:#1b1e24; --ink:#eef0ea; --muted:#9aa3ad; --line:#333943;
+  --accent:#6fb1e0; --accent-ink:#0b1016; --gold:#e3b23c; --ok:#6fc08a; --err:#f28b82; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#121418; --panel:#1b1e24; --ink:#eef0ea; --muted:#9aa3ad; --line:#333943;
+  --accent:#6fb1e0; --accent-ink:#0b1016; --gold:#e3b23c; --ok:#6fc08a; --err:#f28b82; color-scheme:dark }
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:14px 28px}
+.app{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:10px 20px;border-bottom:2px solid var(--line);padding-bottom:10px}
+.eyebrow{font-family:var(--display);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-size:clamp(24px,3.4vw,36px);margin:2px 0 0;line-height:1.1;text-wrap:balance}
+.by{color:var(--muted);margin:0}
+.tools{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center}
+.tools label{display:flex;align-items:center;gap:6px;cursor:pointer}
+.tools input{accent-color:var(--accent);width:16px;height:16px}
+.progress{font-family:var(--display);font-size:16px;font-variant-numeric:tabular-nums;color:var(--accent)}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:14px;align-items:start}
+@media (max-width:860px){.main{grid-template-columns:minmax(0,1fr)}}
+
+.stage{position:relative;background:#0e1014;border:3px solid var(--line);border-radius:6px;overflow:hidden;min-width:0;outline:none}
+.stage:focus-visible{border-color:var(--accent)}
+canvas{display:block;width:100%;height:auto;image-rendering:pixelated}
+.banner{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:rgba(10,12,16,.84);color:#fff;font-family:var(--display);
+  padding:8px 18px;border-radius:4px;font-size:19px;opacity:0;transition:opacity .4s;pointer-events:none;white-space:nowrap;max-width:92%;overflow:hidden;text-overflow:ellipsis;text-align:center}
+.banner small{display:block;font-size:12px;letter-spacing:.12em;color:#ffd36a;text-transform:uppercase}
+.banner.show{opacity:1}
+.dialog{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(14,16,20,.95);color:#fff;border:2px solid #fff;border-radius:6px;padding:12px 14px 16px;cursor:pointer;min-height:86px}
+.dialog .who{position:absolute;top:-14px;left:12px;background:var(--who,#4a90d9);color:#fff;font-family:var(--display);padding:2px 10px;border-radius:3px;font-size:14px;text-shadow:0 1px 0 rgba(0,0,0,.5)}
+.dialog .txt{font-size:17px;line-height:1.45;margin-top:4px;min-height:1.45em}
+.big .dialog .txt{font-size:22px;letter-spacing:.04em;line-height:1.6;word-spacing:.14em}
+.dialog .more{position:absolute;right:12px;bottom:4px;font-size:12px;color:#ffd36a;font-family:var(--display)}
+.hint{color:var(--muted);font-size:13px;margin:8px 0 0;display:flex;flex-wrap:wrap;gap:4px 14px}
+kbd{font-family:var(--display);border:1px solid var(--line);border-bottom-width:2px;padding:0 5px;border-radius:3px;background:var(--panel);color:var(--ink)}
+.pad{display:none;grid-template-columns:repeat(3,56px);gap:6px;justify-content:center;margin-top:12px;user-select:none;touch-action:none}
+@media (pointer:coarse){.pad{display:grid}}
+.pad button{height:50px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-size:20px;touch-action:none}
+.pad .u{grid-column:2;grid-row:1}.pad .l{grid-column:1;grid-row:2}.pad .d{grid-column:2;grid-row:2}.pad .r{grid-column:3;grid-row:2}
+.pad .a{grid-column:3;grid-row:1;background:var(--accent);color:var(--accent-ink);font-family:var(--display);font-size:16px}
+
+.side{background:var(--panel);border:1px solid var(--line);border-radius:6px;min-width:0;display:flex;flex-direction:column;max-height:calc(12*32px + 60px)}
+@media (max-width:860px){.side{max-height:none}}
+.tabs{display:flex;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;padding:10px;background:none;border:0;font-family:var(--display);font-size:15px;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.pane{padding:14px;overflow:auto;flex:1;min-height:0}
+.pane h4{font-family:var(--display);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:16px 0 6px}
+.chap{padding:8px 0 10px;border-bottom:1px dashed var(--line)}
+.chap h3{margin:0;font-size:15px;display:flex;gap:8px;align-items:baseline}
+.chap .n{font-family:var(--display);color:var(--accent);min-width:1.4em}
+.chap.locked h3{color:var(--muted)}
+.chap .sum{margin:4px 0 0 1.9em;color:var(--muted);font-size:13px}
+.beats{list-style:none;margin:6px 0 0 1.9em;padding:0;display:flex;flex-direction:column;gap:4px}
+.beats li{font-size:14px;padding-left:16px;position:relative}
+.beats li::before{content:"";position:absolute;left:0;top:.55em;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.beats li.hid{color:var(--muted);letter-spacing:.2em}
+.beats li.hid::before{background:transparent;border:1px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:2px 10px 2px 4px;font-size:13px}
+.chip i{width:16px;height:16px;border-radius:50%;display:inline-block;border:1px solid rgba(0,0,0,.25)}
+.empty{color:var(--muted);font-size:13px;margin:0}
+textarea{width:100%;min-height:300px;font:12px/1.4 ui-monospace,Menlo,Consolas,monospace;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:4px;padding:8px;resize:vertical}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.btn{font-family:var(--display);font-size:14px;padding:7px 12px;border-radius:4px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.err{color:var(--err);font-size:13px;min-height:1.2em;margin:6px 0 0}
+.small{font-size:13px;color:var(--muted);margin:0 0 8px}
+details{margin-top:12px}
+summary{cursor:pointer;font-family:var(--display);font-size:14px}
+pre{font:12px/1.45 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:10px;margin:8px 0 0}
+@media (prefers-reduced-motion: reduce){.banner{transition:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Storyworld Walker · book → world spec → game</div>
+      <h1 id="bookTitle">Loading…</h1>
+      <p class="by" id="bookBy"></p>
+    </div>
+    <div class="tools">
+      <label><input type="checkbox" id="optRead"> Read aloud</label>
+      <label><input type="checkbox" id="optBig"> Big text</label>
+      <span class="progress" id="progress">0 / 0 story beats</span>
+    </div>
+  </header>
+
+  <div class="main">
+    <div>
+      <div class="stage" id="stage" tabindex="0" aria-label="Game world. Use arrow keys to walk and space to talk.">
+        <canvas id="game" width="640" height="384"></canvas>
+        <div class="banner" id="banner"></div>
+        <div class="dialog" id="dialog" hidden>
+          <span class="who" id="dWho">Name</span>
+          <div class="txt" id="dTxt"></div>
+          <span class="more" id="dMore">space ▸</span>
+        </div>
+      </div>
+      <p class="hint"><span><kbd>←</kbd><kbd>↑</kbd><kbd>→</kbd><kbd>↓</kbd> or <kbd>WASD</kbd> walk</span><span><kbd>space</kbd> talk / pick up / continue</span><span>Locked doors open with the chapter's item.</span></p>
+      <div class="pad" id="pad">
+        <button class="u" data-k="up" aria-label="Up">▲</button>
+        <button class="l" data-k="left" aria-label="Left">◀</button>
+        <button class="d" data-k="down" aria-label="Down">▼</button>
+        <button class="r" data-k="right" aria-label="Right">▶</button>
+        <button class="a" data-k="act" aria-label="Talk">TALK</button>
+      </div>
+    </div>
+
+    <aside class="side">
+      <div class="tabs" role="tablist">
+        <button role="tab" id="tabJournal" aria-selected="true" aria-controls="paneJournal">Journal</button>
+        <button role="tab" id="tabSpec" aria-selected="false" aria-controls="paneSpec">World spec</button>
+      </div>
+      <div class="pane" id="paneJournal" role="tabpanel"></div>
+      <div class="pane" id="paneSpec" role="tabpanel" hidden>
+        <p class="small">This JSON is the entire game. Argon 4 reads the book and writes this; the engine never changes. Edit it or paste a generated one, then rebuild.</p>
+        <textarea id="specText" spellcheck="false" aria-label="World spec JSON"></textarea>
+        <div class="row"><button class="btn primary" id="rebuild">Rebuild world</button><button class="btn" id="resetSpec">Reset to sample</button></div>
+        <p class="err" id="specErr"></p>
+        <details>
+          <summary>Prompt we would send to Argon 4</summary>
+          <pre id="promptText"></pre>
+        </details>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+const $=s=>document.querySelector(s);
+
+/* ---------- Sample world spec (what Argon 4 would produce from the book) ---------- */
+const SAMPLE={
+ title:"Alice's Adventures in Wonderland", author:"Lewis Carroll", reading_age:8,
+ player:{name:"Alice", color:"#4a90d9"},
+ chapters:[
+  {id:"c1", title:"Down the Rabbit-Hole", theme:"meadow",
+   summary:"A sleepy afternoon on the riverbank turns strange when a rabbit in a waistcoat runs by.",
+   characters:[
+    {id:"rabbit", name:"White Rabbit", color:"#f4f1ec",
+     lines:["Oh dear! Oh dear! I shall be too late!","The Duchess! She will be savage if I have kept her waiting.","No time to chat. Follow me, if you must."],
+     reveals:"Alice sees a White Rabbit check its pocket watch and follows it down a rabbit-hole.",
+     secret:{needs:"key", lines:["You found the little golden key? Then the tiny door is yours.","Mind the garden. The Queen does not care for visitors."],
+       reveals:"The golden key opens a door no bigger than a rat-hole. Beyond it is the loveliest garden Alice has ever seen."}}
+   ],
+   items:[{id:"key", name:"Little golden key", reveals:"On a glass table Alice finds a tiny golden key. None of the big doors fit it."}]},
+  {id:"c2", title:"The Pool of Tears", theme:"water", requires:"key",
+   summary:"Alice grows nine feet tall, cries a lake, shrinks, and nearly drowns in her own tears.",
+   characters:[
+    {id:"mouse", name:"Mouse", color:"#8a7a6a", lines:["Not like cats! Would YOU like cats if you were me?","My tale is long and sad. Pay attention.","Où est ma chatte? Oh, I beg your pardon."],
+     reveals:"Alice swims the pool of tears beside a Mouse, who is terribly offended when she mentions her cat Dinah."},
+    {id:"dodo", name:"Dodo", color:"#5d6b8a", lines:["The best way to get dry is a Caucus-race.","Everybody runs in a circle and stops when they like.","EVERYBODY has won, and all must have prizes!"],
+     reveals:"The Dodo holds a Caucus-race to dry everyone off. Nobody knows who won, so everyone gets a prize."}
+   ],
+   items:[{id:"bottle", name:"DRINK ME bottle", reveals:"A bottle labelled DRINK ME. Alice drinks it and shrinks to ten inches high."}]},
+  {id:"c3", title:"Advice from a Caterpillar", theme:"forest", requires:"bottle",
+   summary:"A blue Caterpillar on a mushroom asks Alice the hardest question of all.",
+   characters:[
+    {id:"caterpillar", name:"Caterpillar", color:"#4f8fd1", lines:["Who are YOU?","I can't explain MYSELF, because I'm not myself, you see.","Keep your temper.","One side will make you grow taller, and the other side will make you grow shorter."],
+     reveals:"The Caterpillar asks Alice who she is. She cannot answer, because she has changed so many times today.",
+     secret:{needs:"mushroom", lines:["So you took both sides.","You will get used to it in time. One side, then the other."],
+       reveals:"Alice nibbles each side of the mushroom until she is back to her right size."}}
+   ],
+   items:[{id:"mushroom", name:"Piece of mushroom", reveals:"One side of the mushroom makes you grow. The other makes you shrink."}]},
+  {id:"c4", title:"A Mad Tea-Party", theme:"garden", requires:"mushroom",
+   summary:"Tea never ends at a table where it is always six o'clock.",
+   characters:[
+    {id:"hatter", name:"Hatter", color:"#8c5fb0", lines:["Why is a raven like a writing-desk?","It's always six o'clock now. No time to wash the things between whiles.","Your hair wants cutting."],
+     reveals:"At the tea-party the Hatter asks a riddle with no answer. Time stopped at six o'clock, so tea never ends."},
+    {id:"hare", name:"March Hare", color:"#c9a66b", lines:["Have some wine.","There isn't any wine.","You should say what you mean!"],
+     reveals:"The March Hare offers wine that does not exist and insists that saying what you mean is not the same as meaning what you say."},
+    {id:"dormouse", name:"Dormouse", color:"#b58a63", lines:["Twinkle, twinkle, little bat...","...three sisters lived at the bottom of a well. A treacle well.","I wasn't asleep. I heard every word."],
+     reveals:"The sleepy Dormouse tells a story about three sisters who live in a treacle well."}
+   ],
+   items:[{id:"watch", name:"Hatter's pocket watch", reveals:"The Hatter's watch tells the day of the month but not the hour. Butter did not help the works."}]},
+  {id:"c5", title:"The Queen's Croquet-Ground", theme:"court", requires:"watch",
+   summary:"Playing cards paint the roses red before the Queen arrives, because the Queen is always arriving.",
+   characters:[
+    {id:"cat", name:"Cheshire Cat", color:"#d98cc2", lines:["We're all mad here. I'm mad. You're mad.","A cat may look at a king.","I'll leave my grin behind. It stays longer than I do."],
+     reveals:"The Cheshire Cat appears and vanishes at will, sometimes leaving only its grin."},
+    {id:"queen", name:"Queen of Hearts", color:"#d13b3b", lines:["Who is THIS?","Can you play croquet?","OFF WITH THEIR HEADS!"],
+     reveals:"The Queen of Hearts shouts for everyone's head. Croquet is played with flamingos as mallets and hedgehogs as balls.",
+     secret:{needs:"rose", lines:["A painted rose? WHO painted... oh. Never mind.","You are nothing but a child.","...Nothing but a child who talks back."],
+       reveals:"Alice stands up to the Queen. 'You're nothing but a pack of cards!' The cards fly up, and Alice wakes on the riverbank."}}
+   ],
+   items:[{id:"rose", name:"Painted white rose", reveals:"Three gardeners paint white roses red. They planted the wrong tree and dread the Queen finding out."}]}
+ ]};
+
+const PROMPT=`You are turning a book into an explorable world for a reader who cannot or
+will not read the text itself (reading age 8, or a dyslexic reader).
+
+Read the attached book. Output ONLY JSON in this shape:
+
+{ "title", "author", "reading_age": 8, "player": {"name", "color"},
+  "chapters": [ {
+    "id", "title",
+    "theme": one of meadow | water | forest | garden | court | cave | desert | snow | space,
+    "summary": one sentence,
+    "requires": item id from the previous chapter (omit on the first chapter),
+    "characters": [ {
+      "id", "name", "color",
+      "lines": 2-4 short lines in the character's own voice (quote the book when you can),
+      "reveals": one plain sentence of plot the reader learns by talking to them,
+      "secret": { "needs": item id, "lines": [...], "reveals": "..." }   // optional, unlocked by bringing an item
+    } ],
+    "items": [ { "id", "name", "reveals": one plain sentence tying the object to the chapter's key event } ]
+  } ] }
+
+Rules: 4-8 chapters. Each chapter has 1-3 characters and exactly 1 item.
+Write every "reveals" at the reading age, one sentence, no spoilers for later chapters.
+Keep lines under 90 characters so they fit a speech box and can be read aloud.`;
+
+/* ---------- Engine constants ---------- */
+const TILE=32, ZW=18, ZH=12, COR=6, STEP_MS=150;
+const THEMES={
+  meadow:{floor:'#7cc26a',floor2:'#72b760',path:'#d9c38a',obs:'tree'},
+  water:{floor:'#d8c98f',floor2:'#cfbf84',path:'#ece0b4',obs:'water'},
+  forest:{floor:'#4f8a55',floor2:'#467d4c',path:'#b89b6a',obs:'mushroom'},
+  garden:{floor:'#8fcf78',floor2:'#84c46d',path:'#e0c99a',obs:'hedge'},
+  court:{floor:'#9bd27f',floor2:'#90c974',path:'#efe3c0',obs:'rose'},
+  cave:{floor:'#5c5666',floor2:'#544e5e',path:'#8c8494',obs:'rock'},
+  desert:{floor:'#e2cf93',floor2:'#d9c586',path:'#f1e5bd',obs:'rock'},
+  snow:{floor:'#e8eef2',floor2:'#dde5ea',path:'#c9d3da',obs:'tree'},
+  space:{floor:'#20223a',floor2:'#1b1d33',path:'#3b3f66',obs:'rock'},
+};
+const HAIR=['#3a2a1e','#c8912b','#f1f1f1','#7a3b12','#2c3e68','#8a8a8a'];
+const DIRS={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]};
+const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const canvas=$('#game'), ctx=canvas.getContext('2d'), stage=$('#stage');
+let dpr=1, world=null, P=null, inv, found, met, disc, keys={}, dialog=null, ended=false, bannerT=null, spec=null;
+
+/* ---------- Deterministic layout from the spec ---------- */
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+function build(sp){
+  const ch=sp.chapters, n=ch.length, W=n*ZW, H=ZH;
+  const grid=new Uint8Array(W*H); // 0 floor, 1 obstacle, 2 path, 3 door
+  const at=(x,y)=>grid[y*W+x], set=(x,y,v)=>{grid[y*W+x]=v};
+  const npcs=[], items=[], doors=[], occ=new Set();
+  ch.forEach((c,zi)=>{
+    const r=rng(hash(sp.title+'|'+c.title+'|'+zi)), ox=zi*ZW;
+    for(let y=0;y<H;y++)for(let x=0;x<ZW;x++){
+      let v=0;
+      if(y===0||y===H-1) v=1;
+      else if(x===0&&zi===0) v=1;
+      else if(x===ZW-1) v=(zi<n-1&&y===COR)?3:1;
+      else if(y===COR) v=2;
+      else if(Math.abs(y-COR)>1&&x>1&&x<ZW-2&&r()<0.17) v=1;
+      set(ox+x,y,v);
+    }
+    if(zi<n-1) doors.push({x:ox+ZW-1,y:COR,zone:zi,needs:ch[zi+1].requires||null});
+    const place=(ent,kind,idx)=>{
+      let x,y,tries=0;
+      do{x=ox+2+Math.floor(r()*(ZW-5));y=1+Math.floor(r()*(H-2));tries++}
+      while((occ.has(x+','+y)||y===COR||(zi===0&&x<5))&&tries<300);
+      occ.add(x+','+y);
+      const dy=Math.sign(COR-y);
+      for(let yy=y;yy!==COR;yy+=dy) if(at(x,yy)===1) set(x,yy,0);
+      set(x,y,0);
+      return Object.assign({},ent,{x,y,zone:zi,kind,idx});
+    };
+    (c.characters||[]).forEach((e,i)=>npcs.push(place(e,'npc',i)));
+    (c.items||[]).forEach((e,i)=>items.push(place(e,'item',i)));
+  });
+  return {W,H,grid,npcs,items,doors,start:{x:2,y:COR}};
+}
+function tileAt(x,y){ if(!world||x<0||y<0||x>=world.W||y>=world.H) return 1; return world.grid[y*world.W+x] }
+function npcAt(x,y){ return world.npcs.find(n=>n.x===x&&n.y===y) }
+function itemAt(x,y){ return world.items.find(i=>i.x===x&&i.y===y&&!inv.has(i.id)) }
+function findItem(id){ return world.items.find(i=>i.id===id) }
+function totalBeats(){ let n=0; spec.chapters.forEach(c=>{(c.characters||[]).forEach(e=>{if(e.reveals)n++;if(e.secret&&e.secret.reveals)n++});(c.items||[]).forEach(i=>{if(i.reveals)n++})}); return n }
+
+/* ---------- Game lifecycle ---------- */
+function validate(sp){
+  if(!sp||typeof sp!=='object') throw new Error('Spec must be a JSON object.');
+  if(!Array.isArray(sp.chapters)||!sp.chapters.length) throw new Error('"chapters" must be a non-empty array.');
+  sp.chapters.forEach((c,i)=>{
+    if(!c.title) throw new Error('Chapter '+(i+1)+' needs a "title".');
+    c.id=c.id||('c'+(i+1)); c.characters=c.characters||[]; c.items=c.items||[];
+    c.characters.forEach((e,j)=>{e.id=e.id||(c.id+'n'+j);e.name=e.name||'Someone';e.color=e.color||'#888';e.lines=e.lines&&e.lines.length?e.lines:['...']});
+    c.items.forEach((e,j)=>{e.id=e.id||(c.id+'i'+j);e.name=e.name||'something'});
+  });
+  sp.title=sp.title||'Untitled story';
+  return sp;
+}
+function start(sp, save){
+  spec=validate(sp); world=build(spec);
+  P={x:world.start.x,y:world.start.y,dir:'right',mov:null};
+  inv=new Set(save&&save.inv); found=new Set(save&&save.found); met=new Set(save&&save.met); disc=new Set(save&&save.disc||[0]);
+  if(save&&save.px!=null&&tileAt(save.px,save.py)!==1){P.x=save.px;P.y=save.py}
+  ended=false; closeDialog();
+  $('#bookTitle').textContent=spec.title; $('#bookBy').textContent=spec.author?'by '+spec.author:'';
+  renderJournal();
+  if(!save) banner('Chapter 1',spec.chapters[0].title,false);
+}
+function snapshot(){ return {inv:[...inv],found:[...found],met:[...met],disc:[...disc],px:P.x,py:P.y} }
+
+/* ---------- Dialogue ---------- */
+const dEl=$('#dialog'), dWho=$('#dWho'), dTxt=$('#dTxt'), dMore=$('#dMore');
+function openDialog(name,color,lines,onDone){
+  dialog={lines,i:0,t0:performance.now(),typing:true,onDone};
+  dEl.style.setProperty('--who',color||'#4a90d9'); dWho.textContent=name; dTxt.textContent=''; dEl.hidden=false;
+  dMore.textContent=lines.length>1?'space ▸ 1/'+lines.length:'space ▸';
+  say(lines[0]);
+}
+function advance(){
+  if(!dialog) return;
+  const full=dialog.lines[dialog.i];
+  if(dialog.typing){ dialog.typing=false; dTxt.textContent=full; return }
+  if(dialog.i<dialog.lines.length-1){ dialog.i++; dialog.t0=performance.now(); dialog.typing=true; dTxt.textContent=''; dMore.textContent='space ▸ '+(dialog.i+1)+'/'+dialog.lines.length; say(dialog.lines[dialog.i]); return }
+  const cb=dialog.onDone; closeDialog(); if(cb) cb();
+}
+function closeDialog(){ dialog=null; dEl.hidden=true; if('speechSynthesis' in window) speechSynthesis.cancel() }
+dEl.addEventListener('click',advance);
+
+function say(text){
+  if(!$('#optRead').checked||!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text); u.rate=0.95; speechSynthesis.speak(u);
+}
+const bEl=$('#banner');
+function banner(small,big,speak){
+  bEl.innerHTML='<small></small>'; bEl.firstChild.textContent=small; bEl.append(big);
+  bEl.classList.add('show'); clearTimeout(bannerT); bannerT=setTimeout(()=>bEl.classList.remove('show'),2800);
+  if(speak!==false) say(small+'. '+big);
+}
+
+/* ---------- Actions ---------- */
+function tryMove(dir){
+  const [dx,dy]=DIRS[dir]; P.dir=dir;
+  const nx=P.x+dx, ny=P.y+dy, t=tileAt(nx,ny);
+  if(t===1) return;
+  if(t===3){
+    const d=world.doors.find(d=>d.x===nx&&d.y===ny);
+    if(d&&d.needs&&!inv.has(d.needs)){
+      const it=findItem(d.needs);
+      openDialog('Locked door','#6b4a2b',['The door will not budge.'+(it?' You need the '+it.name+'. It is somewhere in this chapter.':'')]);
+      return;
+    }
+  }
+  if(npcAt(nx,ny)) return;
+  P.mov={fx:P.x,fy:P.y,t0:performance.now()}; P.x=nx; P.y=ny;
+}
+function onArrive(){
+  const it=itemAt(P.x,P.y); if(it) pickup(it);
+  const z=Math.floor(P.x/ZW);
+  if(!disc.has(z)){ disc.add(z); banner('Chapter '+(z+1),spec.chapters[z].title); renderJournal() }
+}
+function interact(){
+  if(dialog){ advance(); return }
+  const [dx,dy]=DIRS[P.dir];
+  const n=npcAt(P.x+dx,P.y+dy); if(n){ talk(n); return }
+  const it=itemAt(P.x+dx,P.y+dy); if(it) pickup(it);
+}
+function talk(n){
+  met.add(n.id);
+  const ch=spec.chapters[n.zone];
+  let lines=n.lines, reveal=n.reveals, key=ch.id+':'+n.id;
+  if(n.secret&&n.secret.needs&&inv.has(n.secret.needs)){ lines=n.secret.lines||lines; reveal=n.secret.reveals; key+=':secret' }
+  renderJournal();
+  openDialog(n.name,n.color,lines,()=>addBeat(key,reveal));
+}
+function pickup(it){
+  inv.add(it.id);
+  const ch=spec.chapters[it.zone];
+  openDialog('Found','#b8860b',['You pick up the '+it.name+'.'],()=>addBeat(ch.id+':'+it.id,it.reveals));
+  renderJournal();
+}
+function addBeat(key,text){
+  if(!text||found.has(key)) return;
+  found.add(key); renderJournal();
+  openDialog('Story','#2e7d4f',[text],checkEnd);
+}
+function checkEnd(){
+  if(ended||found.size<totalBeats()) return;
+  ended=true; banner('The End','You uncovered the whole story');
+  openDialog('The End','#1f5f8b',['You walked all '+spec.chapters.length+' chapters of '+spec.title+'.','Every story beat is in your journal. Read it back, or load another book.']);
+}
+
+/* ---------- Journal + spec panels ---------- */
+function renderJournal(){
+  const tot=totalBeats(); $('#progress').textContent=found.size+' / '+tot+' story beats';
+  const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  let h='';
+  spec.chapters.forEach((c,i)=>{
+    const open=disc.has(i);
+    const beats=[];
+    c.characters.forEach(e=>{ if(e.reveals) beats.push([c.id+':'+e.id,e.reveals]); if(e.secret&&e.secret.reveals) beats.push([c.id+':'+e.id+':secret',e.secret.reveals]) });
+    c.items.forEach(e=>{ if(e.reveals) beats.push([c.id+':'+e.id,e.reveals]) });
+    const done=beats.length&&beats.every(b=>found.has(b[0]));
+    h+='<section class="chap '+(open?(done?'done':'open'):'locked')+'"><h3><span class="n">'+(i+1)+'</span><span>'+(open?esc(c.title):'? ? ?')+(done?' ✓':'')+'</span></h3>';
+    if(open){
+      h+='<p class="sum">'+esc(c.summary||'')+'</p><ul class="beats">';
+      beats.forEach(b=>{ h+=found.has(b[0])?'<li>'+esc(b[1])+'</li>':'<li class="hid">· · ·</li>' });
+      h+='</ul>';
+    }
+    h+='</section>';
+  });
+  h+='<h4>Characters met</h4><div class="chips">';
+  const metList=world.npcs.filter(n=>met.has(n.id));
+  h+=metList.length?metList.map(n=>'<span class="chip"><i style="background:'+esc(n.color)+'"></i>'+esc(n.name)+'</span>').join(''):'<p class="empty">Walk up to someone and press space.</p>';
+  h+='</div><h4>Pocket</h4><div class="chips">';
+  const invList=world.items.filter(i=>inv.has(i.id));
+  h+=invList.length?invList.map(i=>'<span class="chip"><i style="background:#e3b23c"></i>'+esc(i.name)+'</span>').join(''):'<p class="empty">Nothing yet. Items glow gold.</p>';
+  h+='</div>';
+  $('#paneJournal').innerHTML=h;
+}
+function showTab(which){
+  const j=which==='journal';
+  $('#tabJournal').setAttribute('aria-selected',j); $('#tabSpec').setAttribute('aria-selected',!j);
+  $('#paneJournal').hidden=!j; $('#paneSpec').hidden=j;
+}
+$('#tabJournal').onclick=()=>showTab('journal'); $('#tabSpec').onclick=()=>showTab('spec');
+$('#specText').value=JSON.stringify(SAMPLE,null,1); $('#promptText').textContent=PROMPT;
+$('#rebuild').onclick=()=>{ try{ start(JSON.parse($('#specText').value)); $('#specErr').textContent=''; showTab('journal'); stage.focus() }catch(e){ $('#specErr').textContent=e.message } };
+$('#resetSpec').onclick=()=>{ $('#specText').value=JSON.stringify(SAMPLE,null,1); $('#specErr').textContent=''; start(JSON.parse(JSON.stringify(SAMPLE))) };
+$('#optBig').onchange=e=>document.body.classList.toggle('big',e.target.checked);
+
+/* ---------- Input ---------- */
+const KEYMAP={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right',W:'up',S:'down',A:'left',D:'right'};
+addEventListener('keydown',e=>{
+  if(/^(TEXTAREA|INPUT)$/.test(e.target.tagName)) return;
+  if(e.key===' '||e.key==='Enter'||e.key==='e'||e.key==='E'){ e.preventDefault(); if(!e.repeat) interact(); return }
+  const k=KEYMAP[e.key]; if(k){ e.preventDefault(); keys[k]=true }
+});
+addEventListener('keyup',e=>{ const k=KEYMAP[e.key]; if(k) keys[k]=false });
+addEventListener('blur',()=>{keys={}});
+$('#pad').querySelectorAll('button').forEach(b=>{
+  const k=b.dataset.k;
+  const down=e=>{e.preventDefault(); if(k==='act') interact(); else keys[k]=true};
+  const up=()=>{ if(k!=='act') keys[k]=false };
+  b.addEventListener('pointerdown',down); b.addEventListener('pointerup',up); b.addEventListener('pointercancel',up); b.addEventListener('pointerleave',up);
+});
+stage.addEventListener('pointerdown',()=>stage.focus({preventScroll:true}));
+
+/* ---------- Rendering ---------- */
+function resize(){
+  const w=Math.max(200,stage.clientWidth); dpr=Math.min(2,window.devicePixelRatio||1);
+  canvas.width=Math.round(w*dpr); canvas.height=Math.round(ZH*TILE*dpr); canvas.style.height=(ZH*TILE)+'px';
+  ctx.imageSmoothingEnabled=false;
+}
+addEventListener('resize',resize); resize();
+
+function rr(x,y,w,h,r){ if(ctx.roundRect){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fill()} else ctx.fillRect(x,y,w,h) }
+function circ(x,y,r){ ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill() }
+function ell(x,y,rx,ry){ ctx.beginPath(); ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2); ctx.fill() }
+
+function drawObstacle(kind,x,y,gx,gy,now){
+  switch(kind){
+    case 'tree': ctx.fillStyle='#6b4426'; ctx.fillRect(x+13,y+18,6,11); ctx.fillStyle='#2f6b35'; circ(x+16,y+13,11); ctx.fillStyle='#3f8a46'; circ(x+12,y+10,5); break;
+    case 'rock': ctx.fillStyle='#7d7a74'; ell(x+16,y+19,12,8); ctx.fillStyle='#a3a09a'; ell(x+13,y+16,5,3); break;
+    case 'water':{ ctx.fillStyle='#3f86c6'; ctx.fillRect(x,y,TILE,TILE); ctx.strokeStyle='rgba(255,255,255,.55)'; ctx.lineWidth=1.5;
+      const o=REDUCE?0:Math.sin(now/600+gx+gy)*2; ctx.beginPath(); ctx.moveTo(x+5,y+12+o); ctx.quadraticCurveTo(x+10,y+8+o,x+15,y+12+o); ctx.moveTo(x+15,y+23-o); ctx.quadraticCurveTo(x+20,y+19-o,x+25,y+23-o); ctx.stroke(); break }
+    case 'mushroom': ctx.fillStyle='#efe6d3'; ctx.fillRect(x+13,y+16,6,11); ctx.fillStyle='#c9372c'; ctx.beginPath(); ctx.arc(x+16,y+17,11,Math.PI,0); ctx.fill(); ctx.fillStyle='#fff'; circ(x+11,y+12,2); circ(x+19,y+9,2.5); circ(x+22,y+14,1.5); break;
+    case 'hedge': ctx.fillStyle='#2d5e33'; rr(x+2,y+3,28,26,6); ctx.fillStyle='#3f7a45'; circ(x+9,y+11,3); circ(x+20,y+18,3); circ(x+14,y+23,2); break;
+    case 'rose': ctx.fillStyle='#2d5e33'; rr(x+2,y+3,28,26,6); ctx.fillStyle='#d13b3b'; circ(x+9,y+11,3.5); circ(x+22,y+20,3.5); ctx.fillStyle='#f4f1ec'; circ(x+20,y+9,3); ctx.fillStyle='#d13b3b'; circ(x+10,y+23,3); break;
+  }
+}
+function drawPerson(x,y,color,dir,bob,hair){
+  ctx.fillStyle='rgba(0,0,0,.28)'; ell(x+16,y+29,9,3);
+  const yy=y+bob;
+  ctx.fillStyle=color; rr(x+9,yy+14,14,13,3);
+  ctx.fillStyle='#f3d4b4'; circ(x+16,yy+10,7);
+  ctx.fillStyle=hair; ctx.beginPath(); ctx.arc(x+16,yy+9,7.5,Math.PI,0); ctx.fill();
+  if(dir!=='up'){ ctx.fillStyle='#222'; const ox=dir==='left'?-2:dir==='right'?2:0; ctx.fillRect(x+13+ox,yy+10,2,2); ctx.fillRect(x+17+ox,yy+10,2,2) }
+  ctx.fillStyle='#333'; ctx.fillRect(x+10,yy+27,5,3); ctx.fillRect(x+17,yy+27,5,3);
+}
+function label(text,cx,top){
+  ctx.font='12px "Pixelify Sans", monospace'; const w=ctx.measureText(text).width+10;
+  ctx.fillStyle='rgba(0,0,0,.72)'; rr(cx-w/2,top-16,w,16,3); ctx.fillStyle='#fff'; ctx.textBaseline='middle'; ctx.textAlign='center'; ctx.fillText(text,cx,top-8); ctx.textAlign='left';
+}
+
+function draw(now){
+  const cw=canvas.width/dpr;
+  let px=P.x, py=P.y;
+  if(P.mov){ const k=Math.min(1,(now-P.mov.t0)/STEP_MS); px=P.mov.fx+(P.x-P.mov.fx)*k; py=P.mov.fy+(P.y-P.mov.fy)*k; if(k>=1){P.mov=null; onArrive()} }
+  const camX=Math.max(0,Math.min(world.W*TILE-cw,px*TILE+TILE/2-cw/2));
+  ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,cw,ZH*TILE); ctx.translate(-Math.round(camX),0);
+  const x0=Math.max(0,Math.floor(camX/TILE)-1), x1=Math.min(world.W-1,Math.ceil((camX+cw)/TILE)+1);
+  for(let gy=0;gy<ZH;gy++)for(let gx=x0;gx<=x1;gx++){
+    const th=THEMES[spec.chapters[Math.floor(gx/ZW)].theme]||THEMES.meadow, t=tileAt(gx,gy), x=gx*TILE, y=gy*TILE;
+    ctx.fillStyle=((gx+gy)&1)?th.floor2:th.floor; ctx.fillRect(x,y,TILE,TILE);
+    if((gx*31+gy*17)%7===0){ ctx.fillStyle='rgba(0,0,0,.08)'; ctx.fillRect(x+9,y+20,3,3); ctx.fillRect(x+21,y+8,2,2) }
+    if(t===2){ ctx.fillStyle=th.path; ctx.fillRect(x,y+4,TILE,TILE-8); ctx.fillStyle='rgba(0,0,0,.08)'; ctx.fillRect(x+6,y+14,3,2); ctx.fillRect(x+20,y+19,3,2) }
+    else if(t===1) drawObstacle(th.obs,x,y,gx,gy,now);
+    else if(t===3){
+      const d=world.doors.find(d=>d.x===gx&&d.y===gy), locked=d&&d.needs&&!inv.has(d.needs);
+      ctx.fillStyle=th.path; ctx.fillRect(x,y+4,TILE,TILE-8);
+      ctx.fillStyle='#4a3220'; rr(x+5,y+2,22,30,4); ctx.fillStyle=locked?'#2a1b10':'#8a6a44'; rr(x+9,y+6,14,26,[7,7,0,0]);
+      if(locked){ ctx.fillStyle='#e3b23c'; ctx.fillRect(x+12,y+17,8,7); ctx.strokeStyle='#e3b23c'; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(x+16,y+17,3,Math.PI,0); ctx.stroke() }
+    }
+  }
+  // items
+  world.items.forEach(it=>{ if(inv.has(it.id)||it.x<x0||it.x>x1) return;
+    const x=it.x*TILE+16, y=it.y*TILE+16+(REDUCE?0:Math.sin(now/350+it.x)*2);
+    ctx.save(); ctx.shadowColor='#ffd36a'; ctx.shadowBlur=14; ctx.fillStyle='#e3b23c'; ctx.beginPath(); ctx.moveTo(x,y-8); ctx.lineTo(x+7,y); ctx.lineTo(x,y+8); ctx.lineTo(x-7,y); ctx.closePath(); ctx.fill(); ctx.restore();
+    ctx.fillStyle='#fff6d0'; ctx.fillRect(x-2,y-4,2,2);
+  });
+  // people, back to front
+  const people=world.npcs.filter(n=>n.x>=x0&&n.x<=x1).map(n=>({n,y:n.y})).concat([{p:true,y:py}]).sort((a,b)=>a.y-b.y);
+  people.forEach(e=>{
+    if(e.p){ drawPerson(px*TILE,py*TILE,(spec.player&&spec.player.color)||'#4a90d9',P.dir,0,'#f0c040'); return }
+    const n=e.n, bob=REDUCE?0:Math.round(Math.sin(now/420+n.idx*2)*1.2);
+    const dir=Math.abs(P.x-n.x)+Math.abs(P.y-n.y)<=2?(P.x<n.x?'left':P.x>n.x?'right':P.y<n.y?'up':'down'):'down';
+    drawPerson(n.x*TILE,n.y*TILE,n.color,dir,bob,HAIR[hash(n.id)%HAIR.length]);
+  });
+  // fog over chapters not yet reached
+  spec.chapters.forEach((c,i)=>{ if(!disc.has(i)){ ctx.fillStyle='rgba(5,6,10,.62)'; ctx.fillRect(i*ZW*TILE,0,ZW*TILE,ZH*TILE) } });
+  // chapter captions on the top wall + nearby name tags
+  ctx.textBaseline='middle';
+  spec.chapters.forEach((c,i)=>{ if(i*ZW>x1||(i+1)*ZW<x0) return; ctx.font='bold 14px "Pixelify Sans", monospace'; ctx.fillStyle='rgba(255,255,255,.8)'; ctx.fillText('Ch. '+(i+1)+' · '+(disc.has(i)?c.title:'? ? ?'),i*ZW*TILE+(i===0?36:8),16) });
+  world.npcs.forEach(n=>{ if(Math.abs(P.x-n.x)+Math.abs(P.y-n.y)<=2) label(n.name,n.x*TILE+16,n.y*TILE-2) });
+  world.doors.forEach(d=>{ if(Math.abs(P.x-d.x)+Math.abs(P.y-d.y)<=2&&d.needs&&!inv.has(d.needs)){ const it=findItem(d.needs); label('Needs: '+(it?it.name:d.needs),d.x*TILE+16,d.y*TILE-2) } });
+  // typewriter
+  if(dialog&&dialog.typing){ const full=dialog.lines[dialog.i], n=Math.floor((now-dialog.t0)/16); dTxt.textContent=full.slice(0,n); if(n>=full.length) dialog.typing=false }
+}
+function loop(now){
+  if(world){
+    if(!dialog&&!P.mov){ for(const k of ['up','down','left','right']) if(keys[k]){ tryMove(k); break } }
+    draw(now);
+  }
+  requestAnimationFrame(loop);
+}
+
+/* ---------- Boot (survives live republish in the viewer) ---------- */
+function boot(saved){
+  start(JSON.parse(JSON.stringify(SAMPLE)), saved&&saved.inv?saved:null);
+  if(window.claude&&window.claude.hot&&window.claude.hot.snapshot) window.claude.hot.snapshot(snapshot);
+  requestAnimationFrame(loop);
+}
+if(window.claude&&window.claude.hot&&window.claude.hot.ready) window.claude.hot.ready(boot); else boot((window.claude&&window.claude.hot&&window.claude.hot.data)||{});
+})();
+</script>
+</body>
+</html>
