@@ -2,13 +2,13 @@
 
 **Version:** 4.0 · **Event:** Gemini 4 Argon SF Hackathon · **Tracks:** More Dimensions (primary), Million Token Engineering (secondary)
 
-> **Pitch:** My sister is dyslexic. She wants the story, not the page. Storyworld takes a book, a look, and an open-source game, and rewrites that game into one that tells the book's story, so she can hear it and play it instead of read it. The game watches itself: Argon reviews how it was played, finds bugs and places she got stuck, and fixes them between sessions.
+> **Pitch:** My friend is dyslexic. She wants the story, not the page. Storyworld takes a book, a look, and an open-source game, and rewrites that game into one that tells the book's story, so she can hear it and play it instead of read it. The game watches itself: Argon reviews how it was played, finds bugs and places she got stuck, and fixes them between sessions.
 
 ---
 
 ## 1. User and promise
 
-**User:** a dyslexic reader, or anyone who cannot engage with a book but wants its story. Our first user is a real person: the author's sister.
+**User:** a dyslexic reader, or anyone who cannot engage with a book but wants its story. Our first user is a real person: the author's friend.
 
 **Promise:** pick a book, pick a look, pick a game to start from. Get a new game that tells that book. Hear every line and see it as you hear it. Never be asked to read to progress. Never be lied to about the book.
 
@@ -32,17 +32,22 @@ Not an education product. Not a chatbot. A game that tells a book's story.
 |---|---|
 | Book | EPUB |
 | Style | 1 to 3 reference images |
-| Game | An open-source game repository to start from. First candidates: BrowserQuest, Super Mario Phaser, Veilspire. Any browser game with a clear license works. |
+| Game | A fully open-source browser game repository to start from: libre code and libre art. First candidates: BrowserQuest, Veilspire. |
 
 Examples: Veilspire rewritten for *Les Misérables*. A top-down creature-and-towns RPG rewritten for *Alice in Wonderland*.
 
-**Rights rule:** we do not generate copyrighted assets. The book is public domain or rights-cleared. Style references are the user's own or rights-cleared. Generation prompts never name a franchise, a trademarked character, a studio, or a living artist. Generated characters, tiles, and voices are original designs described from the book's text and the style's palette, never lookalikes of existing games or films. The starting game lends its mechanics and code, not its art or its names.
+**Rights rule:** we do not generate copyrighted assets. The book is public domain or rights-cleared. Style references are the user's own or rights-cleared. Generation prompts never name a franchise, a trademarked character, a studio, or a living artist. Generated characters, tiles, and voices are original designs described from the book's text and the style's palette, never lookalikes of existing games or films. The starting game lends its mechanics and code. Its art is replaced with generated art; libre-licensed upstream art (CC0, CC-BY, CC-BY-SA) may remain as a fallback with attribution. Nothing trademarked is ever a starting point.
 
 **Output:** `builds/<book>_<game>/` containing a complete, book-specific game: rewritten source, generated images and audio, `story.json`, and `verification/` with before/after evidence. Playable from a local static server. No AI calls at play time; the game only records.
 
 ---
 
 ## 3. Pipeline
+
+![Storyworld architecture: inputs, understand, generate, adapt, verify loop, build, watch](docs/architecture.png)
+
+<details>
+<summary>Diagram source (Mermaid)</summary>
 
 ```mermaid
 %%{init: {"theme": "base", "flowchart": {"wrappingWidth": 300, "nodeSpacing": 40, "rankSpacing": 50}, "themeVariables": {"fontSize": "15px", "clusterBkg": "#fafafa", "clusterBorder": "#9ca3af", "lineColor": "#374151", "edgeLabelBackground": "#ffffff"}}}%%
@@ -115,6 +120,8 @@ flowchart TB
     class BUILD out
 ```
 
+</details>
+
 Read it top to bottom. Blue boxes are Argon reading or judging; purple is the Managed Agent rewriting the game; green is asset generation; red is the two loops. Argon reads the whole book once and the whole game repository once, which is what lets one pass rewrite a game faithfully. Everything below the build runs offline. The verify loop and the watch step share one patch path: evidence in, small diff out, replay, accept or revert.
 
 **[1] Ingest.** EPUB is a zip of XHTML: unzip with the standard library, strip tags, split chapters by spine order, number paragraphs as `c01.p0042`. Alice in Wonderland from `ressources/` is the demo book. PDF comes later.
@@ -154,15 +161,15 @@ The adaptation contract, included in the prompt and checked afterwards:
 
 ## 4. Starting games
 
-Each is a starting point only. Nothing is reused across books except the repository itself, cloned fresh every time.
+Each is a starting point only. Nothing is reused across books except the repository itself, cloned fresh every time. Only fully open-source games qualify: libre code **and** libre art. Clones of trademarked games are out even when their code is MIT.
 
 | Game | Repo | Stack | License | What the book becomes | Watch out |
 |---|---|---|---|---|---|
-| Super Mario Phaser | pablogozalvez/Super-Mario-Phaser | Phaser 3, static | MIT code; sprites are Nintendo's | One level per chapter; characters are talk points; items are collectibles | Every sprite and tile deleted and regenerated. Nothing may resemble Mario. |
-| BrowserQuest | mozilla/BrowserQuest or a single-player fork | HTML5 canvas, Node server | MPL 2.0 code, CC-BY-SA 3.0 art | One zone per chapter; NPCs are characters; quests are beats | Server adds friction; prefer the single-player fork. Art replaced. |
+| BrowserQuest | ericthefree/BrowserQuest (single-player fork of mozilla/BrowserQuest) | HTML5 canvas, JS, small Node server | MPL 2.0 code, CC-BY-SA 3.0 art | One zone per chapter; NPCs are characters; quests are beats | Needs its server or an offline mode; art replaced, libre art may stay as fallback with attribution. |
 | Veilspire | Lunaneco/veilspire | Three.js, procedural assets | MIT (checked 25 Oct 2026) | One region per chapter; dialogue carries beats; quest chain follows chapters | Large repo (~44 MB); clone shallow. |
+| Flare: Empyrean Campaign | flareteam/flare-engine + flare-game, browser port dtqyai/flare-web | C++ engine compiled to WebAssembly; INI-style data mods | GPLv3 engine, CC-BY-SA 3.0 art | A new campaign mod: maps, NPC dialogue, quests, items | **Stretch only.** Needs the Emscripten SDK, a full engine build, 619 MiB of resources, and has no JavaScript API, so the playtest hook and the verify loop do not apply. Argon would write mod data, not code. |
 
-**Order:** Super Mario Phaser first because it is static and smallest. Then the one that fits the second book best. The MVP ships every build that passes the verify loop.
+**Order:** BrowserQuest first because it is plain JavaScript with a data-driven world. Then Veilspire. The MVP ships every build that passes the verify loop.
 
 ---
 
@@ -232,7 +239,7 @@ Dependency order only. Each step has a check that must pass before the next.
 2. **Ingest Alice.** Check: 12 chapters, stable paragraph ids, hash recorded.
 3. **story.json.** Check: validates; every beat's source ids resolve; no character knows a later beat.
 4. **Assets and voice for Alice.** Check: every character, chapter, and item has an image; every line has audio; manifests list them.
-5. **Adapt Super Mario Phaser for Alice.** Check: the build starts, `window.playtest` works, every character from `story.json` is present and speaks its lines with subtitle and audio, no lives or timer, no upstream sprite left.
+5. **Adapt BrowserQuest for Alice.** Check: the build starts, `window.playtest` works, every character from `story.json` is present and speaks its lines with subtitle and audio, no lives or timer, no upstream sprite left.
 6. **Verify loop.** Check: at least one real defect found with evidence, fixed, replayed, and improved, with the build still starting. Report saved.
 7. **Watch.** Play a real session, get stuck on purpose once. Check: `watch.py` finds the stuck point with a screenshot, proposes a fix, the fix passes replay, and the next launch has it.
 8. **README and demo build.** Check: a stranger can run it from the README.
@@ -245,8 +252,8 @@ Never let steps 9 or 10 break a passing build from step 8.
 
 ## 9. Demo (3 minutes, live, no slides)
 
-1. **The user.** Twenty seconds on my sister. If she has played it, fifteen seconds of her playing.
-2. **Inputs.** Show the Alice EPUB, the style images, and the starting game running as it came from GitHub.
+1. **The user.** Twenty seconds on my friend. If she has played it, fifteen seconds of her playing.
+2. **Inputs.** Show the Alice EPUB, the style images, and BrowserQuest running as it came from GitHub.
 3. **Play the result.** The same game, now Alice. Walk to the White Rabbit. He speaks aloud, subtitled. Collect the key. The narrator reads the beat. Show the source paragraph behind it.
 4. **The game watches itself, live.** Play for thirty seconds and get stuck somewhere. Run `watch.py`. Show the screenshot Argon saw, the stuck point it cited, the diff it wrote, and the replay passing. This is the real-input, real-verification moment.
 5. **Why Argon.** One sentence: the whole book and the whole game repository fit in one context, so one pass rewrites a game faithfully and consistently, and the loop fixes what the pass got wrong.
