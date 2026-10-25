@@ -7,6 +7,7 @@
     "dev": "remotion studio",
     "render": "remotion render ExpLit out/explit.mp4",
     "still": "remotion still ExpLit out/cover.png --frame=60",
+    "readme": "remotion still ReadmeBanner ../docs/readme/banner.png --frame=89 && remotion still ExpLitPlayful ../docs/readme/friend.png --frame=150 && remotion still ExpLitPlayful ../docs/readme/pipeline.png --frame=560 && remotion still Architecture ../docs/readme/decisions.png --frame=440",
     "typecheck": "tsc --noEmit",
     "narration": "node scripts/narration.mjs"
   },

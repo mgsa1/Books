@@ -16,7 +16,10 @@ Remotion Studio lists two compositions:
   style: chunky rounded type, pastel stickers, and public-domain book
   illustrations (Tenniel, Rackham, Potter, Denslow, Shepard) as cut-outs.
 
-Both read [src/script.ts](src/script.ts), so a wording or timing change lands
+A third composition, **ReadmeBanner**, is the banner at the top of the repo
+README. `npm run readme` renders it plus three playful stills into `docs/readme/`.
+
+Both cuts read [src/script.ts](src/script.ts), so a wording or timing change lands
 in both. The playful scenes live in `src/playful/`.
 
 The illustrations are in `public/pd/` with sources and rights in
