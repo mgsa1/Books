@@ -1,0 +1,203 @@
+{
+ "town": "rabbit_house",
+ "w": 32,
+ "h": 24,
+ "season": "wonder-day",
+ "tiles": [
+  "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+  "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+  "T###############TTTTTT.....TTTTT",
+  "T#............*#TTTTTT.....TTTTT",
+  "T#............*#TTTTTT.....TTTTT",
+  "T#............*#TTTTTT.....TTTTT",
+  "T#............*#TTTTTT.....TTTTT",
+  "T#....========*#TTTTT..=..TTTTTT",
+  "T#..**===**...*#TTT.***=.TTTTTTT",
+  "T#.***===**...*#TTT.***=.TTTTTTT",
+  "T#....===......#TTT..*==...*..TT",
+  "T#####===#######TTTT..=........T",
+  "T.....====================.=====",
+  "T.....===........TT.=.TT.=====.T",
+  "T.....===......TTT..=..T..*...TT",
+  "T...=====......TT..***.......TTT",
+  "...==...==.....TT...........TTTT",
+  "====.....=.....TTT.*.*.....TTTTT",
+  "...==.=.==.....TTT.....TTTTTTTTT",
+  "....=====......TTTTTTTTTTTTTTTTT",
+  ".............TTTTTTTTTTTTTTTTTTT",
+  "~~~~~~~~~~...TTTTTTTTTTTTTTTTTTT",
+  "~~~~~~~~~~~TTTTTTTTTTTTTTTTTTTTT",
+  "~~~~~~~~~~~~TTTTTTTTTTTTTTTTTTTT"
+ ],
+ "buildings": [
+  {
+   "id": "w_rabbit_cottage",
+   "x": 5,
+   "y": 3,
+   "w": 5,
+   "d": 4,
+   "floors": 2,
+   "wall": "#fdf6e4",
+   "roof": "#c85a53",
+   "door": [
+    7,
+    7
+   ],
+   "sign_fr": "W. RABBIT"
+  },
+  {
+   "id": "cucumber_frames",
+   "x": 11,
+   "y": 4,
+   "w": 3,
+   "d": 2,
+   "floors": 1,
+   "wall": "#a8d5e2",
+   "roof": "#d9f0f7",
+   "door": [
+    12,
+    6
+   ],
+   "sign_fr": "Châssis à Concombres"
+  },
+  {
+   "id": "toolshed",
+   "x": 2,
+   "y": 4,
+   "w": 2,
+   "d": 3,
+   "floors": 1,
+   "wall": "#c4a482",
+   "roof": "#7a5c43",
+   "door": [
+    3,
+    7
+   ],
+   "sign_fr": "Remise de Pat"
+  },
+  {
+   "id": "pigeon_tree",
+   "x": 23,
+   "y": 3,
+   "w": 3,
+   "d": 3,
+   "floors": 3,
+   "wall": "#6e5036",
+   "roof": "#4f8a4b",
+   "door": [
+    24,
+    6
+   ],
+   "sign_fr": "Arbre du Pigeon"
+  }
+ ],
+ "spots": {
+  "caucus_ring": [
+   6,
+   18
+  ],
+  "cottage_path": [
+   7,
+   10
+  ],
+  "cottage_door": [
+   7,
+   7
+  ],
+  "cucumber_patch": [
+   12,
+   6
+  ],
+  "thistle_clearing": [
+   20,
+   16
+  ],
+  "buttercup_rest": [
+   21,
+   9
+  ],
+  "great_mushroom": [
+   26,
+   13
+  ],
+  "wood_east_exit": [
+   29,
+   12
+  ]
+ },
+ "props": [
+  {
+   "type": "gate",
+   "x": 7,
+   "y": 11
+  },
+  {
+   "type": "cart",
+   "x": 2,
+   "y": 8
+  },
+  {
+   "type": "barrel",
+   "x": 4,
+   "y": 8
+  },
+  {
+   "type": "lamp",
+   "x": 5,
+   "y": 8
+  },
+  {
+   "type": "bottle",
+   "x": 10,
+   "y": 6
+  },
+  {
+   "type": "well",
+   "x": 11,
+   "y": 9
+  },
+  {
+   "type": "bench",
+   "x": 13,
+   "y": 8
+  },
+  {
+   "type": "rose_bush",
+   "x": 20,
+   "y": 15
+  },
+  {
+   "type": "mushroom",
+   "x": 26,
+   "y": 12
+  },
+  {
+   "type": "mushroom",
+   "x": 24,
+   "y": 15
+  },
+  {
+   "type": "mushroom",
+   "x": 28,
+   "y": 10
+  },
+  {
+   "type": "door_small",
+   "x": 30,
+   "y": 11
+  }
+ ],
+ "exits": [
+  {
+   "x": 0,
+   "y": 17,
+   "label_fr": "Mare aux Larmes"
+  },
+  {
+   "x": 31,
+   "y": 12,
+   "label_fr": "Sentier de la Duchesse"
+  }
+ ],
+ "valid": true
+}

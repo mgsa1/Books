@@ -1,0 +1,238 @@
+{
+ "town": "queens_garden",
+ "w": 34,
+ "h": 24,
+ "season": "dusk-garden",
+ "tiles": [
+  "TTTTTTTTTT############TTT~~TTTTTTT",
+  "TTT########...........#TT~~......T",
+  "TTT.......#...........#..~~......T",
+  "TTT.....**#...........#..~~......T",
+  "TT#.....**#...======..#..~~......T",
+  "TT#.......#...======...==::......T",
+  "TT#.......#...======..#..~~..=====",
+  "TT#.....**#...======..#..~~..***TT",
+  "TT#..=....#####====####..~~~~~~~~~",
+  "TT#**=*****....====.....######TTTT",
+  "TT#**=**.**.*.*.*.*.*.*.......#TTT",
+  ".....===...*.*.*.*.*.*........#TTT",
+  "==============.*.*.*.*........#TTT",
+  ".....===...*.*.*.*.*.*........#TTT",
+  "TT#*****.**.*.*.*.*.*.*======.#TTT",
+  "TT#*********.*.*.*.*.*........#TTT",
+  "TTT########.....======........#TTT",
+  "TTTTTTT####......==.......****TTTT",
+  "TTTTTTTT####.....==.......####TTTT",
+  "TTTTTTTT######...==...########~~~~",
+  "~~~~~~~#######........####~~~~~~~~",
+  "~~~~~~~~~~~~~~#......#~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+  "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+ ],
+ "buildings": [
+  {
+   "id": "garden_pavilion",
+   "x": 3,
+   "y": 4,
+   "w": 5,
+   "d": 4,
+   "floors": 1,
+   "wall": "#fdf6e4",
+   "roof": "#c83e4d",
+   "door": [
+    5,
+    8
+   ],
+   "sign_fr": "Pavillon Royal"
+  },
+  {
+   "id": "royal_courthouse",
+   "x": 14,
+   "y": 1,
+   "w": 6,
+   "d": 3,
+   "floors": 2,
+   "wall": "#f7ebd2",
+   "roof": "#9e1f2c",
+   "door": [
+    16,
+    4
+   ],
+   "sign_fr": "Tribunal Royal"
+  },
+  {
+   "id": "card_barracks",
+   "x": 24,
+   "y": 10,
+   "w": 5,
+   "d": 4,
+   "floors": 2,
+   "wall": "#d8d4ce",
+   "roof": "#2d3138",
+   "door": [
+    26,
+    14
+   ],
+   "sign_fr": "Garde des Trèfles"
+  },
+  {
+   "id": "sister_shelter",
+   "x": 28,
+   "y": 2,
+   "w": 4,
+   "d": 3,
+   "floors": 1,
+   "wall": "#7a5c43",
+   "roof": "#5c8a58",
+   "door": [
+    29,
+    5
+   ],
+   "sign_fr": "Saule du Rivage"
+  }
+ ],
+ "spots": {
+  "rose_tree": [
+   4,
+   12
+  ],
+  "procession_walk": [
+   9,
+   12
+  ],
+  "croquet_ground": [
+   16,
+   13
+  ],
+  "sunny_knoll": [
+   21,
+   17
+  ],
+  "rocky_ledge": [
+   17,
+   20
+  ],
+  "court_tarts_table": [
+   16,
+   6
+  ],
+  "witness_stand": [
+   15,
+   5
+  ],
+  "waking_bank": [
+   28,
+   6
+  ]
+ },
+ "props": [
+  {
+   "type": "gate",
+   "x": 1,
+   "y": 11
+  },
+  {
+   "type": "rose_bush",
+   "x": 3,
+   "y": 11
+  },
+  {
+   "type": "rose_bush",
+   "x": 5,
+   "y": 11
+  },
+  {
+   "type": "rose_bush",
+   "x": 3,
+   "y": 13
+  },
+  {
+   "type": "fountain",
+   "x": 8,
+   "y": 10
+  },
+  {
+   "type": "fountain",
+   "x": 8,
+   "y": 14
+  },
+  {
+   "type": "lamp",
+   "x": 10,
+   "y": 11
+  },
+  {
+   "type": "lamp",
+   "x": 10,
+   "y": 13
+  },
+  {
+   "type": "statue",
+   "x": 14,
+   "y": 9
+  },
+  {
+   "type": "statue",
+   "x": 19,
+   "y": 9
+  },
+  {
+   "type": "throne",
+   "x": 15,
+   "y": 4
+  },
+  {
+   "type": "throne",
+   "x": 18,
+   "y": 4
+  },
+  {
+   "type": "bench",
+   "x": 12,
+   "y": 5
+  },
+  {
+   "type": "bench",
+   "x": 12,
+   "y": 6
+  },
+  {
+   "type": "tea_table",
+   "x": 17,
+   "y": 6
+  },
+  {
+   "type": "clock",
+   "x": 20,
+   "y": 5
+  },
+  {
+   "type": "rose_bush",
+   "x": 13,
+   "y": 12
+  },
+  {
+   "type": "rose_bush",
+   "x": 19,
+   "y": 14
+  },
+  {
+   "type": "bench",
+   "x": 30,
+   "y": 6
+  }
+ ],
+ "exits": [
+  {
+   "x": 0,
+   "y": 12,
+   "label_fr": "Porte du Jardin Royal"
+  },
+  {
+   "x": 33,
+   "y": 6,
+   "label_fr": "Sentier du Goûter"
+  }
+ ],
+ "valid": true
+}

@@ -1,0 +1,1580 @@
+{
+  "title_fr": "Alice's Adventures in Wonderland",
+  "player": {
+    "character": "alice"
+  },
+  "characters": [
+    {
+      "id": "alice",
+      "name_fr": "Alice",
+      "name_en": "Alice",
+      "colors": {
+        "coat": "#5B9BD5",
+        "trousers": "#FFFFFF",
+        "hat": null,
+        "hair": "#F2C94C",
+        "skin": "#F9D5B8"
+      },
+      "build": "child",
+      "portrait_prompt": "Head-and-shoulders portrait of young Alice in Victorian Tenniel style, long straight fair hair held back with an Alice band, bright curious eyes, wearing a sky-blue puffed-sleeve dress with a crisp white pinafore."
+    },
+    {
+      "id": "white_rabbit",
+      "name_fr": "The White Rabbit",
+      "name_en": "Le Lapin Blanc",
+      "colors": {
+        "coat": "#D9534F",
+        "trousers": "#F7F7F7",
+        "hat": null,
+        "hair": "#FFFFFF",
+        "skin": "#FADBD8"
+      },
+      "build": "small",
+      "portrait_prompt": "Head-and-shoulders portrait of the White Rabbit in Tenniel style, anxious pink eyes, long white ears, stiff collar, checkered tweed waistcoat with a gold pocket-watch chain, holding white kid gloves and a fan."
+    },
+    {
+      "id": "mouse",
+      "name_fr": "The Mouse",
+      "name_en": "La Souris",
+      "colors": {
+        "coat": "#8D6E63",
+        "trousers": "#6D4C41",
+        "hat": null,
+        "hair": "#8D6E63",
+        "skin": "#D7CCC8"
+      },
+      "build": "small",
+      "portrait_prompt": "Head-and-shoulders portrait of a wet, indignant brown Mouse in Tenniel engraving style, sleek wet fur, long whiskers, bright dark eyes and large rounded ears, looking pale and passionate."
+    },
+    {
+      "id": "caterpillar",
+      "name_fr": "The Caterpillar",
+      "name_en": "La Chenille",
+      "colors": {
+        "coat": "#2E86C1",
+        "trousers": "#1B4F72",
+        "hat": null,
+        "hair": "#2E86C1",
+        "skin": "#5DADE2"
+      },
+      "build": "small",
+      "portrait_prompt": "Head-and-shoulders portrait of a large blue Caterpillar in Tenniel style, human-like sleepy profile formed by its curved segments, folded arms, holding the long flexible tube of a water hookah."
+    },
+    {
+      "id": "duchess",
+      "name_fr": "The Duchess",
+      "name_en": "La Duchesse",
+      "colors": {
+        "coat": "#8E44AD",
+        "trousers": "#5B2C6F",
+        "hat": "#F4D03F",
+        "hair": "#BDC3C7",
+        "skin": "#E6B0AA"
+      },
+      "build": "average",
+      "portrait_prompt": "Head-and-shoulders portrait of the grotesque Duchess in Tenniel style, huge wide face with a very sharp protruding chin, towering ornate headdress with plumes and Jewels, heavy brocade gown."
+    },
+    {
+      "id": "cheshire_cat",
+      "name_fr": "The Cheshire Cat",
+      "name_en": "Le Chat du Cheshire",
+      "colors": {
+        "coat": "#AF7AC5",
+        "trousers": "#884EA0",
+        "hat": null,
+        "hair": "#AF7AC5",
+        "skin": "#EBDEF0"
+      },
+      "build": "small",
+      "portrait_prompt": "Head-and-shoulders portrait of the striped Cheshire Cat in Tenniel style, round tabby head with wide mischievous eyes and an impossibly wide toothy grin from ear to ear."
+    },
+    {
+      "id": "mad_hatter",
+      "name_fr": "The Hatter",
+      "name_en": "Le Chapelier",
+      "colors": {
+        "coat": "#27AE60",
+        "trousers": "#7E5109",
+        "hat": "#BDC3C7",
+        "hair": "#D5D8DC",
+        "skin": "#F5CBA7"
+      },
+      "build": "average",
+      "portrait_prompt": "Head-and-shoulders portrait of the Mad Hatter in Tenniel style, oversized top hat with a paper card reading 10/6, large polka-dot bow tie, wide eccentric eyes, holding a teacup and saucer."
+    },
+    {
+      "id": "march_hare",
+      "name_fr": "The March Hare",
+      "name_en": "Le Lièvre de Mars",
+      "colors": {
+        "coat": "#A04000",
+        "trousers": "#6E2C00",
+        "hat": "#F7DC6F",
+        "hair": "#BA4A00",
+        "skin": "#EDBB99"
+      },
+      "build": "average",
+      "portrait_prompt": "Head-and-shoulders portrait of the wild-eyed March Hare in Tenniel style, long upright hare ears with wisps of straw tangled between them, loose coat and cravat."
+    },
+    {
+      "id": "queen_of_hearts",
+      "name_fr": "The Queen of Hearts",
+      "name_en": "La Reine de Cœur",
+      "colors": {
+        "coat": "#C0392B",
+        "trousers": "#1C2833",
+        "hat": "#F1C40F",
+        "hair": "#17202A",
+        "skin": "#F5B7B1"
+      },
+      "build": "tall",
+      "portrait_prompt": "Head-and-shoulders portrait of the furious Queen of Hearts in Tenniel playing-card style, scowling face, golden crown, stiff Tudor ruff and gown patterned with red hearts."
+    },
+    {
+      "id": "king_of_hearts",
+      "name_fr": "The King of Hearts",
+      "name_en": "Le Roi de Cœur",
+      "colors": {
+        "coat": "#E74C3C",
+        "trousers": "#F4D03F",
+        "hat": "#F1C40F",
+        "hair": "#ECF0F1",
+        "skin": "#FADBD8"
+      },
+      "build": "tall",
+      "portrait_prompt": "Head-and-shoulders portrait of the King of Hearts in Tenniel style, wearing a huge white judge's wig with his tall gold crown perched awkwardly on top of it, holding a notebook."
+    },
+    {
+      "id": "mock_turtle",
+      "name_fr": "The Mock Turtle",
+      "name_en": "La Fausse Tortue",
+      "colors": {
+        "coat": "#45B39D",
+        "trousers": "#784212",
+        "hat": null,
+        "hair": "#784212",
+        "skin": "#A3E4D7"
+      },
+      "build": "average",
+      "portrait_prompt": "Head-and-shoulders portrait of the Mock Turtle in Tenniel style, a melancholy calf's head with large tearful eyes and ears emerging from a heavy ridged sea-turtle shell and flippers."
+    },
+    {
+      "id": "gryphon",
+      "name_fr": "The Gryphon",
+      "name_en": "Le Griffon",
+      "colors": {
+        "coat": "#D4AC0D",
+        "trousers": "#9A7D0A",
+        "hat": null,
+        "hair": "#F4D03F",
+        "skin": "#F9E79F"
+      },
+      "build": "tall",
+      "portrait_prompt": "Head-and-shoulders portrait of the Gryphon in Tenniel style, sharp eagle head with hooked beak, tufted ears, and feathered wings meeting a golden lion's shoulders."
+    }
+  ],
+  "towns": [
+    {
+      "id": "rabbit_hole",
+      "name_fr": "The Rabbit-Hole",
+      "name_en": "Le Terrier du Lapin",
+      "refs": [
+        "1",
+        "2"
+      ],
+      "season": "day",
+      "layout_en": "The map is split into two connected zones: an upper sunlit grassy riverbank with daisies and a long hedge, and a lower subterranean Long Hall. On the riverbank, a winding path leads from the shady tree where Alice's sister sits to the large rabbit-hole under the hedge. Below lies the long, low hall lit by hanging lamps, lined with locked doors on both sides. In the middle of the hall stands a three-legged solid glass table, a low curtain on the wall concealing a tiny fifteen-inch door, and at the southern end a shimmering saltwater Pool of Tears.",
+      "buildings": [
+        {
+          "id": "hedge_burrow",
+          "name_fr": "Large Rabbit-Hole",
+          "kind": "other",
+          "enterable": true
+        },
+        {
+          "id": "cupboard_alcove",
+          "name_fr": "Well Cupboard",
+          "kind": "other",
+          "enterable": false
+        },
+        {
+          "id": "locked_doors_north",
+          "name_fr": "Locked Hall Doors",
+          "kind": "hall",
+          "enterable": false
+        },
+        {
+          "id": "curtain_alcove",
+          "name_fr": "Low Curtain & Little Door",
+          "kind": "hall",
+          "enterable": false
+        }
+      ],
+      "spots": [
+        {
+          "id": "riverbank_tree",
+          "description_en": "grassy bank by the river where Alice sits by her sister"
+        },
+        {
+          "id": "daisy_patch",
+          "description_en": "sunny meadow patch dotted with white daisies"
+        },
+        {
+          "id": "rabbit_hole_mouth",
+          "description_en": "mouth of the large rabbit-hole under the hedge"
+        },
+        {
+          "id": "leaf_heap",
+          "description_en": "heap of sticks and dry leaves at the bottom of the well"
+        },
+        {
+          "id": "glass_table",
+          "description_en": "little three-legged table made of solid glass in the middle of the hall"
+        },
+        {
+          "id": "tiny_door",
+          "description_en": "little door about fifteen inches high behind a low curtain"
+        },
+        {
+          "id": "pool_of_tears",
+          "description_en": "deep saltwater pool of tears reaching half down the hall"
+        },
+        {
+          "id": "pool_shore",
+          "description_en": "damp bank at the edge of the Pool of Tears"
+        }
+      ],
+      "entry_spot": "riverbank_tree"
+    },
+    {
+      "id": "rabbit_house",
+      "name_fr": "The White Rabbit's House & Wood",
+      "name_en": "La Maison du Lapin Blanc et le Bois",
+      "refs": [
+        "3",
+        "4",
+        "5"
+      ],
+      "season": "wonder-day",
+      "layout_en": "The western side of the map features a clearing where the Caucus-Race circle is marked in the grass, leading north to the White Rabbit's neat cottage with its brass 'W. RABBIT' nameplate and glass cucumber-frames under the windows. A gravel path winds east into a thick wood of tall overarching trees, giant buttercups, and a great prickly thistle. Deep in the eastern wood stands a large round mushroom about Alice's height, where the blue Caterpillar sits smoking his hookah.",
+      "buildings": [
+        {
+          "id": "w_rabbit_cottage",
+          "name_fr": "W. Rabbit's House",
+          "kind": "house",
+          "enterable": true
+        },
+        {
+          "id": "cucumber_frames",
+          "name_fr": "Glass Cucumber-Frames",
+          "kind": "other",
+          "enterable": false
+        },
+        {
+          "id": "toolshed",
+          "name_fr": "Gardener Pat's Shed",
+          "kind": "other",
+          "enterable": false
+        },
+        {
+          "id": "pigeon_tree",
+          "name_fr": "Tall Nesting Tree",
+          "kind": "other",
+          "enterable": false
+        }
+      ],
+      "spots": [
+        {
+          "id": "caucus_ring",
+          "description_en": "roughly circular race-course marked on the grass near the bank"
+        },
+        {
+          "id": "cottage_path",
+          "description_en": "garden walk in front of W. Rabbit's neat little house"
+        },
+        {
+          "id": "cottage_door",
+          "description_en": "front door with a bright brass plate engraved W. RABBIT"
+        },
+        {
+          "id": "cucumber_patch",
+          "description_en": "shattered glass frames and pebbles below the upstairs window"
+        },
+        {
+          "id": "thistle_clearing",
+          "description_en": "woodland clearing with a great thistle and a stick"
+        },
+        {
+          "id": "buttercup_rest",
+          "description_en": "tall yellow buttercup where Alice rests in the shade"
+        },
+        {
+          "id": "great_mushroom",
+          "description_en": "large round mushroom in the thick wood"
+        },
+        {
+          "id": "wood_east_exit",
+          "description_en": "open place at the edge of the trees leading toward a little house"
+        }
+      ],
+      "entry_spot": "caucus_ring"
+    },
+    {
+      "id": "duchess_wood",
+      "name_fr": "The Duchess's Wood & Tea-Party",
+      "name_en": "Le Bois de la Duchesse et le Thé des Fous",
+      "refs": [
+        "6",
+        "7"
+      ],
+      "season": "wonder-day",
+      "layout_en": "In the western clearing stands the Duchess's four-foot-high house, smoky and noisy, with dishes flying out of the door. A crooked woodland path runs beneath a large bough where the Cheshire Cat appears and vanishes, splitting into two directions with wooden signposts pointing toward the Hatter and the March Hare. To the east sits the March Hare's strange house with ear-shaped chimneys and a roof thatched with fur. Under a great shade tree in front of the house stretches a long tea-table crowded with teacups, and nearby stands an ancient oak tree with a small door built right into its trunk.",
+      "buildings": [
+        {
+          "id": "duchess_house",
+          "name_fr": "The Duchess's House",
+          "kind": "house",
+          "enterable": true
+        },
+        {
+          "id": "march_hare_house",
+          "name_fr": "The March Hare's House",
+          "kind": "house",
+          "enterable": false
+        },
+        {
+          "id": "signpost_arch",
+          "name_fr": "Crossroads Signpost",
+          "kind": "other",
+          "enterable": false
+        },
+        {
+          "id": "door_tree",
+          "name_fr": "Tree with a Door",
+          "kind": "other",
+          "enterable": true
+        }
+      ],
+      "spots": [
+        {
+          "id": "duchess_clearing",
+          "description_en": "open place in the wood facing the Duchess's house"
+        },
+        {
+          "id": "duchess_doorstep",
+          "description_en": "doorstep littered with broken plates outside the smoky kitchen"
+        },
+        {
+          "id": "pig_wood_path",
+          "description_en": "quiet mossy path where the baby trots off into the trees"
+        },
+        {
+          "id": "cheshire_bough",
+          "description_en": "low bough of a large tree overhanging the fork in the road"
+        },
+        {
+          "id": "tea_table_head",
+          "description_en": "large armchair at the end of the long tea-table under the tree"
+        },
+        {
+          "id": "tea_table_corner",
+          "description_en": "crowded corner of the table piled with teacups and a teapot"
+        },
+        {
+          "id": "tree_door_spot",
+          "description_en": "curious wooden door set directly into the trunk of a large tree"
+        }
+      ],
+      "entry_spot": "duchess_clearing"
+    },
+    {
+      "id": "queens_garden",
+      "name_fr": "The Queen's Croquet-Ground & Court",
+      "name_en": "Le Terrain de Croquet de la Reine et le Tribunal",
+      "refs": [
+        "8",
+        "9",
+        "10",
+        "11",
+        "12"
+      ],
+      "season": "dusk-garden",
+      "layout_en": "This grand area encompasses the royal domain of Wonderland. Near the garden entrance stands a large rose-tree half-painted red, bordered by bright flower-beds and cool fountains. At the center lies the uneven croquet-ground of ridges and furrows where card-soldiers form arches. To the south, a rocky ledge overlooks the sea-shore where the Mock Turtle and Gryphon sit. To the north rises the Royal Court of Justice with the King and Queen's double throne, the twelve-seat jury-box, and a central table holding a dish of tarts, while a dreamy path leads back to the quiet riverbank.",
+      "buildings": [
+        {
+          "id": "garden_pavilion",
+          "name_fr": "Royal Garden Pavilion",
+          "kind": "hall",
+          "enterable": false
+        },
+        {
+          "id": "card_barracks",
+          "name_fr": "Guardhouse of Clubs",
+          "kind": "prison",
+          "enterable": false
+        },
+        {
+          "id": "royal_courthouse",
+          "name_fr": "Court of Justice",
+          "kind": "hall",
+          "enterable": true
+        },
+        {
+          "id": "sister_shelter",
+          "name_fr": "Shady Riverbank Willow",
+          "kind": "other",
+          "enterable": false
+        }
+      ],
+      "spots": [
+        {
+          "id": "rose_tree",
+          "description_en": "large white rose-tree being painted red near the garden entrance"
+        },
+        {
+          "id": "procession_walk",
+          "description_en": "gravel walk between flower-beds and cool fountains"
+        },
+        {
+          "id": "croquet_ground",
+          "description_en": "uneven lawn of ridges and furrows with hedgehog balls and flamingo mallets"
+        },
+        {
+          "id": "sunny_knoll",
+          "description_en": "warm patch of grass where the Gryphon sleeps in the sun"
+        },
+        {
+          "id": "rocky_ledge",
+          "description_en": "little ledge of rock by the sea-shore"
+        },
+        {
+          "id": "court_tarts_table",
+          "description_en": "table in the middle of the court with a large dish of tarts"
+        },
+        {
+          "id": "witness_stand",
+          "description_en": "witness stand beside the jury-box in front of the thrones"
+        },
+        {
+          "id": "waking_bank",
+          "description_en": "leaf-strewn riverbank where Alice wakes with her head in her sister's lap"
+        }
+      ],
+      "entry_spot": "rose_tree"
+    }
+  ],
+  "beats": [
+    {
+      "id": "b01_riverbank",
+      "town": "rabbit_hole",
+      "objective_fr": "Speak to the White Rabbit",
+      "objective_en": "Parler au Lapin Blanc",
+      "trigger": {
+        "type": "start",
+        "target": null
+      },
+      "npcs": [
+        {
+          "character": "white_rabbit",
+          "spot": "rabbit_hole_mouth"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "1",
+          "text_fr": "Alice was beginning to get very tired of sitting by her sister on the bank, and of having nothing to do:",
+          "text_en": "Alice commençait à se sentir très lasse d'être assise à côté de sa sœur sur le talus, et de n'avoir rien à faire :",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "alice",
+          "ref": "1",
+          "text_fr": "and what is the use of a book,” thought Alice “without pictures or conversations?",
+          "text_en": "et à quoi bon un livre, pensait Alice, sans images ni conversations ?",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "1",
+          "text_fr": "suddenly a White Rabbit with pink eyes ran close by her.",
+          "text_en": "soudain un Lapin Blanc aux yeux roses passa en courant tout près d'elle.",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        }
+      ],
+      "effects": {}
+    },
+    {
+      "id": "b02_watch_rabbit",
+      "town": "rabbit_hole",
+      "objective_fr": "Follow the White Rabbit down the burrow",
+      "objective_en": "Suivre le Lapin Blanc dans le terrier",
+      "trigger": {
+        "type": "talk",
+        "target": "white_rabbit"
+      },
+      "npcs": [
+        {
+          "character": "white_rabbit",
+          "spot": "rabbit_hole_mouth"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "white_rabbit",
+          "ref": "1",
+          "text_fr": "Oh dear! Oh dear! I shall be late!",
+          "text_en": "Oh là là ! Oh là là ! Je vais être en retard !",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "1",
+          "text_fr": "the Rabbit actually _took a watch out of its waistcoat-pocket_, and looked at it, and then hurried on,",
+          "text_en": "le Lapin tira bel et bien une montre de la poche de son gilet, la regarda, puis repartit en hâte,",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "1",
+          "text_fr": "she ran across the field after it, and fortunately was just in time to see it pop down a large rabbit-hole under the hedge.",
+          "text_en": "elle traversa le champ à sa poursuite et arriva tout juste à temps pour le voir s'engouffrer dans un grand terrier sous la haie.",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        }
+      ],
+      "effects": {}
+    },
+    {
+      "id": "b03_the_fall",
+      "town": "rabbit_hole",
+      "objective_fr": "Examine the glass table in the hall",
+      "objective_en": "Examiner la table de verre dans la salle",
+      "trigger": {
+        "type": "enter",
+        "target": "hedge_burrow"
+      },
+      "npcs": [],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "1",
+          "text_fr": "In another moment down went Alice after it, never once considering how in the world she was to get out again.",
+          "text_en": "L'instant d'après, Alice s'y engouffra à sa suite, sans songer une seule fois à la façon dont elle pourrait bien en ressortir.",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "alice",
+          "ref": "1",
+          "text_fr": "I wonder how many miles I’ve fallen by this time?",
+          "text_en": "Je me demande de combien de milles je suis déjà tombée ?",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "1",
+          "text_fr": "suddenly, thump! thump! down she came upon a heap of sticks and dry leaves, and the fall was over.",
+          "text_en": "soudain, boum ! boum ! elle atterrit sur un tas de brindilles et de feuilles mortes, et la chute prit fin.",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "1",
+          "text_fr": "she found herself in a long, low hall, which was lit up by a row of lamps hanging from the roof.",
+          "text_en": "elle se trouva dans une salle longue et basse, éclairée par une rangée de lampes suspendues au plafond.",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        }
+      ],
+      "card_prompt": "Full-screen illustration in John Tenniel woodcut style with soft watercolor wash: Alice floating slowly down a vast vertical well lined with bookshelves, cupboards, maps, and an empty jar labelled ORANGE MARMALADE, her blue dress billowing around her.",
+      "effects": {
+        "move_to": {
+          "town": "rabbit_hole",
+          "spot": "leaf_heap"
+        }
+      }
+    },
+    {
+      "id": "b04_glass_table",
+      "town": "rabbit_hole",
+      "objective_fr": "Try the golden key on the little door",
+      "objective_en": "Essayer la petite clé d'or sur la petite porte",
+      "trigger": {
+        "type": "reach",
+        "target": "glass_table"
+      },
+      "npcs": [],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "1",
+          "text_fr": "Suddenly she came upon a little three-legged table, all made of solid glass; there was nothing on it except a tiny golden key,",
+          "text_en": "Soudain elle tomba sur une petite table à trois pieds, toute en verre massif ; il n'y avait rien dessus sinon une minuscule clé d'or,",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "1",
+          "text_fr": "she came upon a low curtain she had not noticed before, and behind it was a little door about fifteen inches high:",
+          "text_en": "elle découvrit un rideau bas qu'elle n'avait pas encore remarqué, et derrière lequel se trouvait une petite porte d'environ quinze pouces de haut :",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "alice",
+          "ref": "1",
+          "text_fr": "Oh, how I wish I could shut up like a telescope! I think I could, if I only knew how to begin.",
+          "text_en": "Oh, comme je voudrais pouvoir me replier comme un télescope ! Je crois que j'y arriverais, si seulement je savais par où commencer.",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        }
+      ],
+      "effects": {
+        "item_fr": "Tiny Golden Key"
+      }
+    },
+    {
+      "id": "b05_drink_and_eat",
+      "town": "rabbit_hole",
+      "objective_fr": "Walk to the Pool of Tears",
+      "objective_en": "Aller jusqu'à la Mare aux Larmes",
+      "trigger": {
+        "type": "reach",
+        "target": "tiny_door"
+      },
+      "npcs": [],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "1",
+          "text_fr": "round the neck of the bottle was a paper label, with the words “DRINK ME,” beautifully printed on it in large letters.",
+          "text_en": "autour du goulot de la bouteille il y avait une étiquette de papier, avec les mots « BUVEZ-MOI » admirablement imprimés en grosses lettres.",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "alice",
+          "ref": "1",
+          "text_fr": "What a curious feeling!” said Alice; “I must be shutting up like a telescope.",
+          "text_en": "Quelle curieuse sensation ! dit Alice ; je dois être en train de me replier comme un télescope.",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "1",
+          "text_fr": "she opened it, and found in it a very small cake, on which the words “EAT ME” were beautifully marked in currants.",
+          "text_en": "elle l'ouvrit et y trouva un tout petit gâteau, sur lequel les mots « MANGEZ-MOI » étaient joliment tracés avec des raisins de Corinthe.",
+          "label": "Chapter I — Down the Rabbit-Hole"
+        },
+        {
+          "speaker": "alice",
+          "ref": "2",
+          "text_fr": "Curiouser and curiouser!” cried Alice (she was so much surprised, that for the moment she quite forgot how to speak good English);",
+          "text_en": "De plus en plus curieux ! s'écria Alice (elle était si surprise que pour le moment elle en oubliait de parler un bon anglais) ;",
+          "label": "Chapter II — The Pool of Tears"
+        }
+      ],
+      "effects": {}
+    },
+    {
+      "id": "b06_pool_of_tears",
+      "town": "rabbit_hole",
+      "objective_fr": "Speak to the Mouse by the pool",
+      "objective_en": "Parler à la Souris près de la mare",
+      "trigger": {
+        "type": "reach",
+        "target": "pool_of_tears"
+      },
+      "npcs": [
+        {
+          "character": "mouse",
+          "spot": "pool_shore"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "2",
+          "text_fr": "she soon made out that she was in the pool of tears which she had wept when she was nine feet high.",
+          "text_en": "elle comprit bientôt qu'elle se trouvait dans la mare de larmes qu'elle avait pleurée lorsqu'elle mesurait neuf pieds de haut.",
+          "label": "Chapter II — The Pool of Tears"
+        },
+        {
+          "speaker": "alice",
+          "ref": "2",
+          "text_fr": "I wish I hadn’t cried so much!” said Alice, as she swam about, trying to find her way out.",
+          "text_en": "Je voudrais bien n'avoir pas tant pleuré ! dit Alice, tout en nageant çà et là pour chercher une sortie.",
+          "label": "Chapter II — The Pool of Tears"
+        }
+      ],
+      "effects": {}
+    },
+    {
+      "id": "b07_swim_to_shore",
+      "town": "rabbit_hole",
+      "objective_fr": "Swim ashore with the Mouse",
+      "objective_en": "Nager jusqu'au rivage avec la Souris",
+      "trigger": {
+        "type": "talk",
+        "target": "mouse"
+      },
+      "npcs": [
+        {
+          "character": "mouse",
+          "spot": "pool_shore"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "alice",
+          "ref": "2",
+          "text_fr": "O Mouse, do you know the way out of this pool? I am very tired of swimming about here, O Mouse!",
+          "text_en": "Ô Souris, connais-tu le moyen de sortir de cette mare ? Je suis très fatiguée de nager ici, ô Souris !",
+          "label": "Chapter II — The Pool of Tears"
+        },
+        {
+          "speaker": "mouse",
+          "ref": "2",
+          "text_fr": "Not like cats!” cried the Mouse, in a shrill, passionate voice. “Would _you_ like cats if you were me?",
+          "text_en": "Ne pas aimer les chats ! s'écria la Souris d'une voix aiguë et passionnée. Aimeriez-vous les chats, vous, si vous étiez à ma place ?",
+          "label": "Chapter II — The Pool of Tears"
+        },
+        {
+          "speaker": "mouse",
+          "ref": "2",
+          "text_fr": "Let us get to the shore, and then I’ll tell you my history, and you’ll understand why it is I hate cats and dogs.",
+          "text_en": "Gagnons le rivage, et alors je vous raconterai mon histoire, et vous comprendrez pourquoi je déteste les chats et les chiens.",
+          "label": "Chapter II — The Pool of Tears"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "2",
+          "text_fr": "Alice led the way, and the whole party swam to the shore.",
+          "text_en": "Alice prit la tête, et toute la troupe nagea jusqu'au rivage.",
+          "label": "Chapter II — The Pool of Tears"
+        }
+      ],
+      "effects": {
+        "move_to": {
+          "town": "rabbit_house",
+          "spot": "caucus_ring"
+        }
+      }
+    },
+    {
+      "id": "b08_caucus_race",
+      "town": "rabbit_house",
+      "objective_fr": "Speak to the White Rabbit on the path",
+      "objective_en": "Parler au Lapin Blanc sur le sentier",
+      "trigger": {
+        "type": "start",
+        "target": null
+      },
+      "npcs": [
+        {
+          "character": "mouse",
+          "spot": "caucus_ring"
+        },
+        {
+          "character": "white_rabbit",
+          "spot": "cottage_path"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "3",
+          "text_fr": "At last the Dodo said, “_Everybody_ has won, and all must have prizes.”",
+          "text_en": "Enfin le Dodo déclara : « Tout le monde a gagné, et tous doivent recevoir un prix. »",
+          "label": "Chapter III — A Caucus-Race and a Long Tale"
+        },
+        {
+          "speaker": "mouse",
+          "ref": "3",
+          "text_fr": "Mine is a long and a sad tale!” said the Mouse, turning to Alice, and sighing.",
+          "text_en": "La mienne est une longue et triste histoire ! dit la Souris en se tournant vers Alice avec un soupir.",
+          "label": "Chapter III — A Caucus-Race and a Long Tale"
+        },
+        {
+          "speaker": "alice",
+          "ref": "3",
+          "text_fr": "It _is_ a long tail, certainly,” said Alice, looking down with wonder at the Mouse’s tail; “but why do you call it sad?",
+          "text_en": "C'est une longue queue, assurément, dit Alice en regardant avec étonnement la queue de la Souris ; mais pourquoi dites-vous qu'elle est triste ?",
+          "label": "Chapter III — A Caucus-Race and a Long Tale"
+        }
+      ],
+      "effects": {
+        "item_fr": "Elegant Thimble"
+      }
+    },
+    {
+      "id": "b09_mary_ann_errand",
+      "town": "rabbit_house",
+      "objective_fr": "Enter W. Rabbit's house to fetch the gloves",
+      "objective_en": "Entrer dans la maison de W. Lapin pour chercher les gants",
+      "trigger": {
+        "type": "talk",
+        "target": "white_rabbit"
+      },
+      "npcs": [
+        {
+          "character": "white_rabbit",
+          "spot": "cottage_path"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "white_rabbit",
+          "ref": "4",
+          "text_fr": "The Duchess! The Duchess! Oh my dear paws! Oh my fur and whiskers! She’ll get me executed, as sure as ferrets are ferrets!",
+          "text_en": "La Duchesse ! La Duchesse ! Oh mes chères pattes ! Oh ma fourrure et mes moustaches ! Elle me fera exécuter, aussi sûr que les furets sont des furets !",
+          "label": "Chapter IV — The Rabbit Sends in a Little Bill"
+        },
+        {
+          "speaker": "white_rabbit",
+          "ref": "4",
+          "text_fr": "Why, Mary Ann, what _are_ you doing out here? Run home this moment, and fetch me a pair of gloves and a fan! Quick, now!",
+          "text_en": "Eh bien, Marie-Anne, que faites-vous donc ici ? Courez vite à la maison me chercher une paire de gants et un éventail ! Dépêchez-vous !",
+          "label": "Chapter IV — The Rabbit Sends in a Little Bill"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "4",
+          "text_fr": "she came upon a neat little house, on the door of which was a bright brass plate with the name “W. RABBIT,” engraved upon it.",
+          "text_en": "elle arriva devant une coquette petite maison, sur la porte de laquelle brillait une plaque de cuivre gravée au nom de « W. LAPIN ».",
+          "label": "Chapter IV — The Rabbit Sends in a Little Bill"
+        }
+      ],
+      "effects": {
+        "player_name_fr": "Alice (Mary Ann)"
+      }
+    },
+    {
+      "id": "b10_trapped_giant",
+      "town": "rabbit_house",
+      "objective_fr": "Escape into the wood toward the mushroom",
+      "objective_en": "S'échapper dans le bois vers le champignon",
+      "trigger": {
+        "type": "enter",
+        "target": "w_rabbit_cottage"
+      },
+      "npcs": [
+        {
+          "character": "white_rabbit",
+          "spot": "cucumber_patch"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "4",
+          "text_fr": "she put one arm out of the window, and one foot up the chimney, and said to herself “Now I can do no more, whatever happens.",
+          "text_en": "elle passa un bras par la fenêtre et un pied dans la cheminée, et se dit : « Maintenant je ne peux plus rien faire, quoi qu'il arrive. »",
+          "label": "Chapter IV — The Rabbit Sends in a Little Bill"
+        },
+        {
+          "speaker": "white_rabbit",
+          "ref": "4",
+          "text_fr": "An arm, you goose! Who ever saw one that size? Why, it fills the whole window!",
+          "text_en": "Un bras, grand bêta ! Qui en a jamais vu un de cette taille ? Mais il remplit toute la fenêtre !",
+          "label": "Chapter IV — The Rabbit Sends in a Little Bill"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "4",
+          "text_fr": "Alice noticed with some surprise that the pebbles were all turning into little cakes as they lay on the floor,",
+          "text_en": "Alice remarqua avec quelque surprise que les cailloux se transformaient tous en petits gâteaux sur le plancher,",
+          "label": "Chapter IV — The Rabbit Sends in a Little Bill"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "4",
+          "text_fr": "So she swallowed one of the cakes, and was delighted to find that she began shrinking directly.",
+          "text_en": "Elle avala donc un des gâteaux, et fut ravie de constater qu'elle se mettait aussitôt à rapetisser.",
+          "label": "Chapter IV — The Rabbit Sends in a Little Bill"
+        }
+      ],
+      "card_prompt": "Full-screen illustration in John Tenniel style: Giant Alice cramped inside the White Rabbit's tiny upstairs room, her head pressed against the ceiling, one huge arm reaching out the window above shattered cucumber-frames while the startled White Rabbit tumbles backward outside.",
+      "effects": {
+        "player_name_fr": "Alice",
+        "move_to": {
+          "town": "rabbit_house",
+          "spot": "cucumber_patch"
+        }
+      }
+    },
+    {
+      "id": "b11_caterpillar_hookah",
+      "town": "rabbit_house",
+      "objective_fr": "Speak to the Caterpillar by the mushroom",
+      "objective_en": "Parler à la Chenille près du champignon",
+      "trigger": {
+        "type": "reach",
+        "target": "great_mushroom"
+      },
+      "npcs": [
+        {
+          "character": "caterpillar",
+          "spot": "wood_east_exit"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "4",
+          "text_fr": "her eyes immediately met those of a large blue caterpillar, that was sitting on the top with its arms folded, quietly smoking a long hookah,",
+          "text_en": "ses yeux rencontrèrent aussitôt ceux d'une grosse chenille bleue, assise au sommet les bras croisés, qui fumait tranquillement un long narguilé,",
+          "label": "Chapter IV — The Rabbit Sends in a Little Bill"
+        },
+        {
+          "speaker": "caterpillar",
+          "ref": "5",
+          "text_fr": "Who are _you?_",
+          "text_en": "Qui êtes-vous ?",
+          "label": "Chapter V — Advice from a Caterpillar"
+        },
+        {
+          "speaker": "alice",
+          "ref": "5",
+          "text_fr": "I—I hardly know, sir, just at present—at least I know who I _was_ when I got up this morning, but I think I must have been changed several times since then.",
+          "text_en": "Je... je le sais à peine, monsieur, en ce moment... du moins je sais qui j'étais en me levant ce matin, mais je crois que j'ai dû être changée plusieurs fois depuis.",
+          "label": "Chapter V — Advice from a Caterpillar"
+        }
+      ],
+      "effects": {}
+    },
+    {
+      "id": "b12_mushroom_sides",
+      "town": "rabbit_house",
+      "objective_fr": "Take pieces of the mushroom and head into the wood",
+      "objective_en": "Prendre des morceaux du champignon et s'avancer dans le bois",
+      "trigger": {
+        "type": "talk",
+        "target": "caterpillar"
+      },
+      "npcs": [
+        {
+          "character": "caterpillar",
+          "spot": "wood_east_exit"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "caterpillar",
+          "ref": "5",
+          "text_fr": "Keep your temper,",
+          "text_en": "Gardez votre sang-froid,",
+          "label": "Chapter V — Advice from a Caterpillar"
+        },
+        {
+          "speaker": "caterpillar",
+          "ref": "5",
+          "text_fr": "One side will make you grow taller, and the other side will make you grow shorter.",
+          "text_en": "Un côté vous fera grandir, et l'autre côté vous fera rapetisser.",
+          "label": "Chapter V — Advice from a Caterpillar"
+        },
+        {
+          "speaker": "alice",
+          "ref": "5",
+          "text_fr": "One side of _what?_ The other side of _what?_",
+          "text_en": "Un côté de quoi ? L'autre côté de quoi ?",
+          "label": "Chapter V — Advice from a Caterpillar"
+        },
+        {
+          "speaker": "caterpillar",
+          "ref": "5",
+          "text_fr": "Of the mushroom,",
+          "text_en": "Du champignon,",
+          "label": "Chapter V — Advice from a Caterpillar"
+        }
+      ],
+      "effects": {
+        "item_fr": "Pieces of Mushroom",
+        "move_to": {
+          "town": "duchess_wood",
+          "spot": "duchess_clearing"
+        }
+      }
+    },
+    {
+      "id": "b13_duchess_kitchen",
+      "town": "duchess_wood",
+      "objective_fr": "Enter the Duchess's smoky house",
+      "objective_en": "Entrer dans la maison enfumée de la Duchesse",
+      "trigger": {
+        "type": "start",
+        "target": null
+      },
+      "npcs": [],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "6",
+          "text_fr": "The Fish-Footman began by producing from under his arm a great letter, nearly as large as himself,",
+          "text_en": "Le Laquais-Poisson commença par tirer de dessous son bras une grande lettre, presque aussi grande que lui,",
+          "label": "Chapter VI — Pig and Pepper"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "6",
+          "text_fr": "And certainly there _was_ a most extraordinary noise going on within—a constant howling and sneezing, and every now and then a great crash,",
+          "text_en": "Et certes il y avait un vacarme extraordinaire à l'intérieur : des hurlements et des éternuements continuels, et de temps à autre un grand fracas,",
+          "label": "Chapter VI — Pig and Pepper"
+        }
+      ],
+      "effects": {}
+    },
+    {
+      "id": "b14_pig_and_pepper",
+      "town": "duchess_wood",
+      "objective_fr": "Speak to the Duchess",
+      "objective_en": "Parler à la Duchesse",
+      "trigger": {
+        "type": "enter",
+        "target": "duchess_house"
+      },
+      "npcs": [
+        {
+          "character": "duchess",
+          "spot": "duchess_doorstep"
+        },
+        {
+          "character": "cheshire_cat",
+          "spot": "cheshire_bough"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "6",
+          "text_fr": "The door led right into a large kitchen, which was full of smoke from one end to the other:",
+          "text_en": "La porte donnait directement dans une grande cuisine, pleine de fumée d'un bout à l'autre :",
+          "label": "Chapter VI — Pig and Pepper"
+        },
+        {
+          "speaker": "alice",
+          "ref": "6",
+          "text_fr": "Please would you tell me,” said Alice, a little timidly, for she was not quite sure whether it was good manners for her to speak first, “why your cat grins like that?",
+          "text_en": "Pourriez-vous me dire, s'il vous plaît, demanda Alice un peu timidement, car elle n'était pas tout à fait sûre qu'il fût poli de parler la première, pourquoi votre chat sourit comme cela ?",
+          "label": "Chapter VI — Pig and Pepper"
+        },
+        {
+          "speaker": "duchess",
+          "ref": "6",
+          "text_fr": "It’s a Cheshire cat,” said the Duchess, “and that’s why. Pig!",
+          "text_en": "C'est un chat du Cheshire, dit la Duchesse, et voilà pourquoi. Cochon !",
+          "label": "Chapter VI — Pig and Pepper"
+        }
+      ],
+      "effects": {}
+    },
+    {
+      "id": "b15_baby_turns_pig",
+      "town": "duchess_wood",
+      "objective_fr": "Ask the Cheshire Cat in the tree for directions",
+      "objective_en": "Demander son chemin au Chat du Cheshire dans l'arbre",
+      "trigger": {
+        "type": "talk",
+        "target": "duchess"
+      },
+      "npcs": [
+        {
+          "character": "duchess",
+          "spot": "duchess_doorstep"
+        },
+        {
+          "character": "cheshire_cat",
+          "spot": "cheshire_bough"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "duchess",
+          "ref": "6",
+          "text_fr": "Here! you may nurse it a bit, if you like!” the Duchess said to Alice, flinging the baby at her as she spoke.",
+          "text_en": "Tenez ! vous pouvez le bercer un peu, si vous voulez ! dit la Duchesse à Alice, en lui jetant le bébé tout en parlant.",
+          "label": "Chapter VI — Pig and Pepper"
+        },
+        {
+          "speaker": "alice",
+          "ref": "6",
+          "text_fr": "If you’re going to turn into a pig, my dear,” said Alice, seriously, “I’ll have nothing more to do with you. Mind now!",
+          "text_en": "Si vous devez vous transformer en cochon, mon cher, dit sérieusement Alice, je ne veux plus rien avoir à faire avec vous. Prenez-y garde !",
+          "label": "Chapter VI — Pig and Pepper"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "6",
+          "text_fr": "This time there could be _no_ mistake about it: it was neither more nor less than a pig,",
+          "text_en": "Cette fois il n'y avait plus moyen de s'y tromper : ce n'était ni plus ni moins qu'un cochon,",
+          "label": "Chapter VI — Pig and Pepper"
+        }
+      ],
+      "effects": {}
+    },
+    {
+      "id": "b16_cheshire_directions",
+      "town": "duchess_wood",
+      "objective_fr": "Join the Mad Tea-Party at the table",
+      "objective_en": "Rejoindre le Thé des Fous à la table",
+      "trigger": {
+        "type": "talk",
+        "target": "cheshire_cat"
+      },
+      "npcs": [
+        {
+          "character": "cheshire_cat",
+          "spot": "cheshire_bough"
+        },
+        {
+          "character": "mad_hatter",
+          "spot": "tea_table_corner"
+        },
+        {
+          "character": "march_hare",
+          "spot": "tea_table_head"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "alice",
+          "ref": "6",
+          "text_fr": "Would you tell me, please, which way I ought to go from here?",
+          "text_en": "Voudriez-vous me dire, s'il vous plaît, par où je dois aller à partir d'ici ?",
+          "label": "Chapter VI — Pig and Pepper"
+        },
+        {
+          "speaker": "cheshire_cat",
+          "ref": "6",
+          "text_fr": "That depends a good deal on where you want to get to,",
+          "text_en": "Cela dépend beaucoup de l'endroit où vous voulez aller,",
+          "label": "Chapter VI — Pig and Pepper"
+        },
+        {
+          "speaker": "cheshire_cat",
+          "ref": "6",
+          "text_fr": "Oh, you can’t help that,” said the Cat: “we’re all mad here. I’m mad. You’re mad.",
+          "text_en": "Oh, vous n'y pouvez rien, dit le Chat : nous sommes tous fous ici. Je suis fou. Vous êtes folle.",
+          "label": "Chapter VI — Pig and Pepper"
+        },
+        {
+          "speaker": "alice",
+          "ref": "6",
+          "text_fr": "Well! I’ve often seen a cat without a grin,” thought Alice; “but a grin without a cat! It’s the most curious thing I ever saw in my life!",
+          "text_en": "Eh bien ! J'ai souvent vu un chat sans sourire, pensa Alice ; mais un sourire sans chat ! C'est la chose la plus curieuse que j'aie jamais vue de ma vie !",
+          "label": "Chapter VI — Pig and Pepper"
+        }
+      ],
+      "effects": {}
+    },
+    {
+      "id": "b17_mad_tea_party",
+      "town": "duchess_wood",
+      "objective_fr": "Enter the door in the tree trunk",
+      "objective_en": "Entrer par la porte dans le tronc d'arbre",
+      "trigger": {
+        "type": "talk",
+        "target": "mad_hatter"
+      },
+      "npcs": [
+        {
+          "character": "mad_hatter",
+          "spot": "tea_table_corner"
+        },
+        {
+          "character": "march_hare",
+          "spot": "tea_table_head"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "7",
+          "text_fr": "The table was a large one, but the three were all crowded together at one corner of it: “No room! No room!” they cried out when they saw Alice coming.",
+          "text_en": "La table était grande, mais tous les trois se serraient à l'un des coins : « Pas de place ! Pas de place ! » crièrent-ils en voyant venir Alice.",
+          "label": "Chapter VII — A Mad Tea-Party"
+        },
+        {
+          "speaker": "alice",
+          "ref": "7",
+          "text_fr": "There’s _plenty_ of room!” said Alice indignantly, and she sat down in a large arm-chair at one end of the table.",
+          "text_en": "Il y a énormément de place ! dit Alice avec indignation, et elle s'assit dans un grand fauteuil à un bout de la table.",
+          "label": "Chapter VII — A Mad Tea-Party"
+        },
+        {
+          "speaker": "mad_hatter",
+          "ref": "7",
+          "text_fr": "Why is a raven like a writing-desk?",
+          "text_en": "Pourquoi un corbeau ressemble-t-il à un bureau ?",
+          "label": "Chapter VII — A Mad Tea-Party"
+        },
+        {
+          "speaker": "mad_hatter",
+          "ref": "7",
+          "text_fr": "Yes, that’s it,” said the Hatter with a sigh: “it’s always tea-time, and we’ve no time to wash the things between whiles.",
+          "text_en": "Oui, c'est cela, dit le Chapelier avec un soupir : c'est toujours l'heure du thé, et nous n'avons pas le temps de laver la vaisselle dans l'intervalle.",
+          "label": "Chapter VII — A Mad Tea-Party"
+        },
+        {
+          "speaker": "march_hare",
+          "ref": "7",
+          "text_fr": "Take some more tea,",
+          "text_en": "Prenez donc un peu plus de thé,",
+          "label": "Chapter VII — A Mad Tea-Party"
+        }
+      ],
+      "card_prompt": "Full-screen illustration in John Tenniel woodcut style: The Mad Tea-Party under a spreading tree, the Hatter in his 10/6 top hat and the straw-eared March Hare leaning on the sleeping Dormouse, while Alice sits indignantly in a large armchair at the end of a long table covered in teacups.",
+      "effects": {}
+    },
+    {
+      "id": "b18_tree_door_to_garden",
+      "town": "duchess_wood",
+      "objective_fr": "Enter the Queen's garden",
+      "objective_en": "Entrer dans le jardin de la Reine",
+      "trigger": {
+        "type": "enter",
+        "target": "door_tree"
+      },
+      "npcs": [],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "7",
+          "text_fr": "Just as she said this, she noticed that one of the trees had a door leading right into it.",
+          "text_en": "Au moment même où elle disait cela, elle remarqua que l'un des arbres avait une porte qui donnait droit à l'intérieur.",
+          "label": "Chapter VII — A Mad Tea-Party"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "7",
+          "text_fr": "she found herself at last in the beautiful garden, among the bright flower-beds and the cool fountains.",
+          "text_en": "elle se trouva enfin dans le magnifique jardin, parmi les parterres de fleurs éclatantes et les fraîches fontaines.",
+          "label": "Chapter VII — A Mad Tea-Party"
+        }
+      ],
+      "effects": {
+        "move_to": {
+          "town": "queens_garden",
+          "spot": "rose_tree"
+        }
+      }
+    },
+    {
+      "id": "b19_painting_roses",
+      "town": "queens_garden",
+      "objective_fr": "Confront the Queen of Hearts on the croquet-ground",
+      "objective_en": "Faire face à la Reine de Cœur sur le terrain de croquet",
+      "trigger": {
+        "type": "start",
+        "target": null
+      },
+      "npcs": [
+        {
+          "character": "queen_of_hearts",
+          "spot": "croquet_ground"
+        },
+        {
+          "character": "king_of_hearts",
+          "spot": "procession_walk"
+        },
+        {
+          "character": "white_rabbit",
+          "spot": "procession_walk"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "8",
+          "text_fr": "A large rose-tree stood near the entrance of the garden: the roses growing on it were white, but there were three gardeners at it, busily painting them red.",
+          "text_en": "Un grand rosier se dressait près de l'entrée du jardin : les roses qui y poussaient étaient blanches, mais trois jardiniers s'affairaient à les peindre en rouge.",
+          "label": "Chapter VIII — The Queen’s Croquet-Ground"
+        },
+        {
+          "speaker": "alice",
+          "ref": "8",
+          "text_fr": "My name is Alice, so please your Majesty,” said Alice very politely; but she added, to herself, “Why, they’re only a pack of cards, after all. I needn’t be afraid of them!",
+          "text_en": "Je m'appelle Alice, n'en déplaise à Votre Majesté, dit très poliment Alice ; mais elle ajouta en elle-même : « Mais ce n'est qu'un jeu de cartes, après tout. Je n'ai pas besoin d'avoir peur d'eux ! »",
+          "label": "Chapter VIII — The Queen’s Croquet-Ground"
+        }
+      ],
+      "effects": {}
+    },
+    {
+      "id": "b20_croquet_game",
+      "town": "queens_garden",
+      "objective_fr": "Visit the Mock Turtle and Gryphon on the rocky ledge",
+      "objective_en": "Rendre visite à la Fausse Tortue et au Griffon sur la corniche rocheuse",
+      "trigger": {
+        "type": "talk",
+        "target": "queen_of_hearts"
+      },
+      "npcs": [
+        {
+          "character": "queen_of_hearts",
+          "spot": "croquet_ground"
+        },
+        {
+          "character": "cheshire_cat",
+          "spot": "croquet_ground"
+        },
+        {
+          "character": "gryphon",
+          "spot": "rocky_ledge"
+        },
+        {
+          "character": "mock_turtle",
+          "spot": "rocky_ledge"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "queen_of_hearts",
+          "ref": "8",
+          "text_fr": "Off with her head! Off—",
+          "text_en": "Qu'on lui coupe la tête ! Qu'on...",
+          "label": "Chapter VIII — The Queen’s Croquet-Ground"
+        },
+        {
+          "speaker": "alice",
+          "ref": "8",
+          "text_fr": "Nonsense!” said Alice, very loudly and decidedly, and the Queen was silent.",
+          "text_en": "Quelle sottise ! dit Alice d'une voix très forte et décidée, et la Reine se tut.",
+          "label": "Chapter VIII — The Queen’s Croquet-Ground"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "8",
+          "text_fr": "the balls were live hedgehogs, the mallets live flamingoes, and the soldiers had to double themselves up and to stand on their hands and feet, to make the arches.",
+          "text_en": "les boules étaient des hérissons vivants, les maillets des flamants vivants, et les soldats devaient se plier en deux et se tenir sur les pieds et les mains pour former les arceaux.",
+          "label": "Chapter VIII — The Queen’s Croquet-Ground"
+        },
+        {
+          "speaker": "queen_of_hearts",
+          "ref": "9",
+          "text_fr": "Have you seen the Mock Turtle yet?",
+          "text_en": "Avez-vous déjà vu la Fausse Tortue ?",
+          "label": "Chapter IX — The Mock Turtle’s Story"
+        }
+      ],
+      "card_prompt": "Full-screen illustration in John Tenniel style: The Queen's Croquet-Ground, the furious Queen of Hearts pointing imperiously and shouting 'Off with her head!' while Alice holds a live flamingo mallet with its neck twisted back to look at her face, card-soldiers bent into arches behind them.",
+      "effects": {}
+    },
+    {
+      "id": "b21_mock_turtle_story",
+      "town": "queens_garden",
+      "objective_fr": "Hurry to the Court of Justice for the trial",
+      "objective_en": "Courir au Tribunal pour assister au procès",
+      "trigger": {
+        "type": "talk",
+        "target": "mock_turtle"
+      },
+      "npcs": [
+        {
+          "character": "mock_turtle",
+          "spot": "rocky_ledge"
+        },
+        {
+          "character": "gryphon",
+          "spot": "rocky_ledge"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "mock_turtle",
+          "ref": "9",
+          "text_fr": "Once,” said the Mock Turtle at last, with a deep sigh, “I was a real Turtle.",
+          "text_en": "Autrefois, dit enfin la Fausse Tortue avec un profond soupir, j'étais une vraie Tortue.",
+          "label": "Chapter IX — The Mock Turtle’s Story"
+        },
+        {
+          "speaker": "mock_turtle",
+          "ref": "9",
+          "text_fr": "Reeling and Writhing, of course, to begin with,” the Mock Turtle replied; “and then the different branches of Arithmetic—Ambition, Distraction, Uglification, and Derision.",
+          "text_en": "Tanguer et se Tordre, bien sûr, pour commencer, répondit la Fausse Tortue ; et puis les différentes branches de l'Arithmétique : l'Ambition, la Distraction, l'Enlaidissement et la Dérision.",
+          "label": "Chapter IX — The Mock Turtle’s Story"
+        },
+        {
+          "speaker": "mock_turtle",
+          "ref": "10",
+          "text_fr": "Will you, won’t you, will you, won’t you, will you join the dance?",
+          "text_en": "Voulez-vous, ne voulez-vous pas, voulez-vous, ne voulez-vous pas, voulez-vous entrer dans la danse ?",
+          "label": "Chapter X — The Lobster Quadrille"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "10",
+          "text_fr": "a cry of “The trial’s beginning!” was heard in the distance.",
+          "text_en": "un cri : « Le procès commence ! » retentit au loin.",
+          "label": "Chapter X — The Lobster Quadrille"
+        }
+      ],
+      "effects": {}
+    },
+    {
+      "id": "b22_who_stole_the_tarts",
+      "town": "queens_garden",
+      "objective_fr": "Step up to the witness stand and speak to the King",
+      "objective_en": "Avancer à la barre des témoins et parler au Roi",
+      "trigger": {
+        "type": "enter",
+        "target": "royal_courthouse"
+      },
+      "npcs": [
+        {
+          "character": "king_of_hearts",
+          "spot": "witness_stand"
+        },
+        {
+          "character": "queen_of_hearts",
+          "spot": "court_tarts_table"
+        },
+        {
+          "character": "white_rabbit",
+          "spot": "court_tarts_table"
+        },
+        {
+          "character": "mad_hatter",
+          "spot": "witness_stand"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "white_rabbit",
+          "ref": "11",
+          "text_fr": "The Queen of Hearts, she made some tarts,     All on a summer day: The Knave of Hearts, he stole those tarts,     And took them quite away!",
+          "text_en": "La Reine de Cœur a fait des tartes, tout au long d'un jour d'été : le Valet de Cœur a volé ces tartes, et les a toutes emportées !",
+          "label": "Chapter XI — Who Stole the Tarts?"
+        },
+        {
+          "speaker": "king_of_hearts",
+          "ref": "11",
+          "text_fr": "Give your evidence,” said the King; “and don’t be nervous, or I’ll have you executed on the spot.",
+          "text_en": "Faites votre déposition, dit le Roi ; et ne soyez pas nerveux, ou je vous fais exécuter sur-le-champ.",
+          "label": "Chapter XI — Who Stole the Tarts?"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "11",
+          "text_fr": "Imagine her surprise, when the White Rabbit read out, at the top of his shrill little voice, the name “Alice!”",
+          "text_en": "Imaginez sa surprise lorsque le Lapin Blanc lut, du plus haut de sa petite voix perçante, le nom : « Alice ! »",
+          "label": "Chapter XI — Who Stole the Tarts?"
+        }
+      ],
+      "effects": {
+        "move_to": {
+          "town": "queens_garden",
+          "spot": "court_tarts_table"
+        }
+      }
+    },
+    {
+      "id": "b23_alices_evidence",
+      "town": "queens_garden",
+      "objective_fr": "Wake up on the riverbank",
+      "objective_en": "Se réveiller sur le talus de la rivière",
+      "trigger": {
+        "type": "talk",
+        "target": "king_of_hearts"
+      },
+      "npcs": [
+        {
+          "character": "king_of_hearts",
+          "spot": "witness_stand"
+        },
+        {
+          "character": "queen_of_hearts",
+          "spot": "court_tarts_table"
+        }
+      ],
+      "lines": [
+        {
+          "speaker": "king_of_hearts",
+          "ref": "12",
+          "text_fr": "Rule Forty-two. _All persons more than a mile high to leave the court_.",
+          "text_en": "Article Quarante-deux. Toute personne mesurant plus d'un mille de haut doit quitter la cour.",
+          "label": "Chapter XII — Alice’s Evidence"
+        },
+        {
+          "speaker": "queen_of_hearts",
+          "ref": "12",
+          "text_fr": "No, no!” said the Queen. “Sentence first—verdict afterwards.",
+          "text_en": "Non, non ! dit la Reine. La sentence d'abord, le verdict ensuite.",
+          "label": "Chapter XII — Alice’s Evidence"
+        },
+        {
+          "speaker": "alice",
+          "ref": "12",
+          "text_fr": "Stuff and nonsense!” said Alice loudly. “The idea of having the sentence first!",
+          "text_en": "Fadaises et sottises ! dit Alice à haute voix. Quelle idée de prononcer la sentence d'abord !",
+          "label": "Chapter XII — Alice’s Evidence"
+        },
+        {
+          "speaker": "alice",
+          "ref": "12",
+          "text_fr": "Who cares for you?” said Alice, (she had grown to her full size by this time.) “You’re nothing but a pack of cards!",
+          "text_en": "Qui se soucie de vous ? dit Alice (elle avait repris toute sa taille à ce moment-là). Vous n'êtes rien qu'un paquet de cartes !",
+          "label": "Chapter XII — Alice’s Evidence"
+        }
+      ],
+      "card_prompt": "Full-screen illustration in John Tenniel style: Full-grown Alice standing defiantly in the Royal Court as the entire pack of playing cards rises into a swirling arch through the air and comes flying down upon her.",
+      "effects": {
+        "move_to": {
+          "town": "queens_garden",
+          "spot": "waking_bank"
+        }
+      }
+    },
+    {
+      "id": "b24_awakening",
+      "town": "queens_garden",
+      "objective_fr": "Run in to tea — Adventure Complete",
+      "objective_en": "Courir prendre le thé — Aventure terminée",
+      "trigger": {
+        "type": "reach",
+        "target": "waking_bank"
+      },
+      "npcs": [],
+      "lines": [
+        {
+          "speaker": "narrator",
+          "ref": "12",
+          "text_fr": "At this the whole pack rose up into the air, and came flying down upon her: she gave a little scream, half of fright and half of anger, and tried to beat them off, and found herself lying on the bank,",
+          "text_en": "À ces mots, tout le jeu de cartes s'éleva dans les airs et s'abattit sur elle : elle poussa un petit cri, moitié de frayeur et moitié de colère, chercha à les écarter, et se retrouva couchée sur le talus,",
+          "label": "Chapter XII — Alice’s Evidence"
+        },
+        {
+          "speaker": "alice",
+          "ref": "12",
+          "text_fr": "Oh, I’ve had such a curious dream!",
+          "text_en": "Oh, j'ai fait un rêve si curieux !",
+          "label": "Chapter XII — Alice’s Evidence"
+        },
+        {
+          "speaker": "narrator",
+          "ref": "12",
+          "text_fr": "So Alice got up and ran off, thinking while she ran, as well she might, what a wonderful dream it had been.",
+          "text_en": "Alice se leva donc et partit en courant, songeant tout en courant, comme elle le pouvait bien, à quel rêve merveilleux cela avait été.",
+          "label": "Chapter XII — Alice’s Evidence"
+        }
+      ],
+      "effects": {}
+    }
+  ],
+  "ui": {
+    "title": "Alice’s Adventures in Wonderland",
+    "subtitle": "Lewis Carroll · the game",
+    "intro": [
+      "You are Alice. A warm afternoon on the riverbank, a book with no pictures — and a White Rabbit with a pocket-watch.",
+      "Every line is quoted word for word from the book."
+    ],
+    "start": "press space to begin",
+    "end_title": "The End",
+    "end_subtitle": "Alice wakes up on the bank",
+    "end_go": "“Oh, I’ve had such a curious dream!”",
+    "travel": "fall",
+    "quote_open": "“",
+    "quote_close": "”",
+    "keys": "arrows: walk · space: talk / continue",
+    "door_closed": "The door is locked.",
+    "item_prefix": "You get: ",
+    "items_label": "Items: ",
+    "font_display": "\"Iowan Old Style\", Palatino, Georgia, serif"
+  },
+  "narrator": "narrator"
+}

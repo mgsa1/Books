@@ -1,0 +1,32 @@
+{
+ "duchess_wood": {
+  "vocals": false,
+  "heard": "Playful clarinet, accordion, tuba, and light percussion in a fast, bouncy polka-style rhythm; cheerful and mischievous mood.",
+  "matches_brief": false,
+  "issues": "Not a waltz (3/4), missing harpsichord, and has a definitive ending instead of a seamless loop."
+ },
+ "queens_garden": {
+  "vocals": false,
+  "heard": "Synthesized brass, snare drum, harpsichord, strings, and flute at an upbeat march tempo; grand, regal, and comical retro game mood softening into a gentle outro.",
+  "matches_brief": true,
+  "issues": "The track does not loop seamlessly; it starts with a distinct fanfare and cuts off during a quiet string section at the end."
+ },
+ "rabbit_hole": {
+  "vocals": false,
+  "heard": "Harpsichord, flute, strings, pizzicato bass, and harp playing a cheerful pastoral melody at around 90 BPM that shifts to a slower, quiet harp and string section at the end.",
+  "matches_brief": false,
+  "issues": "Not a seamless loop; the track stops at 0:24 and plays a separate, slower ending cue."
+ },
+ "rabbit_house": {
+  "vocals": false,
+  "heard": "16-bit retro RPG style with jaunty clarinet, oboe, bassoon, and harpsichord at a moderate tempo, whimsical and cosy mood.",
+  "matches_brief": false,
+  "issues": "abrupt ending, missing the transition to sitar-like chiptune, does not loop seamlessly"
+ },
+ "title": {
+  "vocals": false,
+  "heard": "Harpsichord, celesta, flute/woodwinds, plucked strings, in a gentle 3/4 waltz around 96 BPM with a nostalgic, cosy 16-bit RPG storybook mood.",
+  "matches_brief": true,
+  "issues": "abrupt ending"
+ }
+}

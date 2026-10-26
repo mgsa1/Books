@@ -1,0 +1,54 @@
+{
+ "narrator": {
+  "voice": "Sulafat",
+  "tag": "[warm, engaging Victorian storyteller]"
+ },
+ "alice": {
+  "voice": "Leda",
+  "tag": "[polite, curious young girl]"
+ },
+ "white_rabbit": {
+  "voice": "Fenrir",
+  "tag": "[fussy, nervous, hurried]"
+ },
+ "mouse": {
+  "voice": "Sadaltager",
+  "tag": "[indignant, pompous, shivering]"
+ },
+ "caterpillar": {
+  "voice": "Enceladus",
+  "tag": "[languid, sleepy, condescending]"
+ },
+ "duchess": {
+  "voice": "Gacrux",
+  "tag": "[sharp, overbearing, imperious]"
+ },
+ "cheshire_cat": {
+  "voice": "Algieba",
+  "tag": "[purring, enigmatic, amused]"
+ },
+ "mad_hatter": {
+  "voice": "Puck",
+  "tag": "[eccentric, theatrical, mercurial]"
+ },
+ "march_hare": {
+  "voice": "Sadachbia",
+  "tag": "[frantic, scatterbrained, excitable]"
+ },
+ "queen_of_hearts": {
+  "voice": "Kore",
+  "tag": "[furious, booming, tyrannical]"
+ },
+ "king_of_hearts": {
+  "voice": "Iapetus",
+  "tag": "[timid, flustered, judicial]"
+ },
+ "mock_turtle": {
+  "voice": "Charon",
+  "tag": "[melancholy, tearful, sighing]"
+ },
+ "gryphon": {
+  "voice": "Algenib",
+  "tag": "[gruff, impatient, raspy]"
+ }
+}

@@ -1,0 +1,229 @@
+{
+ "town": "duchess_wood",
+ "w": 32,
+ "h": 24,
+ "season": "wonder-day",
+ "tiles": [
+  "TTTTTTTTTTTTTTT=TTTTTTTTTTTTTTTT",
+  "TTTTTTTTTTTTTT===TTTTTTTTTTTTTTT",
+  "TTT.......TTTT===TTTT........TTT",
+  "TT.........TTT===TTT..........TT",
+  "TT.........TTT===TTT..........TT",
+  "TT.........TTT===TTT..........TT",
+  "TT.........TTT===TTT..........TT",
+  "TT.........TTT===TT.....=.....TT",
+  "TT...==....TTT.=.TT....===....TT",
+  "TT...==....TT..===.....===....TT",
+  "T*...===......=====...====...*TT",
+  "===============..=============TT",
+  "TT...===......====...=======..TT",
+  "TT...==.......====.*.=======..TT",
+  "TT...==....TTT.==.TT...===....TT",
+  "TT..*==*...TTT~~~~TT...===....TT",
+  "TT..*==*...TTT~~~~TT..........TT",
+  "TT..*==*...TTT~~~~TT..........TT",
+  "TT..****...TTT~~~~TT..........TT",
+  "TTT..**...TTTT~~~~TT....=.....TT",
+  "TTTT.....TTTTT~~~~TT...===....TT",
+  "TTTTT...TTTTTT~~~~TTT..===...TTT",
+  "TTTTTTTTTTTTTT~~~~TTTT.***..TTTT",
+  "TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"
+ ],
+ "buildings": [
+  {
+   "id": "duchess_house",
+   "x": 4,
+   "y": 4,
+   "w": 5,
+   "d": 4,
+   "floors": 2,
+   "wall": "#d9c8b4",
+   "roof": "#8c4a4a",
+   "door": [
+    6,
+    8
+   ],
+   "sign_fr": "Maison de la Duchesse"
+  },
+  {
+   "id": "signpost_arch",
+   "x": 15,
+   "y": 11,
+   "w": 2,
+   "d": 1,
+   "floors": 1,
+   "wall": "#8b6b4a",
+   "roof": "#6e5034",
+   "door": [
+    15,
+    12
+   ],
+   "sign_fr": "Chapelier / Lièvre"
+  },
+  {
+   "id": "march_hare_house",
+   "x": 22,
+   "y": 3,
+   "w": 6,
+   "d": 4,
+   "floors": 2,
+   "wall": "#e6d5b8",
+   "roof": "#9c7a54",
+   "door": [
+    25,
+    7
+   ],
+   "sign_fr": "Lièvre de Mars"
+  },
+  {
+   "id": "door_tree",
+   "x": 24,
+   "y": 16,
+   "w": 3,
+   "d": 3,
+   "floors": 2,
+   "wall": "#6b4c35",
+   "roof": "#3b6e4c",
+   "door": [
+    25,
+    19
+   ],
+   "sign_fr": "Arbre à Porte"
+  }
+ ],
+ "spots": {
+  "duchess_clearing": [
+   6,
+   11
+  ],
+  "duchess_doorstep": [
+   5,
+   8
+  ],
+  "pig_wood_path": [
+   6,
+   17
+  ],
+  "cheshire_bough": [
+   13,
+   9
+  ],
+  "tea_table_head": [
+   22,
+   12
+  ],
+  "tea_table_corner": [
+   26,
+   12
+  ],
+  "tree_door_spot": [
+   25,
+   20
+  ]
+ },
+ "props": [
+  {
+   "type": "barrel",
+   "x": 3,
+   "y": 7
+  },
+  {
+   "type": "barrel",
+   "x": 9,
+   "y": 7
+  },
+  {
+   "type": "bench",
+   "x": 8,
+   "y": 8
+  },
+  {
+   "type": "mushroom",
+   "x": 5,
+   "y": 18
+  },
+  {
+   "type": "lamp",
+   "x": 14,
+   "y": 11
+  },
+  {
+   "type": "mushroom",
+   "x": 19,
+   "y": 13
+  },
+  {
+   "type": "lamp",
+   "x": 21,
+   "y": 7
+  },
+  {
+   "type": "well",
+   "x": 20,
+   "y": 8
+  },
+  {
+   "type": "tea_table",
+   "x": 23,
+   "y": 12
+  },
+  {
+   "type": "tea_table",
+   "x": 24,
+   "y": 12
+  },
+  {
+   "type": "tea_table",
+   "x": 25,
+   "y": 12
+  },
+  {
+   "type": "bench",
+   "x": 23,
+   "y": 11
+  },
+  {
+   "type": "bench",
+   "x": 25,
+   "y": 11
+  },
+  {
+   "type": "clock",
+   "x": 27,
+   "y": 11
+  },
+  {
+   "type": "bottle",
+   "x": 24,
+   "y": 13
+  },
+  {
+   "type": "door_small",
+   "x": 24,
+   "y": 19
+  },
+  {
+   "type": "rose_bush",
+   "x": 23,
+   "y": 19
+  },
+  {
+   "type": "rose_bush",
+   "x": 27,
+   "y": 19
+  }
+ ],
+ "exits": [
+  {
+   "x": 0,
+   "y": 11,
+   "label_fr": "Forêt du Champignon"
+  },
+  {
+   "x": 15,
+   "y": 0,
+   "label_fr": "Route du Chapelier"
+  }
+ ],
+ "valid": true
+}

@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Les Misérables — le jeu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --paper: #EFE6D2; --ink: #2B2118; --sepia: #6B5541; --faint: #8A7A66; --red: #8E1F1A;
+    --display: Didot, "Bodoni 72", "Hoefler Text", serif;
+    --body: Baskerville, "Hoefler Text", Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #1a1612; font-family: var(--body); color: var(--ink); }
+  #world { position: fixed; inset: 0; }
+  canvas { display: block; }
+  .overlay { position: fixed; pointer-events: none; }
+
+  /* HUD: objective as a playbill slip, top-left */
+  #hud { left: 22px; top: 18px; background: var(--paper); border: 1px solid var(--ink); outline: 1px solid var(--ink); outline-offset: 3px;
+    padding: 10px 16px 9px; max-width: 420px; }
+  #hud .who { font: italic 13px var(--body); color: var(--sepia); }
+  #hud .obj { font: italic 22px/1.15 var(--display); margin: 2px 0 2px; }
+  #hud .obj-en { font: 13px var(--body); color: var(--sepia); }
+  #hud .items { font: 12px var(--body); font-variant: small-caps; letter-spacing: .05em; color: var(--red); margin-top: 4px; }
+  #place { right: 22px; top: 18px; text-align: right; color: var(--paper); text-shadow: 0 1px 6px #000; }
+  #place .town { font: italic 30px var(--display); }
+  #place .ref { font: 12px var(--body); font-variant: small-caps; letter-spacing: .06em; opacity: .85; }
+  #keys { left: 22px; bottom: 16px; color: var(--paper); font: italic 13px var(--body); opacity: .8; text-shadow: 0 1px 4px #000; }
+
+  /* name tags and "!" markers above characters */
+  .tag { position: fixed; transform: translate(-50%, -100%); pointer-events: none; font: italic 15px var(--display);
+    color: var(--paper); text-shadow: 0 1px 3px #000, 0 0 8px #000; white-space: nowrap; }
+  .bang { position: fixed; transform: translate(-50%, -100%); pointer-events: none; font: 700 26px var(--display); color: var(--red);
+    background: var(--paper); border: 2px solid var(--ink); width: 30px; height: 34px; text-align: center; line-height: 32px; animation: bob .9s ease-in-out infinite; }
+  @keyframes bob { 50% { margin-top: -6px; } }
+
+  /* key-moment illustration */
+  #card { inset: 0; display: none; background: #1a1612 center/contain no-repeat; }
+  #card::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(26,22,18,.85) 100%); }
+
+  /* dialogue box */
+  #dlg { left: 50%; bottom: 22px; transform: translateX(-50%); width: min(980px, 94vw); min-height: 170px; display: none;
+    background: var(--paper); border: 2px solid var(--ink); outline: 1px solid var(--ink); outline-offset: 4px; padding: 18px 26px 16px 200px; pointer-events: auto; }
+  #dlg.noportrait { padding-left: 26px; }
+  #dlg img { position: absolute; left: 18px; bottom: 14px; width: 160px; height: 190px; object-fit: contain; object-position: bottom; }
+  #dlg .speaker { font: italic 24px var(--display); color: var(--red); }
+  #dlg .fr { font: 20px/1.5 var(--body); margin: 6px 0 8px; min-height: 60px; }
+  #dlg .en { font: italic 14px/1.45 var(--body); color: var(--sepia); }
+  #dlg .fr em { font-style: italic; }
+  #dlg .fr.narration { color: var(--sepia); }  /* narration: upright sepia, so the book's own italics stay visible */
+  #dlg .ref { font: 11px var(--body); font-variant: small-caps; letter-spacing: .06em; color: var(--faint); margin-top: 8px; }
+  #dlg .more { position: absolute; right: 18px; bottom: 10px; font: 18px var(--body); animation: bob .9s infinite; }
+  #toast { left: 22px; top: 150px; background: var(--paper); border: 1px solid var(--ink); padding: 10px 20px;
+    font: italic 18px var(--display); display: none; }
+
+  /* travel interlude and title */
+  .screen { position: fixed; inset: 0; background: var(--paper); display: none; place-items: center; text-align: center; }
+  .screen h1 { font: italic 400 64px/1 var(--display); margin: 0 0 6px; }
+  .screen h2 { font: 400 14px var(--body); letter-spacing: .25em; text-transform: uppercase; color: var(--sepia); margin: 0 0 26px; }
+  .screen p { font: italic 16px/1.5 var(--body); color: var(--sepia); max-width: 560px; margin: 0 auto 8px; }
+  .screen .go { font: 16px var(--body); border: 1px solid var(--ink); padding: 8px 22px; display: inline-block; margin-top: 18px; animation: bob 1.2s infinite; }
+  #travel svg { width: min(520px, 70vw); height: auto; }
+  #travel .dest { font: italic 40px var(--display); margin-top: 8px; }
+</style>
+<script type="importmap">
+{ "imports": { "three": "./vendor/three.module.js" } }
+</script>
+</head>
+<body>
+<div id="world"></div>
+<div id="loading" style="position:fixed;inset:0;display:grid;place-items:center;background:#EFE6D2;color:#6B5541;font:italic 18px Baskerville,Georgia,serif;z-index:5">Loading…</div>
+<div id="hud" class="overlay"><div class="who"></div><div class="obj"></div><div class="obj-en"></div><div class="items"></div></div>
+<div id="place" class="overlay"><div class="town"></div><div class="ref"></div></div>
+<div id="sound" class="overlay" style="right:22px;bottom:16px;color:var(--paper);font:italic 13px var(--body);opacity:.8;text-shadow:0 1px 4px #000"></div>
+<div id="keys" class="overlay">flèches : marcher · espace : parler / continuer</div>
+<div id="tags"></div>
+<div id="card" class="overlay"></div>
+<div id="dlg" class="overlay"><img alt=""><div class="speaker"></div><div class="fr"></div><div class="en"></div><div class="ref"></div><div class="more">▾</div></div>
+<div id="toast" class="overlay"></div>
+<div id="fade" class="overlay" style="inset:0;background:#000;opacity:0;transition:opacity .8s;z-index:4"></div>
+<div id="title" class="screen"><div>
+  <h1>Les Misérables</h1><h2>Victor Hugo · le jeu</h2>
+  <p>Vous êtes Jean Valjean. Octobre 1815 : dix-neuf ans de bagne derrière vous, Digne devant.</p>
+  <p>Chaque réplique est tirée mot pour mot du roman.</p>
+  <div class="go">espace pour commencer</div></div></div>
+<div id="travel" class="screen"><div><svg viewBox="0 0 400 420"></svg><div class="dest"></div><p class="when"></p></div></div>
+
+<script type="module">
+import * as THREE from "three";
+import { makePixel } from "./characters.js";
+const $ = (s) => document.querySelector(s);
+const params = new URLSearchParams(location.search);
+// alice_wonderland_poc layout: the game data lives in ../game, its assets in ../game/assets
+const BOOK = params.get("book");
+const GAME_DIR = "../game", ASSETS = "../game/assets";
+const script = await fetch(`${GAME_DIR}/${params.get("script") || "script.json"}`, { cache: "no-cache" }).then((r) => r.text()).then((t) => JSON.parse(t.slice(t.indexOf("{"), t.lastIndexOf("}") + 1)));
+// ?towns=digne plays only those towns (MVP); the story ends where the next town would start
+const only = params.get("towns")?.split(",");
+if (only) {
+  script.towns = script.towns.filter((t) => only.includes(t.id));
+  script.beats = script.beats.filter((b) => only.includes(b.town));
+  for (const b of script.beats) if (b.effects?.move_to && !only.includes(b.effects.move_to.town)) delete b.effects.move_to;
+}
+const maps = Object.fromEntries(await Promise.all(script.towns.map(async (t) => [t.id, await fetch(`${GAME_DIR}/map_${t.id}.json`, { cache: "no-cache" }).then((r) => r.json())])));
+const assets = await fetch(`${ASSETS}/manifest.json`, { cache: "no-cache" }).then((r) => r.json()).catch(() => ({ portraits: {}, cards: {} }));
+const UI = Object.assign({ quote_open: "« ", quote_close: " »", door_closed: "La porte est close.", item_prefix: "Vous obtenez : ",
+  items_label: "Objets : ", travel: "map" }, script.ui || {});
+const NARRATOR = script.narrator || "narrateur";
+if (script.ui) {  // title screen and hints for books other than Les Mis
+  $("#title h1").textContent = UI.title; $("#title h2").textContent = UI.subtitle;
+  $("#title").querySelectorAll("p").forEach((p, i) => (p.textContent = UI.intro?.[i] || ""));
+  $("#title .go").textContent = UI.start; $("#keys").textContent = UI.keys;
+  document.title = UI.title; document.documentElement.lang = "en";
+}
+const chars = Object.fromEntries(script.characters.map((c) => [c.id, c]));
+const townSpec = Object.fromEntries(script.towns.map((t) => [t.id, t]));
+
+// ---------- event log (Principle 7): everything that happens, timestamped, for play-tests, Argon review and video audio ----------
+const EV = [];
+function logEv(type, data = {}) {
+  EV.push({ t: Math.round(performance.now()), type, beat: S?.beat, town: world?.tid, x: S?.px, y: S?.py, ...data });
+}
+addEventListener("error", (e) => logEv("error", { message: String(e.message || e) }));
+addEventListener("unhandledrejection", (e) => logEv("error", { message: String(e.reason) }));
+
+// ---------- audio: voiced lines (Gemini TTS) + per-area music loops (Lyria) ----------
+const AUDIO = { muted: localStorage.getItem("muted") === "1", voice: null, track: null, players: [], fadeTimer: null };
+const MUSIC_VOL = 0.22, DUCKED = 0.07;
+function musicVolume() { return AUDIO.muted ? 0 : (AUDIO.voice && !AUDIO.voice.paused ? DUCKED : MUSIC_VOL); }
+// Lyria clips end with a cadence rather than looping cleanly: run two copies and crossfade before the end
+function playMusic(name) {
+  if (!assets.music?.includes(name) || AUDIO.track === name) return;
+  AUDIO.track = name;
+  logEv("music", { track: name });
+  AUDIO.players.forEach((p) => fadeOut(p));
+  const start = () => {
+    const p = new Audio(`${ASSETS}/music/${name}.mp3`); p.volume = 0; AUDIO.players.push(p);
+    p.play().catch(() => {});
+    logEv("music_copy", { track: name });
+    fadeTo(p, musicVolume(), 1500);
+    p.addEventListener("loadedmetadata", () => {
+      const lead = Math.max(1, p.duration - 6.5) * 1000; // skip the clip's ending cue
+      p._next = setTimeout(() => { if (AUDIO.track === name) { fadeOut(p); start(); } }, lead);
+    });
+  };
+  start();
+}
+function fadeTo(p, vol, ms) {
+  const from = p.volume, t0 = performance.now();
+  const step = () => { const k = Math.min(1, (performance.now() - t0) / ms); p.volume = from + (vol - from) * k; if (k < 1) requestAnimationFrame(step); };
+  step();
+}
+function fadeOut(p) { clearTimeout(p._next); p._fading = true; fadeTo(p, 0, 2500); setTimeout(() => { p.pause(); AUDIO.players = AUDIO.players.filter((x) => x !== p); }, 2600); }
+function duck() { AUDIO.players.forEach((p) => { if (!p._fading) fadeTo(p, musicVolume(), 300); }); }
+function speak(key) {
+  stopVoice();
+  if (!key || AUDIO.muted || !(assets.audio === true || assets.audio?.includes?.(key))) return;
+  const v = new Audio(`${ASSETS}/audio/${key}.mp3`); AUDIO.voice = v;
+  v.addEventListener("ended", () => { logEv("voice_end", { key }); duck(); });
+  logEv("voice", { key });
+  v.play().then(duck).catch(() => {});
+}
+function stopVoice() { if (AUDIO.voice) { if (!AUDIO.voice.ended) logEv("voice_cut", {}); AUDIO.voice.pause(); AUDIO.voice = null; duck(); } }
+function toggleMute() {
+  AUDIO.muted = !AUDIO.muted; localStorage.setItem("muted", AUDIO.muted ? "1" : "0");
+  if (AUDIO.muted) stopVoice();
+  AUDIO.players.forEach((p) => fadeTo(p, musicVolume(), 200));
+  $("#sound").textContent = AUDIO.muted ? "♪ off (M)" : "♪ on (M)";
+}
+
+// ---------- renderer & isometric camera ----------
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+$("#world").appendChild(renderer.domElement);
+const VIEW = Number(params.get("zoom") || 15); // tiles visible vertically (?zoom=10 for closer video shots)
+const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, -100, 200);
+const ISO = new THREE.Vector3(1, 1.25, 1).normalize().multiplyScalar(40);
+function resize() {
+  const a = innerWidth / innerHeight;
+  Object.assign(camera, { left: -VIEW * a / 2, right: VIEW * a / 2, top: VIEW / 2, bottom: -VIEW / 2 });
+  camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight);
+}
+addEventListener("resize", resize); resize();
+
+const SEASONS = {
+  "wonder-day": { sky: "#E8DDC4", ground: "#93B06A", road: "#D8C9A3", garden: "#A8C46E", water: "#7FB3C2", tree: "#5E8C4A", wall: "#6E8C55", hemi: ["#FFF8E8", "#7A7058", 1.8], sun: ["#FFF4DE", 2.6, [15, 25, 10]], fog: 0.006 },
+  "dusk-garden": { sky: "#D9B8A8", ground: "#7FA05E", road: "#C9B48E", garden: "#B54A4A", water: "#6E9AA8", tree: "#3F6B3A", wall: "#3F6B3A", hemi: ["#FFE4D0", "#5A4A4A", 1.6], sun: ["#FFC9A8", 2.3, [-15, 20, 12]], fog: 0.009 },
+  "autumn-dusk": { sky: "#C9A27A", ground: "#8C8A5C", road: "#A8957A", garden: "#7E8C4E", water: "#5D7C86", tree: "#6E5A2E", wall: "#7A6A58", hemi: ["#FFE2BC", "#5A4A3A", 1.5], sun: ["#FFC48A", 2.4, [-20, 18, 10]], fog: 0.012 },
+  "day": { sky: "#D9D3C0", ground: "#8F9A68", road: "#B3A58C", garden: "#7FA05A", water: "#5F8C99", tree: "#4F6B3A", wall: "#857766", hemi: ["#FFF6E4", "#6B6250", 1.7], sun: ["#FFF2DC", 2.6, [15, 25, 10]], fog: 0.008 },
+  "winter-night": { sky: "#1E2633", ground: "#C9D3DC", road: "#9AA3AB", garden: "#B8C4CC", water: "#2E4255", tree: "#2E3B33", wall: "#4E5560", hemi: ["#8EA6C8", "#1A2230", 0.9], sun: ["#9DB4D8", 0.9, [10, 25, -15]], fog: 0.02 },
+};
+
+// ---------- state ----------
+const S = { town: null, beat: -1, px: 0, py: 0, face: [0, 1], name: chars[script.player.character].name_fr, items: [], busy: true, flags: {} };
+let world = null; // per-town scene graph and collision info
+
+function canvasTex(w, h, draw) {
+  const c = document.createElement("canvas"); c.width = w; c.height = h; draw(c.getContext("2d"), w, h);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+const mat = (color, extra = {}) => new THREE.MeshLambertMaterial({ color, flatShading: true, ...extra });
+
+// ---------- character models ----------
+// pixel sprites (Pokémon-style) when the book has them; the blocky model is the fallback
+const SPRITE_H = { child: 1.4, small: 1.5, average: 1.65, tall: 1.8 };  // sprites read best a bit larger than the 3D models were
+function makeCharacter(c) {
+  if (assets.pixel?.includes(c.id)) {
+    const night = pendingSeason === "winter-night";
+    return makePixel(`${ASSETS}/pixel/${c.id}`, SPRITE_H[c.build] ?? 1.2, night ? "#9AA6BE" : "#FFFFFF");
+  }
+  return makeBlockyCharacter(c);
+}
+let pendingSeason = null;  // season of the town being built (world is replaced at the end of buildTown)
+function makeBlockyCharacter(c) {
+  const k = { tall: 1.05, average: 0.95, small: 0.85, child: 0.62 }[c.build] ?? 0.95;
+  const g = new THREE.Group(), col = c.colors || {};
+  const legs = [];
+  for (const s of [-1, 1]) {
+    const leg = new THREE.Mesh(new THREE.BoxGeometry(0.13, 0.42, 0.14), mat(col.trousers || "#3A342C"));
+    leg.geometry.translate(0, -0.21, 0); leg.position.set(s * 0.09, 0.42, 0); g.add(leg); legs.push(leg);
+  }
+  const coat = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.27, 0.62, 7), mat(col.coat || "#5A4A3A")); coat.position.y = 0.72; g.add(coat);
+  const head = new THREE.Mesh(new THREE.SphereGeometry(0.15, 8, 6), mat(col.skin || "#D9B48F")); head.position.y = 1.17; g.add(head);
+  const hair = new THREE.Mesh(new THREE.SphereGeometry(0.158, 8, 4, 0, Math.PI * 2, 0, Math.PI / 2), mat(col.hair || "#3A2A1E")); hair.position.y = 1.19; hair.rotation.x = -0.25; g.add(hair);
+  if (col.hat) {
+    const brim = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.24, 0.03, 10), mat(col.hat)); brim.position.y = 1.28; g.add(brim);
+    const crown = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.15, 0.2, 10), mat(col.hat)); crown.position.y = 1.39; g.add(crown);
+  }
+  const nose = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.05, 0.06), mat(col.skin || "#D9B48F")); nose.position.set(0, 1.16, 0.15); g.add(nose);
+  g.scale.setScalar(k);
+  g.traverse((m) => { if (m.isMesh) m.castShadow = true; });
+  g.userData = { legs, height: 1.5 * k };
+  return g;
+}
+
+// ---------- town construction ----------
+function buildTown(tid) {
+  if (world) {
+    world.scene.traverse((o) => { o.geometry?.dispose?.(); });
+    for (const n of Object.values(world.npcs || {})) { n.tag.remove(); n.bang?.remove(); }  // labels live in the DOM, not the scene
+  }
+  document.querySelectorAll("#tags > *").forEach((el) => el.remove());
+  const m = maps[tid], P = SEASONS[m.season] || SEASONS.day;
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(P.sky);
+  scene.fog = new THREE.FogExp2(P.sky, P.fog);
+  scene.add(new THREE.HemisphereLight(...P.hemi));
+  const sun = new THREE.DirectionalLight(P.sun[0], P.sun[1]);
+  sun.position.set(...P.sun[2]); sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
+  Object.assign(sun.shadow.camera, { left: -30, right: 30, top: 30, bottom: -30, near: 1, far: 120 });
+  scene.add(sun, sun.target);
+  const night = m.season === "winter-night";
+
+  const W = m.w, H = m.h, rows = m.tiles;
+  const blocked = new Set();
+  const key = (x, y) => `${x},${y}`;
+  // tiles: instanced per kind
+  const kinds = { ".": ["ground", P.ground, 0.1], "=": ["road", P.road, 0.12], "*": ["garden", P.garden, 0.14], ":": ["bridge", "#7A6248", 0.18], "~": ["water", P.water, 0.02], "#": ["wall", P.wall, 0.9], "T": ["tree", P.ground, 0.1] };
+  const buckets = {};
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+    const ch = rows[y][x] in kinds ? rows[y][x] : ".";
+    (buckets[ch] ||= []).push([x, y]);
+    if ("~#T".includes(ch)) blocked.add(key(x, y));
+  }
+  const dummy = new THREE.Object3D();
+  for (const [ch, cells] of Object.entries(buckets)) {
+    const [, color, h] = kinds[ch];
+    const im = new THREE.InstancedMesh(new THREE.BoxGeometry(1, h, 1), mat(color), cells.length);
+    const tint = new THREE.Color();
+    cells.forEach(([x, y], i) => {
+      dummy.position.set(x, h / 2 - (ch === "~" ? 0.08 : 0), y); dummy.updateMatrix(); im.setMatrixAt(i, dummy.matrix);
+      const n = ((x * 73856093) ^ (y * 19349663)) % 100 / 100; // per-tile variation reads as hand-laid
+      im.setColorAt(i, tint.set(color).offsetHSL(0, 0, (n - 0.5) * 0.05));
+    });
+    im.receiveShadow = true; im.castShadow = ch === "#";
+    scene.add(im);
+  }
+  // trees
+  const treeCells = buckets["T"] || [];
+  if (treeCells.length) {
+    const trunk = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.08, 0.12, 0.7, 5), mat("#4A3A2A"), treeCells.length);
+    const crown = new THREE.InstancedMesh(new THREE.ConeGeometry(0.48, 1.3, 6), mat(night ? "#22302A" : P.tree), treeCells.length);
+    treeCells.forEach(([x, y], i) => {
+      const s = 0.8 + (((x * 31 + y * 17) % 10) / 25);
+      dummy.position.set(x, 0.45, y); dummy.scale.set(1, 1, 1); dummy.updateMatrix(); trunk.setMatrixAt(i, dummy.matrix);
+      dummy.position.set(x, 1.25 * s, y); dummy.scale.set(s, s, s); dummy.updateMatrix(); crown.setMatrixAt(i, dummy.matrix);
+    });
+    trunk.castShadow = crown.castShadow = true;
+    scene.add(trunk, crown);
+  }
+
+  // buildings
+  const doors = {};
+  for (const b of m.buildings) {
+    for (let x = b.x; x < b.x + b.w; x++) for (let y = b.y; y < b.y + b.d; y++) blocked.add(key(x, y));
+    const fh = 1.05, h = Math.max(1, b.floors || 1) * fh + 0.2;
+    const winTex = canvasTex(64, 64, (g, w) => {
+      g.fillStyle = b.wall || "#C8B89A"; g.fillRect(0, 0, w, w);
+      g.fillStyle = night ? "#F2B25C" : "#3B3128"; g.fillRect(20, 16, 24, 30);
+      g.strokeStyle = "#2B2118"; g.lineWidth = 3; g.strokeRect(20, 16, 24, 30);
+      g.fillStyle = "rgba(0,0,0,.08)"; for (let i = 0; i < 40; i++) g.fillRect(Math.random() * w, Math.random() * w, 2, 2);
+    });
+    winTex.wrapS = winTex.wrapT = THREE.RepeatWrapping;
+    const side = (len) => { const t = winTex.clone(); t.needsUpdate = true; t.repeat.set(len, b.floors || 1); return mat("#ffffff", { map: t, ...(night ? { emissive: "#ffffff", emissiveMap: t, emissiveIntensity: 0.25 } : {}) }); };
+    const roofMat = mat(b.roof || "#7A4A3A");
+    const body = new THREE.Mesh(new THREE.BoxGeometry(b.w - 0.1, h, b.d - 0.1), [side(b.d), side(b.d), roofMat, roofMat, side(b.w), side(b.w)]);
+    const cx = b.x + (b.w - 1) / 2, cz = b.y + (b.d - 1) / 2;
+    body.position.set(cx, h / 2, cz); body.castShadow = body.receiveShadow = true; scene.add(body);
+    // gable roof along the longer side
+    const along = b.w >= b.d, span = (along ? b.d : b.w) + 0.2, len = (along ? b.w : b.d) + 0.2, rh = Math.min(1.4, span * 0.45);
+    const shape = new THREE.Shape([new THREE.Vector2(-span / 2, 0), new THREE.Vector2(span / 2, 0), new THREE.Vector2(0, rh)]);
+    const roof = new THREE.Mesh(new THREE.ExtrudeGeometry(shape, { depth: len, bevelEnabled: false }), roofMat);
+    roof.geometry.translate(0, 0, -len / 2);
+    if (along) roof.rotation.y = Math.PI / 2;
+    roof.position.set(cx, h, cz); roof.castShadow = true; scene.add(roof);
+    if (b.kind === "church" || /église|cathédrale|church/i.test(b.id + (townSpec[tid].buildings.find((x) => x.id === b.id)?.kind || ""))) {
+      const tower = new THREE.Mesh(new THREE.BoxGeometry(1.2, h + 2.2, 1.2), side(1)); tower.position.set(b.x + 0.6, (h + 2.2) / 2, b.y + 0.6); tower.castShadow = true; scene.add(tower);
+      const spire = new THREE.Mesh(new THREE.ConeGeometry(0.9, 1.8, 4), roofMat); spire.position.set(b.x + 0.6, h + 2.2 + 0.9, b.y + 0.6); spire.rotation.y = Math.PI / 4; scene.add(spire);
+    }
+    // door on the face nearest the door tile
+    const [dx, dy] = b.door;
+    const door = new THREE.Mesh(new THREE.BoxGeometry(0.55, 0.85, 0.06), mat("#3A2618"));
+    const fx = THREE.MathUtils.clamp(dx, b.x, b.x + b.w - 1), fz = THREE.MathUtils.clamp(dy, b.y, b.y + b.d - 1);
+    if (dy >= b.y + b.d) door.position.set(fx, 0.45, b.y + b.d - 0.53);
+    else if (dy < b.y) door.position.set(fx, 0.45, b.y - 0.47);
+    else if (dx < b.x) { door.position.set(b.x - 0.47, 0.45, fz); door.rotation.y = Math.PI / 2; }
+    else { door.position.set(b.x + b.w - 0.53, 0.45, fz); door.rotation.y = Math.PI / 2; }
+    scene.add(door);
+    if (night) { const l = new THREE.PointLight("#F2B25C", 2.5, 4, 2); l.position.copy(door.position).add(new THREE.Vector3(0, 0.9, 0)); scene.add(l); }
+    doors[key(dx, dy)] = b.id;
+    if (b.sign_fr) {
+      const t = canvasTex(512, 96, (g, w, hh) => { g.fillStyle = "#EFE6D2"; g.fillRect(0, 0, w, hh); g.strokeStyle = "#2B2118"; g.lineWidth = 6; g.strokeRect(4, 4, w - 8, hh - 8);
+        g.fillStyle = "#2B2118"; g.font = "italic 44px Didot, Georgia, serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText(b.sign_fr.slice(0, 26), w / 2, hh / 2 + 2); });
+      const sign = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 0.36), new THREE.MeshBasicMaterial({ map: t }));
+      sign.position.copy(door.position).add(new THREE.Vector3(0, 0.75, 0)); sign.rotation.y = door.rotation.y;
+      if (dy < b.y) sign.rotation.y += Math.PI; if (dx >= b.x + b.w) sign.rotation.y += Math.PI;
+      sign.position.add(new THREE.Vector3(Math.sin(sign.rotation.y) * 0.05, 0, Math.cos(sign.rotation.y) * 0.05));
+      scene.add(sign);
+    }
+  }
+  // props
+  const propMake = {
+    mushroom: () => { const g = new THREE.Group(); const st = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.16, 0.6, 7), mat("#EFE6D2")); st.position.y = 0.35; const cap = new THREE.Mesh(new THREE.SphereGeometry(0.5, 10, 6, 0, Math.PI * 2, 0, Math.PI / 2), mat("#B5322A")); cap.position.y = 0.62; g.add(st, cap); for (let i = 0; i < 6; i++) { const d = new THREE.Mesh(new THREE.SphereGeometry(0.06, 5, 4), mat("#FFFFFF")); const a = i * 1.05; d.position.set(Math.cos(a) * 0.3, 0.92, Math.sin(a) * 0.3); g.add(d); } return g; },
+    tea_table: () => { const g = new THREE.Group(); const top = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.08, 0.9), mat("#F4F0E6")); top.position.y = 0.7; g.add(top); for (const [x, z] of [[-1.2, -0.35], [1.2, -0.35], [-1.2, 0.35], [1.2, 0.35]]) { const l = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.7, 0.07), mat("#6A503A")); l.position.set(x, 0.35, z); g.add(l); } for (let i = 0; i < 7; i++) { const cup = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.05, 0.1, 8), mat(["#E7C9C9", "#C9D8E7", "#F2E0A8"][i % 3])); cup.position.set(-1.1 + i * 0.36, 0.79, (i % 2 - 0.5) * 0.4); g.add(cup); } const pot = new THREE.Mesh(new THREE.SphereGeometry(0.16, 8, 6), mat("#C9D8E7")); pot.position.set(0, 0.88, 0); g.add(pot); return g; },
+    rose_bush: () => { const g = new THREE.Group(); const b = new THREE.Mesh(new THREE.IcosahedronGeometry(0.48, 0), mat("#3F6B3A")); b.position.y = 0.5; g.add(b); for (let i = 0; i < 8; i++) { const r = new THREE.Mesh(new THREE.SphereGeometry(0.09, 6, 4), mat(i % 3 ? "#B5322A" : "#F4F0E6")); const a = i * 0.8; r.position.set(Math.cos(a) * 0.42, 0.45 + (i % 3) * 0.15, Math.sin(a) * 0.42); g.add(r); } return g; },
+    throne: () => { const g = new THREE.Group(); const seat = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.5, 0.6), mat("#8E1F1A")); seat.position.y = 0.3; const back = new THREE.Mesh(new THREE.BoxGeometry(0.7, 1.2, 0.12), mat("#8E1F1A")); back.position.set(0, 0.9, -0.25); const heart = new THREE.Mesh(new THREE.SphereGeometry(0.12, 8, 6), mat("#D9A441")); heart.position.set(0, 1.4, -0.22); g.add(seat, back, heart); return g; },
+    clock: () => { const g = new THREE.Group(); const c = new THREE.Mesh(new THREE.BoxGeometry(0.5, 1.8, 0.35), mat("#6A503A")); c.position.y = 0.9; const face = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.03, 16), mat("#F4F0E6")); face.rotation.x = Math.PI / 2; face.position.set(0, 1.45, 0.19); g.add(c, face); return g; },
+    door_small: () => { const g = new THREE.Group(); const f = new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.6, 0.12), mat("#B08A3A")); f.position.y = 0.3; const k = new THREE.Mesh(new THREE.SphereGeometry(0.04, 6, 4), mat("#D9A441")); k.position.set(0.14, 0.3, 0.07); g.add(f, k); return g; },
+    bottle: () => { const g = new THREE.Group(); const b = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.12, 0.35, 8), mat("#7FB3C2", { transparent: true, opacity: 0.8 })); b.position.y = 0.6; const n = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.05, 0.12, 6), mat("#7FB3C2")); n.position.y = 0.83; const t = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.42, 0.5), mat("#8A6A4A")); t.position.y = 0.21; g.add(t, b, n); return g; },
+    fountain: () => { const g = new THREE.Group(); const basin = new THREE.Mesh(new THREE.CylinderGeometry(0.48, 0.5, 0.3, 10), mat("#9A9284")); basin.position.y = 0.25; const col = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.1, 0.8, 6), mat("#9A9284")); col.position.y = 0.6; const water = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.05, 10), mat(P.water)); water.position.y = 0.38; g.add(basin, col, water); return g; },
+    well: () => { const g = new THREE.Group(); const r = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.4, 0.5, 8, 1, true), mat("#8A8070", { side: THREE.DoubleSide })); r.position.y = 0.35; const roof = new THREE.Mesh(new THREE.ConeGeometry(0.55, 0.4, 4), mat("#6A4A3A")); roof.position.y = 1.3; roof.rotation.y = Math.PI / 4; const p1 = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.1, 0.06), mat("#4A3A2A")); p1.position.set(0.35, 0.65, 0); const p2 = p1.clone(); p2.position.x = -0.35; g.add(r, roof, p1, p2); return g; },
+    lamp: () => { const g = new THREE.Group(); const p = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.05, 1.6, 6), mat("#2B2118")); p.position.y = 0.9; const l = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.25, 0.2), mat("#F2C46B", { emissive: "#F2B25C", emissiveIntensity: night ? 1 : 0.2 })); l.position.y = 1.75; g.add(p, l); if (night) { const pl = new THREE.PointLight("#F2B25C", 3, 5, 2); pl.position.y = 1.7; g.add(pl); } return g; },
+    bench: () => { const b = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.12, 0.35), mat("#6A503A")); b.position.y = 0.4; const g = new THREE.Group(); g.add(b); for (const s of [-1, 1]) { const l = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.35, 0.3), mat("#4A3A2A")); l.position.set(s * 0.38, 0.2, 0); g.add(l); } return g; },
+    cart: () => { const g = new THREE.Group(); const bed = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.3, 0.7), mat("#7A5A3A")); bed.position.y = 0.55; g.add(bed); for (const s of [-1, 1]) { const w = new THREE.Mesh(new THREE.CylinderGeometry(0.36, 0.36, 0.08, 10), mat("#4A3A2A")); w.rotation.x = Math.PI / 2; w.position.set(0, 0.36, s * 0.42); g.add(w); } const shaft = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.06, 0.06), mat("#4A3A2A")); shaft.position.set(0.9, 0.5, 0); g.add(shaft); return g; },
+    cross: () => { const g = new THREE.Group(); const v = new THREE.Mesh(new THREE.BoxGeometry(0.1, 1.6, 0.1), mat("#5A4A3A")); v.position.y = 0.8; const h = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.1, 0.1), mat("#5A4A3A")); h.position.y = 1.2; g.add(v, h); return g; },
+    barrel: () => { const b = new THREE.Mesh(new THREE.CylinderGeometry(0.25, 0.25, 0.55, 8), mat("#7A5A3A")); b.position.y = 0.38; const g = new THREE.Group(); g.add(b); return g; },
+    stall: () => { const g = new THREE.Group(); const t = new THREE.Mesh(new THREE.BoxGeometry(1, 0.1, 0.6), mat("#7A5A3A")); t.position.y = 0.7; const a = new THREE.Mesh(new THREE.BoxGeometry(1.1, 0.05, 0.7), mat("#A0453A")); a.position.y = 1.4; a.rotation.x = 0.2; g.add(t, a); for (const s of [-1, 1]) { const p = new THREE.Mesh(new THREE.BoxGeometry(0.05, 1.4, 0.05), mat("#4A3A2A")); p.position.set(s * 0.48, 0.7, -0.25); g.add(p); } return g; },
+    haystack: () => { const h = new THREE.Mesh(new THREE.ConeGeometry(0.5, 0.9, 7), mat("#C2A35A")); h.position.y = 0.55; const g = new THREE.Group(); g.add(h); return g; },
+    statue: () => { const g = new THREE.Group(); const p = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.6, 0.6), mat("#9A9284")); p.position.y = 0.4; const s = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.18, 0.9, 6), mat("#B0A898")); s.position.y = 1.15; g.add(p, s); return g; },
+    gate: () => { const g = new THREE.Group(); for (const s of [-1, 1]) { const p = new THREE.Mesh(new THREE.BoxGeometry(0.25, 1.8, 0.25), mat("#8A8070")); p.position.set(s * 0.5, 0.95, 0); g.add(p); } const top = new THREE.Mesh(new THREE.BoxGeometry(1.3, 0.25, 0.3), mat("#8A8070")); top.position.y = 1.9; g.add(top); return g; },
+  };
+  for (const p of m.props || []) {
+    const make = propMake[p.type]; if (!make) continue;
+    const o = make(); o.position.set(p.x, 0.1, p.y); o.traverse((x) => { if (x.isMesh) { x.castShadow = true; } }); scene.add(o);
+    // big props block every tile their model covers (Alice walked through the ends of the 3-tile tea table)
+    const FOOT = { tea_table: [[-1, 0], [0, 0], [1, 0]], cart: [[0, 0], [1, 0]] };
+    if (p.type !== "gate") for (const [ox, oz] of FOOT[p.type] || [[0, 0]]) blocked.add(key(p.x + ox, p.y + oz));
+  }
+  // snow for winter night
+  let snow = null;
+  if (night) {
+    const n = 1500, pos = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) { pos[i * 3] = Math.random() * W; pos[i * 3 + 1] = Math.random() * 12; pos[i * 3 + 2] = Math.random() * H; }
+    const g = new THREE.BufferGeometry(); g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    snow = new THREE.Points(g, new THREE.PointsMaterial({ color: "#F4F8FF", size: 0.06, transparent: true, opacity: 0.8 }));
+    scene.add(snow);
+  }
+  // player
+  pendingSeason = m.season;
+  const player = makeCharacter(chars[script.player.character]);
+  scene.add(player);
+  world = { tid, m, scene, sun, blocked, doors, key, player, npcs: {}, snow, exits: new Set((m.exits || []).map((e) => key(e.x, e.y))) };
+  $("#place .town").textContent = townSpec[tid].name_fr;
+  if (S.beat >= 0) playMusic(tid);
+}
+
+// ---------- NPCs for the current beat ----------
+const tagLayer = $("#tags");
+function placeNpcs(beat) {
+  for (const n of Object.values(world.npcs)) { world.scene.remove(n.obj); n.tag.remove(); n.bang?.remove(); }
+  world.npcs = {};
+  // several characters often share one spot ("the low room"): spread them onto the nearest free tiles
+  // doors are never valid places to stand (an NPC in the doorway makes the building unenterable)
+  const taken = new Set([world.key(S.px, S.py), ...Object.keys(world.doors)]);
+  // keep the approach to this beat's target door clear, or a crowd can wall it off (the Thénardier inn)
+  if (beat.trigger.type === "enter") {
+    const d = world.m.buildings.find((b) => b.id === beat.trigger.target)?.door;
+    if (d) for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) taken.add(world.key(d[0] + dx, d[1] + dy));
+  }
+  const freeNear = ([sx, sy]) => {
+    const seen = new Set([world.key(sx, sy)]), q = [[sx, sy]];
+    while (q.length) {
+      const [x, y] = q.shift(), k = world.key(x, y);
+      const inside = x >= 0 && y >= 0 && x < world.m.w && y < world.m.h;
+      if (inside && !world.blocked.has(k) && !taken.has(k)) return [x, y];
+      for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        const n = [x + dx, y + dy], nk = world.key(...n);
+        if (!seen.has(nk) && Math.abs(n[0] - sx) + Math.abs(n[1] - sy) <= 4) { seen.add(nk); q.push(n); }
+      }
+    }
+    return [sx, sy];
+  };
+  for (const { character, spot } of beat.npcs || []) {
+    const want = world.m.spots[spot]; if (!want || !chars[character]) continue;
+    const at = freeNear(want); taken.add(world.key(...at));
+    const obj = makeCharacter(chars[character]);
+    obj.position.set(at[0], 0.12, at[1]);
+    world.scene.add(obj);
+    const tag = document.createElement("div"); tag.className = "tag"; tag.textContent = chars[character].name_fr; tagLayer.appendChild(tag);
+    let bang = null;
+    if (beat.trigger.type === "talk" && beat.trigger.target === character) { bang = document.createElement("div"); bang.className = "bang"; bang.textContent = "!"; tagLayer.appendChild(bang); }
+    world.npcs[character] = { obj, tag, bang, x: at[0], y: at[1] };
+  }
+  // target marker for enter/reach beats
+  world.marker?.removeFromParent();
+  let mt = null;
+  if (beat.trigger.type === "enter") mt = world.m.buildings.find((b) => b.id === beat.trigger.target)?.door;
+  if (beat.trigger.type === "reach") mt = world.m.spots[beat.trigger.target];
+  if (mt) {
+    const g = new THREE.Mesh(new THREE.ConeGeometry(0.22, 0.45, 4), new THREE.MeshBasicMaterial({ color: "#8E1F1A" }));
+    g.rotation.x = Math.PI; g.position.set(mt[0], 1.6, mt[1]); world.scene.add(g); world.marker = g;
+  }
+}
+
+// ---------- beats ----------
+const beat = () => script.beats[S.beat];
+function hud() {
+  const b = beat();
+  $("#hud .who").textContent = S.name;
+  // Argon wrote each objective as "what to do next" (= the following beat's trigger), so while waiting for
+  // beat i's trigger the right objective is beat i-1's (Argon's video review caught the one-step lead)
+  const o = S.beat > 0 ? script.beats[S.beat - 1] : b;
+  $("#hud .obj").textContent = o ? o.objective_fr : "Fin.";
+  $("#hud .obj-en").textContent = o ? o.objective_en : "";
+  $("#hud .items").textContent = S.items.length ? UI.items_label + S.items.join(" · ") : "";
+  $("#place .ref").textContent = b?.lines?.[0]?.label?.split(" — ")[0] || "";
+}
+async function startBeat(i) {
+  S.beat = i;
+  const b = beat();
+  logEv("beat_start", { id: b?.id, trigger: b?.trigger });
+  AUTO.plan = null; AUTO.lastProgress = performance.now();
+  if (!b) { hud(); await showEnd(); return; }
+  if (!world || world.tid !== b.town) { buildTown(b.town); const e = world.m.spots[townSpec[b.town].entry_spot]; setPlayer(e[0], e[1]); }
+  placeNpcs(b); hud();
+  // invariant: the objective must be reachable from where the player stands
+  if (b.trigger.type !== "start" && !planPath(b)) logEv("violation", { rule: "objective_unreachable", target: b.trigger.target });
+  if (b.trigger.type === "start") await playBeat();
+}
+async function playBeat() {
+  const b = beat(); S.busy = true;
+  logEv("beat_play", { id: b.id, card: !!assets.cards?.[b.id] });
+  if (assets.cards?.[b.id]) { $("#card").style.backgroundImage = `url(${ASSETS}/cards/${b.id}.jpg)`; $("#card").style.display = "block"; }
+  for (const [i, l] of b.lines.entries()) await say(l, `${b.id}_${i}`);
+  $("#card").style.display = "none";
+  const fx = b.effects || {};
+  if (fx.player_name_fr) S.name = fx.player_name_fr;
+  if (fx.item_fr) { S.items.push(fx.item_fr); toast(`${UI.item_prefix}${fx.item_fr}`); }
+  const next = script.beats[S.beat + 1];
+  if (fx.move_to && fx.move_to.town !== b.town) {
+    await travel(b.town, fx.move_to.town);
+    buildTown(fx.move_to.town); const at = world.m.spots[fx.move_to.spot]; setPlayer(at[0], at[1]);
+  } else if (fx.move_to) {
+    const at = world.m.spots[fx.move_to.spot];
+    if (at) { await fade(true); setPlayer(at[0], at[1]); camPos.set(at[0], 0, at[1]); await fade(false); }
+  }
+  else if (next && next.town !== b.town) { await travel(b.town, next.town); }
+  else if (!next && b.effects?.player_name_fr) { /* end of the MVP: let the new name land before the end card */ await new Promise((r) => setTimeout(r, 400)); }
+  S.busy = false;
+  logEv("beat_end", { id: b.id });
+  await startBeat(S.beat + 1);
+}
+
+// ---------- dialogue ----------
+let advance = null;
+function say(l, audioKey) {
+  return new Promise((done) => {
+    keys.clear(); // a dialogue swallows held arrows, so a missed keyup can't keep Valjean walking afterwards
+    const d = $("#dlg"), c = chars[l.speaker];
+    d.style.display = "block";
+    const portrait = c && assets.portraits?.[c.id];
+    d.classList.toggle("noportrait", !portrait);
+    d.querySelector("img").style.display = portrait ? "block" : "none";
+    if (portrait) d.querySelector("img").src = `${ASSETS}/portraits/${c.id}.png`;
+    d.querySelector(".speaker").textContent = c ? c.name_fr : "";
+    d.querySelector(".en").textContent = (l.text_en ? ((t) => { t = t.trim(); if (/^[a-zà-ÿ]/.test(t)) t = "…" + t; if (!/[.!?…"”’»)]$/.test(t)) t = t.replace(/[,;:—–-]+$/, "") + "…"; return t; })(l.text_en) : "").replace(/_/g, "");
+    d.querySelector(".ref").textContent = l.label || l.ref;
+    const ell = (t) => { t = t.trim(); if (/^[a-zà-ÿ]/.test(t)) t = "…" + t; if (!/[.!?…"”’»)]$/.test(t)) t = t.replace(/[,;:—–-]+$/, "") + "…"; return t; };
+    const body = ell(l.text_fr);
+    const fr = d.querySelector(".fr"), text = l.speaker === NARRATOR ? body : `${UI.quote_open}${body}${UI.quote_close}`;
+    fr.style.fontStyle = "normal"; fr.classList.toggle("narration", l.speaker === NARRATOR);
+    let i = 0, full = false;
+    // Gutenberg marks italics as _word_: type the plain text, then swap in real <em> (upright inside italic narration)
+    const plain = text.replace(/_/g, "");
+    const esc = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    const html = esc(text).replace(/_([^_]+)_/g, "<em>$1</em>").replace(/_/g, "");
+    const finish = () => { fr.innerHTML = html; full = true; };
+    speak(audioKey);
+    logEv("line", { key: audioKey, speaker: l.speaker, chars: plain.length });
+    if (AUTO.on) {  // autopilot: advance when the voice has finished (or after reading time), with a beat of silence
+      const t0 = performance.now(), minMs = Math.max(1800, plain.length * 45);
+      const poll = setInterval(() => {
+        // headless Chrome has no audio device: a clip may never report "ended", so also accept "its duration has passed"
+        const v = AUDIO.voice, played = (performance.now() - t0) / 1000;
+        const voiceDone = !v || v.ended || v.paused || (v.duration > 0 && played > v.duration + 0.3) || played > Math.max(14, minMs / 1000 * 1.6);
+        if (performance.now() - t0 > (AUDIO.voice ? 1200 : minMs) && voiceDone && advance) {
+          clearInterval(poll); setTimeout(() => { if (advance) { advance(); advance?.(); } }, 700);
+        }
+      }, 120);
+    }
+    const tick = setInterval(() => { i += 2; fr.textContent = plain.slice(0, i); if (i >= plain.length) { clearInterval(tick); finish(); } }, 18);
+    advance = () => {
+      if (!full) { clearInterval(tick); finish(); return; }
+      advance = null; d.style.display = "none"; stopVoice(); done();
+    };
+  });
+}
+function fade(out) {
+  const f = $("#fade"); f.style.opacity = out ? 1 : 0;
+  return new Promise((r) => setTimeout(r, out ? 900 : 700));
+}
+function toast(t) { const el = $("#toast"); el.textContent = t; el.style.display = "block"; setTimeout(() => (el.style.display = "none"), 2200); }
+
+// ---------- travel interlude: an ink map of France ----------
+const GEO = { digne: [300, 330], montreuil: [190, 40], montfermeil: [232, 104], paris: [190, 98], toulon: [285, 370] };
+function travel(from, to) {
+  logEv("travel", { from, to });
+  if (UI.travel === "fall") return new Promise((done) => {
+    const scr = $("#travel"), svg = scr.querySelector("svg");
+    const things = ["🗝", "⌚", "🍰", "♥", "♣", "♦", "♠", "🃏", "☕", "🍄"];
+    svg.innerHTML = things.map((t, i) => `<text x="${40 + (i * 37) % 320}" y="-20" font-size="${22 + (i % 3) * 8}" opacity=".75">${t}
+      <animate attributeName="y" from="-30" to="460" dur="${2.2 + (i % 4) * 0.5}s" begin="${(i % 5) * 0.25}s" repeatCount="indefinite"/>
+      <animateTransform attributeName="transform" type="rotate" from="0 200 200" to="${i % 2 ? 40 : -40} 200 200" dur="3.4s" fill="freeze"/></text>`).join("");
+    scr.querySelector(".dest").textContent = townSpec[to].name_fr;
+    scr.querySelector(".when").textContent = "…down, down, down…";
+    scr.style.display = "grid";
+    setTimeout(() => { scr.style.display = "none"; done(); }, 3400);
+  });
+  return new Promise((done) => {
+    const scr = $("#travel"), svg = scr.querySelector("svg");
+    const a = GEO[from] || [200, 200], b = GEO[to] || [200, 100];
+    svg.innerHTML = `
+      <path d="M150,20 L230,15 L300,60 L340,120 L330,200 L350,260 L320,330 L250,380 L170,370 L110,330 L60,250 L70,170 L40,120 L100,90 Z"
+        fill="none" stroke="#2B2118" stroke-width="2" stroke-dasharray="1 0" opacity=".7"/>
+      <path id="route" d="M${a[0]},${a[1]} Q${(a[0] + b[0]) / 2 + 60},${(a[1] + b[1]) / 2} ${b[0]},${b[1]}" fill="none" stroke="#8E1F1A" stroke-width="3" stroke-dasharray="6 6"/>
+      ${Object.entries(GEO).map(([k, [x, y]]) => `<circle cx="${x}" cy="${y}" r="${k === to || k === from ? 6 : 3}" fill="#2B2118"/><text x="${x + 10}" y="${y + 4}" font-family="Baskerville, serif" font-style="italic" font-size="14" fill="#2B2118">${townSpec[k]?.name_fr || (k === "paris" ? "Paris" : k === "toulon" ? "Toulon" : k)}</text>`).join("")}
+      <circle r="7" fill="#8E1F1A"><animateMotion dur="2.6s" fill="freeze" path="M${a[0]},${a[1]} Q${(a[0] + b[0]) / 2 + 60},${(a[1] + b[1]) / 2} ${b[0]},${b[1]}"/></circle>`;
+    scr.querySelector(".dest").textContent = townSpec[to].name_fr;
+    scr.querySelector(".when").textContent = townSpec[to].name_en;
+    scr.style.display = "grid";
+    setTimeout(() => { scr.style.display = "none"; done(); }, 3600);
+  });
+}
+function showEnd() {
+  const last = script.beats[script.beats.length - 1];
+  if (script.ui) {
+    $("#title h1").textContent = UI.end_title; $("#title h2").textContent = UI.end_subtitle;
+    $("#title").querySelectorAll("p").forEach((p) => (p.textContent = "")); $("#title .go").textContent = UI.end_go;
+    $("#title").style.display = "grid"; return;
+  }
+  $("#title h1").textContent = "Fin du premier acte";
+  $("#title h2").textContent = last.town === "digne" ? "Jean Valjean quitte Digne — un autre homme" : "Jean Valjean et Cosette quittent Montfermeil";
+  $("#title p").textContent = "";
+  $("#title .go").textContent = "Le reste du roman vous attend.";
+  $("#title").style.display = "grid";
+}
+
+// ---------- movement ----------
+const keys = new Set();
+const DIRS = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0], w: [0, -1], s: [0, 1], a: [-1, 0], d: [1, 0] };
+let moving = null;
+function setPlayer(x, y) { S.px = x; S.py = y; world.player.position.set(x, 0.12, y); moving = null; }
+function occupied(x, y) {
+  if (x < 0 || y < 0 || x >= world.m.w || y >= world.m.h) return true;
+  if (world.blocked.has(world.key(x, y))) return true;
+  return Object.values(world.npcs).some((n) => n.x === x && n.y === y);
+}
+function tryMove(dx, dy) {
+  S.face = [dx, dy];
+  world.player.rotation.y = Math.atan2(dx, dy);
+  const nx = S.px + dx, ny = S.py + dy;
+  if (occupied(nx, ny)) {
+    logEv("blocked", { dx, dy });
+    // bumping into a reach target that someone stands on (the sleeping bishop) counts as reaching it
+    const b = beat();
+    if (b?.trigger.type === "reach" && world.m.spots[b.trigger.target]?.join() === [nx, ny].join()) playBeat();
+    if (b?.trigger.type === "enter" && world.doors[world.key(nx, ny)] === b.trigger.target) playBeat();
+    return;
+  }
+  moving = { fx: S.px, fy: S.py, tx: nx, ty: ny, t: 0 };
+  S.px = nx; S.py = ny;
+}
+function arrived() {
+  const b = beat(); if (!b) return;
+  const k = world.key(S.px, S.py);
+  if (b.trigger.type === "enter" && world.doors[k] === b.trigger.target) return playBeat();
+  if (b.trigger.type === "reach" && world.m.spots[b.trigger.target]?.join() === [S.px, S.py].join()) return playBeat();
+  if (world.doors[k]) toast(UI.door_closed);
+}
+function interact() {
+  const b = beat(); if (!b) return;
+  const [fx, fy] = S.face;
+  const adjacent = Object.entries(world.npcs).filter(([, n]) => Math.abs(n.x - S.px) + Math.abs(n.y - S.py) === 1);
+  if (!adjacent.length) return;
+  // priority: the story's talk target if adjacent (the "!"), then whoever the player faces, then anyone adjacent
+  const target = b.trigger.type === "talk" && adjacent.find(([id]) => id === b.trigger.target);
+  if (target) return playBeat();
+  const [id] = adjacent.find(([, n]) => n.x === S.px + fx && n.y === S.py + fy) || adjacent[0];
+  const own = b.lines.find((l) => l.speaker === id);
+  return say(own || { speaker: id, text_fr: "…", text_en: "", ref: "" }, own ? `${b.id}_${b.lines.indexOf(own)}` : null);
+}
+addEventListener("keydown", (e) => {
+  if (e.key === " " || e.key === "Enter") {
+    e.preventDefault();
+    if ($("#title").style.display !== "none" && S.beat === -1) {
+      $("#title").style.display = "none"; S.busy = false; playMusic(script.beats[0].town); startBeat(0); return;
+    }
+    if (advance) return advance();
+    if (!S.busy) interact();
+    return;
+  }
+  // newest key wins: re-insert so it moves to the end of the Set (a Set keeps first-insertion order)
+  if (DIRS[e.key]) { e.preventDefault(); keys.delete(e.key); keys.add(e.key); }
+  if (e.key === "m" || e.key === "M") toggleMute();
+});
+addEventListener("keyup", (e) => keys.delete(e.key));
+addEventListener("blur", () => keys.clear());
+
+// ---------- loop ----------
+const clock = new THREE.Clock();
+const camPos = new THREE.Vector3();
+const v = new THREE.Vector3();
+// ---------- autopilot: walk the shortest path to the current objective and act (video, play-tests) ----------
+const AUTO = { on: params.get("autopilot") === "1", plan: null, lastProgress: performance.now(), warned: false };
+function goalTiles(b) {
+  const tr = b.trigger, near = ([x, y]) => [[x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]];
+  if (tr.type === "talk") { const n = world.npcs[tr.target]; return n ? { tiles: near([n.x, n.y]), act: "talk", at: [n.x, n.y] } : null; }
+  if (tr.type === "enter") { const d = world.m.buildings.find((x) => x.id === tr.target)?.door; return d ? { tiles: [d], act: "arrive", at: d } : null; }
+  if (tr.type === "reach") {
+    const sp = world.m.spots[tr.target]; if (!sp) return null;
+    return occupied(...sp) ? { tiles: near(sp), act: "bump", at: sp } : { tiles: [sp], act: "arrive", at: sp };
+  }
+  return null;
+}
+function planPath(b) {
+  const g = goalTiles(b); if (!g) return null;
+  const goals = new Set(g.tiles.map((t) => t.join()));
+  const start = [S.px, S.py], prev = new Map([[start.join(), null]]), q = [start];
+  while (q.length) {
+    const cur = q.shift();
+    if (goals.has(cur.join())) {
+      const path = []; let k = cur.join();
+      while (prev.get(k)) { const [px, py] = prev.get(k); const [cx, cy] = k.split(",").map(Number); path.unshift([cx - px, cy - py]); k = [px, py].join(); }
+      return { steps: path, ...g };
+    }
+    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+      const n = [cur[0] + dx, cur[1] + dy], k = n.join();
+      if (prev.has(k)) continue;
+      // the door/spot itself may be a goal even when entering it triggers the beat
+      if (occupied(...n) && !goals.has(k)) continue;
+      prev.set(k, cur); q.push(n);
+    }
+  }
+  return null;
+}
+function autopilotStep() {
+  const b = beat(); if (!b || b.trigger.type === "start") return;
+  if (!AUTO.plan) {
+    AUTO.plan = planPath(b);
+    if (!AUTO.plan) { if (!AUTO.warned) { logEv("violation", { rule: "autopilot_no_path", target: b.trigger.target }); AUTO.warned = true; } return; }
+    AUTO.warned = false; logEv("autopilot_plan", { steps: AUTO.plan.steps.length, act: AUTO.plan.act });
+  }
+  const step = AUTO.plan.steps.shift();
+  if (step) { const [px, py] = [S.px, S.py]; tryMove(...step); if (S.px === px && S.py === py) AUTO.plan = null; else AUTO.lastProgress = performance.now(); return; }
+  const [ax, ay] = AUTO.plan.at, act = AUTO.plan.act; AUTO.plan = null;
+  if (act === "talk") { S.face = [Math.sign(ax - S.px), Math.sign(ay - S.py)]; world.player.rotation.y = Math.atan2(S.face[0], S.face[1]); interact(); }
+  else if (act === "bump") tryMove(Math.sign(ax - S.px), Math.sign(ay - S.py));
+}
+
+renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
+  if (!world) return;
+  const p = world.player;
+  if (moving) {
+    moving.t = Math.min(1, moving.t + dt / 0.17);
+    p.position.set(THREE.MathUtils.lerp(moving.fx, moving.tx, moving.t), 0.12 + Math.abs(Math.sin(moving.t * Math.PI)) * 0.06, THREE.MathUtils.lerp(moving.fy, moving.ty, moving.t));
+    p.userData.legs?.forEach((l, i) => (l.rotation.x = Math.sin(moving.t * Math.PI * 2) * 0.6 * (i ? 1 : -1)));
+    if (moving.t === 1) { moving = null; p.userData.legs?.forEach((l) => (l.rotation.x = 0)); arrived(); }
+  } else if (!S.busy && !advance) {
+    const k = [...keys].reverse().find((k) => DIRS[k]);
+    if (k) tryMove(...DIRS[k]);
+    else if (AUTO.on && $("#travel").style.display !== "grid") autopilotStep();
+  }
+  // invariant: no progress for 25 s while free to move = stuck
+  if (AUTO.on && !S.busy && performance.now() - AUTO.lastProgress > 25000) { logEv("violation", { rule: "stuck" }); AUTO.lastProgress = performance.now(); AUTO.plan = null; }
+  p.userData.update?.(t, camera, !!moving);
+  for (const n of Object.values(world.npcs)) n.obj.userData.update?.(t, camera, false);
+  // NPCs face the player when close, idle sway otherwise
+  for (const n of Object.values(world.npcs)) {
+    const d = Math.hypot(n.x - p.position.x, n.y - p.position.z);
+    if (d < 3.5) n.obj.rotation.y = Math.atan2(p.position.x - n.x, p.position.z - n.y);
+    n.obj.position.y = 0.12 + Math.sin(t * 2 + n.x) * 0.01;
+  }
+  if (world.marker) world.marker.position.y = 1.6 + Math.sin(t * 3) * 0.15;
+  if (world.snow) { const a = world.snow.geometry.attributes.position.array; for (let i = 1; i < a.length; i += 3) { a[i] -= dt * 0.8; if (a[i] < 0) a[i] = 12; } world.snow.geometry.attributes.position.needsUpdate = true; }
+  // camera follows
+  v.set(THREE.MathUtils.clamp(p.position.x, 7, Math.max(7, world.m.w - 8)), 0, THREE.MathUtils.clamp(p.position.z, 6, Math.max(6, world.m.h - 7)));
+  camPos.lerp(v, Math.min(1, dt * 5));
+  camera.position.copy(camPos).add(ISO); camera.lookAt(camPos);
+  world.sun.position.set(camPos.x + 15, 25, camPos.z + 10); world.sun.target.position.copy(camPos);
+  renderer.render(world.scene, camera);
+  // HTML tags over NPCs
+  for (const [id, n] of Object.entries(world.npcs)) {
+    v.set(n.obj.position.x, n.obj.userData.height + 0.35, n.obj.position.z).project(camera);
+    const sx = (v.x + 1) / 2 * innerWidth, sy = (1 - v.y) / 2 * innerHeight;
+    const dist = Math.hypot(n.x - p.position.x, n.y - p.position.z);
+    const near = dist < 4 && dist > 1.5 && !advance;
+    n.tag.style.left = sx + "px"; n.tag.style.top = sy + "px"; n.tag.style.display = near ? "block" : "none";
+    if (n.bang) { n.bang.style.left = sx + "px"; n.bang.style.top = (sy - (near ? 22 : 0)) + "px"; n.bang.style.display = advance || dist <= 1.5 ? "none" : "block"; }
+  }
+});
+
+$("#sound").textContent = assets.music || assets.audio ? (AUDIO.muted ? "♪ off (M)" : "♪ on (M)") : "";
+// title theme starts on the first key press (browsers block audio before a user gesture)
+addEventListener("keydown", () => { if (S.beat === -1 && $("#title").style.display !== "none") playMusic("title"); }, { once: true, capture: true });
+// first frame behind the title screen
+$("#title").style.display = "grid";
+buildTown(script.beats[0].town);
+{ const e = world.m.spots[townSpec[script.beats[0].town].entry_spot]; setPlayer(e[0], e[1]); camPos.set(e[0], 0, e[1]); }
+window.__game = { S, script, maps, startBeat, events: EV, autopilot: (on = true) => { AUTO.on = on; AUTO.plan = null; }, occupied: (x, y) => occupied(x, y), npcs: () => Object.fromEntries(Object.entries(world.npcs).map(([k, n]) => [k, [n.x, n.y]])),
+  teleport: (x, y) => { setPlayer(x, y); camPos.set(x, 0, y); },
+  debug: () => ({ moving, keys: [...keys], advance: !!advance, busy: S.busy, beat: S.beat, me: [S.px, S.py], tid: world.tid }), inDialogue: () => !!advance, busy: () => S.busy, get world() { return world; }, skipTo: (i) => { $("#title").style.display = "none"; S.busy = false; startBeat(i); } };
+$("#loading").remove();
+window.__ready = true;
+</script>
+</body>
+</html>

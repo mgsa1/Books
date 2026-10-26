@@ -1,0 +1,476 @@
+{
+ "b01_riverbank#0": {
+  "score": 1.0,
+  "heard": "Alice was beginning to get very tired of sitting by her sister on the bank and of having nothing to do.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b01_riverbank#1": {
+  "score": 1.0,
+  "heard": "And what is the use of a book, thought Alice, without pictures or conversations?",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b01_riverbank#2": {
+  "score": 1.0,
+  "heard": "Suddenly, a white rabbit with pink eyes ran close by her.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b02_watch_rabbit#0": {
+  "score": 1.0,
+  "heard": "Oh dear, oh dear, I shall be late!",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b02_watch_rabbit#1": {
+  "score": 1.0,
+  "heard": "The rabbit actually took a watch out of its waistcoat pocket and looked at it and then hurried on.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b02_watch_rabbit#2": {
+  "score": 1.0,
+  "heard": "She ran across the field after it and fortunately was just in time to see it pop down a large rabbit hole under the hedge.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b03_the_fall#0": {
+  "score": 1.0,
+  "heard": "In another moment, down went Alice after it, never once considering how in the world she was to get out again.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b03_the_fall#1": {
+  "score": 1.0,
+  "heard": "I wonder how many miles I've fallen by this time.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b03_the_fall#2": {
+  "score": 1.0,
+  "heard": "Suddenly, thump, thump, down she came upon a heap of sticks and dry leaves, and the fall was over.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b03_the_fall#3": {
+  "score": 1.0,
+  "heard": "She found herself in a long, low hall, which was lit up by a row of lamps hanging from the roof.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b04_glass_table#0": {
+  "score": 1.0,
+  "heard": "Suddenly, she came upon a little three-legged table, all made of solid glass. There was nothing on it except a tiny golden key.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b04_glass_table#1": {
+  "score": 1.0,
+  "heard": "She came upon a low curtain she had not noticed before, and behind it was a little door about fifteen inches high.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b04_glass_table#2": {
+  "score": 1.0,
+  "heard": "Oh, how I wish I could shut up like a telescope. I think I could, if I only knew how to begin.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b05_drink_and_eat#0": {
+  "score": 1.0,
+  "heard": "Round the neck of the bottle was a paper label with the words Drink Me beautifully printed on it in large letters.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b05_drink_and_eat#1": {
+  "score": 1.0,
+  "heard": "What a curious feeling, said Alice. I must be shutting up like a telescope.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b05_drink_and_eat#2": {
+  "score": 0.955,
+  "heard": "She opened it and found in it a very small cake, on which the words, Eat Me, were beautifully marked in currents.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b05_drink_and_eat#3": {
+  "score": 1.0,
+  "heard": "Curiouser and curiouser, cried Alice. She was so much surprised that for the moment she quite forgot how to speak good English.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b06_pool_of_tears#0": {
+  "score": 1.0,
+  "heard": "She soon made out that she was in the pool of tears which she had wept when she was nine feet high.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b06_pool_of_tears#1": {
+  "score": 1.0,
+  "heard": "I wish I hadn't cried so much, said Alice, as she swam about trying to find her way out.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b07_swim_to_shore#0": {
+  "score": 0.905,
+  "heard": "Oh, Mouse, do you know the way out of this pool? I am very tired of swimming about here, Oh, Mouse.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b07_swim_to_shore#1": {
+  "score": 1.0,
+  "heard": "Not like cats, cried the mouse in a shrill, passionate voice. Would you like cats if you were me?",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b07_swim_to_shore#2": {
+  "score": 1.0,
+  "heard": "Let us get to the shore and then I'll tell you my history and you'll understand why it is I hate cats and dogs.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b07_swim_to_shore#3": {
+  "score": 1.0,
+  "heard": "Alice led the way, and the whole party swam to the shore.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b08_caucus_race#0": {
+  "score": 1.0,
+  "heard": "At last the dodo said, Everybody has won and all must have prizes.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b08_caucus_race#1": {
+  "score": 1.0,
+  "heard": "Mine is a long and a sad tale, said the mouse, turning to Alice and sighing.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b08_caucus_race#2": {
+  "score": 0.957,
+  "heard": "It is a long tale, certainly, said Alice, looking down with wonder at the mouse's tail. But why do you call it sad?",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b09_mary_ann_errand#0": {
+  "score": 1.0,
+  "heard": "The Duchess! The Duchess! Oh, my dear paws! Oh, my fur and whiskers! She'll get me executed as sure as ferrets are ferrets!",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b09_mary_ann_errand#1": {
+  "score": 1.0,
+  "heard": "Why, Mary Ann, what are you doing out here? Run home this moment and fetch me a pair of gloves and a fan. Quick now!",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b09_mary_ann_errand#2": {
+  "score": 1.0,
+  "heard": "She came upon a neat little house, on the door of which was a bright brass plate with the name W. Rabbit engraved upon it.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b10_trapped_giant#0": {
+  "score": 1.0,
+  "heard": "She put one arm out of the window and one foot up the chimney and said to herself, Now I can do no more whatever happens.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b10_trapped_giant#1": {
+  "score": 0.903,
+  "heard": "An arm, you goose! Whoever saw one that size? Why, it fills the whole window!",
+  "extra_words": -1,
+  "tag_spoken": false
+ },
+ "b10_trapped_giant#2": {
+  "score": 1.0,
+  "heard": "Alice noticed with some surprise that the pebbles were all turning into little cakes as they lay on the floor.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b10_trapped_giant#3": {
+  "score": 1.0,
+  "heard": "So she swallowed one of the cakes and was delighted to find that she began shrinking directly.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b11_caterpillar_hookah#0": {
+  "score": 1.0,
+  "heard": "Her eyes immediately met those of a large blue caterpillar that was sitting on the top with its arms folded, quietly smoking a long hookah.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b11_caterpillar_hookah#1": {
+  "score": 1.0,
+  "heard": "Who are you?",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b11_caterpillar_hookah#2": {
+  "score": 1.0,
+  "heard": "I... I hardly know, sir, just at present. At least, I know who I was when I got up this morning, but I think I must have been changed several times since then.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b12_mushroom_sides#0": {
+  "score": 1.0,
+  "heard": "Keep your temper.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b12_mushroom_sides#1": {
+  "score": 1.0,
+  "heard": "One side will make you grow taller, and the other side will make you grow shorter.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b12_mushroom_sides#2": {
+  "score": 1.0,
+  "heard": "One side of what? The other side of what?",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b12_mushroom_sides#3": {
+  "score": 1.0,
+  "heard": "of the mushroom",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b13_duchess_kitchen#0": {
+  "score": 1.0,
+  "heard": "The fish footman began by producing from under his arm a great letter, nearly as large as himself.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b13_duchess_kitchen#1": {
+  "score": 1.0,
+  "heard": "And certainly there was a most extraordinary noise going on within, a constant howling and sneezing, and every now and then a great crash.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b14_pig_and_pepper#0": {
+  "score": 1.0,
+  "heard": "The door led right into a large kitchen, which was full of smoke from one end to the other.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b14_pig_and_pepper#1": {
+  "score": 1.0,
+  "heard": "please would you tell me said alice a little timidly for she was not quite sure whether it was good manners for her to speak first why your cat grins like that",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b14_pig_and_pepper#2": {
+  "score": 1.0,
+  "heard": "It's a Cheshire cat, said the Duchess, and that's why. Pig.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b15_baby_turns_pig#0": {
+  "score": 1.0,
+  "heard": "Here, you may nurse it a bit if you like, the Duchess said to Alice, flinging the baby at her as she spoke.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b15_baby_turns_pig#1": {
+  "score": 1.0,
+  "heard": "If you're going to turn into a pig, my dear, said Alice seriously, I'll have nothing more to do with you, mind now.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b15_baby_turns_pig#2": {
+  "score": 1.0,
+  "heard": "This time there could be no mistake about it. It was neither more nor less than a pig.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b16_cheshire_directions#0": {
+  "score": 1.0,
+  "heard": "Would you tell me, please, which way I ought to go from here?",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b16_cheshire_directions#1": {
+  "score": 0.96,
+  "heard": "Hmm, that depends a good deal on where you want to get to.",
+  "extra_words": 1,
+  "tag_spoken": false
+ },
+ "b16_cheshire_directions#2": {
+  "score": 1.0,
+  "heard": "Oh, you can't help that, said the cat. We're all mad here. I'm mad. You're mad.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b16_cheshire_directions#3": {
+  "score": 1.0,
+  "heard": "Well, I've often seen a cat without a grin, thought Alice. But a grin without a cat? It's the most curious thing I ever saw in my life.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b17_mad_tea_party#0": {
+  "score": 1.0,
+  "heard": "The table was a large one, but the three were all crowded together at one corner of it. No room, no room, they cried out when they saw Alice coming.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b17_mad_tea_party#1": {
+  "score": 0.93,
+  "heard": "There's plenty of room, said Alice indignantly, and she sat down in a large armchair at one end of the table.",
+  "extra_words": -1,
+  "tag_spoken": false
+ },
+ "b17_mad_tea_party#2": {
+  "score": 1.0,
+  "heard": "Why is a raven like a writing desk?",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b17_mad_tea_party#3": {
+  "score": 1.0,
+  "heard": "Yes, that's it, said the Hatter with a sigh. It's always tea time, and we've no time to wash the things between whiles.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b17_mad_tea_party#4": {
+  "score": 1.0,
+  "heard": "Take some more tea.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b18_tree_door_to_garden#0": {
+  "score": 1.0,
+  "heard": "Just as she said this, she noticed that one of the trees had a door leading right into it.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b18_tree_door_to_garden#1": {
+  "score": 0.914,
+  "heard": "She found herself at last in the beautiful garden, among the bright flowerbeds and the cool fountains.",
+  "extra_words": -1,
+  "tag_spoken": false
+ },
+ "b19_painting_roses#0": {
+  "score": 1.0,
+  "heard": "A large rose tree stood near the entrance of the garden. The roses growing on it were white, but there were three gardeners at it, busily painting them red.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b19_painting_roses#1": {
+  "score": 1.0,
+  "heard": "My name is Alice, so please, your majesty, said Alice very politely, but she added to herself. Why, they're only a pack of cards, after all. I needn't be afraid of them.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b20_croquet_game#0": {
+  "score": 1.0,
+  "heard": "Off with her head! Off-",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b20_croquet_game#1": {
+  "score": 0.88,
+  "heard": "\"'Nonsense,' said Alice, very loudly and decidedly, and the Queen was silent.",
+  "extra_words": 1,
+  "tag_spoken": false
+ },
+ "b20_croquet_game#2": {
+  "score": 0.966,
+  "heard": "The balls were live hedgehogs, the mallets live flamingos, and the soldiers had to double themselves up and to stand on their hands and feet to make the arches.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b20_croquet_game#3": {
+  "score": 1.0,
+  "heard": "Have you seen the mock turtle yet?",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b21_mock_turtle_story#0": {
+  "score": 1.0,
+  "heard": "Once, said the mock turtle at last, with a deep sigh, I was a real turtle.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b21_mock_turtle_story#1": {
+  "score": 1.0,
+  "heard": "Reeling and writhing, of course, to begin with, the mock turtle replied. And then the different branches of arithmetic. Ambition, distraction, uglification, and derision.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b21_mock_turtle_story#2": {
+  "score": 1.0,
+  "heard": "Will you, won't you? Will you, won't you? Will you join the dance?",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b21_mock_turtle_story#3": {
+  "score": 1.0,
+  "heard": "A cry of, the trial's beginning, was heard in the distance.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b22_who_stole_the_tarts#0": {
+  "score": 1.0,
+  "heard": "The Queen of Hearts, she made some tarts, all on a summer day. The Knave of Hearts, he stole those tarts and took them quite away.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b22_who_stole_the_tarts#1": {
+  "score": 1.0,
+  "heard": "Give your evidence, said the king, and don't be nervous, or I'll have you executed on the spot.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b22_who_stole_the_tarts#2": {
+  "score": 1.0,
+  "heard": "Imagine her surprise when the white rabbit read out at the top of his shrill little voice the name Alice.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b23_alices_evidence#0": {
+  "score": 0.889,
+  "heard": "Rule 42. All persons more than a mile high to leave the court.",
+  "extra_words": -1,
+  "tag_spoken": false
+ },
+ "b23_alices_evidence#1": {
+  "score": 1.0,
+  "heard": "No, no, said the queen. Sentence first, verdict afterwards.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b23_alices_evidence#2": {
+  "score": 1.0,
+  "heard": "Stuff and nonsense, said Alice loudly. The idea of having the sentence first.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b23_alices_evidence#3": {
+  "score": 1.0,
+  "heard": "Who cares for you? said Alice. She had grown to her full size by this time. You're nothing but a pack of cards.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b24_awakening#0": {
+  "score": 1.0,
+  "heard": "At this, the whole pack rose up into the air and came flying down upon her. She gave a little scream, half of fright and half of anger, and tried to beat them off and found herself lying on the bank.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b24_awakening#1": {
+  "score": 1.0,
+  "heard": "Oh, I've had such a curious dream.",
+  "extra_words": 0,
+  "tag_spoken": false
+ },
+ "b24_awakening#2": {
+  "score": 1.0,
+  "heard": "So Alice got up and ran off, thinking while she ran, as well she might, what a wonderful dream it had been.",
+  "extra_words": 0,
+  "tag_spoken": false
+ }
+}
